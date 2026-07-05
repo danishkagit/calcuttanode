@@ -169,9 +169,18 @@ git add . && git commit -m "step 3: routing skeleton + static home page"
 Starting Build Step 4: Tailwind CSS setup and responsive static layout
 for all pages created so far.
 
-Set up Tailwind config per Section 2. Then style Navbar, Footer, and Home
-page to be clean and responsive on mobile/tablet/desktop — no animation
-yet, just solid, modern static styling (cards, spacing, typography). Create
+Set up Tailwind config per Section 2. IMPORTANT: also apply Section 2.1
+(Brand Identity & Color System) from the spec right now, at config time —
+extend theme.colors with background, surface, neon-cyan, electric-violet,
+text-primary, and text-muted using the exact hex values given, and set up
+the signature gradient and neon-glow effect as reusable utility
+classes/CSS variables. Place the uploaded logo at client/src/assets/logo.png
+and use it in the Navbar per Section 2.1's placement notes.
+
+Then style Navbar, Footer, and Home page to be clean and responsive on
+mobile/tablet/desktop using ONLY these brand tokens (no ad-hoc hex codes)
+— no animation yet, just solid, modern static styling (cards, spacing,
+typography) matching the dark, neon-circuit look of the logo. Create
 placeholder static versions of About.jsx and Contact.jsx too, pulling
 company info from client/src/data/companyInfo.js (create this file now with
 the real details from Section 4.7 of the spec: Calcutta Node, the Champdani
