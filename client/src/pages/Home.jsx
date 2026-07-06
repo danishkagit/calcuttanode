@@ -84,7 +84,7 @@ export default function Home() {
             </span>
           </motion.div>
           <p className="text-xl md:text-2xl text-text-muted mb-2">IT Services & Digital Growth Agency</p>
-          <p className="text-text-muted mb-8 max-w-lg mx-auto">📍 {companyInfo.address}</p>
+          
           <div className="flex gap-4 justify-center flex-wrap">
             <motion.a href="/pricing" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
               className="bg-brand-gradient text-white px-8 py-3 rounded-xl font-medium transition-all duration-200 hover:shadow-lg hover:shadow-neon-cyan/20"
