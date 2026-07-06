@@ -151,8 +151,12 @@ export default function AI() {
   const inputRef = useRef(null);
   const [streamingContent, setStreamingContent] = useState('');
 
-  const scrollToBottom = useCallback(() => {
-    chatRef.current?.scrollTo({ top: chatRef.current.scrollHeight, behavior: 'smooth' });
+  const scrollToBottom = useCallback((smooth = true) => {
+    chatRef.current?.scrollTo({ top: chatRef.current.scrollHeight, behavior: smooth ? 'smooth' : 'auto' });
+  }, []);
+
+  useEffect(() => {
+    if (messages.length > 0 || streamingContent) scrollToBottom(false);
   }, []);
 
   useEffect(() => {
@@ -166,6 +170,10 @@ export default function AI() {
   useEffect(() => {
     if (!loading) scrollToBottom();
   }, [messages, loading, scrollToBottom]);
+
+  useEffect(() => {
+    if (streamingContent) scrollToBottom();
+  }, [streamingContent, scrollToBottom]);
 
   useEffect(() => {
     if (inputRef.current) {
@@ -352,7 +360,7 @@ Calcutta Node.AI
 
         <div
           ref={chatRef}
-          className="flex-1 overflow-y-auto space-y-3 mb-3 px-1 scroll-smooth"
+          className="flex-1 overflow-y-auto space-y-2 mb-3 px-2 py-3 scroll-smooth bg-background/30 rounded-2xl border border-electric-violet/10 backdrop-blur-sm"
           style={{ maxHeight: 'calc(100vh - 280px)' }}
         >
           {messages.length === 0 && !streamingContent ? (
@@ -408,91 +416,100 @@ Calcutta Node.AI
             </motion.div>
           ) : (
             <>
-              {messages.map((msg, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 12, scale: 0.98 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  transition={{ duration: 0.2, ease: 'easeOut' }}
-                  className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'} group`}
-                >
-                  <div className={`max-w-[88%] sm:max-w-[78%] ${
-                    msg.role === 'user'
-                      ? 'bg-gradient-to-br from-neon-cyan/20 to-neon-cyan/5 border border-neon-cyan/10 rounded-2xl rounded-br-md'
-                      : 'bg-surface/60 backdrop-blur-sm border border-electric-violet/10 rounded-2xl rounded-bl-md'
-                  } px-4 py-3 shadow-lg shadow-black/10`}>
-                    {msg.role === 'assistant' ? (
-                      <>
-                        <div className="flex items-center justify-between mb-2">
-                          <div className="flex items-center gap-1.5">
-                            <motion.div
-                              initial={{ scale: 0 }}
-                              animate={{ scale: 1 }}
-                              className="w-6 h-6 rounded-lg bg-gradient-to-br from-neon-cyan to-electric-violet flex items-center justify-center text-[10px] font-bold text-white shadow-lg shadow-neon-cyan/20"
-                            >
-                              AI
-                            </motion.div>
-                            <span className="text-[10px] text-text-muted">Calcutta Node AI</span>
-                            {msg.model && (
-                              <span className="text-[8px] text-text-muted/50 bg-background/50 rounded px-1.5 py-0.5">
-                                {models.find(m => m.id === msg.model?.id)?.icon || '🧠'} {msg.model?.name || msg.model?.id}
-                              </span>
-                            )}
-                          </div>
-                          <CopyButton text={msg.content} />
-                        </div>
-                        <div className="text-sm leading-relaxed prose prose-invert max-w-none prose-p:my-1 prose-code:bg-black/30 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-neon-cyan prose-code:text-xs prose-pre:bg-transparent prose-pre:p-0 prose-ul:my-1 prose-ol:my-1 prose-li:my-0.5 prose-headings:my-2 prose-headings:text-text-primary prose-a:text-neon-cyan prose-strong:text-text-primary prose-blockquote:border-neon-cyan/30 prose-blockquote:text-text-muted">
-                          <ReactMarkdown
-                            remarkPlugins={[remarkGfm]}
-                            components={{
-                              code({ className, children, ...props }) {
-                                const match = /language-(\w+)/.exec(className || '');
-                                if (match) {
-                                  return <CodeBlock className={className} children={children} />;
-                                }
-                                return (
-                                  <code className="bg-black/30 px-1.5 py-0.5 rounded text-neon-cyan text-xs" {...props}>
-                                    {children}
-                                  </code>
-                                );
-                              },
-                            }}
-                          >
-                            {msg.content}
-                          </ReactMarkdown>
-                        </div>
-                        <Timestamp date={msg.time} />
-                      </>
-                    ) : (
-                      <>
-                        <div className="flex items-center justify-between mb-1">
-                          <span className="text-[10px] text-text-muted">You</span>
-                          <CopyButton text={msg.content} />
-                        </div>
-                        <div className="text-sm leading-relaxed text-text-primary">{msg.content}</div>
-                        <Timestamp date={msg.time} />
-                      </>
+              {messages.map((msg, i) => {
+                const isUser = msg.role === 'user';
+                const isLastSameSender = i > 0 && messages[i - 1].role === msg.role;
+                return (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, y: 12 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.2, ease: 'easeOut' }}
+                    className={`flex ${isUser ? 'justify-end' : 'justify-start'} ${isLastSameSender ? 'mt-0.5' : 'mt-1.5'} group`}
+                  >
+                    {!isUser && !isLastSameSender && (
+                      <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-neon-cyan to-electric-violet flex items-center justify-center text-[9px] font-bold text-white shrink-0 mt-1 mr-2 shadow-lg shadow-neon-cyan/20">
+                        AI
+                      </div>
                     )}
-                  </div>
-                </motion.div>
-              ))}
+                    {!isUser && isLastSameSender && <div className="w-7 mr-2 shrink-0" />}
+                    <div className={`max-w-[88%] sm:max-w-[78%] ${
+                      isUser
+                        ? 'bg-gradient-to-br from-neon-cyan/25 to-neon-cyan/10 border border-neon-cyan/20 rounded-2xl rounded-br-md'
+                        : isLastSameSender
+                          ? 'bg-surface/40 backdrop-blur-sm border border-electric-violet/10 rounded-2xl rounded-bl-md rounded-tl-md'
+                          : 'bg-surface/50 backdrop-blur-sm border border-electric-violet/10 rounded-2xl rounded-bl-md'
+                    } px-4 py-2.5 shadow-md shadow-black/10`}>
+                      {!isUser ? (
+                        <>
+                          <div className="flex items-center justify-between mb-1.5">
+                            <div className="flex items-center gap-1.5">
+                              {isLastSameSender ? null : (
+                                <span className="text-[10px] text-text-muted font-medium">Calcutta Node AI</span>
+                              )}
+                              {msg.model && (
+                                <span className="text-[8px] text-text-muted/50 bg-background/50 rounded px-1.5 py-0.5">
+                                  {models.find(m => m.id === msg.model?.id)?.icon || '🧠'} {msg.model?.name || msg.model?.id}
+                                </span>
+                              )}
+                            </div>
+                            <CopyButton text={msg.content} />
+                          </div>
+                          <div className="text-sm leading-relaxed prose prose-invert max-w-none prose-p:my-1 prose-code:bg-black/30 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-neon-cyan prose-code:text-xs prose-pre:bg-transparent prose-pre:p-0 prose-ul:my-1 prose-ol:my-1 prose-li:my-0.5 prose-headings:my-2 prose-headings:text-text-primary prose-a:text-neon-cyan prose-strong:text-text-primary prose-blockquote:border-neon-cyan/30 prose-blockquote:text-text-muted">
+                            <ReactMarkdown
+                              remarkPlugins={[remarkGfm]}
+                              components={{
+                                code({ className, children, ...props }) {
+                                  const match = /language-(\w+)/.exec(className || '');
+                                  if (match) {
+                                    return <CodeBlock className={className} children={children} />;
+                                  }
+                                  return (
+                                    <code className="bg-black/30 px-1.5 py-0.5 rounded text-neon-cyan text-xs" {...props}>
+                                      {children}
+                                    </code>
+                                  );
+                                },
+                              }}
+                            >
+                              {msg.content}
+                            </ReactMarkdown>
+                          </div>
+                          <Timestamp date={msg.time} />
+                        </>
+                      ) : (
+                        <>
+                          <div className="flex items-center justify-between mb-0.5">
+                            <span className="text-[10px] text-text-muted font-medium">You</span>
+                            <CopyButton text={msg.content} />
+                          </div>
+                          <div className="text-sm leading-relaxed text-text-primary">{msg.content}</div>
+                          <Timestamp date={msg.time} />
+                        </>
+                      )}
+                    </div>
+                    {isUser && !isLastSameSender && (
+                      <div className="w-7 h-7 rounded-lg bg-neon-cyan/20 border border-neon-cyan/30 flex items-center justify-center text-[9px] font-bold text-neon-cyan shrink-0 mt-1 ml-2">
+                        U
+                      </div>
+                    )}
+                    {isUser && isLastSameSender && <div className="w-7 ml-2 shrink-0" />}
+                  </motion.div>
+                );
+              })}
 
               {loading && streamingContent && (
                 <motion.div
                   initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="flex justify-start group"
+                  className="flex justify-start mt-1.5"
                 >
-                  <div className="max-w-[88%] sm:max-w-[78%] bg-surface/60 backdrop-blur-sm border border-electric-violet/10 rounded-2xl rounded-bl-md px-4 py-3 shadow-lg shadow-black/10">
-                    <div className="flex items-center gap-1.5 mb-2">
-                      <motion.div
-                        animate={{ scale: [1, 1.1, 1] }}
-                        transition={{ repeat: Infinity, duration: 1.5 }}
-                        className="w-6 h-6 rounded-lg bg-gradient-to-br from-neon-cyan to-electric-violet flex items-center justify-center text-[10px] font-bold text-white shadow-lg shadow-neon-cyan/20"
-                      >
-                        AI
-                      </motion.div>
-                      <span className="text-[10px] text-text-muted">Calcutta Node AI</span>
+                  <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-neon-cyan to-electric-violet flex items-center justify-center text-[9px] font-bold text-white shrink-0 mt-1 mr-2 shadow-lg shadow-neon-cyan/20">
+                    AI
+                  </div>
+                  <div className="max-w-[88%] sm:max-w-[78%] bg-surface/50 backdrop-blur-sm border border-electric-violet/10 rounded-2xl rounded-bl-md px-4 py-2.5 shadow-md shadow-black/10">
+                    <div className="flex items-center gap-1.5 mb-1.5">
+                      <span className="text-[10px] text-text-muted font-medium">Calcutta Node AI</span>
                       <TypingDots />
                     </div>
                     <div className="text-sm leading-relaxed prose prose-invert max-w-none prose-code:bg-black/30 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-neon-cyan prose-code:text-xs">
