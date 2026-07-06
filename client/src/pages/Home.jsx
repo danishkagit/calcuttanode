@@ -70,27 +70,62 @@ export default function Home() {
           <motion.span
             animate={{ y: [0, -5, 0] }}
             transition={{ repeat: Infinity, duration: 2.5 }}
-            className="inline-block text-sm font-medium text-neon-cyan bg-neon-cyan/10 px-4 py-1.5 rounded-full mb-5 border border-neon-cyan/20"
+            className="inline-block text-xs font-semibold text-electric-violet bg-electric-violet/15 px-4 py-1.5 rounded-full mb-5 border border-electric-violet/30 shadow-lg shadow-electric-violet/10"
           >
-            🚀 Serving Champdani & Beyond Since 2023
+            ⚡ India's Remote IT & Digital Partner Since 2023
           </motion.span>
           <motion.div
             animate={{ y: [0, -8, 0] }}
             transition={{ repeat: Infinity, duration: 3, ease: 'easeInOut' }}
-            className="text-5xl md:text-7xl font-bold mb-4"
+            className="text-5xl md:text-7xl font-bold mb-3"
           >
             <span className="bg-gradient-to-r from-neon-cyan via-electric-violet to-neon-cyan bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient-x">
               Calcutta Node.
             </span>
           </motion.div>
-          <p className="text-lg md:text-xl text-text-muted mb-2">IT Services & Digital Growth Agency</p>
-          <p className="text-sm md:text-base text-text-muted/80 max-w-2xl mx-auto mb-2">
-            Remote IT support · Web development · Digital marketing · AI-powered solutions
-          </p>
-          <p className="text-xs text-text-muted/60 max-w-xl mx-auto mb-8">
-            We help businesses and individuals across India with practical tech solutions — 
-            from fixing a slow PC to building a full website. Support in हिंदी & English.
-          </p>
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="text-lg md:text-xl text-transparent bg-clip-text bg-gradient-to-r from-text-primary to-neon-cyan font-medium mb-3"
+          >
+            IT Services & Digital Growth Agency
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="flex flex-wrap justify-center gap-2 max-w-2xl mx-auto mb-3"
+          >
+            {[
+              { label: '🌐 Websites', color: 'from-neon-cyan/20 to-neon-cyan/5 border-neon-cyan/20' },
+              { label: '📱 Mobile Apps', color: 'from-electric-violet/20 to-electric-violet/5 border-electric-violet/20' },
+              { label: '📈 SEO & Marketing', color: 'from-neon-cyan/20 to-neon-cyan/5 border-neon-cyan/20' },
+              { label: '🖥️ Remote PC Help', color: 'from-electric-violet/20 to-electric-violet/5 border-electric-violet/20' },
+              { label: '🤖 AI & Automation', color: 'from-neon-cyan/20 to-neon-cyan/5 border-neon-cyan/20' },
+              { label: '🎨 Graphic Design', color: 'from-electric-violet/20 to-electric-violet/5 border-electric-violet/20' },
+            ].map((item, i) => (
+              <motion.span
+                key={item.label}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.4 + i * 0.06 }}
+                whileHover={{ scale: 1.05, y: -1 }}
+                className={`text-xs bg-gradient-to-r ${item.color} border px-3 py-1.5 rounded-full text-text-muted/90 hover:text-text-primary transition-all duration-200 cursor-default shadow-sm`}
+              >
+                {item.label}
+              </motion.span>
+            ))}
+          </motion.div>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.6 }}
+            className="text-xs text-text-muted/60 max-w-xl mx-auto mb-8 leading-relaxed"
+          >
+            From fixing a slow PC to building your dream website — we deliver practical tech solutions 
+            across India. <span className="text-neon-cyan font-medium">Support in हिंदी & English.</span>
+          </motion.p>
           <div className="flex gap-4 justify-center flex-wrap">
             <motion.a href="/pricing" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
               className="bg-brand-gradient text-white px-8 py-3 rounded-xl font-medium transition-all duration-200 hover:shadow-lg hover:shadow-neon-cyan/20"
