@@ -20,7 +20,5 @@ services:
         sync: false
       - key: RAZORPAY_KEY_SECRET
         sync: false
-      - key: OPENROUTER_KEY
-        sync: false
       - key: OPENCODE_ZEN_KEY
         sync: false

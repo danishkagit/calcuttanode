@@ -1,27 +1,15 @@
-const OPENROUTER_KEY = process.env.OPENROUTER_KEY || '';
-const OPENCODE_ZEN_KEY = process.env.OPENCODE_ZEN_KEY || '';
+const ZEN_KEY = process.env.OPENCODE_ZEN_KEY || '';
+const ZEN_BASE = 'https://opencode.ai/zen/v1';
 
-if (!OPENROUTER_KEY && !OPENCODE_ZEN_KEY) {
-  console.warn('AI Chat: No API keys configured. Set OPENROUTER_KEY and/or OPENCODE_ZEN_KEY in env.');
+if (!ZEN_KEY) {
+  console.warn('AI Chat: OPENCODE_ZEN_KEY not set. Add it in Render dashboard.');
 }
 
-const OPENROUTER_BASE = 'https://openrouter.ai/api/v1';
-const OPENCODE_ZEN_BASE = 'https://opencode.ai/zen/v1';
-
 const modelList = [
-  // Tier 1: OpenRouter models (free tier)
-  { id: 'deepseek/deepseek-chat', name: 'DeepSeek V3', provider: 'openrouter', tier: 1 },
-  { id: 'google/gemini-2.0-flash-exp:free', name: 'Gemini 2.0 Flash', provider: 'openrouter', tier: 1 },
-  { id: 'google/gemini-2.5-flash-preview-04-17', name: 'Gemini 2.5 Flash', provider: 'openrouter', tier: 1 },
-  { id: 'meta-llama/llama-3.3-70b-instruct', name: 'Llama 3.3 70B', provider: 'openrouter', tier: 1 },
-  { id: 'microsoft/phi-4-multimodal-instruct', name: 'Phi-4', provider: 'openrouter', tier: 1 },
-  { id: 'mistralai/mistral-7b-instruct:free', name: 'Mistral 7B', provider: 'openrouter', tier: 1 },
-  // Tier 2: OpenCode Zen models
-  { id: 'anthropic/claude-sonnet-4-20250514', name: 'Claude Sonnet 4', provider: 'opencode-zen', tier: 2 },
-  { id: 'anthropic/claude-3.5-haiku-20241022', name: 'Claude 3.5 Haiku', provider: 'opencode-zen', tier: 2 },
-  // Tier 3: Premium OpenRouter
-  { id: 'anthropic/claude-3.5-sonnet', name: 'Claude 3.5 Sonnet', provider: 'openrouter', tier: 3 },
-  { id: 'openai/gpt-4o-mini', name: 'GPT-4o Mini', provider: 'openrouter', tier: 3 },
+  { id: 'deepseek-v4-flash-free', name: 'DeepSeek V4 Flash Free', icon: '🔍', tier: 1 },
+  { id: 'mimo-v2.5-free', name: 'MiMo V2.5 Free', icon: '🧠', tier: 1 },
+  { id: 'north-mini-code-free', name: 'North Mini Code Free', icon: '⚡', tier: 1 },
+  { id: 'nemotron-3-ultra-free', name: 'Nemotron 3 Ultra Free', icon: '🚀', tier: 1 },
 ];
 
 const rateLimitStore = new Map();
@@ -40,44 +28,15 @@ function isRateLimited(ip) {
   return false;
 }
 
-async function tryProvider(model, messages, signal) {
-  if (model.provider === 'openrouter') {
-    return callOpenRouter(model.id, messages, signal);
-  } else if (model.provider === 'opencode-zen') {
-    return callOpenCodeZen(model.id, messages, signal);
-  }
-  throw new Error('Unknown provider');
-}
-
-async function callOpenRouter(modelId, messages, signal) {
-  const res = await fetch(`${OPENROUTER_BASE}/chat/completions`, {
+async function callModel(modelId, messages) {
+  if (!ZEN_KEY) throw new Error('AI service not configured (missing API key)');
+  const res = await fetch(`${ZEN_BASE}/chat/completions`, {
     method: 'POST',
     headers: {
-      'Authorization': `Bearer ${OPENROUTER_KEY}`,
-      'Content-Type': 'application/json',
-      'HTTP-Referer': 'https://calcuttanode.vercel.app',
-      'X-Title': 'Calcutta Node AI',
-    },
-    body: JSON.stringify({ model: modelId, messages, stream: false }),
-    signal,
-  });
-  const data = await res.json();
-  if (!res.ok) {
-    const errMsg = data.error?.message || data.error || `HTTP ${res.status}`;
-    throw new Error(errMsg);
-  }
-  return data.choices?.[0]?.message?.content || '';
-}
-
-async function callOpenCodeZen(modelId, messages, signal) {
-  const res = await fetch(`${OPENCODE_ZEN_BASE}/chat/completions`, {
-    method: 'POST',
-    headers: {
-      'Authorization': `Bearer ${OPENCODE_ZEN_KEY}`,
+      'Authorization': `Bearer ${ZEN_KEY}`,
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({ model: modelId, messages, stream: false }),
-    signal,
   });
   const data = await res.json();
   if (!res.ok) {
@@ -100,7 +59,7 @@ export const chat = async (req, res) => {
     }
 
     const messages = [
-      { role: 'system', content: 'You are Calcutta Node AI, a helpful assistant for Calcutta Node IT Services based in Champdani, Hooghly, West Bengal. You help with tech questions, IT support, web development, digital marketing, and general queries. Be concise and helpful.' },
+      { role: 'system', content: 'You are Calcutta Node AI, a helpful assistant for Calcutta Node IT Services based in Champdani, Hooghly, West Bengal. You help with tech questions, IT support, web development, digital marketing, and general queries. Be concise and helpful. Answer in English or Hindi/Bengali as appropriate.' },
       ...history.slice(-10),
       { role: 'user', content: message },
     ];
@@ -112,10 +71,10 @@ export const chat = async (req, res) => {
     const errors = [];
     for (const model of modelsToTry) {
       try {
-        const content = await tryProvider(model, messages);
+        const content = await callModel(model.id, messages);
         return res.json({
           reply: content,
-          model: { id: model.id, name: model.name, provider: model.provider },
+          model: { id: model.id, name: model.name, provider: 'opencode-zen' },
         });
       } catch (err) {
         errors.push(`${model.name}: ${err.message}`);
@@ -149,7 +108,7 @@ export const chatStream = async (req, res) => {
     }
 
     const messages = [
-      { role: 'system', content: 'You are Calcutta Node AI, a helpful assistant for Calcutta Node IT Services based in Champdani, Hooghly, West Bengal. You help with tech questions, IT support, web development, digital marketing, and general queries. Be concise and helpful.' },
+      { role: 'system', content: 'You are Calcutta Node AI, a helpful assistant for Calcutta Node IT Services based in Champdani, Hooghly, West Bengal. You help with tech questions, IT support, web development, digital marketing, and general queries. Be concise and helpful. Answer in English or Hindi/Bengali as appropriate.' },
       ...history.slice(-10),
       { role: 'user', content: message },
     ];
@@ -161,19 +120,13 @@ export const chatStream = async (req, res) => {
     const errors = [];
     for (const model of modelsToTry) {
       try {
-        const provider = model.provider;
-        const baseURL = provider === 'openrouter' ? OPENROUTER_BASE : OPENCODE_ZEN_BASE;
-        const apiKey = provider === 'openrouter' ? OPENROUTER_KEY : OPENCODE_ZEN_KEY;
-
-        const response = await fetch(`${baseURL}/chat/completions`, {
+        const response = await fetch(`${ZEN_BASE}/chat/completions`, {
           method: 'POST',
           headers: {
-            'Authorization': `Bearer ${apiKey}`,
+            'Authorization': `Bearer ${ZEN_KEY}`,
             'Content-Type': 'application/json',
-            ...(provider === 'openrouter' ? { 'HTTP-Referer': 'https://calcuttanode.vercel.app', 'X-Title': 'Calcutta Node AI' } : {}),
           },
           body: JSON.stringify({ model: model.id, messages, stream: true }),
-          signal: req.signal,
         });
 
         if (!response.ok) {
@@ -190,7 +143,7 @@ export const chatStream = async (req, res) => {
         const decoder = new TextDecoder();
         let buffer = '';
 
-        res.write(`data: ${JSON.stringify({ model: { id: model.id, name: model.name, provider: model.provider } })}\n\n`);
+        res.write(`data: ${JSON.stringify({ model: { id: model.id, name: model.name } })}\n\n`);
 
         while (true) {
           const { done, value } = await reader.read();
