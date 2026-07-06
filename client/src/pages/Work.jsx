@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import works from '../data/works';
 import ParticleField from '../components/common/ParticleField';
 
@@ -33,20 +34,27 @@ export default function Work() {
         <div className="absolute top-10 left-20 w-64 h-64 bg-neon-cyan/5 rounded-full blur-3xl animate-pulse" />
         <div className="absolute bottom-10 right-20 w-80 h-80 bg-electric-violet/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1.5s' }} />
         <motion.div className="max-w-4xl mx-auto relative" initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+          <motion.span
+            animate={{ y: [0, -3, 0] }}
+            transition={{ repeat: Infinity, duration: 2 }}
+            className="inline-block text-sm font-medium text-neon-cyan bg-neon-cyan/10 px-4 py-1.5 rounded-full mb-5 border border-neon-cyan/20"
+          >
+            🏆 Trusted by 12+ Companies
+          </motion.span>
           <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-neon-cyan to-electric-violet bg-clip-text text-transparent mb-4">Our Work</h1>
-          <p className="text-xl text-text-muted mb-8">Trusted by businesses across industries — from startups to enterprises</p>
-          <div className="flex justify-center gap-8">
+          <p className="text-xl text-text-muted mb-8">From startups to enterprises — we've helped businesses across 10+ industries grow digitally</p>
+          <div className="flex justify-center gap-8 flex-wrap">
             {[
               { value: works.length, label: 'Clients' },
               { value: totalProjects, label: 'Projects' },
-              { value: '10+', label: 'Industries' },
+              { value: industries.length - 1, label: 'Industries' },
             ].map((stat, i) => (
               <motion.div key={stat.label}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.1 }}
               >
-                <p className="text-3xl font-bold text-neon-cyan neon-glow-cyan">{stat.value}</p>
+                <p className="text-3xl font-bold text-neon-cyan neon-glow-cyan">{stat.value}+</p>
                 <p className="text-sm text-text-muted">{stat.label}</p>
               </motion.div>
             ))}
@@ -105,10 +113,13 @@ export default function Work() {
                   >
                     <img src={company.logo} alt={company.name} className="w-12 h-12 object-contain" />
                   </motion.div>
-                  <div>
+                  <div className="flex-1">
                     <h2 className="text-2xl font-bold text-text-primary">{company.name}</h2>
                     <p className="text-sm text-electric-violet">{company.industry}</p>
                   </div>
+                  <span className="text-xs text-text-muted bg-surface/50 px-3 py-1 rounded-full border border-electric-violet/10">
+                    {company.projects.length} projects
+                  </span>
                 </motion.div>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
                   {company.projects.map((project, i) => (
@@ -143,6 +154,28 @@ export default function Work() {
             ))}
           </motion.div>
         </AnimatePresence>
+
+        {filteredWorks.length > 0 && (
+          <motion.div className="mt-16 text-center" {...{ initial: { opacity: 0, y: 20 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true } }}>
+            <div className="rounded-2xl p-8 border border-neon-cyan/20 bg-gradient-to-br from-neon-cyan/5 via-transparent to-electric-violet/5 max-w-2xl mx-auto">
+              <span className="text-3xl block mb-3">🚀</span>
+              <h2 className="text-2xl font-bold text-text-primary mb-3">Want Results Like These?</h2>
+              <p className="text-text-muted text-sm mb-6 max-w-lg mx-auto">Whether you need a website, IT support, digital marketing, or a complete digital transformation — we're ready to help your business grow in 2026.</p>
+              <div className="flex gap-4 justify-center flex-wrap">
+                <Link to="/pricing"
+                  className="bg-brand-gradient text-white px-6 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 hover:shadow-lg hover:shadow-neon-cyan/20"
+                >
+                  View Services
+                </Link>
+                <Link to="/contact"
+                  className="border border-neon-cyan text-neon-cyan px-6 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 hover:bg-neon-cyan/10"
+                >
+                  Get in Touch
+                </Link>
+              </div>
+            </div>
+          </motion.div>
+        )}
       </div>
     </div>
   );

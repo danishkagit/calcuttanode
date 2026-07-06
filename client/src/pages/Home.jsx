@@ -1,8 +1,10 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import services from '../data/services';
 import companyInfo from '../data/companyInfo';
 import ParticleField from '../components/common/ParticleField';
+import api from '../utils/api';
 
 const categories = [...new Set(services.map((s) => s.category))];
 
@@ -24,9 +26,35 @@ const categoryIcons = {
   'Troubleshooting': 'M12 1v2M12 21v2M4.22 4.22l1.42 1.42',
 };
 
+const howItWorks = [
+  { step: 1, title: 'Choose a Service', desc: 'Browse our services, plans, or products. Pick what fits your needs.', icon: '🔍' },
+  { step: 2, title: 'Book & Pay', desc: 'Book online or contact us. Pay securely via UPI, card, or wallet.', icon: '💳' },
+  { step: 3, title: 'We Deliver', desc: 'We handle everything remotely or on-site. Get updates at every step.', icon: '⚡' },
+  { step: 4, title: 'You Succeed', desc: 'Happy with the result? Leave a review and earn loyalty points!', icon: '🎯' },
+];
+
+const faqs = [
+  { q: 'What areas do you serve?', a: 'We primarily serve Champdani, Hooghly, and surrounding areas in West Bengal. Most of our services can be delivered remotely, so location is rarely a barrier.' },
+  { q: 'How quickly can you start?', a: 'Most services can begin within 24 hours of booking. For urgent issues, same-day support is available on our Premium plans.' },
+  { q: 'Do you provide support in Bengali?', a: 'Yes! We offer full support in Bengali, Hindi, and English. We believe in making technology accessible to everyone.' },
+  { q: 'Is remote support safe?', a: 'Absolutely. We use encrypted remote desktop tools. You\'re in control at all times — you can revoke access anytime.' },
+  { q: 'What if I\'m not satisfied?', a: 'We offer revisions on design work and a "no recovery, no charge" policy on data recovery. Your satisfaction is our priority.' },
+  { q: 'Can I get a custom website?', a: 'Yes! Our ₹4,999 package covers a 5-page responsive site. For custom requirements, contact us for a tailored quote.' },
+];
+
 export default function Home() {
   const [hoveredStat, setHoveredStat] = useState(null);
   const [hoveredService, setHoveredService] = useState(null);
+  const [openFaq, setOpenFaq] = useState(null);
+  const [recentBlogs, setRecentBlogs] = useState([]);
+  const [blogLoading, setBlogLoading] = useState(true);
+
+  useEffect(() => {
+    api.get('/blogs', { params: { limit: 3 } })
+      .then((res) => setRecentBlogs(Array.isArray(res.data) ? res.data.slice(0, 3) : []))
+      .catch(() => {})
+      .finally(() => setBlogLoading(false));
+  }, []);
 
   return (
     <div className="relative">
@@ -39,6 +67,13 @@ export default function Home() {
           <div className="absolute bottom-20 right-10 w-96 h-96 bg-electric-violet/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
         </div>
         <motion.div className="max-w-4xl mx-auto relative" initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+          <motion.span
+            animate={{ y: [0, -5, 0] }}
+            transition={{ repeat: Infinity, duration: 2.5 }}
+            className="inline-block text-sm font-medium text-neon-cyan bg-neon-cyan/10 px-4 py-1.5 rounded-full mb-5 border border-neon-cyan/20"
+          >
+            🚀 Serving Champdani & Beyond Since 2023
+          </motion.span>
           <motion.div
             animate={{ y: [0, -8, 0] }}
             transition={{ repeat: Infinity, duration: 3, ease: 'easeInOut' }}
@@ -49,7 +84,7 @@ export default function Home() {
             </span>
           </motion.div>
           <p className="text-xl md:text-2xl text-text-muted mb-2">IT Services & Digital Growth Agency</p>
-          <p className="text-text-muted mb-10 max-w-lg mx-auto">{companyInfo.address}</p>
+          <p className="text-text-muted mb-8 max-w-lg mx-auto">📍 {companyInfo.address}</p>
           <div className="flex gap-4 justify-center flex-wrap">
             <motion.a href="/pricing" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
               className="bg-brand-gradient text-white px-8 py-3 rounded-xl font-medium transition-all duration-200 hover:shadow-lg hover:shadow-neon-cyan/20"
@@ -60,6 +95,11 @@ export default function Home() {
               className="border border-neon-cyan text-neon-cyan px-8 py-3 rounded-xl font-medium transition-all duration-200 hover:bg-neon-cyan/10 hover:shadow-lg hover:shadow-neon-cyan/10"
             >
               Contact Us
+            </motion.a>
+            <motion.a href="/ai" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
+              className="border border-electric-violet/40 text-electric-violet px-8 py-3 rounded-xl font-medium transition-all duration-200 hover:bg-electric-violet/10"
+            >
+              🤖 Try AI Support
             </motion.a>
           </div>
         </motion.div>
@@ -78,9 +118,7 @@ export default function Home() {
               whileHover={{ y: -4, scale: 1.02 }}
               className="text-center p-6 rounded-2xl bg-surface/50 border border-electric-violet/10 hover:border-neon-cyan/30 transition-all duration-300 cursor-default relative overflow-hidden group"
             >
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-b from-neon-cyan/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-              />
+              <motion.div className="absolute inset-0 bg-gradient-to-b from-neon-cyan/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <motion.div
                 animate={hoveredStat === i ? { scale: [1, 1.2, 1], rotate: [0, 10, -10, 0] } : {}}
                 transition={{ duration: 0.4 }}
@@ -104,6 +142,64 @@ export default function Home() {
         </div>
       </motion.section>
 
+      <motion.section className="py-16 px-4 relative" {...fadeUp}>
+        <div className="max-w-6xl mx-auto">
+          <motion.div className="text-center mb-10" {...fadeUp}>
+            <span className="text-sm font-medium text-electric-violet bg-electric-violet/10 px-4 py-1.5 rounded-full border border-electric-violet/20">What's New in 2026</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-text-primary mt-4 mb-3">Your Digital Growth Partner for 2026</h2>
+            <p className="text-text-muted max-w-2xl mx-auto">This year, we're expanding our services with AI-powered tools, Bengali-first support, and tailored packages for local businesses.</p>
+          </motion.div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {[
+              { emoji: '🤖', title: 'AI-Powered Support', desc: 'Instant troubleshooting with our AI chat. Get answers 24/7 without waiting.' },
+              { emoji: '🌐', title: 'Bengali-First Services', desc: 'Full support in Bengali. We make tech accessible for everyone in West Bengal.' },
+              { emoji: '🏪', title: 'Local Business Packages', desc: 'Digital presence packages designed for small shops, clinics, and local enterprises.' },
+              { emoji: '⚡', title: 'Same-Day Response', desc: 'Priority response within 4 hours for urgent IT issues. No more waiting days.' },
+            ].map((item, i) => (
+              <motion.div key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                whileHover={{ y: -4 }}
+                className="p-5 rounded-2xl bg-surface/40 border border-electric-violet/10 hover:border-neon-cyan/30 transition-all duration-300 text-center"
+              >
+                <span className="text-3xl block mb-3">{item.emoji}</span>
+                <h3 className="text-text-primary font-semibold mb-1 text-sm">{item.title}</h3>
+                <p className="text-text-muted text-xs">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </motion.section>
+
+      <motion.section className="py-16 px-4 relative" {...fadeUp}>
+        <div className="max-w-5xl mx-auto">
+          <motion.div className="text-center mb-10" {...fadeUp}>
+            <span className="text-sm font-medium text-neon-cyan bg-neon-cyan/10 px-4 py-1.5 rounded-full border border-neon-cyan/20">How It Works</span>
+            <h2 className="text-3xl font-bold text-text-primary mt-4">Getting Help is Easy</h2>
+          </motion.div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {howItWorks.map((item) => (
+              <motion.div key={item.step}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: item.step * 0.1 }}
+                className="text-center relative"
+              >
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-neon-cyan/20 to-electric-violet/20 border border-neon-cyan/30 flex items-center justify-center mx-auto mb-4 text-2xl relative">
+                  {item.icon}
+                  <span className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-neon-cyan text-black text-xs font-bold flex items-center justify-center">{item.step}</span>
+                </div>
+                <h3 className="text-text-primary font-semibold mb-1 text-sm">{item.title}</h3>
+                <p className="text-text-muted text-xs">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </motion.section>
+
       {categories.map((category) => (
         <section key={category} className="py-12 px-4 relative">
           <div className="max-w-7xl mx-auto">
@@ -113,6 +209,7 @@ export default function Home() {
               </div>
               <h2 className="text-2xl font-bold text-text-primary">{category}</h2>
               <span className="text-sm font-normal text-text-muted">({services.filter((s) => s.category === category).length} services)</span>
+              <Link to="/pricing" className="text-xs text-neon-cyan hover:underline ml-auto">View all →</Link>
             </motion.div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {services.filter((s) => s.category === category).map((service, i) => (
@@ -126,9 +223,7 @@ export default function Home() {
                   whileHover={{ y: -6, scale: 1.02 }}
                   className="group relative rounded-2xl p-6 border border-electric-violet/20 bg-gradient-to-b from-surface/80 to-surface/30 hover:border-neon-cyan/40 transition-all duration-300 hover:shadow-xl hover:shadow-neon-cyan/10 overflow-hidden"
                 >
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-br from-neon-cyan/5 via-transparent to-electric-violet/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                  />
+                  <motion.div className="absolute inset-0 bg-gradient-to-br from-neon-cyan/5 via-transparent to-electric-violet/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   <div className="relative">
                     <h3 className="text-text-primary font-semibold mb-2 group-hover:text-neon-cyan transition-colors">{service.name}</h3>
                     <p className="text-2xl font-bold text-neon-cyan mb-3">₹{service.price}</p>
@@ -148,6 +243,11 @@ export default function Home() {
                         </motion.li>
                       ))}
                     </ul>
+                    <Link to="/contact"
+                      className="mt-4 inline-block text-xs text-neon-cyan hover:underline group-hover:opacity-100 transition-opacity"
+                    >
+                      Book this service →
+                    </Link>
                   </div>
                 </motion.div>
               ))}
@@ -180,11 +280,92 @@ export default function Home() {
       </motion.section>
 
       <motion.section className="py-16 px-4 relative" {...fadeUp}>
+        <div className="max-w-5xl mx-auto">
+          <motion.div className="text-center mb-10" {...fadeUp}>
+            <span className="text-sm font-medium text-electric-violet bg-electric-violet/10 px-4 py-1.5 rounded-full border border-electric-violet/20">Latest Updates</span>
+            <h2 className="text-3xl font-bold text-text-primary mt-4">From Our Blog</h2>
+          </motion.div>
+          {blogLoading ? (
+            <div className="text-center py-8">
+              <div className="w-8 h-8 border-2 border-neon-cyan border-t-transparent rounded-full animate-spin mx-auto" />
+            </div>
+          ) : recentBlogs.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {recentBlogs.map((blog, i) => (
+                <motion.div key={blog._id || i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  whileHover={{ y: -4 }}
+                >
+                  <Link to={`/blogs/${blog.slug}`} className="block p-5 rounded-2xl bg-surface/40 border border-electric-violet/10 hover:border-neon-cyan/30 transition-all duration-300 h-full">
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className="text-xs bg-electric-violet/10 text-electric-violet px-2 py-0.5 rounded-full">{blog.category || 'General'}</span>
+                      {blog.createdAt && (
+                        <span className="text-xs text-text-muted">{new Date(blog.createdAt).toLocaleDateString()}</span>
+                      )}
+                    </div>
+                    <h3 className="text-text-primary font-semibold text-sm mb-2 line-clamp-2">{blog.title}</h3>
+                    <p className="text-text-muted text-xs line-clamp-2">{blog.content?.replace(/<[^>]*>/g, '').slice(0, 100)}...</p>
+                  </Link>
+                </motion.div>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-8">
+              <p className="text-text-muted text-sm">Blog posts coming soon. Stay tuned!</p>
+            </div>
+          )}
+          <div className="text-center mt-8">
+            <Link to="/blogs" className="text-sm text-neon-cyan hover:underline">Read all articles →</Link>
+          </div>
+        </div>
+      </motion.section>
+
+      <motion.section className="py-16 px-4 relative" {...fadeUp}>
+        <div className="max-w-3xl mx-auto">
+          <motion.div className="text-center mb-10" {...fadeUp}>
+            <span className="text-sm font-medium text-neon-cyan bg-neon-cyan/10 px-4 py-1.5 rounded-full border border-neon-cyan/20">Frequently Asked</span>
+            <h2 className="text-3xl font-bold text-text-primary mt-4">Got Questions?</h2>
+          </motion.div>
+          <div className="space-y-3">
+            {faqs.map((faq, i) => (
+              <motion.div key={i}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.05 }}
+                className="rounded-xl border border-electric-violet/10 bg-surface/30 overflow-hidden"
+              >
+                <button onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                  className="w-full flex items-center justify-between p-4 text-left text-sm font-medium text-text-primary hover:text-neon-cyan transition-colors"
+                >
+                  {faq.q}
+                  <motion.svg animate={{ rotate: openFaq === i ? 180 : 0 }} className="w-4 h-4 shrink-0 text-neon-cyan" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <polyline points="6 9 12 15 18 9" />
+                  </motion.svg>
+                </button>
+                <motion.div
+                  initial={false}
+                  animate={{ height: openFaq === i ? 'auto' : 0, opacity: openFaq === i ? 1 : 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="overflow-hidden"
+                >
+                  <p className="px-4 pb-4 text-xs text-text-muted leading-relaxed">{faq.a}</p>
+                </motion.div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </motion.section>
+
+      <motion.section className="py-16 px-4 relative" {...fadeUp}>
         <div className="max-w-3xl mx-auto text-center rounded-2xl p-10 border border-neon-cyan/20 bg-gradient-to-br from-neon-cyan/5 via-transparent to-electric-violet/5 relative overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(46,230,230,0.05)_0%,transparent_70%)]" />
           <motion.span className="inline-block text-4xl mb-4" animate={{ scale: [1, 1.15, 1], rotate: [0, 5, -5, 0] }} transition={{ repeat: Infinity, duration: 3 }}>🧠</motion.span>
           <h2 className="text-2xl font-bold text-text-primary mb-3 relative">Need quick help? Ask AI</h2>
-          <p className="text-text-muted mb-6 max-w-lg mx-auto relative">Get instant answers, troubleshooting, or recommendations from our AI assistant — powered by 4 free models.</p>
+          <p className="text-text-muted mb-6 max-w-lg mx-auto relative">Get instant answers, troubleshooting, or recommendations from our AI assistant — powered by 4 free models. Available 24/7.</p>
           <motion.a href="/ai" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
             className="inline-block bg-brand-gradient text-white px-8 py-3 rounded-xl font-medium transition-all duration-200 hover:shadow-lg hover:shadow-neon-cyan/20 relative"
           >
@@ -195,7 +376,7 @@ export default function Home() {
 
       <motion.section className="py-16 px-4 text-center relative" {...fadeUp}>
         <h2 className="text-2xl font-bold text-text-primary mb-4">Ready to grow your business?</h2>
-        <p className="text-text-muted mb-8 max-w-lg mx-auto">Explore our portfolio, browse services, or get in touch.</p>
+        <p className="text-text-muted mb-8 max-w-xl mx-auto">Whether you need a website, IT support, or digital marketing — we're here to help your business succeed in 2026.</p>
         <div className="flex gap-4 justify-center flex-wrap">
           <motion.a href="/work" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
             className="bg-brand-gradient text-white px-8 py-3 rounded-xl font-medium transition-all duration-200 hover:shadow-lg hover:shadow-neon-cyan/20"
@@ -207,6 +388,17 @@ export default function Home() {
           >
             View Services
           </motion.a>
+          <motion.a href="/contact" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
+            className="border border-electric-violet/40 text-electric-violet px-8 py-3 rounded-xl font-medium transition-all duration-200 hover:bg-electric-violet/10"
+          >
+            📞 Book a Call
+          </motion.a>
+        </div>
+        <div className="flex items-center justify-center gap-6 mt-8 text-xs text-text-muted">
+          <span>🔒 Secure Payment</span>
+          <span>⚡ Instant Support</span>
+          <span>🌐 Bengali & English</span>
+          <span>📱 Remote or On-site</span>
         </div>
       </motion.section>
     </div>
