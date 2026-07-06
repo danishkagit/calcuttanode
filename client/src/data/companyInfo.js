@@ -5,7 +5,7 @@ const companyInfo = {
   email: 'Dnsh00786@gmail.com',
   phone: '8584885450',
   socials: {
-    instagram: 'danish_shoaib',
+    instagram: 'calcuttanode',
     facebook: 'Dan7860',
   },
 };
