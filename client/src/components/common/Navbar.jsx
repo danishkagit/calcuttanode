@@ -30,9 +30,12 @@ export default function Navbar() {
 
   useEffect(() => {
     setMobileOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
     document.body.style.overflow = mobileOpen ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
-  }, [pathname, mobileOpen]);
+  }, [mobileOpen]);
 
   return (
     <nav className={`sticky top-0 z-50 transition-all duration-300 ${
