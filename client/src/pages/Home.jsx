@@ -100,6 +100,17 @@ export default function Home() {
         </div>
       </motion.section>
 
+      <motion.section className="py-16 px-4" {...fadeUp}>
+        <div className="max-w-3xl mx-auto text-center rounded-2xl p-10 border border-neon-cyan/20 bg-gradient-to-br from-neon-cyan/5 via-transparent to-electric-violet/5">
+          <motion.span className="inline-block text-4xl mb-4" animate={{ scale: [1, 1.1, 1] }} transition={{ repeat: Infinity, duration: 2 }}>🧠</motion.span>
+          <h2 className="text-2xl font-bold text-text-primary mb-3">Need quick help? Ask AI</h2>
+          <p className="text-text-muted mb-6 max-w-lg mx-auto">Get instant answers, troubleshooting, or recommendations from our AI assistant — powered by 4 free models.</p>
+          <a href="/ai" className="inline-block bg-brand-gradient text-white px-8 py-3 rounded-xl font-medium transition-all duration-200 hover:shadow-lg hover:shadow-neon-cyan/20 hover:scale-105 active:scale-95">
+            Try AI Chat Now
+          </a>
+        </div>
+      </motion.section>
+
       <motion.section className="py-16 px-4 text-center" {...fadeUp}>
         <h2 className="text-2xl font-bold text-text-primary mb-4">Ready to grow your business?</h2>
         <p className="text-text-muted mb-8 max-w-lg mx-auto">Explore our portfolio, browse services, or get in touch.</p>
