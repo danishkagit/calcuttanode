@@ -82,6 +82,7 @@ export default function AdminDashboard() {
     { id: 'messages', label: 'Messages', icon: '✉️' },
     { id: 'revenue', label: 'Revenue', icon: '📈' },
     { id: 'broadcast', label: 'Broadcast', icon: '📢' },
+    { id: 'seed', label: 'Seed', icon: '🌱' },
   ];
 
   const StatCard = ({ label, value, color }) => (
@@ -510,6 +511,28 @@ export default function AdminDashboard() {
             }} disabled={sending}
               className="bg-brand-gradient text-white px-4 py-2 rounded-lg text-sm font-medium disabled:opacity-50">
               {sending ? 'Sending...' : 'Send to All Users'}
+            </button>
+          </div>
+        </div>
+      )}
+
+      {section === 'seed' && (
+        <div className="max-w-md">
+          <p className="text-text-muted text-sm mb-4">Seed/re-seed database with default data. This will replace all existing data.</p>
+          <div className="space-y-3">
+            <button onClick={async () => {
+              if (!confirm('This will DELETE all existing services and replace them. Continue?')) return;
+              setSending(true);
+              try {
+                await api.post('/admin/seed/services');
+                alert('Services seeded successfully! Refresh the page to see changes.');
+              } catch (err) {
+                alert(err.response?.data?.message || 'Failed');
+              } finally { setSending(false); }
+            }} disabled={sending}
+              className="bg-brand-gradient text-white px-4 py-2 rounded-lg text-sm font-medium disabled:opacity-50"
+            >
+              {sending ? 'Seeding...' : '🌱 Seed Services'}
             </button>
           </div>
         </div>

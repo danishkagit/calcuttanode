@@ -8,7 +8,7 @@ import {
   getAdminPlans, createPlan, updatePlan, deletePlan,
   getContactMessages, markMessageRead, deleteMessage,
   approveReview, deleteReview, getAllReviewsAdmin,
-  getRevenueReport, broadcastNotification,
+  getRevenueReport, broadcastNotification, seedServices,
 } from '../controllers/adminController.js';
 import { protect, admin } from '../middleware/authMiddleware.js';
 
@@ -50,5 +50,6 @@ router.delete('/reviews/:id', protect, admin, deleteReview);
 
 router.get('/revenue', protect, admin, getRevenueReport);
 router.post('/broadcast', protect, admin, broadcastNotification);
+router.post('/seed/services', protect, admin, seedServices);
 
 export default router;
