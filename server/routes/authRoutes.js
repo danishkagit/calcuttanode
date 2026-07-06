@@ -4,6 +4,7 @@ import { register, login, refreshToken, logout, getMe, googleLogin } from '../co
 import { protect } from '../middleware/authMiddleware.js';
 import { authLimiter } from '../middleware/rateLimiter.js';
 import sendEmail from '../utils/sendEmail.js';
+import ContactMessage from '../models/ContactMessage.js';
 
 const router = Router();
 
@@ -29,16 +30,19 @@ router.post('/google', googleLogin);
 
 router.post('/contact', async (req, res) => {
   try {
-    const { name, email, message } = req.body;
+    const { name, email, phone, subject, message } = req.body;
     if (!name || !email || !message) {
-      return res.status(400).json({ message: 'All fields are required' });
+      return res.status(400).json({ message: 'Name, email and message are required' });
     }
+    await ContactMessage.create({ name, email, phone, subject, message });
     await sendEmail({
       to: process.env.EMAIL_FROM,
       subject: `New Contact Form Submission from ${name}`,
       html: `<h2>New Contact Message</h2>
              <p><strong>Name:</strong> ${name}</p>
              <p><strong>Email:</strong> ${email}</p>
+             <p><strong>Phone:</strong> ${phone || 'N/A'}</p>
+             <p><strong>Subject:</strong> ${subject || 'N/A'}</p>
              <p><strong>Message:</strong><br/>${message}</p>`,
     });
     res.json({ message: 'Message received. We will get back to you soon.' });
