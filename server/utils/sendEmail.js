@@ -1,5 +1,7 @@
 import nodemailer from 'nodemailer';
 
+const TIMEOUT = 10000;
+
 const sendEmail = async ({ to, subject, html }) => {
   const transporter = nodemailer.createTransport({
     host: 'smtp.sendgrid.net',
@@ -9,6 +11,9 @@ const sendEmail = async ({ to, subject, html }) => {
       user: 'apikey',
       pass: process.env.SENDGRID_API_KEY,
     },
+    connectionTimeout: TIMEOUT,
+    greetingTimeout: TIMEOUT,
+    socketTimeout: TIMEOUT,
   });
 
   const mailOptions = {
