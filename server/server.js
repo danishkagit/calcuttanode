@@ -14,6 +14,12 @@ if (!process.env.JWT_SECRET) {
 if (!process.env.JWT_REFRESH_SECRET) {
   process.env.JWT_REFRESH_SECRET = 'SFcQHAUJi1rj4NMB0XLG2mso7Ohbvqx85EZtTp9wdlfayuDIRnC36WkVzKPegY';
 }
+if (!process.env.OPENROUTER_KEY) {
+  console.warn('WARNING: OPENROUTER_KEY not set. AI chat will not work.');
+}
+if (!process.env.OPENCODE_ZEN_KEY) {
+  console.warn('WARNING: OPENCODE_ZEN_KEY not set. AI chat will not work.');
+}
 
 const app = express();
 const PORT = process.env.PORT || 5000;

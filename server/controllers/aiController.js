@@ -1,6 +1,10 @@
 const OPENROUTER_KEY = process.env.OPENROUTER_KEY || '';
 const OPENCODE_ZEN_KEY = process.env.OPENCODE_ZEN_KEY || '';
 
+if (!OPENROUTER_KEY && !OPENCODE_ZEN_KEY) {
+  console.warn('AI Chat: No API keys configured. Set OPENROUTER_KEY and/or OPENCODE_ZEN_KEY in env.');
+}
+
 const OPENROUTER_BASE = 'https://openrouter.ai/api/v1';
 const OPENCODE_ZEN_BASE = 'https://opencode.ai/zen/v1';
 
@@ -108,7 +112,7 @@ export const chat = async (req, res) => {
     const errors = [];
     for (const model of modelsToTry) {
       try {
-        const content = await tryProvider(model, messages, req.signal);
+        const content = await tryProvider(model, messages);
         return res.json({
           reply: content,
           model: { id: model.id, name: model.name, provider: model.provider },
