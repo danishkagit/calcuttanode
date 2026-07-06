@@ -36,7 +36,7 @@ const howItWorks = [
 const faqs = [
   { q: 'What areas do you serve?', a: 'We primarily serve Champdani, Hooghly, and surrounding areas in West Bengal. Most of our services can be delivered remotely, so location is rarely a barrier.' },
   { q: 'How quickly can you start?', a: 'Most services can begin within 24 hours of booking. For urgent issues, same-day support is available on our Premium plans.' },
-  { q: 'Do you support clients outside West Bengal?', a: 'Absolutely! Most of our services are delivered remotely, so we work with clients across India and worldwide. Distance is never a barrier.' },
+  { q: 'What languages do you support?', a: 'We provide full support in Hindi and English — so whether you prefer हिंदी or English, we\'ve got you covered.' },
   { q: 'Is remote support safe?', a: 'Absolutely. We use encrypted remote desktop tools. You\'re in control at all times — you can revoke access anytime.' },
   { q: 'What if I\'m not satisfied?', a: 'We offer revisions on design work and a "no recovery, no charge" policy on data recovery. Your satisfaction is our priority.' },
   { q: 'Can I get a custom website?', a: 'Yes! Our ₹4,999 package covers a 5-page responsive site. For custom requirements, contact us for a tailored quote.' },
@@ -152,7 +152,7 @@ export default function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {[
               { emoji: '🤖', title: 'AI-Powered Support', desc: 'Instant troubleshooting with our AI chat. Get answers 24/7 without waiting.' },
-              { emoji: '🌐', title: 'Remote-First Delivery', desc: 'Most services delivered remotely — serving clients across India and worldwide from our base in West Bengal.' },
+              { emoji: '🌐', title: 'Hindi & English Support', desc: 'Full support in Hindi (हिंदी) and English. Serving clients across India and worldwide.' },
               { emoji: '🏪', title: 'Local Business Packages', desc: 'Digital presence packages designed for small shops, clinics, and local enterprises.' },
               { emoji: '⚡', title: 'Same-Day Response', desc: 'Priority response within 4 hours for urgent IT issues. No more waiting days.' },
             ].map((item, i) => (
@@ -397,7 +397,7 @@ export default function Home() {
         <div className="flex items-center justify-center gap-6 mt-8 text-xs text-text-muted">
           <span>🔒 Secure Payment</span>
           <span>⚡ Instant Support</span>
-          <span>🌐 Worldwide Support</span>
+          <span>🌐 Hindi & English</span>
           <span>📱 Remote or On-site</span>
         </div>
       </motion.section>
