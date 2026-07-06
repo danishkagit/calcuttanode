@@ -1,19 +1,14 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import api from '../utils/api';
 
 const models = [
-  { id: 'deepseek/deepseek-chat', name: 'DeepSeek V3', icon: '🔍' },
-  { id: 'google/gemini-2.5-flash-preview-04-17', name: 'Gemini 2.5 Flash', icon: '💎' },
-  { id: 'google/gemini-2.0-flash-exp:free', name: 'Gemini 2.0 Flash', icon: '💎' },
-  { id: 'meta-llama/llama-3.3-70b-instruct', name: 'Llama 3.3 70B', icon: '🦙' },
-  { id: 'microsoft/phi-4-multimodal-instruct', name: 'Phi-4', icon: '🔬' },
-  { id: 'anthropic/claude-sonnet-4-20250514', name: 'Claude Sonnet 4', icon: '🌿' },
-  { id: 'anthropic/claude-3.5-haiku-20241022', name: 'Claude 3.5 Haiku', icon: '🌿' },
-  { id: 'mistralai/mistral-7b-instruct:free', name: 'Mistral 7B', icon: '🌬️' },
-  { id: 'anthropic/claude-3.5-sonnet', name: 'Claude 3.5 Sonnet', icon: '🌿' },
-  { id: 'openai/gpt-4o-mini', name: 'GPT-4o Mini', icon: '🤖' },
+  { id: 'deepseek-v4-flash-free', name: 'DeepSeek V4 Flash Free', icon: '🔍', provider: 'OpenCode Zen' },
+  { id: 'mimo-v2.5-free', name: 'MiMo V2.5 Free', icon: '🧠', provider: 'OpenCode Zen' },
+  { id: 'north-mini-code-free', name: 'North Mini Code Free', icon: '⚡', provider: 'OpenCode Zen' },
+  { id: 'nemotron-3-ultra-free', name: 'Nemotron 3 Ultra Free', icon: '🚀', provider: 'OpenCode Zen' },
 ];
+
+const API_BASE = import.meta.env.PROD ? 'https://calcuttanode-api.onrender.com' : '';
 
 export default function AI() {
   const [messages, setMessages] = useState([]);
@@ -40,7 +35,7 @@ export default function AI() {
     const history = messages.slice(-10).map(m => ({ role: m.role, content: m.content }));
 
     try {
-      const res = await fetch(`${import.meta.env.PROD ? 'https://calcuttanode-api.onrender.com' : ''}/api/ai/chat/stream`, {
+      const res = await fetch(`${API_BASE}/api/ai/chat/stream`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: userMsg, history, model: selectedModel || undefined }),
@@ -91,7 +86,7 @@ export default function AI() {
     } catch (err) {
       setMessages(prev => [...prev, {
         role: 'assistant',
-        content: `⚠️ Error: ${err.message}. The system will automatically try the next available model. Please try again.`,
+        content: `⚠️ Error: ${err.message}. Auto-fallback will try the next model. Please try again.`,
       }]);
     } finally {
       setLoading(false);
@@ -125,7 +120,7 @@ export default function AI() {
         <h1 className="text-3xl font-bold bg-gradient-to-r from-neon-cyan to-electric-violet bg-clip-text text-transparent">
           Calcutta Node AI
         </h1>
-        <p className="text-text-muted text-sm mt-1">Multi-model AI assistant — auto-switches on quota exhaustion</p>
+        <p className="text-text-muted text-sm mt-1">Free AI assistant — auto-switches on quota exhaustion</p>
       </motion.div>
 
       <div className="flex items-center gap-2 mb-4 flex-wrap justify-center">
@@ -140,7 +135,7 @@ export default function AI() {
             </svg>
           </button>
           {showModels && (
-            <div className="absolute top-full mt-1 left-0 bg-surface border border-electric-violet/20 rounded-xl shadow-xl z-50 w-64 max-h-80 overflow-y-auto">
+            <div className="absolute top-full mt-1 left-0 bg-surface border border-electric-violet/20 rounded-xl shadow-xl z-50 w-64">
               <button onClick={() => { setSelectedModel(''); setShowModels(false); }}
                 className="w-full text-left px-4 py-2.5 text-xs text-neon-cyan hover:bg-electric-violet/5 border-b border-electric-violet/10 font-medium"
               >
@@ -153,6 +148,9 @@ export default function AI() {
                   {m.icon} {m.name}
                 </button>
               ))}
+              <div className="px-4 py-2 text-[10px] text-text-muted border-t border-electric-violet/10">
+                Powered by OpenCode Zen
+              </div>
             </div>
           )}
         </div>
@@ -174,7 +172,12 @@ export default function AI() {
         {messages.length === 0 && (
           <div className="text-center py-12">
             <div className="text-5xl mb-4">🧠</div>
-            <p className="text-text-muted text-sm mb-6">Ask anything! Models auto-switch on rate limits.</p>
+            <p className="text-text-muted text-sm mb-2">4 Free AI Models — Auto Fallback</p>
+            <div className="flex justify-center gap-3 mb-6 text-xs text-text-muted">
+              {models.map(m => (
+                <span key={m.id}>{m.icon} {m.name}</span>
+              ))}
+            </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 max-w-lg mx-auto">
               {suggestedQuestions.map(q => (
                 <button key={q} onClick={() => { setInput(q); inputRef.current?.focus(); }}
@@ -234,7 +237,7 @@ export default function AI() {
       </div>
 
       <p className="text-center text-[10px] text-text-muted/50 mt-2">
-        Powered by OpenRouter + OpenCode Zen. Rate limited to 20 requests/min. Models auto-switch on quota exhaustion.
+        Free AI models via OpenCode Zen. Rate limited to 20 requests/min. Auto-fallback on quota exhaustion.
       </p>
     </div>
   );
