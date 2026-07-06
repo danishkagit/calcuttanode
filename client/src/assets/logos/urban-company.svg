@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60">
+  <circle cx="24" cy="28" r="14" fill="#2E7D32"/>
+  <path d="M10 42c0-6 6-10 14-10s14 4 14 10c0 7-5 12-14 12s-14-5-14-12z" fill="#4CAF50" opacity="0.8"/>
+  <text x="46" y="34" font-family="Arial, sans-serif" font-weight="700" font-size="20" fill="#2E7D32">Urban</text>
+  <text x="46" y="50" font-family="Arial, sans-serif" font-weight="300" font-size="14" fill="#666">Company</text>
+</svg>

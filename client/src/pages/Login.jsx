@@ -1,105 +1,98 @@
-import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import { motion } from 'framer-motion'
-import { useAuth } from '../context/AuthContext'
-
-/* ============================================================
-   LOGIN PAGE
-   Email + password form → calls AuthContext.login()
-   Redirects to /dashboard on success
-   ============================================================ */
+import { useState, useEffect, useRef } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { useAuth } from '../context/AuthContext';
+import api from '../utils/api';
 
 export default function Login() {
-  const { login } = useAuth()
-  const navigate = useNavigate()
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const { login, setUser } = useAuth();
+  const navigate = useNavigate();
+  const btnRef = useRef(null);
 
-  const [form, setForm] = useState({ email: '', password: '' })
-  const [error, setError] = useState('')
-  const [submitting, setSubmitting] = useState(false)
-
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value })
-  }
+  useEffect(() => {
+    const initGSI = () => {
+      if (!window.google || !btnRef.current) return;
+      window.google.accounts.id.initialize({
+        client_id: import.meta.env.VITE_GOOGLE_CLIENT_ID || '',
+        callback: async (response) => {
+          try {
+            const { data } = await api.post('/auth/google', { credential: response.credential });
+            localStorage.setItem('accessToken', data.accessToken);
+            setUser(data.user);
+            navigate('/dashboard');
+          } catch (err) {
+            setError(err.response?.data?.message || 'Google sign-in failed');
+          }
+        },
+      });
+      window.google.accounts.id.renderButton(btnRef.current, { theme: 'outline', size: 'large', type: 'standard', shape: 'pill', width: 280 });
+    };
+    if (window.google) { initGSI(); return; }
+    const check = setInterval(() => {
+      if (window.google) { clearInterval(check); initGSI(); }
+    }, 200);
+    return () => clearInterval(check);
+  }, []);
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    setSubmitting(true)
-    setError('')
+    e.preventDefault();
     try {
-      await login(form.email, form.password)
-      navigate('/dashboard')
+      await login(email, password);
+      navigate('/dashboard');
     } catch (err) {
-      setError(err.response?.data?.message || 'Login failed. Check your credentials.')
-    } finally {
-      setSubmitting(false)
+      setError(err.response?.data?.message || 'Login failed');
     }
-  }
+  };
 
   return (
-    <div className="min-h-[80vh] flex items-center justify-center px-4">
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="w-full max-w-md"
-      >
-        <div className="glass rounded-2xl p-8">
-          <h1 className="text-2xl font-bold text-center mb-2">
-            Welcome <span className="gradient-text">Back</span>
-          </h1>
-          <p className="text-brand-muted text-center text-sm mb-8">
-            Sign in to your Calcutta Node account
-          </p>
+    <div className="max-w-md mx-auto px-4 py-16">
+      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+        <h1 className="text-3xl font-bold text-center mb-2 bg-gradient-to-r from-neon-cyan to-electric-violet bg-clip-text text-transparent">Welcome Back</h1>
+        <p className="text-text-muted text-center text-sm mb-8">Sign in to your account</p>
 
-          {/* Error */}
+        <div className="rounded-2xl p-8 border border-electric-violet/20 bg-gradient-to-b from-surface/80 to-surface/30 backdrop-blur-sm">
           {error && (
-            <div className="mb-4 p-3 rounded-lg bg-red-500/10 text-red-400 border border-red-500/20 text-sm">
-              {error}
-            </div>
+            <motion.div className="bg-red-500/10 border border-red-500/30 rounded-lg px-4 py-2 mb-4" initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }}>
+              <p className="text-red-400 text-sm text-center">{error}</p>
+            </motion.div>
           )}
-
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="block text-sm text-brand-muted mb-1">Email</label>
-              <input
-                type="email"
-                name="email"
-                value={form.email}
-                onChange={handleChange}
-                required
-                className="w-full px-4 py-3 bg-brand-bg border border-white/10 rounded-xl text-brand-text focus:border-brand-cyan focus:outline-none transition-colors"
-                placeholder="you@example.com"
+              <label className="text-sm text-text-muted mb-1 block">Email</label>
+              <input type="email" placeholder="you@example.com" value={email} onChange={(e) => setEmail(e.target.value)} required
+                className="w-full bg-background border border-electric-violet/20 rounded-lg px-4 py-2.5 text-text-primary placeholder-text-muted focus:outline-none focus:border-neon-cyan transition-colors"
               />
             </div>
             <div>
-              <label className="block text-sm text-brand-muted mb-1">Password</label>
-              <input
-                type="password"
-                name="password"
-                value={form.password}
-                onChange={handleChange}
-                required
-                className="w-full px-4 py-3 bg-brand-bg border border-white/10 rounded-xl text-brand-text focus:border-brand-cyan focus:outline-none transition-colors"
-                placeholder="••••••••"
+              <label className="text-sm text-text-muted mb-1 block">Password</label>
+              <input type="password" placeholder="••••••••" value={password} onChange={(e) => setPassword(e.target.value)} required
+                className="w-full bg-background border border-electric-violet/20 rounded-lg px-4 py-2.5 text-text-primary placeholder-text-muted focus:outline-none focus:border-neon-cyan transition-colors"
               />
             </div>
-            <button
-              type="submit"
-              disabled={submitting}
-              className="w-full py-3 bg-brand-cyan text-brand-bg font-semibold rounded-xl hover:glow-cyan transition-all duration-300 disabled:opacity-50"
+            <button type="submit"
+              className="w-full bg-brand-gradient text-white py-2.5 rounded-lg font-medium transition-all duration-200 hover:shadow-lg hover:shadow-neon-cyan/20 hover:scale-[1.02] active:scale-[0.98]"
             >
-              {submitting ? 'Signing in...' : 'Sign In'}
+              Sign In
             </button>
           </form>
 
-          <p className="text-center text-sm text-brand-muted mt-6">
-            Don&apos;t have an account?{' '}
-            <Link to="/register" className="text-brand-cyan hover:underline">
-              Sign Up
-            </Link>
+          <div className="flex items-center gap-3 my-6">
+            <hr className="flex-1 border-electric-violet/20" />
+            <span className="text-text-muted text-sm">or</span>
+            <hr className="flex-1 border-electric-violet/20" />
+          </div>
+
+          <div ref={btnRef} className="flex justify-center"></div>
+
+          <p className="text-text-muted text-sm text-center mt-6">
+            Don't have an account?{' '}
+            <Link to="/register" className="text-neon-cyan hover:text-neon-cyan/80 transition-colors font-medium">Create one</Link>
           </p>
         </div>
       </motion.div>
     </div>
-  )
+  );
 }

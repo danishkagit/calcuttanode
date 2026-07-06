@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60">
+  <circle cx="20" cy="26" r="10" fill="#FFD166"/>
+  <circle cx="46" cy="26" r="10" fill="#FFD166"/>
+  <ellipse cx="33" cy="42" rx="18" ry="11" fill="#FF9F1C"/>
+  <circle cx="20" cy="26" r="4" fill="#333"/>
+  <circle cx="46" cy="26" r="4" fill="#333"/>
+  <path d="M27 38c0 2 2 4 6 4s6-2 6-4" fill="none" stroke="#333" stroke-width="1.5"/>
+  <text x="68" y="36" font-family="Arial, sans-serif" font-weight="600" font-size="18" fill="#333" letter-spacing="-0.3">Hugging Face</text>
+  <text x="68" y="50" font-family="Arial, sans-serif" font-weight="400" font-size="9" fill="#FF9F1C">AI Community</text>
+</svg>

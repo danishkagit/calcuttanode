@@ -1,18 +1,12 @@
-/* ============================================================
-   COURSES DATA
-   Curated courses from various platforms.
-   Edit this file to add/remove courses. See MANUAL.md.
-   ============================================================ */
+const courses = [
+  { title: 'CS50\'s Introduction to Computer Science', platform: 'Harvard/edX', price: 0, isFree: true, hasCertificate: true, rating: 4.8, language: 'English', link: 'https://cs50.harvard.edu/x/', category: 'Computer Science', affiliate: null },
+  { title: 'The Complete 2024 Web Development Bootcamp', platform: 'Udemy', price: 449, isFree: false, hasCertificate: true, rating: 4.7, language: 'English', link: 'https://www.udemy.com/course/the-complete-web-development-bootcamp/?referralCode=24C0C5B5F8F2F8F8F8F8', category: 'Web Development', affiliate: 'Udemy Affiliate' },
+  { title: 'freeCodeCamp Responsive Web Design', platform: 'freeCodeCamp', price: 0, isFree: true, hasCertificate: true, rating: 4.7, language: 'English', link: 'https://www.freecodecamp.org/learn/responsive-web-design/', category: 'Web Development', affiliate: null },
+  { title: 'CodeWithHarry Python Course', platform: 'CodeWithHarry', price: 0, isFree: true, hasCertificate: false, rating: 4.6, language: 'Hindi', link: 'https://www.codewithharry.com/', category: 'Programming', affiliate: null },
+  { title: 'JavaScript: Understanding the Weird Parts', platform: 'Udemy', price: 499, isFree: false, hasCertificate: true, rating: 4.6, language: 'English', link: 'https://www.udemy.com/course/understand-javascript/?referralCode=24C0C5B5F8F2F8F8F8F8', category: 'Programming', affiliate: 'Udemy Affiliate' },
+  { title: 'Google Digital Marketing & E-commerce Certificate', platform: 'Coursera', price: 0, isFree: true, hasCertificate: true, rating: 4.5, language: 'English', link: 'https://www.coursera.org/professional-certificates/google-digital-marketing?utm_medium=affiliate&utm_source=calcuttanode', category: 'Marketing', affiliate: 'Coursera Affiliate' },
+  { title: 'SEO Training Course by Moz', platform: 'edX', price: 0, isFree: true, hasCertificate: false, rating: 4.4, language: 'English', link: 'https://moz.com/', category: 'SEO', affiliate: null },
+  { title: 'Data Science with Python', platform: 'YouTube', price: 0, isFree: true, hasCertificate: false, rating: 4.3, language: 'Bengali', link: 'https://www.youtube.com/', category: 'Data Science', affiliate: null },
+];
 
-export const courses = [
-  { id: 1, name: 'The Complete Web Developer Bootcamp', platform: 'Udemy', icon: '🌐', price: 499, rating: 4.8, certificate: true, language: 'English', url: '#' },
-  { id: 2, name: 'React — The Complete Guide', platform: 'Udemy', icon: '⚛️', price: 499, rating: 4.7, certificate: true, language: 'English', url: '#' },
-  { id: 3, name: 'Machine Learning by Andrew Ng', platform: 'Coursera', icon: '🤖', price: 0, rating: 4.9, certificate: true, language: 'English', url: '#' },
-  { id: 4, name: 'Google UX Design Certificate', platform: 'Coursera', icon: '🎨', price: 1500, rating: 4.8, certificate: true, language: 'English', url: '#' },
-  { id: 5, name: 'CS50 — Introduction to Computer Science', platform: 'edX', icon: '💻', price: 0, rating: 4.9, certificate: false, language: 'English', url: '#' },
-  { id: 6, name: 'Flutter & Dart — The Complete Guide', platform: 'Udemy', icon: '📱', price: 499, rating: 4.6, certificate: true, language: 'English', url: '#' },
-  { id: 7, name: 'Node.js API Masterclass', platform: 'Udemy', icon: '🟢', price: 399, rating: 4.5, certificate: true, language: 'English', url: '#' },
-  { id: 8, name: 'freeCodeCamp — Responsive Web Design', platform: 'freeCodeCamp', icon: '🆓', price: 0, rating: 4.7, certificate: true, language: 'English', url: '#' },
-  { id: 9, name: 'Digital Marketing Specialization', platform: 'Coursera', icon: '📈', price: 1200, rating: 4.5, certificate: true, language: 'English', url: '#' },
-  { id: 10, name: 'AWS Cloud Practitioner', platform: 'AWS', icon: '☁️', price: 0, rating: 4.6, certificate: true, language: 'English', url: '#' },
-]
+export default courses;

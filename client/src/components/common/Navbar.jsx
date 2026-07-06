@@ -1,139 +1,112 @@
-import { useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
-import { useAuth } from '../../context/AuthContext'
+import { Link, useLocation } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import logo from '../../assets/logo.png';
 
-/* ============================================================
-   NAVBAR — sticky top navigation
-   Shows logo, nav links, and auth-aware buttons
-   ============================================================ */
-
-const navItems = [
+const navLinks = [
   { path: '/', label: 'Home' },
-  { path: '/blog', label: 'Blog' },
+  { path: '/work', label: 'Our Work' },
+  { path: '/blogs', label: 'Blog' },
   { path: '/tools', label: 'Free Tools' },
   { path: '/courses', label: 'Courses' },
+  { path: '/products', label: 'Products' },
+  { path: '/plans', label: 'Plans' },
   { path: '/pricing', label: 'Pricing' },
   { path: '/about', label: 'About' },
   { path: '/contact', label: 'Contact' },
-]
+];
 
 export default function Navbar() {
-  const { user, logout } = useAuth()
-  const location = useLocation()
-  const [mobileOpen, setMobileOpen] = useState(false)
+  const { pathname } = useLocation();
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-  const isActive = (path) => {
-    if (path === '/') return location.pathname === '/'
-    return location.pathname.startsWith(path)
-  }
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [pathname]);
 
   return (
-    <nav className="sticky top-0 z-50 glass border-b border-white/5">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2 group">
-            <img
-              src="/logo.png"
-              alt="Calcutta Node"
-              className="h-8 w-8 group-hover:scale-110 transition-transform"
-              onError={(e) => { e.target.style.display = 'none' }}
-            />
-            <span className="text-xl font-bold gradient-text">
-              Calcutta Node
-            </span>
-          </Link>
+    <nav className={`sticky top-0 z-50 transition-all duration-300 ${
+      scrolled
+        ? 'bg-background/90 backdrop-blur-xl border-b border-electric-violet/10 shadow-lg shadow-black/20'
+        : 'bg-background/60 backdrop-blur-md border-b border-transparent'
+    }`}>
+      <div className="max-w-7xl mx-auto px-4 flex items-center justify-between h-16">
+        <Link to="/" className="flex items-center gap-2 group">
+          <img src={logo} alt="Calcutta Node." className="h-10 w-auto transition-transform duration-300 group-hover:scale-105" />
+          <span className="text-neon-cyan font-bold text-lg hidden sm:block transition-all duration-300 group-hover:neon-glow-cyan">Calcutta Node.</span>
+        </Link>
 
-          {/* Desktop nav links */}
-          <div className="hidden md:flex items-center space-x-1">
-            {navItems.map((item) => (
-              <Link
-                key={item.path}
-                to={item.path}
-                className={`px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
-                  isActive(item.path)
-                    ? 'text-brand-cyan bg-brand-cyan/10'
-                    : 'text-brand-muted hover:text-brand-cyan hover:bg-brand-cyan/5'
+        <div className="hidden md:flex items-center gap-1">
+          {navLinks.map((link) => {
+            const isActive = pathname === link.path;
+            return (
+              <Link key={link.path} to={link.path}
+                className={`relative px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${
+                  isActive ? 'text-neon-cyan' : 'text-text-muted hover:text-text-primary hover:bg-white/5'
                 }`}
               >
-                {item.label}
-              </Link>
-            ))}
-          </div>
-
-          {/* Auth buttons */}
-          <div className="flex items-center space-x-3">
-            {user ? (
-              <>
-                <span className="text-sm text-brand-muted hidden sm:inline">
-                  {user.name}
-                </span>
-                <Link
-                  to="/dashboard"
-                  className="px-4 py-2 bg-brand-cyan text-brand-bg rounded-lg text-sm font-semibold hover:glow-cyan transition-all"
-                >
-                  Dashboard
-                </Link>
-                <button
-                  onClick={logout}
-                  className="px-3 py-2 text-sm text-brand-muted hover:text-red-400 transition-colors"
-                >
-                  Logout
-                </button>
-              </>
-            ) : (
-              <>
-                <Link
-                  to="/login"
-                  className="px-4 py-2 text-sm text-brand-muted hover:text-brand-cyan transition-colors"
-                >
-                  Login
-                </Link>
-                <Link
-                  to="/register"
-                  className="px-4 py-2 bg-brand-violet text-white rounded-lg text-sm font-semibold hover:glow-violet transition-all"
-                >
-                  Register
-                </Link>
-              </>
-            )}
-
-            {/* Mobile hamburger */}
-            <button
-              onClick={() => setMobileOpen(!mobileOpen)}
-              className="md:hidden p-2 text-brand-muted hover:text-brand-cyan"
-            >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                {mobileOpen ? (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                ) : (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                {link.label}
+                {isActive && (
+                  <motion.span layoutId="nav-indicator" className="absolute bottom-0 left-3 right-3 h-0.5 bg-neon-cyan rounded-full" transition={{ type: 'spring', stiffness: 500, damping: 30 }} />
                 )}
-              </svg>
-            </button>
-          </div>
+              </Link>
+            );
+          })}
+          <Link to="/login"
+            className="ml-3 bg-brand-gradient text-white px-5 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:shadow-lg hover:shadow-neon-cyan/20 hover:scale-105 active:scale-95"
+          >
+            Login
+          </Link>
         </div>
 
-        {/* Mobile menu */}
-        {mobileOpen && (
-          <div className="md:hidden pb-4 space-y-1">
-            {navItems.map((item) => (
-              <Link
-                key={item.path}
-                to={item.path}
-                onClick={() => setMobileOpen(false)}
-                className={`block px-4 py-2 rounded-lg text-sm ${
-                  isActive(item.path)
-                    ? 'text-brand-cyan bg-brand-cyan/10'
-                    : 'text-brand-muted hover:text-brand-text'
-                }`}
-              >
-                {item.label}
-              </Link>
-            ))}
-          </div>
-        )}
+        <button onClick={() => setMobileOpen(!mobileOpen)}
+          className="md:hidden relative w-8 h-8 flex items-center justify-center text-text-primary"
+          aria-label="Toggle menu"
+        >
+          <svg className="w-6 h-6 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+              d={mobileOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16'}
+            />
+          </svg>
+        </button>
       </div>
+
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.2 }}
+            className="md:hidden overflow-hidden border-t border-electric-violet/10"
+          >
+            <div className="bg-background/95 backdrop-blur-xl px-4 py-3 space-y-1">
+              {navLinks.map((link) => {
+                const isActive = pathname === link.path;
+                return (
+                  <Link key={link.path} to={link.path}
+                    className={`block px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 ${
+                      isActive ? 'bg-neon-cyan/10 text-neon-cyan' : 'text-text-muted hover:bg-white/5 hover:text-text-primary'
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                );
+              })}
+              <Link to="/login" className="block mt-2 bg-brand-gradient text-white px-4 py-2.5 rounded-lg text-sm font-medium text-center">
+                Login
+              </Link>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
-  )
+  );
 }

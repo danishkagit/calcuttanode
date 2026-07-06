@@ -1,59 +1,58 @@
-import { Routes, Route } from 'react-router-dom'
-import { useAuth } from './context/AuthContext'
-import Navbar from './components/common/Navbar'
-import Footer from './components/common/Footer'
-import Loader from './components/common/Loader'
-import Home from './pages/Home'
-import About from './pages/About'
-import Contact from './pages/Contact'
-import Tools from './pages/Tools'
-import Courses from './pages/Courses'
-import Pricing from './pages/Pricing'
-import Blog from './pages/Blog'
-import Login from './pages/Login'
-import Register from './pages/Register'
-import Dashboard from './pages/Dashboard'
-import NotFound from './pages/NotFound'
+import { Routes, Route, useLocation } from 'react-router-dom';
+import { AnimatePresence, motion } from 'framer-motion';
+import Navbar from './components/common/Navbar';
+import Footer from './components/common/Footer';
+import Home from './pages/Home';
+import Blogs from './pages/Blogs';
+import BlogDetail from './pages/BlogDetail';
+import Tools from './pages/Tools';
+import Courses from './pages/Courses';
+import Pricing from './pages/Pricing';
+import About from './pages/About';
+import Contact from './pages/Contact';
+import Work from './pages/Work';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import Dashboard from './pages/Dashboard';
+import Products from './pages/Products';
+import Plans from './pages/Plans';
 
-/* ============================================================
-   APP — Top-level layout + routing
-   Shows Navbar + Footer on every page except Dashboard
-   ============================================================ */
+const pageVariants = {
+  initial: { opacity: 0, y: 8 },
+  animate: { opacity: 1, y: 0, transition: { duration: 0.25 } },
+  exit: { opacity: 0, y: -8, transition: { duration: 0.15 } },
+};
+
+function AnimatedPage({ children }) {
+  return <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">{children}</motion.div>;
+}
 
 export default function App() {
-  const { loading } = useAuth()
-
-  // Show a full-screen loader while checking auth status
-  if (loading) return <Loader fullScreen />
-
+  const location = useLocation();
   return (
-    <div className="flex flex-col min-h-screen">
-      {/* Global navigation — visible on all public pages */}
+    <div className="min-h-screen bg-background flex flex-col">
       <Navbar />
-
       <main className="flex-1">
-        <Routes>
-          {/* Public routes */}
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/tools" element={<Tools />} />
-          <Route path="/courses" element={<Courses />} />
-          <Route path="/pricing" element={<Pricing />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-
-          {/* Dashboard — has its own layout, no Navbar/Footer */}
-          <Route path="/dashboard/*" element={<Dashboard />} />
-
-          {/* 404 catch-all */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <AnimatePresence mode="wait">
+          <Routes location={location} key={location.pathname}>
+            <Route path="/" element={<AnimatedPage><Home /></AnimatedPage>} />
+            <Route path="/blogs" element={<AnimatedPage><Blogs /></AnimatedPage>} />
+            <Route path="/blogs/:slug" element={<AnimatedPage><BlogDetail /></AnimatedPage>} />
+            <Route path="/tools" element={<AnimatedPage><Tools /></AnimatedPage>} />
+            <Route path="/courses" element={<AnimatedPage><Courses /></AnimatedPage>} />
+            <Route path="/pricing" element={<AnimatedPage><Pricing /></AnimatedPage>} />
+            <Route path="/about" element={<AnimatedPage><About /></AnimatedPage>} />
+            <Route path="/contact" element={<AnimatedPage><Contact /></AnimatedPage>} />
+            <Route path="/work" element={<AnimatedPage><Work /></AnimatedPage>} />
+            <Route path="/login" element={<AnimatedPage><Login /></AnimatedPage>} />
+            <Route path="/register" element={<AnimatedPage><Register /></AnimatedPage>} />
+            <Route path="/dashboard" element={<AnimatedPage><Dashboard /></AnimatedPage>} />
+            <Route path="/products" element={<AnimatedPage><Products /></AnimatedPage>} />
+            <Route path="/plans" element={<AnimatedPage><Plans /></AnimatedPage>} />
+          </Routes>
+        </AnimatePresence>
       </main>
-
-      {/* Footer on all public pages (hidden when on dashboard) */}
       <Footer />
     </div>
-  )
+  );
 }

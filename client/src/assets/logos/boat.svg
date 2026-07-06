@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60">
+  <text x="4" y="36" font-family="Arial, sans-serif" font-weight="900" font-size="28" fill="#000" letter-spacing="2">bo</text>
+  <text x="48" y="36" font-family="Arial, sans-serif" font-weight="900" font-size="28" fill="#E53935">A</text>
+  <text x="72" y="36" font-family="Arial, sans-serif" font-weight="900" font-size="28" fill="#000" letter-spacing="2">t</text>
+  <path d="M152 38h36v4H152z" fill="#E53935" rx="2"/>
+  <rect x="152" y="24" width="36" height="4" rx="2" fill="#E53935"/>
+  <circle cx="170" cy="33" r="14" fill="none" stroke="#E53935" stroke-width="2"/>
+</svg>
