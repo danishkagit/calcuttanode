@@ -1,45 +1,83 @@
 import { useState, useEffect } from 'react';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useParams } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useAuth } from '../context/AuthContext';
 import api from '../utils/api';
 import services from '../data/services';
 import PaymentModal from '../components/dashboard/PaymentModal';
+import ReferralSection from '../components/dashboard/ReferralSection';
+import LoyaltySection from '../components/dashboard/LoyaltySection';
+import CouponSection from '../components/dashboard/CouponSection';
+import ReviewSection from '../components/dashboard/ReviewSection';
+import WishlistSection from '../components/dashboard/WishlistSection';
+import OrderTracker from '../components/dashboard/OrderTracker';
+import ServiceCertificate from '../components/dashboard/ServiceCertificate';
+import AdminDashboard from '../components/dashboard/AdminDashboard';
 
 const categories = [...new Set(services.map((s) => s.category))];
-const sections = ['overview', 'orders', 'wallet', 'book-service', 'subscription', 'purchases', 'profile'];
 
 export default function Dashboard() {
   const { user, loading, logout } = useAuth();
-  const [section, setSection] = useState('overview');
+  const { section: urlSection } = useParams();
+  const [section, setSection] = useState(urlSection || 'overview');
   const [showPayment, setShowPayment] = useState(false);
   const [data, setData] = useState({ overview: {}, orders: [], wallet: 0, transactions: [] });
   const [mySub, setMySub] = useState(null);
   const [purchases, setPurchases] = useState([]);
+  const [notifications, setNotifications] = useState({ notifications: [], unreadCount: 0 });
+  const [showNotif, setShowNotif] = useState(false);
   const [refresh, setRefresh] = useState(0);
   const [booking, setBooking] = useState(null);
   const [notes, setNotes] = useState('');
   const [placing, setPlacing] = useState(false);
 
   useEffect(() => {
+    if (urlSection) setSection(urlSection);
+  }, [urlSection]);
+
+  useEffect(() => {
     if (!user) return;
     const fetchData = async () => {
       try {
-        const [overviewRes, ordersRes, walletRes, txRes, subRes, purchasesRes] = await Promise.all([
+        const [overviewRes, ordersRes, walletRes, txRes, subRes, purchasesRes, notifRes] = await Promise.all([
           api.get('/dashboard/overview'),
           api.get('/dashboard/orders'),
           api.get('/dashboard/wallet'),
           api.get('/dashboard/transactions'),
           api.get('/subscriptions/my').catch(() => ({ data: null })),
           api.get('/products/my/purchases').catch(() => ({ data: [] })),
+          api.get('/notifications').catch(() => ({ data: { notifications: [], unreadCount: 0 } })),
         ]);
         setData({ overview: overviewRes.data, orders: ordersRes.data, wallet: walletRes.data.balance, transactions: txRes.data });
         setMySub(subRes.data);
         setPurchases(purchasesRes.data);
+        setNotifications(notifRes.data || { notifications: [], unreadCount: 0 });
       } catch {}
     };
     fetchData();
   }, [user, refresh]);
+
+  const markNotifRead = async (id) => {
+    try {
+      await api.patch(`/notifications/${id}/read`);
+      setNotifications(prev => ({
+        ...prev,
+        notifications: prev.notifications.map(n => n._id === id ? { ...n, isRead: true } : n),
+        unreadCount: Math.max(0, prev.unreadCount - 1),
+      }));
+    } catch {}
+  };
+
+  const markAllRead = async () => {
+    try {
+      await api.patch('/notifications/read-all');
+      setNotifications(prev => ({
+        ...prev,
+        notifications: prev.notifications.map(n => ({ ...n, isRead: true })),
+        unreadCount: 0,
+      }));
+    } catch {}
+  };
 
   const placeOrder = async (service) => {
     setPlacing(true);
@@ -61,26 +99,85 @@ export default function Dashboard() {
     }
   };
 
+  const toggleWishlist = async (serviceId) => {
+    try {
+      const res = await api.post('/wishlist/toggle', { serviceId });
+      return res.data.saved;
+    } catch {
+      return false;
+    }
+  };
+
   if (loading) return null;
   if (!user) return <Navigate to="/login" />;
+
+  const isAdmin = user.role === 'admin';
+  const mainSections = ['overview', 'orders', 'wallet', 'book-service', 'subscription', 'purchases', 'wishlist', 'coupons', 'reviews', 'referral', 'loyalty', 'profile'];
+  if (isAdmin) mainSections.push('admin');
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-8 flex gap-6 flex-col md:flex-row">
       <aside className="w-full md:w-64 shrink-0">
         <div className="bg-surface/50 rounded-xl p-4 border border-electric-violet/20 space-y-1 sticky top-20">
-          {sections.map((s) => (
+          <div className="flex items-center justify-between px-4 py-2 mb-2">
+            <p className="text-xs text-text-muted font-medium">Dashboard</p>
+            <div className="relative">
+              <button onClick={() => setShowNotif(!showNotif)} className="relative p-1.5 text-text-muted hover:text-text-primary transition-colors">
+                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9" />
+                  <path d="M13.73 21a2 2 0 01-3.46 0" />
+                </svg>
+                {notifications.unreadCount > 0 && (
+                  <span className="absolute -top-0.5 -right-0.5 w-4 h-4 bg-red-500 rounded-full text-[10px] font-bold flex items-center justify-center text-white">
+                    {notifications.unreadCount > 9 ? '9+' : notifications.unreadCount}
+                  </span>
+                )}
+              </button>
+              {showNotif && (
+                <div className="absolute right-0 top-full mt-2 w-80 bg-surface border border-electric-violet/20 rounded-xl shadow-xl z-50 max-h-96 overflow-y-auto">
+                  <div className="flex justify-between items-center p-3 border-b border-electric-violet/20">
+                    <p className="text-sm font-medium text-text-primary">Notifications</p>
+                    {notifications.unreadCount > 0 && (
+                      <button onClick={markAllRead} className="text-xs text-neon-cyan hover:underline">Mark all read</button>
+                    )}
+                  </div>
+                  {notifications.notifications.length === 0 ? (
+                    <p className="text-text-muted text-sm text-center py-6">No notifications</p>
+                  ) : (
+                    notifications.notifications.map(n => (
+                      <button key={n._id} onClick={() => { if (!n.isRead) markNotifRead(n._id); }}
+                        className={`w-full text-left p-3 border-b border-electric-violet/10 hover:bg-electric-violet/5 transition-colors ${!n.isRead ? 'bg-neon-cyan/5' : ''}`}
+                      >
+                        <p className="text-sm font-medium text-text-primary">{n.title}</p>
+                        <p className="text-xs text-text-muted mt-0.5">{n.message}</p>
+                        <p className="text-[10px] text-text-muted/50 mt-1">{new Date(n.createdAt).toLocaleDateString()}</p>
+                      </button>
+                    ))
+                  )}
+                </div>
+              )}
+            </div>
+          </div>
+
+          {mainSections.map((s) => (
             <button key={s} onClick={() => setSection(s)}
               className={`w-full text-left px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 flex items-center gap-2 ${
                 section === s ? 'bg-neon-cyan/10 text-neon-cyan' : 'text-text-muted hover:text-text-primary hover:bg-white/5'
               }`}
             >
               {s === 'overview' && <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>}
-              {s === 'orders' && <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>}
+              {s === 'orders' && <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>}
               {s === 'wallet' && <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="1" y="4" width="22" height="16" rx="2"/><path d="M16 12a2 2 0 100 4 2 2 0 000-4z"/><path d="M1 8h22"/></svg>}
               {s === 'book-service' && <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>}
               {s === 'subscription' && <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>}
               {s === 'purchases' && <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 7v10c0 2 1 3 3 3h10c2 0 3-1 3-3V7M7 10h10M7 13h10"/></svg>}
+              {s === 'wishlist' && <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>}
+              {s === 'coupons' && <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20 12H4M20 12a2 2 0 002-2V6a2 2 0 00-2-2H4a2 2 0 00-2 2v4a2 2 0 002 2m16 0a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4a2 2 0 012-2"/></svg>}
+              {s === 'reviews' && <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>}
+              {s === 'referral' && <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>}
+              {s === 'loyalty' && <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>}
               {s === 'profile' && <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>}
+              {s === 'admin' && <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>}
               {s.charAt(0).toUpperCase() + s.slice(1).replace('-', ' ')}
             </button>
           ))}
@@ -102,26 +199,46 @@ export default function Dashboard() {
             <div>
               <h2 className="text-2xl font-bold text-text-primary mb-1">Overview</h2>
               <p className="text-text-muted mb-6">Welcome back, {user.name}!</p>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
-                <div className="bg-background/50 rounded-xl p-5 border border-electric-violet/10">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
+                <div className="bg-background/50 rounded-xl p-5 border border-electric-violet/10 text-center">
                   <p className="text-text-muted text-sm mb-1">Active Orders</p>
                   <p className="text-3xl font-bold text-neon-cyan">{data.overview.activeOrders || 0}</p>
                 </div>
-                <div className="bg-background/50 rounded-xl p-5 border border-electric-violet/10">
+                <div className="bg-background/50 rounded-xl p-5 border border-electric-violet/10 text-center">
                   <p className="text-text-muted text-sm mb-1">Wallet Balance</p>
                   <p className="text-3xl font-bold text-neon-cyan">₹{data.overview.walletBalance || 0}</p>
                 </div>
-                <div className="bg-background/50 rounded-xl p-5 border border-electric-violet/10">
-                  <p className="text-text-muted text-sm mb-1">Last Activity</p>
-                  <p className="text-sm text-text-primary mt-2">{data.overview.lastActivity ? new Date(data.overview.lastActivity).toLocaleDateString() : 'None'}</p>
+                <div className="bg-background/50 rounded-xl p-5 border border-electric-violet/10 text-center">
+                  <p className="text-text-muted text-sm mb-1">Loyalty Points</p>
+                  <p className="text-3xl font-bold text-purple-400">{data.overview.loyaltyPoints || 0}</p>
+                </div>
+                <div className="bg-background/50 rounded-xl p-5 border border-electric-violet/10 text-center">
+                  <p className="text-text-muted text-sm mb-1">Referral Earnings</p>
+                  <p className="text-3xl font-bold text-green-400">₹{data.overview.referralEarnings || 0}</p>
                 </div>
               </div>
-              <div className="flex gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+                {data.overview.activeSub && (
+                  <div className="bg-background/50 rounded-xl p-4 border border-neon-cyan/30">
+                    <p className="text-text-muted text-xs mb-1">Active Subscription</p>
+                    <p className="text-text-primary font-medium">{data.overview.activeSub.planName}</p>
+                    <p className="text-text-muted text-xs">Expires: {new Date(data.overview.activeSub.endDate).toLocaleDateString()}</p>
+                  </div>
+                )}
+                <div className="bg-background/50 rounded-xl p-4 border border-electric-violet/10">
+                  <p className="text-text-muted text-xs mb-1">Notifications</p>
+                  <p className="text-text-primary font-medium">{data.overview.unreadNotifications || 0} unread</p>
+                </div>
+              </div>
+              <div className="flex gap-3 flex-wrap">
                 <button onClick={() => setSection('book-service')} className="bg-brand-gradient text-white px-6 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 hover:shadow-lg hover:shadow-neon-cyan/20 hover:scale-[1.02] active:scale-[0.98]">
                   Book a Service
                 </button>
                 <button onClick={() => setSection('wallet')} className="border border-neon-cyan text-neon-cyan px-6 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 hover:bg-neon-cyan/10">
                   Add Funds
+                </button>
+                <button onClick={() => setSection('referral')} className="border border-green-400/50 text-green-400 px-6 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 hover:bg-green-400/10">
+                  Refer & Earn
                 </button>
               </div>
             </div>
@@ -140,19 +257,8 @@ export default function Dashboard() {
               ) : (
                 <div className="space-y-3">
                   {data.orders.map((order) => (
-                    <div key={order._id} className="bg-background/50 rounded-xl p-4 border border-electric-violet/10 flex justify-between items-center">
-                      <div>
-                        <p className="text-text-primary font-medium">{order.serviceName}</p>
-                        <p className="text-text-muted text-xs mt-1">{new Date(order.createdAt).toLocaleDateString()} &bull; ₹{order.priceAtBooking}</p>
-                      </div>
-                      <span className={`text-xs font-medium px-3 py-1 rounded-full ${
-                        order.status === 'completed' ? 'bg-green-500/20 text-green-400' :
-                        order.status === 'in-progress' ? 'bg-blue-500/20 text-blue-400' :
-                        order.status === 'cancelled' ? 'bg-red-500/20 text-red-400' :
-                        'bg-yellow-500/20 text-yellow-400'
-                      }`}>
-                        {order.status}
-                      </span>
+                    <div key={order._id}>
+                      <OrderTracker order={order} />
                     </div>
                   ))}
                 </div>
@@ -175,7 +281,7 @@ export default function Dashboard() {
               {data.transactions.length === 0 ? (
                 <p className="text-text-muted text-sm">No transactions yet.</p>
               ) : (
-                <div className="space-y-2 max-h-72 overflow-y-auto">
+                <div className="space-y-2 max-h-96 overflow-y-auto">
                   {data.transactions.map((tx) => (
                     <div key={tx._id} className="bg-background/50 rounded-lg p-3.5 border border-electric-violet/10 flex justify-between items-center text-sm">
                       <div>
@@ -196,7 +302,6 @@ export default function Dashboard() {
             <div>
               <h2 className="text-2xl font-bold text-text-primary mb-1">Book a Service</h2>
               <p className="text-text-muted mb-6">Choose from our {services.length} services</p>
-
               <AnimatePresence>
                 {booking ? (
                   <motion.div key="booking-form" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}>
@@ -291,24 +396,32 @@ export default function Dashboard() {
                         <p className="text-text-primary font-medium">{p.productName}</p>
                         <p className="text-text-muted text-xs mt-1">₹{p.amount} &bull; {new Date(p.createdAt).toLocaleDateString()}</p>
                       </div>
-                      {p.downloadToken && (
-                        <button onClick={async () => {
-                          try {
-                            const { data } = await api.get(`/products/download/${p.downloadToken}`);
-                            window.open(data.fileUrl, '_blank');
-                          } catch { alert('Download failed'); }
-                        }}
-                          className="text-xs bg-neon-cyan/20 text-neon-cyan px-3 py-1.5 rounded-lg hover:bg-neon-cyan/30 transition-colors"
-                        >
-                          Download
-                        </button>
-                      )}
+                      <div className="flex gap-2">
+                        {p.downloadToken && (
+                          <button onClick={async () => {
+                            try {
+                              const { data } = await api.get(`/products/download/${p.downloadToken}`);
+                              window.open(data.fileUrl, '_blank');
+                            } catch { alert('Download failed'); }
+                          }}
+                            className="text-xs bg-neon-cyan/20 text-neon-cyan px-3 py-1.5 rounded-lg hover:bg-neon-cyan/30 transition-colors"
+                          >
+                            Download
+                          </button>
+                        )}
+                      </div>
                     </div>
                   ))}
                 </div>
               )}
             </div>
           )}
+
+          {section === 'wishlist' && <WishlistSection />}
+          {section === 'coupons' && <CouponSection />}
+          {section === 'reviews' && <ReviewSection />}
+          {section === 'referral' && <ReferralSection />}
+          {section === 'loyalty' && <LoyaltySection onRefresh={() => setRefresh(r => r + 1)} />}
 
           {section === 'profile' && (
             <div>
@@ -318,18 +431,21 @@ export default function Dashboard() {
                 {[
                   { label: 'Name', value: user.name },
                   { label: 'Email', value: user.email },
-                  { label: 'Phone', value: user.phone },
+                  { label: 'Phone', value: user.phone || 'Not set' },
                   { label: 'Role', value: user.role },
-                  { label: 'Referral Code', value: user.referralCode || 'N/A' },
                 ].map((item) => (
                   <div key={item.label} className="flex justify-between p-3.5 rounded-lg bg-background/50 border border-electric-violet/10">
                     <span className="text-text-muted text-sm">{item.label}</span>
                     <span className="text-text-primary text-sm font-medium">{item.value}</span>
                   </div>
                 ))}
+                <hr className="border-electric-violet/20" />
+                <p className="text-text-muted text-xs">Notifications are {user.emailNotifications ? 'enabled' : 'disabled'}</p>
               </div>
             </div>
           )}
+
+          {section === 'admin' && isAdmin && <AdminDashboard />}
         </motion.div>
       </main>
 

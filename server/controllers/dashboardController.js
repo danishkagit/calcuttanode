@@ -1,13 +1,29 @@
 import Order from '../models/Order.js';
 import Transaction from '../models/Transaction.js';
 import User from '../models/User.js';
+import Subscription from '../models/Subscription.js';
+import Notification from '../models/Notification.js';
 
 export const getOverview = async (req, res) => {
   try {
-    const activeOrders = await Order.countDocuments({ userId: req.user._id, status: { $in: ['pending', 'in-progress'] } });
-    const walletBalance = req.user.walletBalance;
-    const lastTransaction = await Transaction.findOne({ userId: req.user._id }).sort({ createdAt: -1 });
-    res.json({ activeOrders, walletBalance, lastActivity: lastTransaction?.createdAt || null });
+    const [activeOrders, walletBalance, lastTransaction, activeSub, unreadNotifications, purchasesCount] = await Promise.all([
+      Order.countDocuments({ userId: req.user._id, status: { $in: ['pending', 'in-progress'] } }),
+      req.user.walletBalance,
+      Transaction.findOne({ userId: req.user._id }).sort({ createdAt: -1 }),
+      Subscription.findOne({ userId: req.user._id, status: 'active' }).select('planName endDate'),
+      Notification.countDocuments({ userId: req.user._id, isRead: false }),
+      Transaction.countDocuments({ userId: req.user._id, type: 'debit', description: /Product purchase/i }),
+    ]);
+    res.json({
+      activeOrders,
+      walletBalance,
+      lastActivity: lastTransaction?.createdAt || null,
+      activeSub: activeSub ? { planName: activeSub.planName, endDate: activeSub.endDate } : null,
+      unreadNotifications,
+      purchasesCount,
+      loyaltyPoints: req.user.loyaltyPoints,
+      referralEarnings: req.user.referralEarnings,
+    });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
