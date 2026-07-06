@@ -1,12 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import services from '../data/services';
 import companyInfo from '../data/companyInfo';
 import ParticleField from '../components/common/ParticleField';
 import api from '../utils/api';
-
-const categories = [...new Set(services.map((s) => s.category))];
 
 const fadeUp = { initial: { opacity: 0, y: 30 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, margin: '-50px' }, transition: { duration: 0.5 } };
 
@@ -48,8 +45,14 @@ export default function Home() {
   const [openFaq, setOpenFaq] = useState(null);
   const [recentBlogs, setRecentBlogs] = useState([]);
   const [blogLoading, setBlogLoading] = useState(true);
+  const [servicesList, setServicesList] = useState([]);
+
+  const categories = useMemo(() => [...new Set(servicesList.map((s) => s.category))], [servicesList]);
 
   useEffect(() => {
+    api.get('/services')
+      .then((res) => setServicesList(Array.isArray(res.data) ? res.data : []))
+      .catch(() => {});
     api.get('/blogs', { params: { limit: 3 } })
       .then((res) => setRecentBlogs(Array.isArray(res.data) ? res.data.slice(0, 3) : []))
       .catch(() => {})
@@ -249,17 +252,17 @@ export default function Home() {
                 <svg className="w-5 h-5 text-neon-cyan" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d={categoryIcons[category] || ''} /></svg>
               </div>
               <h2 className="text-2xl font-bold text-text-primary">{category}</h2>
-              <span className="text-sm font-normal text-text-muted">({services.filter((s) => s.category === category).length} services)</span>
+              <span className="text-sm font-normal text-text-muted">({servicesList.filter((s) => s.category === category).length} services)</span>
               <Link to="/pricing" className="text-xs text-neon-cyan hover:underline ml-auto">View all →</Link>
             </motion.div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {services.filter((s) => s.category === category).map((service, i) => (
-                <motion.div key={service.id}
+              {servicesList.filter((s) => s.category === category).map((service, i) => (
+<motion.div key={service._id}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: i * 0.08 }}
-                  onMouseEnter={() => setHoveredService(service.id)}
+                  transition={{ delay: i * 0.06 }}
+                  onMouseEnter={() => setHoveredService(service._id)}
                   onMouseLeave={() => setHoveredService(null)}
                   whileHover={{ y: -6, scale: 1.02 }}
                   className="group relative rounded-2xl p-6 border border-electric-violet/20 bg-gradient-to-b from-surface/80 to-surface/30 hover:border-neon-cyan/40 transition-all duration-300 hover:shadow-xl hover:shadow-neon-cyan/10 overflow-hidden"

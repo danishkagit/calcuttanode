@@ -1,9 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import services from '../data/services';
 import ParticleField from '../components/common/ParticleField';
-
-const categories = ['All', ...new Set(services.map((s) => s.category))];
+import api from '../utils/api';
 
 const icons = {
   'Remote Support': '💻',
@@ -14,15 +12,19 @@ const icons = {
   'Troubleshooting': '🔧',
 };
 
-function getPopularLabel(service) {
-  if (service.id === 'remote-support-standard') return 'Most Popular';
-  return null;
-}
-
 export default function Pricing() {
+  const [servicesList, setServicesList] = useState([]);
   const [filter, setFilter] = useState('All');
-  const filtered = filter === 'All' ? services : services.filter((s) => s.category === filter);
   const [hoveredId, setHoveredId] = useState(null);
+
+  const categories = useMemo(() => ['All', ...new Set(servicesList.map((s) => s.category))], [servicesList]);
+  const filtered = filter === 'All' ? servicesList : servicesList.filter((s) => s.category === filter);
+
+  useEffect(() => {
+    api.get('/services')
+      .then((res) => setServicesList(Array.isArray(res.data) ? res.data : []))
+      .catch(() => {});
+  }, []);
 
   return (
     <div className="relative min-h-screen">
@@ -60,32 +62,32 @@ export default function Pricing() {
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
           >
             {filtered.map((service, i) => {
-              const popularLabel = getPopularLabel(service);
+              const isTrending = service.trending >= 85;
               return (
-                <motion.div key={service.id} layout initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: i * 0.06 }}
-                  onMouseEnter={() => setHoveredId(service.id)}
+                <motion.div key={service._id} layout initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: i * 0.06 }}
+                  onMouseEnter={() => setHoveredId(service._id)}
                   onMouseLeave={() => setHoveredId(null)}
                   whileHover={{ y: -8 }}
                   className={`relative group rounded-2xl p-6 border transition-all duration-300 overflow-hidden ${
-                    popularLabel
+                    isTrending
                       ? 'bg-gradient-to-b from-neon-cyan/10 to-surface border-neon-cyan/40 shadow-lg shadow-neon-cyan/10 hover:shadow-neon-cyan/20'
                       : 'bg-surface/50 border-electric-violet/20 hover:border-neon-cyan/30 hover:shadow-lg hover:shadow-neon-cyan/5'
                   }`}
                 >
                   <motion.div className="absolute inset-0 bg-gradient-to-br from-neon-cyan/5 via-transparent to-electric-violet/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   <div className="relative">
-                    {popularLabel && (
+                    {isTrending && (
                       <motion.span
                         animate={{ y: [0, -2, 0] }}
                         transition={{ repeat: Infinity, duration: 2 }}
                         className="absolute -top-3 left-1/2 -translate-x-1/2 bg-neon-cyan text-black text-xs font-bold px-4 py-1 rounded-full shadow-lg shadow-neon-cyan/30 z-10"
                       >
-                        {popularLabel}
+                        🔥 Trending
                       </motion.span>
                     )}
                     <div className="flex items-center gap-3 mb-4">
                       <motion.span
-                        animate={hoveredId === service.id ? { rotate: [0, -15, 15, 0] } : {}}
+                        animate={hoveredId === service._id ? { rotate: [0, -15, 15, 0] } : {}}
                         transition={{ duration: 0.4 }}
                         className="text-2xl"
                       >
@@ -95,7 +97,7 @@ export default function Pricing() {
                     </div>
                     <h3 className="text-text-primary font-semibold mb-1 group-hover:text-neon-cyan transition-colors">{service.name}</h3>
                     <div className="flex items-baseline gap-1 mb-4">
-                      <span className={`text-3xl font-bold ${popularLabel ? 'text-neon-cyan' : 'text-text-primary'}`}>₹{service.price}</span>
+                      <span className={`text-3xl font-bold ${isTrending ? 'text-neon-cyan' : 'text-text-primary'}`}>₹{service.price}</span>
                       <span className="text-text-muted text-sm">one-time</span>
                     </div>
                     <ul className="space-y-2.5 mb-6">
