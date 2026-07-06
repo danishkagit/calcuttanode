@@ -30,7 +30,9 @@ export default function Navbar() {
 
   useEffect(() => {
     setMobileOpen(false);
-  }, [pathname]);
+    document.body.style.overflow = mobileOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [pathname, mobileOpen]);
 
   return (
     <nav className={`sticky top-0 z-50 transition-all duration-300 ${
@@ -74,14 +76,14 @@ export default function Navbar() {
         </div>
 
         <button onClick={() => setMobileOpen(!mobileOpen)}
-          className="md:hidden relative w-8 h-8 flex items-center justify-center text-text-primary"
+          className="md:hidden relative w-10 h-10 flex items-center justify-center text-text-primary hover:text-neon-cyan transition-colors"
           aria-label="Toggle menu"
         >
-          <svg className="w-6 h-6 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-              d={mobileOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16'}
-            />
-          </svg>
+          <div className="flex flex-col items-center justify-center gap-1.5">
+            <motion.span animate={mobileOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }} className="block w-5 h-[2px] bg-current rounded-full transition-colors" />
+            <motion.span animate={mobileOpen ? { opacity: 0 } : { opacity: 1 }} className="block w-5 h-[2px] bg-current rounded-full transition-colors" />
+            <motion.span animate={mobileOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }} className="block w-5 h-[2px] bg-current rounded-full transition-colors" />
+          </div>
         </button>
       </div>
 
@@ -91,16 +93,16 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.2 }}
+            transition={{ duration: 0.25, ease: 'easeInOut' }}
             className="md:hidden overflow-hidden border-t border-electric-violet/10"
           >
-            <div className="bg-background/95 backdrop-blur-xl px-4 py-3 space-y-1">
+            <div className="bg-background/95 backdrop-blur-xl px-4 py-4 space-y-1 max-h-[70vh] overflow-y-auto">
               {navLinks.map((link) => {
                 const isActive = pathname === link.path;
                 const isAIChat = link.path === '/ai';
                 return (
                   <Link key={link.path} to={link.path}
-                    className={`block px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 ${
+                    className={`block px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200 ${
                       isActive
                         ? 'bg-neon-cyan/10 text-neon-cyan'
                         : isAIChat
@@ -112,7 +114,9 @@ export default function Navbar() {
                   </Link>
                 );
               })}
-              <Link to="/login" className="block mt-2 bg-brand-gradient text-white px-4 py-2.5 rounded-lg text-sm font-medium text-center">
+              <Link to="/login"
+                className="block mt-3 bg-brand-gradient text-white px-4 py-3 rounded-lg text-sm font-medium text-center hover:opacity-90 transition-opacity"
+              >
                 Login
               </Link>
             </div>

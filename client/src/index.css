@@ -7,13 +7,12 @@
   --color-electric-violet: #8B3DF7;
   --color-text-primary: #EAF6F6;
   --color-text-muted: #8B93A7;
+  --breakpoint-xs: 375px;
 }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
-::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: #171A26; }
 ::-webkit-scrollbar-thumb { background: #2EE6E6; border-radius: 4px; }
 ::-webkit-scrollbar-thumb:hover { background: #8B3DF7; }
@@ -27,6 +26,13 @@ body {
     radial-gradient(ellipse 50% 40% at 80% 80%, rgba(139, 61, 247, 0.05) 0%, transparent 100%),
     radial-gradient(ellipse 40% 30% at 20% 60%, rgba(46, 230, 230, 0.03) 0%, transparent 100%);
   background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+@media (max-width: 640px) {
+  body { background-attachment: scroll; }
 }
 
 *:focus-visible {
@@ -54,16 +60,57 @@ body {
   animation: gradient-x 4s ease infinite;
   background-size: 200% 200%;
 }
+
 @keyframes pop {
   0% { opacity: 0; transform: scale(0); }
   70% { transform: scale(1.2); }
   100% { opacity: 1; transform: scale(1); }
 }
 
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 8px rgba(46, 230, 230, 0.2); }
+  50% { box-shadow: 0 0 20px rgba(46, 230, 230, 0.4); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@media (max-width: 768px) {
+  h1 { word-break: break-word; }
+  .text-4xl { font-size: 1.75rem !important; line-height: 2.25rem !important; }
+  .text-5xl { font-size: 2rem !important; line-height: 2.5rem !important; }
+  .text-6xl { font-size: 2.25rem !important; line-height: 2.75rem !important; }
+  .text-7xl { font-size: 2.5rem !important; line-height: 3rem !important; }
+}
+
+@media (max-width: 640px) {
+  .gap-6 { gap: 1rem; }
+  .p-6 { padding: 1rem; }
+  .p-8 { padding: 1.25rem; }
+  .px-8 { padding-left: 1.25rem; padding-right: 1.25rem; }
+  .py-12 { padding-top: 2rem; padding-bottom: 2rem; }
+  .py-16 { padding-top: 2.5rem; padding-bottom: 2.5rem; }
+  .py-24 { padding-top: 3rem; padding-bottom: 3rem; }
+  .mb-12 { margin-bottom: 1.5rem; }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  * {
+  *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .hover\:scale-105:hover { transform: none; }
+  .hover\:-translate-y-1:hover { transform: none; }
+  .group-hover\:text-neon-cyan:hover { color: inherit; }
 }
