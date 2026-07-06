@@ -1,6 +1,13 @@
 import { validationResult } from 'express-validator';
 import User from '../models/User.js';
 import { generateAccessToken, generateRefreshToken, verifyRefreshToken } from '../utils/generateToken.js';
+import Notification from '../models/Notification.js';
+
+function generateReferralCode(name) {
+  const prefix = name.replace(/[^a-zA-Z0-9]/g, '').slice(0, 4).toUpperCase();
+  const suffix = Math.random().toString(36).slice(2, 6).toUpperCase();
+  return `${prefix}${suffix}`;
+}
 
 export const register = async (req, res) => {
   try {
@@ -8,12 +15,28 @@ export const register = async (req, res) => {
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-    const { name, email, phone, password } = req.body;
+    const { name, email, phone, password, referralCode } = req.body;
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       return res.status(400).json({ message: 'User already exists' });
     }
-    const user = await User.create({ name, email, phone, password });
+    let referredBy = null;
+    if (referralCode) {
+      const referrer = await User.findOne({ referralCode: referralCode.toUpperCase() });
+      if (referrer) {
+        referredBy = referrer._id;
+      }
+    }
+    const userReferralCode = generateReferralCode(name);
+    const user = await User.create({ name, email, phone, password, referralCode: userReferralCode, referredBy });
+    if (referredBy) {
+      await Notification.create({
+        userId: referredBy,
+        type: 'referral',
+        title: 'New Referral Signup!',
+        message: `${name} signed up using your referral link. They'll earn you ₹100 when they make their first purchase.`,
+      });
+    }
     const accessToken = generateAccessToken(user._id);
     const refreshToken = generateRefreshToken(user._id);
     res.cookie('refreshToken', refreshToken, { httpOnly: true, secure: false, sameSite: 'strict', maxAge: 7 * 24 * 60 * 60 * 1000 });
@@ -94,7 +117,8 @@ export const googleLogin = async (req, res) => {
       const name = payload.name || payload.email.split('@')[0];
       const phone = '';
       const password = Math.random().toString(36).slice(-12);
-      user = await User.create({ name, email: payload.email, phone, password });
+      const referralCode = generateReferralCode(name);
+      user = await User.create({ name, email: payload.email, phone, password, referralCode });
     }
     const accessToken = generateAccessToken(user._id);
     const refreshToken = generateRefreshToken(user._id);

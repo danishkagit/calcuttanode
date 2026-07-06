@@ -40,6 +40,13 @@ import paymentRoutes from './routes/paymentRoutes.js';
 import dashboardRoutes from './routes/dashboardRoutes.js';
 import productRoutes from './routes/productRoutes.js';
 import subscriptionRoutes from './routes/subscriptionRoutes.js';
+import referralRoutes from './routes/referralRoutes.js';
+import loyaltyRoutes from './routes/loyaltyRoutes.js';
+import couponRoutes from './routes/couponRoutes.js';
+import reviewRoutes from './routes/reviewRoutes.js';
+import wishlistRoutes from './routes/wishlistRoutes.js';
+import adminRoutes from './routes/adminRoutes.js';
+import notificationRoutes from './routes/notificationRoutes.js';
 
 app.use('/api/auth', authRoutes);
 app.use('/api/blogs', blogRoutes);
@@ -48,6 +55,13 @@ app.use('/api/payments', paymentRoutes);
 app.use('/api/dashboard', dashboardRoutes);
 app.use('/api/products', productRoutes);
 app.use('/api/subscriptions', subscriptionRoutes);
+app.use('/api/referral', referralRoutes);
+app.use('/api/loyalty', loyaltyRoutes);
+app.use('/api/coupons', couponRoutes);
+app.use('/api/reviews', reviewRoutes);
+app.use('/api/wishlist', wishlistRoutes);
+app.use('/api/admin', adminRoutes);
+app.use('/api/notifications', notificationRoutes);
 
 app.get('/api/health', (req, res) => {
   res.json({ success: true, message: 'Server is running', timestamp: new Date().toISOString() });

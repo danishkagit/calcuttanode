@@ -9,6 +9,9 @@ const orderSchema = new mongoose.Schema({
   remoteAccessNotes: { type: String },
   paymentMethod: { type: String },
   transactionId: { type: mongoose.Schema.Types.ObjectId, ref: 'Transaction' },
+  couponCode: { type: String },
+  discountApplied: { type: Number, default: 0 },
+  finalPrice: { type: Number },
 }, { timestamps: true });
 
 export default mongoose.model('Order', orderSchema);

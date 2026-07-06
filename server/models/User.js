@@ -8,7 +8,13 @@ const userSchema = new mongoose.Schema({
   password: { type: String, required: true },
   role: { type: String, enum: ['user', 'admin'], default: 'user' },
   walletBalance: { type: Number, default: 0 },
-  referralCode: { type: String },
+  referralCode: { type: String, unique: true, sparse: true },
+  referredBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User', default: null },
+  referralEarnings: { type: Number, default: 0 },
+  referralCount: { type: Number, default: 0 },
+  loyaltyPoints: { type: Number, default: 0 },
+  savedServices: [{ type: String }],
+  emailNotifications: { type: Boolean, default: true },
 }, { timestamps: true });
 
 userSchema.pre('save', async function (next) {

@@ -47,6 +47,7 @@ export default function App() {
             <Route path="/login" element={<AnimatedPage><Login /></AnimatedPage>} />
             <Route path="/register" element={<AnimatedPage><Register /></AnimatedPage>} />
             <Route path="/dashboard" element={<AnimatedPage><Dashboard /></AnimatedPage>} />
+            <Route path="/dashboard/:section" element={<AnimatedPage><Dashboard /></AnimatedPage>} />
             <Route path="/products" element={<AnimatedPage><Products /></AnimatedPage>} />
             <Route path="/plans" element={<AnimatedPage><Plans /></AnimatedPage>} />
           </Routes>
