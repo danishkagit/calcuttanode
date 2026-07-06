@@ -455,10 +455,20 @@ Calcutta Node.AI
                             </div>
                             <CopyButton text={msg.content} />
                           </div>
-                          <div className="text-sm leading-relaxed prose prose-invert max-w-none prose-p:my-1 prose-code:bg-black/30 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-neon-cyan prose-code:text-xs prose-pre:bg-transparent prose-pre:p-0 prose-ul:my-1 prose-ol:my-1 prose-li:my-0.5 prose-headings:my-2 prose-headings:text-text-primary prose-a:text-neon-cyan prose-strong:text-text-primary prose-blockquote:border-neon-cyan/30 prose-blockquote:text-text-muted">
+                          <div className="text-sm leading-relaxed text-text-primary space-y-1.5">
                             <ReactMarkdown
                               remarkPlugins={[remarkGfm]}
                               components={{
+                                p({ children }) { return <p className="my-1">{children}</p>; },
+                                ul({ children }) { return <ul className="my-1 space-y-0.5 list-disc list-inside">{children}</ul>; },
+                                ol({ children }) { return <ol className="my-1 space-y-0.5 list-decimal list-inside">{children}</ol>; },
+                                li({ children }) { return <li className="my-0.5">{children}</li>; },
+                                h1({ children }) { return <h1 className="text-text-primary text-lg font-bold my-2">{children}</h1>; },
+                                h2({ children }) { return <h2 className="text-text-primary text-base font-bold my-2">{children}</h2>; },
+                                h3({ children }) { return <h3 className="text-text-primary text-sm font-bold my-1.5">{children}</h3>; },
+                                strong({ children }) { return <strong className="text-text-primary font-semibold">{children}</strong>; },
+                                a({ href, children }) { return <a href={href} className="text-neon-cyan hover:underline" target="_blank" rel="noopener noreferrer">{children}</a>; },
+                                blockquote({ children }) { return <blockquote className="border-l-2 border-neon-cyan/30 pl-3 my-1.5 text-text-muted italic">{children}</blockquote>; },
                                 code({ className, children, ...props }) {
                                   const match = /language-(\w+)/.exec(className || '');
                                   if (match) {
@@ -512,10 +522,20 @@ Calcutta Node.AI
                       <span className="text-[10px] text-text-muted font-medium">Calcutta Node AI</span>
                       <TypingDots />
                     </div>
-                    <div className="text-sm leading-relaxed prose prose-invert max-w-none prose-code:bg-black/30 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-neon-cyan prose-code:text-xs">
+                    <div className="text-sm leading-relaxed text-text-primary space-y-1.5">
                       <ReactMarkdown
                         remarkPlugins={[remarkGfm]}
                         components={{
+                          p({ children }) { return <p className="my-1">{children}</p>; },
+                          ul({ children }) { return <ul className="my-1 space-y-0.5 list-disc list-inside">{children}</ul>; },
+                          ol({ children }) { return <ol className="my-1 space-y-0.5 list-decimal list-inside">{children}</ol>; },
+                          li({ children }) { return <li className="my-0.5">{children}</li>; },
+                          h1({ children }) { return <h1 className="text-text-primary text-lg font-bold my-2">{children}</h1>; },
+                          h2({ children }) { return <h2 className="text-text-primary text-base font-bold my-2">{children}</h2>; },
+                          h3({ children }) { return <h3 className="text-text-primary text-sm font-bold my-1.5">{children}</h3>; },
+                          strong({ children }) { return <strong className="text-text-primary font-semibold">{children}</strong>; },
+                          a({ href, children }) { return <a href={href} className="text-neon-cyan hover:underline" target="_blank" rel="noopener noreferrer">{children}</a>; },
+                          blockquote({ children }) { return <blockquote className="border-l-2 border-neon-cyan/30 pl-3 my-1.5 text-text-muted italic">{children}</blockquote>; },
                           code({ className, children, ...props }) {
                             const match = /language-(\w+)/.exec(className || '');
                             if (match) {

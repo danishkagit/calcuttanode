@@ -91,7 +91,7 @@ export default function BlogDetail() {
             ))}
           </div>
 
-          <div className="prose prose-invert max-w-none prose-p:text-text-muted prose-p:leading-relaxed prose-headings:text-text-primary">
+          <div className="text-sm md:text-base text-text-primary leading-[1.8] space-y-4">
             {blog.content.split('\n').map((para, i) =>
               para.trim() ? (
                 <motion.p
@@ -100,7 +100,6 @@ export default function BlogDetail() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.02 }}
-                  className="mb-4"
                 >
                   {para}
                 </motion.p>
