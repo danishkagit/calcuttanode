@@ -215,18 +215,7 @@ export default function Contact() {
           </motion.div>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="mt-8 rounded-xl overflow-hidden border border-electric-violet/20 hover:border-neon-cyan/30 transition-all duration-300"
-        >
-          <iframe
-            src="https://www.google.com/maps?q=Champdani+Hooghly+West+Bengal&output=embed"
-            width="100%" height="300" style={{ border: 0 }} allowFullScreen loading="lazy"
-            title="Calcutta Node. Location"
-          />
-        </motion.div>
+
       </div>
     </div>
   );
