@@ -7,6 +7,7 @@ const icons = {
   'Remote Support': '💻',
   'Data Recovery': '💾',
   'Website Development': '🌐',
+  'App Development': '📱',
   'Design': '🎨',
   'Marketing': '📢',
   'Troubleshooting': '🔧',

@@ -7,11 +7,25 @@ const services = [
     features: ['5-page responsive site', 'Mobile-first design', 'Contact form integration', 'SEO basics setup', '1 month support'],
   },
   {
+    id: 'fullstack-dev',
+    name: 'Full Stack Web Development',
+    category: 'Website Development',
+    price: 14999,
+    features: ['Custom frontend & backend', 'Database design (MongoDB/MySQL)', 'REST API development', 'User authentication & sessions', 'Deployment & hosting setup', '3 months support'],
+  },
+  {
     id: 'ecommerce-setup',
     name: 'E-Commerce Store Setup',
     category: 'Website Development',
     price: 7999,
     features: ['Product catalog setup', 'Payment gateway integration', 'Mobile optimized', 'Order management', 'Basic SEO'],
+  },
+  {
+    id: 'mobile-app',
+    name: 'Mobile App Development',
+    category: 'App Development',
+    price: 9999,
+    features: ['Android & iOS apps', 'Cross-platform (React Native/Flutter)', 'API & backend integration', 'Push notifications', 'App store deployment assistance', '2 months support'],
   },
   {
     id: 'digital-marketing',

@@ -13,11 +13,25 @@ const seedServices = [
     trending: 100,
   },
   {
+    name: 'Full Stack Web Development',
+    category: 'Website Development',
+    price: 14999,
+    features: ['Custom frontend & backend', 'Database design (MongoDB/MySQL)', 'REST API development', 'User authentication & sessions', 'Deployment & hosting setup', '3 months support'],
+    trending: 78,
+  },
+  {
     name: 'E-Commerce Store Setup',
     category: 'Website Development',
     price: 7999,
     features: ['Product catalog setup', 'Payment gateway integration', 'Mobile optimized', 'Order management', 'Basic SEO'],
     trending: 85,
+  },
+  {
+    name: 'Mobile App Development',
+    category: 'App Development',
+    price: 9999,
+    features: ['Android & iOS apps', 'Cross-platform (React Native/Flutter)', 'API & backend integration', 'Push notifications', 'App store deployment assistance', '2 months support'],
+    trending: 92,
   },
   {
     name: 'Digital Marketing',
