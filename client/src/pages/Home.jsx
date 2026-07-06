@@ -83,8 +83,14 @@ export default function Home() {
               Calcutta Node.
             </span>
           </motion.div>
-          <p className="text-xl md:text-2xl text-text-muted mb-2">IT Services & Digital Growth Agency</p>
-          
+          <p className="text-lg md:text-xl text-text-muted mb-2">IT Services & Digital Growth Agency</p>
+          <p className="text-sm md:text-base text-text-muted/80 max-w-2xl mx-auto mb-2">
+            Remote IT support · Web development · Digital marketing · AI-powered solutions
+          </p>
+          <p className="text-xs text-text-muted/60 max-w-xl mx-auto mb-8">
+            We help businesses and individuals across India with practical tech solutions — 
+            from fixing a slow PC to building a full website. Support in हिंदी & English.
+          </p>
           <div className="flex gap-4 justify-center flex-wrap">
             <motion.a href="/pricing" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
               className="bg-brand-gradient text-white px-8 py-3 rounded-xl font-medium transition-all duration-200 hover:shadow-lg hover:shadow-neon-cyan/20"
