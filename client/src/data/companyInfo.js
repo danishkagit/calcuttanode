@@ -6,7 +6,7 @@ const companyInfo = {
   phone: '8584885450',
   socials: {
     instagram: 'calcuttanode',
-    facebook: 'Dan7860',
+    facebook: 'profile.php?id=61591674544392',
   },
 };
 
