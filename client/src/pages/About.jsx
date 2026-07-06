@@ -9,7 +9,7 @@ const milestones = [
   { year: '2023', title: 'Founded', text: 'Danish Shoaib started Calcutta Node. from Champdani, Hooghly with a simple mission: make professional IT support accessible and affordable for everyone in West Bengal.', icon: '🚀' },
   { year: '2024', title: 'Expansion', text: 'Grew to 6 service categories — from web development and design to digital marketing and data recovery. Crossed 12+ clients and 36+ successful projects.', icon: '📈' },
   { year: '2025', title: 'Digital Transformation', text: 'Launched digital products store, membership subscriptions, AI chat support, and a full-featured client dashboard with wallet, referrals, and loyalty rewards.', icon: '🏆' },
-  { year: '2026', title: 'AI-Powered Future', text: 'Introducing Bengali-first support, AI-assisted troubleshooting, local business digital packages, and same-day response guarantee for all premium clients.', icon: '🌟' },
+  { year: '2026', title: 'AI-Powered Future', text: 'Introducing AI-assisted troubleshooting, enhanced remote support, digital packages for every business, and same-day response guarantee for all premium clients.', icon: '🌟' },
 ];
 
 const values = [
@@ -25,14 +25,14 @@ const stats = [
   { value: '36+', label: 'Projects Delivered' },
   { value: '6', label: 'Service Categories' },
   { value: '99%', label: 'Client Satisfaction' },
-  { value: '🎯', label: 'Bengali Support' },
+  { value: '🌐', label: 'Worldwide Reach' },
 ];
 
 const whyUs2026 = [
   { emoji: '🤖', title: 'AI-Assisted Support', desc: 'Our AI chat handles common queries instantly. For complex issues, human experts step in — you get the best of both worlds.' },
-  { emoji: '🌐', title: 'Bengali & English', desc: 'We communicate in your language. Bengali support makes tech accessible to shop owners, students, and professionals alike.' },
+  { emoji: '🌐', title: 'Pan-India & Global', desc: 'Based in West Bengal, serving clients across India and worldwide. Remote delivery makes distance irrelevant.' },
   { emoji: '💰', title: 'Affordable & Transparent', desc: 'No hidden fees. Clear pricing upfront. Pay via UPI, card, or our in-app wallet with loyalty rewards.' },
-  { emoji: '⚡', title: 'Remote + On-Site', desc: 'Most issues solved remotely in under 24 hours. On-site visits available for local clients in Champdani, Hooghly, and nearby areas.' },
+  { emoji: '⚡', title: 'Remote + On-Site', desc: 'Most issues solved remotely in under 24 hours. On-site visits available for local clients in Hooghly and nearby areas.' },
   { emoji: '📱', title: 'Full Client Dashboard', desc: 'Track orders, manage subscriptions, view transactions, earn referral rewards — all from your personal dashboard.' },
   { emoji: '🔒', title: 'Secure & Private', desc: 'Encrypted connections, secure payments via Razorpay, and strict data privacy. Your information stays yours.' },
 ];
