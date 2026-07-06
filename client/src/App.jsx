@@ -16,6 +16,7 @@ import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import Products from './pages/Products';
 import Plans from './pages/Plans';
+import AI from './pages/AI';
 
 const pageVariants = {
   initial: { opacity: 0, y: 8 },
@@ -50,6 +51,7 @@ export default function App() {
             <Route path="/dashboard/:section" element={<AnimatedPage><Dashboard /></AnimatedPage>} />
             <Route path="/products" element={<AnimatedPage><Products /></AnimatedPage>} />
             <Route path="/plans" element={<AnimatedPage><Plans /></AnimatedPage>} />
+            <Route path="/ai" element={<AnimatedPage><AI /></AnimatedPage>} />
           </Routes>
         </AnimatePresence>
       </main>
