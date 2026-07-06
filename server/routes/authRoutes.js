@@ -35,7 +35,7 @@ router.post('/contact', async (req, res) => {
       return res.status(400).json({ message: 'Name, email and message are required' });
     }
     await ContactMessage.create({ name, email, phone, subject, message });
-    await sendEmail({
+    sendEmail({
       to: process.env.EMAIL_FROM,
       subject: `New Contact Form Submission from ${name}`,
       html: `<h2>New Contact Message</h2>
@@ -44,7 +44,7 @@ router.post('/contact', async (req, res) => {
              <p><strong>Phone:</strong> ${phone || 'N/A'}</p>
              <p><strong>Subject:</strong> ${subject || 'N/A'}</p>
              <p><strong>Message:</strong><br/>${message}</p>`,
-    });
+    }).catch(err => console.error('Contact email send failed (non-blocking):', err.message));
     res.json({ message: 'Message received. We will get back to you soon.' });
   } catch (error) {
     console.error('Contact email error:', error);

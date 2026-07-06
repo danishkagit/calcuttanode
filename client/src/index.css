@@ -113,4 +113,16 @@ body {
   .hover\:scale-105:hover { transform: none; }
   .hover\:-translate-y-1:hover { transform: none; }
   .group-hover\:text-neon-cyan:hover { color: inherit; }
+  button, a, [role="button"] { min-height: 44px; display: inline-flex; align-items: center; justify-content: center; }
+}
+@media (max-width: 640px) {
+  button, a, [role="button"] { min-height: 44px; }
+}
+
+/* Safe area for modern mobile browsers */
+@supports (padding: env(safe-area-inset-bottom)) {
+  .pb-safe { padding-bottom: env(safe-area-inset-bottom); }
+  .pt-safe { padding-top: env(safe-area-inset-top); }
+  .pl-safe { padding-left: env(safe-area-inset-left); }
+  .pr-safe { padding-right: env(safe-area-inset-right); }
 }
