@@ -5,6 +5,7 @@ import logo from '../../assets/logo.png';
 
 const navLinks = [
   { path: '/', label: 'Home' },
+  { path: '/ai', label: 'AI Chat' },
   { path: '/work', label: 'Our Work' },
   { path: '/blogs', label: 'Blog' },
   { path: '/tools', label: 'Free Tools' },
@@ -46,12 +47,18 @@ export default function Navbar() {
         <div className="hidden md:flex items-center gap-1">
           {navLinks.map((link) => {
             const isActive = pathname === link.path;
+            const isAIChat = link.path === '/ai';
             return (
               <Link key={link.path} to={link.path}
                 className={`relative px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${
-                  isActive ? 'text-neon-cyan' : 'text-text-muted hover:text-text-primary hover:bg-white/5'
+                  isActive
+                    ? 'text-neon-cyan'
+                    : isAIChat
+                      ? 'text-neon-cyan/80 hover:text-neon-cyan bg-neon-cyan/5 hover:bg-neon-cyan/10'
+                      : 'text-text-muted hover:text-text-primary hover:bg-white/5'
                 }`}
               >
+                {isAIChat && <span className="mr-1">🧠</span>}
                 {link.label}
                 {isActive && (
                   <motion.span layoutId="nav-indicator" className="absolute bottom-0 left-3 right-3 h-0.5 bg-neon-cyan rounded-full" transition={{ type: 'spring', stiffness: 500, damping: 30 }} />
@@ -90,13 +97,18 @@ export default function Navbar() {
             <div className="bg-background/95 backdrop-blur-xl px-4 py-3 space-y-1">
               {navLinks.map((link) => {
                 const isActive = pathname === link.path;
+                const isAIChat = link.path === '/ai';
                 return (
                   <Link key={link.path} to={link.path}
                     className={`block px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 ${
-                      isActive ? 'bg-neon-cyan/10 text-neon-cyan' : 'text-text-muted hover:bg-white/5 hover:text-text-primary'
+                      isActive
+                        ? 'bg-neon-cyan/10 text-neon-cyan'
+                        : isAIChat
+                          ? 'text-neon-cyan/80 bg-neon-cyan/5'
+                          : 'text-text-muted hover:bg-white/5 hover:text-text-primary'
                     }`}
                   >
-                    {link.label}
+                    {isAIChat && '🧠 '}{link.label}
                   </Link>
                 );
               })}
