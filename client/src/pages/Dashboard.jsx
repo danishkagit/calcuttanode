@@ -1,9 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { Navigate, useParams } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useAuth } from '../context/AuthContext';
 import api from '../utils/api';
-import services from '../data/services';
 import PaymentModal from '../components/dashboard/PaymentModal';
 import ReferralSection from '../components/dashboard/ReferralSection';
 import LoyaltySection from '../components/dashboard/LoyaltySection';
@@ -13,8 +12,6 @@ import WishlistSection from '../components/dashboard/WishlistSection';
 import OrderTracker from '../components/dashboard/OrderTracker';
 import ServiceCertificate from '../components/dashboard/ServiceCertificate';
 import AdminDashboard from '../components/dashboard/AdminDashboard';
-
-const categories = [...new Set(services.map((s) => s.category))];
 
 export default function Dashboard() {
   const { user, loading, logout } = useAuth();
@@ -31,10 +28,19 @@ export default function Dashboard() {
   const [booking, setBooking] = useState(null);
   const [notes, setNotes] = useState('');
   const [placing, setPlacing] = useState(false);
+  const [servicesList, setServicesList] = useState([]);
+
+  const categories = useMemo(() => [...new Set(servicesList.map((s) => s.category))], [servicesList]);
 
   useEffect(() => {
     if (urlSection) setSection(urlSection);
   }, [urlSection]);
+
+  useEffect(() => {
+    api.get('/services')
+      .then((res) => setServicesList(Array.isArray(res.data) ? res.data : []))
+      .catch(() => {});
+  }, []);
 
   useEffect(() => {
     if (!user) return;
@@ -84,7 +90,7 @@ export default function Dashboard() {
     setPlacing(true);
     try {
       await api.post('/dashboard/order', {
-        serviceId: service.id,
+        serviceId: service._id,
         serviceName: service.name,
         price: service.price,
         remoteAccessNotes: notes,
@@ -309,7 +315,7 @@ export default function Dashboard() {
           {section === 'book-service' && (
             <div>
               <h2 className="text-2xl font-bold text-text-primary mb-1">Book a Service</h2>
-              <p className="text-text-muted mb-6">Choose from our {services.length} services</p>
+              <p className="text-text-muted mb-6">Choose from our {servicesList.length} services</p>
               <AnimatePresence>
                 {booking ? (
                   <motion.div key="booking-form" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}>
@@ -344,8 +350,8 @@ export default function Dashboard() {
                       <div key={cat} className="mb-6">
                         <h3 className="text-sm font-semibold text-electric-violet uppercase tracking-wider mb-3">{cat}</h3>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                          {services.filter((s) => s.category === cat).map((s) => (
-                            <button key={s.id} onClick={() => setBooking(s)}
+                          {servicesList.filter((s) => s.category === cat).map((s) => (
+                            <button key={s._id} onClick={() => setBooking(s)}
                               className="text-left p-4 rounded-xl border border-electric-violet/20 bg-background/30 hover:border-neon-cyan/40 transition-all duration-200 group"
                             >
                               <p className="text-text-primary font-medium text-sm group-hover:text-neon-cyan transition-colors">{s.name}</p>

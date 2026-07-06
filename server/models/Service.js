@@ -7,6 +7,7 @@ const serviceSchema = new mongoose.Schema({
   price: { type: Number, required: true },
   features: [{ type: String }],
   isActive: { type: Boolean, default: true },
+  trending: { type: Number, default: 0 },
 }, { timestamps: true });
 
 export default mongoose.model('Service', serviceSchema);
