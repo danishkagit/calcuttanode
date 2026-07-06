@@ -272,13 +272,13 @@ Calcutta Node.AI
           <p className="text-text-muted text-xs mt-1">4 free models · auto-fallback · unlimited chat</p>
         </motion.div>
 
-        <div className="flex items-center gap-2 mb-3 flex-wrap justify-center">
+          <div className="flex items-center gap-2 mb-3 flex-wrap justify-center">
           <div className="relative">
             <motion.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               onClick={() => setShowModels(!showModels)}
-              className="flex items-center gap-1.5 bg-background/70 backdrop-blur-sm border border-electric-violet/20 rounded-xl px-3 py-2 text-xs text-text-primary hover:border-neon-cyan/40 transition-colors"
+              className="flex items-center gap-1.5 bg-background/70 backdrop-blur-sm border border-neon-cyan/30 rounded-xl px-3 py-2 text-xs text-neon-cyan hover:border-neon-cyan/60 transition-colors shadow-lg shadow-neon-cyan/10"
             >
               <motion.span
                 key={selectedModel || 'auto'}
@@ -333,7 +333,7 @@ Calcutta Node.AI
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.95 }}
             onClick={clearChat}
-            className="bg-background/70 backdrop-blur-sm border border-electric-violet/20 rounded-xl px-3 py-2 text-xs text-text-muted hover:text-text-primary transition-colors flex items-center gap-1.5"
+            className="bg-background/70 backdrop-blur-sm border border-neon-cyan/20 rounded-xl px-3 py-2 text-xs text-text-muted hover:text-neon-cyan hover:border-neon-cyan/40 transition-colors flex items-center gap-1.5"
           >
             <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6"/><path d="M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2"/></svg>
             Clear
@@ -375,13 +375,20 @@ Calcutta Node.AI
                   <motion.span
                     key={m.id}
                     whileHover={{ scale: 1.1 }}
-                    className="bg-background/50 border border-electric-violet/20 rounded-lg px-3 py-1.5 cursor-pointer hover:border-neon-cyan/40 transition-colors"
+                    className="bg-background/50 border border-neon-cyan/20 rounded-lg px-3 py-1.5 cursor-pointer hover:border-neon-cyan/60 hover:text-neon-cyan transition-colors"
                     onClick={() => { setSelectedModel(m.id); setShowModels(true); }}
                   >
                     {m.icon} {m.name}
                   </motion.span>
                 ))}
               </div>
+              <motion.p
+                animate={{ opacity: [0.5, 1, 0.5] }}
+                transition={{ duration: 2, repeat: Infinity }}
+                className="text-[11px] text-neon-cyan/70 font-medium mb-3"
+              >
+                ⚡ Try asking something:
+              </motion.p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 max-w-lg mx-auto">
                 {suggestedQuestions.map((q, i) => (
                   <motion.button
@@ -392,7 +399,7 @@ Calcutta Node.AI
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     onClick={() => { setInput(q); inputRef.current?.focus(); }}
-                    className="text-left text-xs bg-background/40 backdrop-blur-sm border border-electric-violet/10 rounded-lg p-3 text-text-muted hover:border-neon-cyan/30 hover:text-text-primary hover:bg-neon-cyan/5 transition-all"
+                    className="text-left text-xs bg-background/40 backdrop-blur-sm border border-neon-cyan/10 rounded-lg p-3 text-text-muted hover:border-neon-cyan/50 hover:text-neon-cyan hover:bg-neon-cyan/10 transition-all shadow-sm hover:shadow-md hover:shadow-neon-cyan/10"
                   >
                     {q}
                   </motion.button>
@@ -549,38 +556,51 @@ Calcutta Node.AI
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-surface/60 backdrop-blur-xl border border-electric-violet/20 rounded-2xl p-1.5 shadow-2xl shadow-black/30 flex items-end gap-1.5"
+          className="relative"
         >
-          <textarea
-            ref={inputRef}
-            value={input}
-            onChange={e => setInput(e.target.value)}
-            onKeyDown={handleKeyDown}
-            placeholder="Ask anything... (Enter to send, Shift+Enter for new line)"
-            rows={1}
-            className="flex-1 bg-transparent border-none px-4 py-2.5 text-text-primary placeholder-text-muted/50 focus:outline-none resize-none text-sm max-h-32 leading-relaxed"
-            style={{ minHeight: '44px' }}
-            disabled={loading}
-          />
-          <motion.button
-            whileHover={{ scale: loading ? 1 : 1.05 }}
-            whileTap={{ scale: loading ? 1 : 0.95 }}
-            onClick={sendMessage}
-            disabled={loading || !input.trim()}
-            className="bg-gradient-to-br from-neon-cyan to-electric-violet text-white p-2.5 rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-neon-cyan/25 disabled:opacity-40 disabled:cursor-not-allowed shrink-0"
+          <motion.div
+            animate={{ boxShadow: ['0 0 15px rgba(46,230,230,0.15)', '0 0 30px rgba(46,230,230,0.3)', '0 0 15px rgba(46,230,230,0.15)'] }}
+            transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
+            className="bg-surface/60 backdrop-blur-xl border-2 border-neon-cyan/40 rounded-2xl p-1.5 shadow-2xl shadow-neon-cyan/20 flex items-end gap-1.5"
           >
-            {loading ? (
-              <svg className="w-5 h-5 animate-spin" viewBox="0 0 24 24" fill="none">
-                <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" className="opacity-25" />
-                <path d="M4 12a8 8 0 018-8" stroke="currentColor" strokeWidth="4" strokeLinecap="round" className="opacity-75" />
-              </svg>
-            ) : (
-              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <line x1="22" y1="2" x2="11" y2="13" />
-                <polygon points="22 2 15 22 11 13 2 9 22 2" />
-              </svg>
-            )}
-          </motion.button>
+            <textarea
+              ref={inputRef}
+              value={input}
+              onChange={e => setInput(e.target.value)}
+              onKeyDown={handleKeyDown}
+              placeholder="Ask anything... (Enter to send, Shift+Enter for new line)"
+              rows={1}
+              className="flex-1 bg-transparent border-none px-4 py-2.5 text-text-primary placeholder-text-muted/50 focus:outline-none resize-none text-sm max-h-32 leading-relaxed"
+              style={{ minHeight: '44px' }}
+              disabled={loading}
+            />
+            <motion.button
+              whileHover={{ scale: loading ? 1 : 1.05 }}
+              whileTap={{ scale: loading ? 1 : 0.95 }}
+              onClick={sendMessage}
+              disabled={loading || !input.trim()}
+              className="bg-gradient-to-br from-neon-cyan to-electric-violet text-white p-2.5 rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-neon-cyan/40 disabled:opacity-40 disabled:cursor-not-allowed shrink-0"
+            >
+              {loading ? (
+                <svg className="w-5 h-5 animate-spin" viewBox="0 0 24 24" fill="none">
+                  <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" className="opacity-25" />
+                  <path d="M4 12a8 8 0 018-8" stroke="currentColor" strokeWidth="4" strokeLinecap="round" className="opacity-75" />
+                </svg>
+              ) : (
+                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <line x1="22" y1="2" x2="11" y2="13" />
+                  <polygon points="22 2 15 22 11 13 2 9 22 2" />
+                </svg>
+              )}
+            </motion.button>
+          </motion.div>
+          <motion.div
+            animate={{ opacity: [0.4, 0.8, 0.4] }}
+            transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+            className="absolute -top-6 left-4 text-[10px] text-neon-cyan font-semibold tracking-wider uppercase"
+          >
+            ✦ AI Chat — Ask anything!
+          </motion.div>
         </motion.div>
 
         <p className="text-center text-[9px] text-text-muted/30 mt-2">
