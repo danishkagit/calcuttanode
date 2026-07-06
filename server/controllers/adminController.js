@@ -396,7 +396,9 @@ export const broadcastNotification = async (req, res) => {
 
 const seedServiceData = [
   { name: 'Website Development', category: 'Website Development', price: 4999, features: ['5-page responsive site', 'Mobile-first design', 'Contact form integration', 'SEO basics setup', '1 month support'], trending: 100 },
+  { name: 'Full Stack Web Development', category: 'Website Development', price: 14999, features: ['Custom frontend & backend', 'Database design (MongoDB/MySQL)', 'REST API development', 'User authentication & sessions', 'Deployment & hosting setup', '3 months support'], trending: 78 },
   { name: 'E-Commerce Store Setup', category: 'Website Development', price: 7999, features: ['Product catalog setup', 'Payment gateway integration', 'Mobile optimized', 'Order management', 'Basic SEO'], trending: 85 },
+  { name: 'Mobile App Development', category: 'App Development', price: 9999, features: ['Android & iOS apps', 'Cross-platform (React Native/Flutter)', 'API & backend integration', 'Push notifications', 'App store deployment assistance', '2 months support'], trending: 92 },
   { name: 'Digital Marketing', category: 'Marketing', price: 2999, features: ['Social media management (1 month)', 'Content calendar', 'Basic analytics & reporting', 'Monthly performance report'], trending: 90 },
   { name: 'SEO Optimization', category: 'Marketing', price: 1999, features: ['On-page SEO audit', 'Keyword research', 'Meta tags optimization', 'Google Search Console setup', 'Monthly report'], trending: 95 },
   { name: 'Performance Marketing', category: 'Marketing', price: 4999, features: ['Google/Facebook ads setup', 'Ad copy & creatives', 'Conversion tracking', 'A/B testing', 'Optimization (2 weeks)'], trending: 70 },

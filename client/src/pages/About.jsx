@@ -23,7 +23,7 @@ const stats = [
   { value: '3+', label: 'Years in Business' },
   { value: '12+', label: 'Clients Served' },
   { value: '36+', label: 'Projects Delivered' },
-  { value: '6', label: 'Service Categories' },
+  { value: '8', label: 'Service Categories' },
   { value: '99%', label: 'Client Satisfaction' },
   { value: '🌐', label: 'Worldwide Reach' },
 ];
