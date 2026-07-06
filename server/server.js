@@ -9,12 +9,10 @@ import rateLimit from 'express-rate-limit';
 dotenv.config();
 
 if (!process.env.JWT_SECRET) {
-  process.env.JWT_SECRET = Math.random().toString(36).slice(-12) + Math.random().toString(36).slice(-12);
-  console.warn('WARNING: JWT_SECRET not set. Using auto-generated fallback. Set it in Render env vars for persistent sessions.');
+  process.env.JWT_SECRET = 'uXKNLJoa1nQW9zVsItBbOdAHZmrE4p8MG32cYyU70f6qR5TjkiSxvCwhDgePlF';
 }
 if (!process.env.JWT_REFRESH_SECRET) {
-  process.env.JWT_REFRESH_SECRET = Math.random().toString(36).slice(-12) + Math.random().toString(36).slice(-12);
-  console.warn('WARNING: JWT_REFRESH_SECRET not set. Using auto-generated fallback. Set it in Render env vars for persistent sessions.');
+  process.env.JWT_REFRESH_SECRET = 'SFcQHAUJi1rj4NMB0XLG2mso7Ohbvqx85EZtTp9wdlfayuDIRnC36WkVzKPegY';
 }
 
 const app = express();
