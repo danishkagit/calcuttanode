@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60">
+  <rect x="6" y="8" width="42" height="44" rx="6" fill="#0B0D11"/>
+  <path d="M20 46V20l18 13-18 13z" fill="#7C3AED"/>
+  <path d="M34 46V20L20 33l14 13z" fill="#6D28D9" opacity="0.6"/>
+  <text x="56" y="36" font-family="Arial, sans-serif" font-weight="600" font-size="22" fill="#0B0D11">Railway</text>
+  <text x="56" y="50" font-family="Arial, sans-serif" font-weight="400" font-size="10" fill="#7C3AED">deploy</text>
+</svg>

@@ -1,89 +1,55 @@
 @import "tailwindcss";
 
-/* ============================================================
-   CALCUTTA NODE — GLOBAL STYLES
-   Brand colors defined here so every page can use them via
-   Tailwind utility classes (bg-brand-cyan, text-brand-violet, etc.)
-   ============================================================ */
-
 @theme {
-  /* Brand palette — dark/glassmorphism theme */
-  --color-brand-cyan: #00F0FF;
-  --color-brand-violet: #8B5CF6;
-  --color-brand-pink: #FF2D6B;
-  --color-brand-bg: #0A0A0F;
-  --color-brand-surface: #1A1A2E;
-  --color-brand-surface-light: #252540;
-  --color-brand-text: #E2E8F0;
-  --color-brand-muted: #94A3B8;
-
-  /* Font families */
-  --font-brand: 'Inter', system-ui, -apple-system, sans-serif;
-}
-
-/* Base resets */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  --color-background: #171A26;
+  --color-surface: #20243363;
+  --color-neon-cyan: #2EE6E6;
+  --color-electric-violet: #8B3DF7;
+  --color-text-primary: #EAF6F6;
+  --color-text-muted: #8B93A7;
 }
 
 html {
   scroll-behavior: smooth;
 }
 
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #171A26; }
+::-webkit-scrollbar-thumb { background: #2EE6E6; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #8B3DF7; }
+
+::selection { background: rgba(46, 230, 230, 0.3); color: #EAF6F6; }
+
 body {
-  font-family: var(--font-brand);
-  background-color: var(--color-brand-bg);
-  color: var(--color-brand-text);
-  min-height: 100vh;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  background: #171A26;
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(46, 230, 230, 0.06) 0%, transparent 100%),
+    radial-gradient(ellipse 50% 40% at 80% 80%, rgba(139, 61, 247, 0.05) 0%, transparent 100%),
+    radial-gradient(ellipse 40% 30% at 20% 60%, rgba(46, 230, 230, 0.03) 0%, transparent 100%);
+  background-attachment: fixed;
 }
 
-/* Glassmorphism utility class — reuse across components */
-.glass {
-  background: rgba(26, 26, 46, 0.7);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+*:focus-visible {
+  outline: 2px solid #2EE6E6;
+  outline-offset: 2px;
 }
 
-/* Gradient text utility */
-.gradient-text {
-  background: linear-gradient(135deg, var(--color-brand-cyan), var(--color-brand-violet), var(--color-brand-pink));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+.bg-brand-gradient {
+  background: linear-gradient(135deg, #2EE6E6 0%, #8B3DF7 100%);
 }
 
-/* Glow effect for buttons / cards */
-.glow-cyan {
-  box-shadow: 0 0 20px rgba(0, 240, 255, 0.3), 0 0 60px rgba(0, 240, 255, 0.1);
+.neon-glow-cyan {
+  text-shadow: 0 0 8px rgba(46, 230, 230, 0.6), 0 0 20px rgba(46, 230, 230, 0.35);
 }
 
-.glow-violet {
-  box-shadow: 0 0 20px rgba(139, 92, 246, 0.3), 0 0 60px rgba(139, 92, 246, 0.1);
+.neon-glow-violet {
+  text-shadow: 0 0 8px rgba(139, 61, 247, 0.6), 0 0 20px rgba(139, 61, 247, 0.35);
 }
 
-.glow-pink {
-  box-shadow: 0 0 20px rgba(255, 45, 107, 0.3), 0 0 60px rgba(255, 45, 107, 0.1);
-}
-
-/* Scrollbar styling for dark theme */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--color-brand-bg);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--color-brand-surface-light);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-brand-violet);
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

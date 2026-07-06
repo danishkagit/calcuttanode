@@ -1,151 +1,73 @@
-import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import { motion } from 'framer-motion'
-import { useAuth } from '../context/AuthContext'
-
-/* ============================================================
-   REGISTER PAGE
-   Name + email + phone + password form → calls AuthContext.register()
-   Redirects to /dashboard on success
-   ============================================================ */
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { useAuth } from '../context/AuthContext';
 
 export default function Register() {
-  const { register } = useAuth()
-  const navigate = useNavigate()
-
-  const [form, setForm] = useState({ name: '', email: '', phone: '', password: '', confirmPassword: '' })
-  const [error, setError] = useState('')
-  const [submitting, setSubmitting] = useState(false)
-
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value })
-  }
+  const [form, setForm] = useState({ name: '', email: '', phone: '', password: '' });
+  const [error, setError] = useState('');
+  const { register } = useAuth();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    setError('')
-
-    // Client-side password match check
-    if (form.password !== form.confirmPassword) {
-      setError('Passwords do not match.')
-      return
-    }
-    if (form.password.length < 8) {
-      setError('Password must be at least 8 characters with uppercase, lowercase, number, and special character.')
-      return
-    }
-
-    setSubmitting(true)
+    e.preventDefault();
     try {
-      await register({ name: form.name, email: form.email, phone: form.phone, password: form.password, confirmPassword: form.confirmPassword })
-      navigate('/dashboard')
+      await register(form);
+      navigate('/dashboard');
     } catch (err) {
-      setError(err.response?.data?.message || 'Registration failed. Please try again.')
-    } finally {
-      setSubmitting(false)
+      setError(err.response?.data?.message || 'Registration failed');
     }
-  }
+  };
 
   return (
-    <div className="min-h-[80vh] flex items-center justify-center px-4">
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="w-full max-w-md"
-      >
-        <div className="glass rounded-2xl p-8">
-          <h1 className="text-2xl font-bold text-center mb-2">
-            Create <span className="gradient-text">Account</span>
-          </h1>
-          <p className="text-brand-muted text-center text-sm mb-8">
-            Join Calcutta Node to access your dashboard
-          </p>
+    <div className="max-w-md mx-auto px-4 py-16">
+      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+        <h1 className="text-3xl font-bold text-center mb-2 bg-gradient-to-r from-neon-cyan to-electric-violet bg-clip-text text-transparent">Create Account</h1>
+        <p className="text-text-muted text-center text-sm mb-8">Join Calcutta Node. today</p>
 
+        <div className="rounded-2xl p-8 border border-electric-violet/20 bg-gradient-to-b from-surface/80 to-surface/30 backdrop-blur-sm">
           {error && (
-            <div className="mb-4 p-3 rounded-lg bg-red-500/10 text-red-400 border border-red-500/20 text-sm">
-              {error}
-            </div>
+            <motion.div className="bg-red-500/10 border border-red-500/30 rounded-lg px-4 py-2 mb-4" initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }}>
+              <p className="text-red-400 text-sm text-center">{error}</p>
+            </motion.div>
           )}
-
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="block text-sm text-brand-muted mb-1">Full Name</label>
-              <input
-                type="text"
-                name="name"
-                value={form.name}
-                onChange={handleChange}
-                required
-                className="w-full px-4 py-3 bg-brand-bg border border-white/10 rounded-xl text-brand-text focus:border-brand-cyan focus:outline-none transition-colors"
-                placeholder="Your name"
+              <label className="text-sm text-text-muted mb-1 block">Full Name</label>
+              <input type="text" placeholder="John Doe" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} required
+                className="w-full bg-background border border-electric-violet/20 rounded-lg px-4 py-2.5 text-text-primary placeholder-text-muted focus:outline-none focus:border-neon-cyan transition-colors"
               />
             </div>
             <div>
-              <label className="block text-sm text-brand-muted mb-1">Email</label>
-              <input
-                type="email"
-                name="email"
-                value={form.email}
-                onChange={handleChange}
-                required
-                className="w-full px-4 py-3 bg-brand-bg border border-white/10 rounded-xl text-brand-text focus:border-brand-cyan focus:outline-none transition-colors"
-                placeholder="you@example.com"
+              <label className="text-sm text-text-muted mb-1 block">Email</label>
+              <input type="email" placeholder="you@example.com" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} required
+                className="w-full bg-background border border-electric-violet/20 rounded-lg px-4 py-2.5 text-text-primary placeholder-text-muted focus:outline-none focus:border-neon-cyan transition-colors"
               />
             </div>
             <div>
-              <label className="block text-sm text-brand-muted mb-1">Phone</label>
-              <input
-                type="tel"
-                name="phone"
-                value={form.phone}
-                onChange={handleChange}
-                className="w-full px-4 py-3 bg-brand-bg border border-white/10 rounded-xl text-brand-text focus:border-brand-cyan focus:outline-none transition-colors"
-                placeholder="+91 98765 43210"
+              <label className="text-sm text-text-muted mb-1 block">Phone</label>
+              <input type="tel" placeholder="+91 98765 43210" value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} required
+                className="w-full bg-background border border-electric-violet/20 rounded-lg px-4 py-2.5 text-text-primary placeholder-text-muted focus:outline-none focus:border-neon-cyan transition-colors"
               />
             </div>
             <div>
-              <label className="block text-sm text-brand-muted mb-1">Password</label>
-              <input
-                type="password"
-                name="password"
-                value={form.password}
-                onChange={handleChange}
-                required
-                minLength={6}
-                className="w-full px-4 py-3 bg-brand-bg border border-white/10 rounded-xl text-brand-text focus:border-brand-cyan focus:outline-none transition-colors"
-                placeholder="Min 6 characters"
+              <label className="text-sm text-text-muted mb-1 block">Password</label>
+              <input type="password" placeholder="••••••••" value={form.password} onChange={(e) => setForm({ ...form, password: e.target.value })} required
+                className="w-full bg-background border border-electric-violet/20 rounded-lg px-4 py-2.5 text-text-primary placeholder-text-muted focus:outline-none focus:border-neon-cyan transition-colors"
               />
             </div>
-            <div>
-              <label className="block text-sm text-brand-muted mb-1">Confirm Password</label>
-              <input
-                type="password"
-                name="confirmPassword"
-                value={form.confirmPassword}
-                onChange={handleChange}
-                required
-                className="w-full px-4 py-3 bg-brand-bg border border-white/10 rounded-xl text-brand-text focus:border-brand-cyan focus:outline-none transition-colors"
-                placeholder="Re-enter password"
-              />
-            </div>
-            <button
-              type="submit"
-              disabled={submitting}
-              className="w-full py-3 bg-brand-violet text-white font-semibold rounded-xl hover:glow-violet transition-all duration-300 disabled:opacity-50"
+            <button type="submit"
+              className="w-full bg-brand-gradient text-white py-2.5 rounded-lg font-medium transition-all duration-200 hover:shadow-lg hover:shadow-neon-cyan/20 hover:scale-[1.02] active:scale-[0.98]"
             >
-              {submitting ? 'Creating account...' : 'Create Account'}
+              Create Account
             </button>
           </form>
-
-          <p className="text-center text-sm text-brand-muted mt-6">
+          <p className="text-text-muted text-sm text-center mt-6">
             Already have an account?{' '}
-            <Link to="/login" className="text-brand-cyan hover:underline">
-              Sign In
-            </Link>
+            <Link to="/login" className="text-neon-cyan hover:text-neon-cyan/80 transition-colors font-medium">Sign in</Link>
           </p>
         </div>
       </motion.div>
     </div>
-  )
+  );
 }

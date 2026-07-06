@@ -1,137 +1,82 @@
-import { motion } from 'framer-motion'
-import { companyInfo } from '../data/companyInfo'
+import { motion } from 'framer-motion';
+import companyInfo from '../data/companyInfo';
 
-/* ============================================================
-   ABOUT PAGE
-   Sections: Company story, mission, founder, timeline
-   ============================================================ */
+const fadeUp = { initial: { opacity: 0, y: 30 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, margin: '-50px' }, transition: { duration: 0.5 } };
 
-const timeline = [
-  { year: '2020', title: 'Founded', desc: 'Calcutta Node started as a freelance web dev shop.' },
-  { year: '2021', title: 'First Major Client', desc: 'Delivered enterprise SaaS for a fintech startup.' },
-  { year: '2022', title: 'Team Grew', desc: 'Expanded to 10+ members across design, dev, and marketing.' },
-  { year: '2023', title: 'AI Integration', desc: 'Started offering AI automation and chatbot services.' },
-  { year: '2024', title: 'Global Clients', desc: 'Now serving clients across 10+ countries.' },
-]
+const milestones = [
+  { year: 'Founded', text: 'Started operations in Champdani, Hooghly with a mission to make IT services accessible.' },
+  { year: 'Growth', text: 'Expanded across 6 service categories — from web development to digital marketing.' },
+  { year: 'Today', text: 'Trusted by 12+ clients with 36+ successful projects delivered.' },
+];
 
 export default function About() {
   return (
-    <div className="max-w-6xl mx-auto px-4 py-20">
-      {/* Header */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="text-center mb-16"
-      >
-        <h1 className="text-4xl sm:text-5xl font-bold mb-4">
-          About <span className="gradient-text">Calcutta Node</span>
-        </h1>
-        <p className="text-brand-muted max-w-2xl mx-auto text-lg">
-          We are a team of developers, designers, and strategists building
-          digital products that make a difference.
-        </p>
+    <div className="max-w-5xl mx-auto px-4 py-12">
+      <motion.div className="text-center mb-12" initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+        <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-neon-cyan to-electric-violet bg-clip-text text-transparent mb-4">About Calcutta Node.</h1>
+        <p className="text-lg text-text-muted max-w-2xl mx-auto">IT Services & Digital Growth Agency based in Champdani, Hooghly, West Bengal</p>
       </motion.div>
 
-      {/* Company Story */}
-      <motion.section
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="glass rounded-2xl p-8 mb-12"
-      >
-        <h2 className="text-2xl font-bold mb-4">Our Story</h2>
-        <p className="text-brand-muted leading-relaxed mb-4">
-          {companyInfo?.story ||
-            'Calcutta Node was born from a passion for technology and a desire to make quality IT services accessible to businesses of all sizes. Based in Kolkata, India, we combine local talent with global standards.'}
-        </p>
-        <p className="text-brand-muted leading-relaxed">
-          {companyInfo?.storyContinued ||
-            'What started as a one-person freelance operation has grown into a full-service IT agency, delivering projects across web development, mobile apps, AI automation, and digital marketing.'}
-        </p>
-      </motion.section>
-
-      {/* Mission */}
-      <motion.section
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="glass rounded-2xl p-8 mb-12"
-      >
-        <h2 className="text-2xl font-bold mb-4">Our Mission</h2>
-        <p className="text-brand-muted leading-relaxed">
-          {companyInfo?.mission ||
-            'To empower businesses with cutting-edge technology solutions that drive growth, efficiency, and innovation. We believe great software should be accessible, not exclusive.'}
-        </p>
-      </motion.section>
-
-      {/* Founder */}
-      <motion.section
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="glass rounded-2xl p-8 mb-12"
-      >
-        <h2 className="text-2xl font-bold mb-4">Meet the Founder</h2>
-        <div className="flex flex-col sm:flex-row items-center gap-6">
-          {/* Placeholder avatar */}
-          <div className="w-24 h-24 rounded-full bg-brand-violet/20 flex items-center justify-center text-3xl font-bold text-brand-violet">
-            {companyInfo?.founderInitials || 'DS'}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+        <motion.div className="rounded-2xl p-6 border border-electric-violet/20 bg-gradient-to-b from-surface/80 to-surface/30" {...fadeUp}>
+          <div className="w-12 h-12 rounded-xl bg-neon-cyan/10 flex items-center justify-center mb-4">
+            <svg className="w-6 h-6 text-neon-cyan" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
           </div>
-          <div>
-            <h3 className="text-xl font-semibold mb-1">
-              {companyInfo?.founderName || 'Danish Shoaib'}
-            </h3>
-            <p className="text-brand-cyan text-sm mb-2">Founder & Lead Developer</p>
-            <p className="text-brand-muted text-sm leading-relaxed">
-              {companyInfo?.founderBio ||
-                'Full-stack developer with 5+ years of experience building web apps, mobile apps, and AI solutions. Passionate about clean code and scalable architecture.'}
-            </p>
+          <h2 className="text-xl font-bold text-text-primary mb-3">Who We Are</h2>
+          <p className="text-text-muted leading-relaxed">
+            Calcutta Node. is an IT services and digital growth agency. We provide remote IT support, data recovery, web development,
+            UI/UX design, graphics design, digital marketing, performance marketing, and technical troubleshooting services.
+          </p>
+        </motion.div>
+
+        <motion.div className="rounded-2xl p-6 border border-electric-violet/20 bg-gradient-to-b from-surface/80 to-surface/30" {...fadeUp} transition={{ duration: 0.5, delay: 0.1 }}>
+          <div className="w-12 h-12 rounded-xl bg-electric-violet/10 flex items-center justify-center mb-4">
+            <svg className="w-6 h-6 text-electric-violet" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          </div>
+          <h2 className="text-xl font-bold text-text-primary mb-3">Our Mission</h2>
+          <p className="text-text-muted leading-relaxed">
+            Founded by <span className="text-neon-cyan font-medium">Danish Shoaib</span>, our mission is to make professional IT support
+            and digital services accessible and affordable for everyone — from individuals to growing businesses.
+          </p>
+        </motion.div>
+      </div>
+
+      <motion.div className="mb-12" {...fadeUp}>
+        <h2 className="text-2xl font-bold text-text-primary mb-6 border-l-4 border-neon-cyan pl-4">Our Journey</h2>
+        <div className="space-y-4">
+          {milestones.map((m, i) => (
+            <motion.div key={m.year}
+              className="flex items-start gap-4 p-4 rounded-xl border border-electric-violet/10 bg-surface/30"
+              initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: i * 0.1 }}
+            >
+              <span className="shrink-0 w-20 text-sm font-bold text-neon-cyan pt-0.5">{m.year}</span>
+              <div className="w-px self-stretch bg-electric-violet/20" />
+              <p className="text-text-muted text-sm leading-relaxed">{m.text}</p>
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
+
+      <motion.div className="rounded-2xl p-6 border border-electric-violet/20 bg-gradient-to-b from-surface/80 to-surface/30" {...fadeUp}>
+        <h2 className="text-xl font-bold text-text-primary mb-4 flex items-center gap-2">
+          <svg className="w-5 h-5 text-neon-cyan" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Contact Information
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm">
+          <div className="p-3 rounded-lg bg-white/5 border border-electric-violet/10">
+            <p className="text-text-muted mb-1">Address</p>
+            <p className="text-text-primary">{companyInfo.address}</p>
+          </div>
+          <div className="p-3 rounded-lg bg-white/5 border border-electric-violet/10">
+            <p className="text-text-muted mb-1">Email</p>
+            <p className="text-text-primary">{companyInfo.email}</p>
+          </div>
+          <div className="p-3 rounded-lg bg-white/5 border border-electric-violet/10">
+            <p className="text-text-muted mb-1">Phone</p>
+            <p className="text-text-primary">{companyInfo.phone}</p>
           </div>
         </div>
-      </motion.section>
-
-      {/* Timeline */}
-      <motion.section
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-      >
-        <h2 className="text-2xl font-bold mb-8 text-center">Our Journey</h2>
-        <div className="relative">
-          {/* Vertical line */}
-          <div className="absolute left-4 sm:left-1/2 top-0 bottom-0 w-px bg-brand-violet/30" />
-          <div className="space-y-8">
-            {timeline.map((item, i) => (
-              <motion.div
-                key={item.year}
-                initial={{ opacity: 0, x: i % 2 === 0 ? -30 : 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.1 }}
-                className={`relative flex items-center ${
-                  i % 2 === 0 ? 'sm:flex-row' : 'sm:flex-row-reverse'
-                }`}
-              >
-                {/* Dot on timeline */}
-                <div className="absolute left-4 sm:left-1/2 w-3 h-3 bg-brand-cyan rounded-full -translate-x-1/2 z-10" />
-                {/* Content card */}
-                <div className={`ml-10 sm:ml-0 sm:w-5/12 ${i % 2 === 0 ? 'sm:pr-8 sm:text-right' : 'sm:pl-8'}`}>
-                  <div className="glass rounded-xl p-4">
-                    <span className="text-brand-cyan text-sm font-semibold">{item.year}</span>
-                    <h3 className="font-semibold mt-1">{item.title}</h3>
-                    <p className="text-brand-muted text-sm mt-1">{item.desc}</p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </motion.section>
+      </motion.div>
     </div>
-  )
+  );
 }

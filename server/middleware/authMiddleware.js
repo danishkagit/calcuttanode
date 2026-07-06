@@ -1,173 +1,30 @@
-/**
- * Authentication Middleware
- * Verifies JWT access token and attaches user to request
- * Protects routes that require authentication
- */
+import jwt from 'jsonwebtoken';
+import User from '../models/User.js';
 
-const User = require('../models/User');
-const { verifyAccessToken } = require('../utils/generateToken');
-
-/**
- * Main authentication middleware
- * Verifies access token from Authorization header
- * Attaches user document to req.user if valid
- * 
- * @param {Request} req - Express request object
- * @param {Response} res - Express response object
- * @param {Function} next - Next middleware function
- */
-const authMiddleware = async (req, res, next) => {
+export const protect = async (req, res, next) => {
   try {
-    // Get token from Authorization header
-    const authHeader = req.headers.authorization;
-
-    if (!authHeader || !authHeader.startsWith('Bearer ')) {
-      return res.status(401).json({
-        success: false,
-        message: 'Authentication required. No token provided.',
-      });
+    let token;
+    if (req.headers.authorization?.startsWith('Bearer')) {
+      token = req.headers.authorization.split(' ')[1];
     }
-
-    // Extract token from "Bearer <token>"
-    const token = authHeader.split(' ')[1];
-
     if (!token) {
-      return res.status(401).json({
-        success: false,
-        message: 'Authentication required. Invalid token format.',
-      });
+      return res.status(401).json({ message: 'Not authorized, no token' });
     }
-
-    // Verify token
-    const decoded = verifyAccessToken(token);
-
-    if (!decoded) {
-      return res.status(401).json({
-        success: false,
-        message: 'Invalid or expired token. Please log in again.',
-      });
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    req.user = await User.findById(decoded.id).select('-password');
+    if (!req.user) {
+      return res.status(401).json({ message: 'User not found' });
     }
-
-    // Find user by ID (excluding password hash)
-    const user = await User.findById(decoded.userId).select('-passwordHash');
-
-    if (!user) {
-      return res.status(401).json({
-        success: false,
-        message: 'User not found. Token may be invalid.',
-      });
-    }
-
-    // Attach user to request object
-    req.user = user;
-    req.token = token;
-
     next();
   } catch (error) {
-    console.error('Auth middleware error:', error);
-    res.status(500).json({
-      success: false,
-      message: 'Authentication failed. Please try again.',
-    });
+    return res.status(401).json({ message: 'Not authorized, token failed' });
   }
 };
 
-/**
- * Optional authentication middleware
- * Attaches user if token is valid, but doesn't reject if missing
- * Useful for routes that work for both authenticated and anonymous users
- * 
- * @param {Request} req - Express request object
- * @param {Response} res - Express response object
- * @param {Function} next - Next middleware function
- */
-const optionalAuth = async (req, res, next) => {
-  try {
-    const authHeader = req.headers.authorization;
-
-    if (!authHeader || !authHeader.startsWith('Bearer ')) {
-      return next(); // Continue without user
-    }
-
-    const token = authHeader.split(' ')[1];
-
-    if (!token) {
-      return next();
-    }
-
-    const decoded = verifyAccessToken(token);
-
-    if (!decoded) {
-      return next();
-    }
-
-    const user = await User.findById(decoded.userId).select('-passwordHash');
-
-    if (user) {
-      req.user = user;
-      req.token = token;
-    }
-
+export const admin = (req, res, next) => {
+  if (req.user && req.user.role === 'admin') {
     next();
-  } catch (error) {
-    // Silently continue without user on error
-    next();
+  } else {
+    return res.status(403).json({ message: 'Admin access required' });
   }
-};
-
-/**
- * Admin-only middleware
- * Requires authentication AND admin role
- * 
- * @param {Request} req - Express request object
- * @param {Response} res - Express response object
- * @param {Function} next - Next middleware function
- */
-const adminMiddleware = async (req, res, next) => {
-  try {
-    // First run standard auth
-    await new Promise((resolve, reject) => {
-      authMiddleware(req, res, (err) => {
-        if (err) reject(err);
-        else resolve();
-      });
-    });
-
-    // Check if user is admin
-    if (req.user.role !== 'admin') {
-      return res.status(403).json({
-        success: false,
-        message: 'Access denied. Admin privileges required.',
-      });
-    }
-
-    next();
-  } catch (error) {
-    res.status(401).json({
-      success: false,
-      message: 'Authentication required.',
-    });
-  }
-};
-
-/**
- * Rate limiter for auth endpoints
- * More restrictive limits for login/register to prevent brute force
- */
-const authRateLimit = {
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 10, // Limit each IP to 10 requests per window
-  message: {
-    success: false,
-    message: 'Too many authentication attempts. Please try again later.',
-  },
-  standardHeaders: true,
-  legacyHeaders: false,
-};
-
-module.exports = {
-  authMiddleware,
-  optionalAuth,
-  adminMiddleware,
-  authRateLimit,
 };

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60">
+  <path d="M24 20L12 30l12 10" fill="none" stroke="#00A651" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M36 20l12 10-12 10" fill="none" stroke="#003323" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="56" y="38" font-family="Arial, sans-serif" font-weight="700" font-size="24" fill="#003323">Pine</text>
+  <text x="100" y="38" font-family="Arial, sans-serif" font-weight="300" font-size="24" fill="#00A651">Labs</text>
+</svg>

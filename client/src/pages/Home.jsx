@@ -1,187 +1,104 @@
-import { motion } from 'framer-motion'
-import { Link } from 'react-router-dom'
-import { services } from '../data/services'
+import { motion } from 'framer-motion';
+import services from '../data/services';
+import companyInfo from '../data/companyInfo';
 
-/* ============================================================
-   HOME PAGE
-   Sections:
-   1. Hero — animated headline + CTA buttons
-   2. Services Grid — 12 service cards
-   3. Trust / Social proof — reviews placeholder
-   4. Final CTA
-   ============================================================ */
+const categories = [...new Set(services.map((s) => s.category))];
 
-/* --- Hero Section ------------------------------------------- */
-function Hero() {
-  return (
-    <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden px-4">
-      {/* Animated background gradient blobs */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-brand-cyan/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-brand-violet/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-brand-pink/10 rounded-full blur-3xl animate-pulse" />
-      </div>
+const fadeUp = { initial: { opacity: 0, y: 30 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, margin: '-50px' }, transition: { duration: 0.5 } };
 
-      <div className="relative z-10 max-w-5xl mx-auto text-center">
-        {/* Main headline — animated on mount */}
-        <motion.h1
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: 'easeOut' }}
-          className="text-4xl sm:text-5xl md:text-7xl font-bold leading-tight mb-6"
-        >
-          We Build{' '}
-          <span className="gradient-text">Digital Solutions</span>
-          <br />
-          That Scale
-        </motion.h1>
+const stats = [
+  { value: '12+', label: 'Clients' },
+  { value: '36+', label: 'Projects' },
+  { value: '6', label: 'Service Categories' },
+  { value: '99%', label: 'Satisfaction' },
+];
 
-        {/* Sub-headline */}
-        <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
-          className="text-lg sm:text-xl text-brand-muted max-w-2xl mx-auto mb-10"
-        >
-          From web development to AI automation — Calcutta Node delivers
-          end-to-end IT services for startups and enterprises.
-        </motion.p>
-
-        {/* CTA buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center"
-        >
-          <Link
-            to="/pricing"
-            className="px-8 py-4 bg-brand-cyan text-brand-bg font-semibold rounded-xl hover:glow-cyan transition-all duration-300 text-lg"
-          >
-            View Pricing
-          </Link>
-          <Link
-            to="/contact"
-            className="px-8 py-4 border border-brand-violet text-brand-violet font-semibold rounded-xl hover:bg-brand-violet/10 transition-all duration-300 text-lg"
-          >
-            Book a Session
-          </Link>
-        </motion.div>
-      </div>
-    </section>
-  )
-}
-
-/* --- Services Grid ------------------------------------------ */
-function ServicesGrid() {
-  return (
-    <section className="py-20 px-4">
-      <div className="max-w-7xl mx-auto">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-3xl sm:text-4xl font-bold text-center mb-4"
-        >
-          Our <span className="gradient-text">Services</span>
-        </motion.h2>
-        <p className="text-brand-muted text-center mb-12 max-w-xl mx-auto">
-          Full-stack IT solutions — from design to deployment.
-        </p>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {services.map((service, i) => (
-            <motion.div
-              key={service.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.05 }}
-              className="glass rounded-2xl p-6 hover:border-brand-cyan/30 transition-all duration-300 group cursor-pointer"
-            >
-              {/* Service icon placeholder — emoji for now */}
-              <div className="text-4xl mb-4 group-hover:scale-110 transition-transform">
-                {service.icon || '⚡'}
-              </div>
-              <h3 className="text-lg font-semibold mb-2 text-brand-text group-hover:text-brand-cyan transition-colors">
-                {service.name}
-              </h3>
-              <p className="text-sm text-brand-muted leading-relaxed">
-                {service.shortDescription || service.description?.slice(0, 100) + '...'}
-              </p>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
-  )
-}
-
-/* --- Trust / CTA Section ------------------------------------ */
-function TrustSection() {
-  const stats = [
-    { label: 'Projects Delivered', value: '50+' },
-    { label: 'Happy Clients', value: '30+' },
-    { label: 'Years Experience', value: '5+' },
-    { label: 'Team Members', value: '10+' },
-  ]
-
-  return (
-    <section className="py-20 px-4">
-      <div className="max-w-6xl mx-auto">
-        {/* Stats row */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
-          {stats.map((stat, i) => (
-            <motion.div
-              key={stat.label}
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.1 }}
-              className="text-center"
-            >
-              <div className="text-3xl sm:text-4xl font-bold gradient-text mb-2">
-                {stat.value}
-              </div>
-              <div className="text-brand-muted text-sm">{stat.label}</div>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Final CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="glass rounded-3xl p-8 sm:p-12 text-center"
-        >
-          <h2 className="text-2xl sm:text-3xl font-bold mb-4">
-            Ready to Start Your Project?
-          </h2>
-          <p className="text-brand-muted max-w-lg mx-auto mb-8">
-            Get a free consultation and quote within 24 hours.
-          </p>
-          <Link
-            to="/contact"
-            className="inline-block px-8 py-4 bg-brand-violet text-white font-semibold rounded-xl hover:glow-violet transition-all duration-300 text-lg"
-          >
-            Get in Touch
-          </Link>
-        </motion.div>
-      </div>
-    </section>
-  )
-}
-
-/* --- HOME PAGE COMPOSITE ------------------------------------ */
 export default function Home() {
   return (
     <div>
-      <Hero />
-      <ServicesGrid />
-      <TrustSection />
+      <section className="relative overflow-hidden py-24 px-4 text-center">
+        <div className="absolute inset-0 bg-gradient-to-b from-neon-cyan/5 via-transparent to-transparent pointer-events-none" />
+        <motion.div className="max-w-4xl mx-auto relative" initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+          <motion.h1 className="text-5xl md:text-7xl font-bold text-neon-cyan neon-glow-cyan mb-4"
+            initial={{ scale: 0.9 }} animate={{ scale: 1 }} transition={{ duration: 0.5, delay: 0.1 }}
+          >
+            Calcutta Node.
+          </motion.h1>
+          <p className="text-xl md:text-2xl text-text-muted mb-2">IT Services & Digital Growth Agency</p>
+          <p className="text-text-muted mb-10 max-w-lg mx-auto">{companyInfo.address}</p>
+          <div className="flex gap-4 justify-center flex-wrap">
+            <a href="/pricing" className="bg-brand-gradient text-white px-8 py-3 rounded-xl font-medium transition-all duration-200 hover:shadow-lg hover:shadow-neon-cyan/20 hover:scale-105 active:scale-95">
+              View Pricing
+            </a>
+            <a href="/contact" className="border border-neon-cyan text-neon-cyan px-8 py-3 rounded-xl font-medium transition-all duration-200 hover:bg-neon-cyan/10 hover:shadow-lg hover:shadow-neon-cyan/10">
+              Contact Us
+            </a>
+          </div>
+        </motion.div>
+      </section>
+
+      <motion.section className="py-12 px-4" {...fadeUp}>
+        <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6">
+          {stats.map((stat, i) => (
+            <motion.div key={stat.label} className="text-center p-6 rounded-2xl bg-surface/50 border border-electric-violet/10"
+              initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: i * 0.1 }}
+            >
+              <p className="text-3xl md:text-4xl font-bold text-neon-cyan neon-glow-cyan mb-1">{stat.value}</p>
+              <p className="text-sm text-text-muted">{stat.label}</p>
+            </motion.div>
+          ))}
+        </div>
+      </motion.section>
+
+      {categories.map((category) => (
+        <section key={category} className="py-12 px-4">
+          <div className="max-w-7xl mx-auto">
+            <motion.h2 className="text-2xl font-bold text-text-primary mb-6 border-l-4 border-neon-cyan pl-4 flex items-center gap-3" {...fadeUp}>
+              {category}
+              <span className="text-sm font-normal text-text-muted">({services.filter((s) => s.category === category).length} services)</span>
+            </motion.h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {services.filter((s) => s.category === category).map((service, i) => (
+                <motion.div key={service.id}
+                  className="group relative rounded-2xl p-6 border border-electric-violet/20 bg-gradient-to-b from-surface/80 to-surface/30 hover:border-neon-cyan/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-neon-cyan/5"
+                  initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: i * 0.08 }}
+                >
+                  <h3 className="text-text-primary font-semibold mb-2 group-hover:text-neon-cyan transition-colors">{service.name}</h3>
+                  <p className="text-2xl font-bold text-neon-cyan mb-3">₹{service.price}</p>
+                  <ul className="space-y-1.5">
+                    {service.features.map((f, j) => (
+                      <li key={j} className="text-text-muted text-sm flex items-center gap-2">
+                        <svg className="w-3.5 h-3.5 shrink-0 text-electric-violet" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                          <polyline points="20 6 9 17 4 12"/>
+                        </svg>
+                        {f}
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+      ))}
+
+      <motion.section className="py-16 px-4" {...fadeUp}>
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="text-2xl font-bold text-text-primary mb-8">What Our Clients Say</h2>
+          <div className="relative rounded-2xl p-8 border border-electric-violet/20 bg-gradient-to-b from-surface/80 to-surface/30">
+            <svg className="w-8 h-8 text-neon-cyan/30 mb-4 mx-auto" viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10H14.017zM0 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151C7.546 6.068 5.983 8.789 5.983 11H10v10H0z"/></svg>
+            <p className="text-text-muted italic text-lg leading-relaxed mb-4">
+              "Calcutta Node. transformed our online presence. Professional service, quick turnaround, and exceptional support. Highly recommended for any business looking to grow digitally."
+            </p>
+            <div className="flex items-center justify-center gap-1 text-yellow-400 mb-3">
+              {[...Array(5)].map((_, i) => (
+                <svg key={i} className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              ))}
+            </div>
+            <p className="text-neon-cyan font-medium">— Client (placeholder)</p>
+          </div>
+        </div>
+      </motion.section>
     </div>
-  )
+  );
 }
