@@ -76,6 +76,9 @@ export const googleLogin = async (req, res) => {
     if (!credential) {
       return res.status(400).json({ message: 'Google credential required' });
     }
+    if (!process.env.GOOGLE_CLIENT_ID) {
+      return res.status(500).json({ message: 'Google OAuth is not configured' });
+    }
     const { OAuth2Client } = await import('google-auth-library');
     const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
     const ticket = await client.verifyIdToken({

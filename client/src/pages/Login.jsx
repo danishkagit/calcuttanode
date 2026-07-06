@@ -4,6 +4,8 @@ import { motion } from 'framer-motion';
 import { useAuth } from '../context/AuthContext';
 import api from '../utils/api';
 
+const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID || '';
+
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -13,10 +15,11 @@ export default function Login() {
   const btnRef = useRef(null);
 
   useEffect(() => {
+    if (!GOOGLE_CLIENT_ID) return;
     const initGSI = () => {
       if (!window.google || !btnRef.current) return;
       window.google.accounts.id.initialize({
-        client_id: import.meta.env.VITE_GOOGLE_CLIENT_ID || '',
+        client_id: GOOGLE_CLIENT_ID,
         callback: async (response) => {
           try {
             const { data } = await api.post('/auth/google', { credential: response.credential });
@@ -85,7 +88,7 @@ export default function Login() {
             <hr className="flex-1 border-electric-violet/20" />
           </div>
 
-          <div ref={btnRef} className="flex justify-center"></div>
+          {GOOGLE_CLIENT_ID && <div ref={btnRef} className="flex justify-center"></div>}
 
           <p className="text-text-muted text-sm text-center mt-6">
             Don't have an account?{' '}

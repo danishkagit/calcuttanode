@@ -6,3 +6,6 @@ server/uploads/*
 *.log
 *.err
 .DS_Store
+
+Google OAuth Client ID.json
+Twillio Sendgrid.txt
