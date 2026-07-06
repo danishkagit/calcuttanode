@@ -1,19 +1,40 @@
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import companyInfo from '../data/companyInfo';
 import ParticleField from '../components/common/ParticleField';
 
 const fadeUp = { initial: { opacity: 0, y: 30 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, margin: '-50px' }, transition: { duration: 0.5 } };
 
 const milestones = [
-  { year: '2023', title: 'Founded', text: 'Started operations in Champdani, Hooghly with a mission to make IT services accessible.', icon: '🚀' },
-  { year: '2024', title: 'Growth', text: 'Expanded across 6 service categories — from web development to digital marketing.', icon: '📈' },
-  { year: '2025', title: 'Today', text: 'Trusted by 12+ clients with 36+ successful projects delivered and a growing team.', icon: '🏆' },
+  { year: '2023', title: 'Founded', text: 'Danish Shoaib started Calcutta Node. from Champdani, Hooghly with a simple mission: make professional IT support accessible and affordable for everyone in West Bengal.', icon: '🚀' },
+  { year: '2024', title: 'Expansion', text: 'Grew to 6 service categories — from web development and design to digital marketing and data recovery. Crossed 12+ clients and 36+ successful projects.', icon: '📈' },
+  { year: '2025', title: 'Digital Transformation', text: 'Launched digital products store, membership subscriptions, AI chat support, and a full-featured client dashboard with wallet, referrals, and loyalty rewards.', icon: '🏆' },
+  { year: '2026', title: 'AI-Powered Future', text: 'Introducing Bengali-first support, AI-assisted troubleshooting, local business digital packages, and same-day response guarantee for all premium clients.', icon: '🌟' },
 ];
 
 const values = [
-  { icon: 'M9 12l2 2 4-4', title: 'Quality First', desc: 'We never compromise on quality. Every project meets our rigorous standards.' },
-  { icon: 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z', title: 'On-Time Delivery', desc: 'We respect your deadlines. Our track record speaks for itself.' },
-  { icon: 'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0', title: 'Client First', desc: 'Your success is our success. We build relationships, not just projects.' },
+  { icon: 'M9 12l2 2 4-4', title: 'Quality First', desc: 'We never compromise on quality. Every project meets our rigorous standards before delivery.' },
+  { icon: 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z', title: 'On-Time Delivery', desc: 'We respect your deadlines. Our track record of on-time delivery speaks for itself.' },
+  { icon: 'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0', title: 'Client First', desc: 'Your success is our success. We build lasting relationships, not just one-time projects.' },
+  { icon: 'M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z', title: 'Trust & Security', desc: 'We use encrypted tools and follow industry best practices. Your data and privacy are always protected.' },
+];
+
+const stats = [
+  { value: '3+', label: 'Years in Business' },
+  { value: '12+', label: 'Clients Served' },
+  { value: '36+', label: 'Projects Delivered' },
+  { value: '6', label: 'Service Categories' },
+  { value: '99%', label: 'Client Satisfaction' },
+  { value: '🎯', label: 'Bengali Support' },
+];
+
+const whyUs2026 = [
+  { emoji: '🤖', title: 'AI-Assisted Support', desc: 'Our AI chat handles common queries instantly. For complex issues, human experts step in — you get the best of both worlds.' },
+  { emoji: '🌐', title: 'Bengali & English', desc: 'We communicate in your language. Bengali support makes tech accessible to shop owners, students, and professionals alike.' },
+  { emoji: '💰', title: 'Affordable & Transparent', desc: 'No hidden fees. Clear pricing upfront. Pay via UPI, card, or our in-app wallet with loyalty rewards.' },
+  { emoji: '⚡', title: 'Remote + On-Site', desc: 'Most issues solved remotely in under 24 hours. On-site visits available for local clients in Champdani, Hooghly, and nearby areas.' },
+  { emoji: '📱', title: 'Full Client Dashboard', desc: 'Track orders, manage subscriptions, view transactions, earn referral rewards — all from your personal dashboard.' },
+  { emoji: '🔒', title: 'Secure & Private', desc: 'Encrypted connections, secure payments via Razorpay, and strict data privacy. Your information stays yours.' },
 ];
 
 export default function About() {
@@ -42,13 +63,13 @@ export default function About() {
               icon: 'M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2',
               icon2: 'M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75',
               title: 'Who We Are',
-              text: 'Calcutta Node. is an IT services and digital growth agency. We provide remote IT support, data recovery, web development, UI/UX design, graphics design, digital marketing, performance marketing, and technical troubleshooting services.',
+              text: 'Calcutta Node. is an IT services and digital growth agency based in Champdani, Hooghly, West Bengal. We provide remote IT support, web development, UI/UX and graphics design, digital marketing, data recovery, and technical troubleshooting — all at affordable, transparent prices.',
               color: 'neon-cyan',
             },
             {
               icon: 'M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z',
               title: 'Our Mission',
-              text: 'Founded by Danish Shoaib, our mission is to make professional IT support and digital services accessible and affordable for everyone — from individuals to growing businesses.',
+              text: 'Founded by Danish Shoaib, our mission is to make professional IT support and digital services accessible and affordable for everyone — from students and freelancers to small businesses and growing enterprises in West Bengal and beyond.',
               color: 'electric-violet',
             },
           ].map((card, i) => (
@@ -112,7 +133,7 @@ export default function About() {
 
         <motion.div className="mb-12" {...fadeUp}>
           <h2 className="text-2xl font-bold text-text-primary mb-8 border-l-4 border-electric-violet pl-4">Our Values</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {values.map((v, i) => (
               <motion.div key={i}
                 initial={{ opacity: 0, y: 20 }}
@@ -120,12 +141,12 @@ export default function About() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
                 whileHover={{ y: -4 }}
-                className="p-6 rounded-2xl border border-electric-violet/10 bg-gradient-to-b from-surface/50 to-transparent hover:border-neon-cyan/30 transition-all duration-300 text-center group"
+                className="p-6 rounded-2xl border border-electric-violet/10 bg-gradient-to-b from-surface/50 to-transparent hover:border-neon-cyan/30 transition-all duration-300 group"
               >
                 <motion.div
                   whileHover={{ rotate: 360 }}
                   transition={{ duration: 0.6 }}
-                  className="w-12 h-12 rounded-xl bg-neon-cyan/10 flex items-center justify-center mx-auto mb-3"
+                  className="w-12 h-12 rounded-xl bg-neon-cyan/10 flex items-center justify-center mb-3"
                 >
                   <svg className="w-6 h-6 text-neon-cyan" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
                     <path d={v.icon} />
@@ -135,6 +156,53 @@ export default function About() {
                 <p className="text-text-muted text-sm">{v.desc}</p>
               </motion.div>
             ))}
+          </div>
+        </motion.div>
+
+        <motion.div className="mb-12" {...fadeUp}>
+          <h2 className="text-2xl font-bold text-text-primary mb-8 border-l-4 border-neon-cyan pl-4">Calcutta Node. in Numbers</h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+            {stats.map((s, i) => (
+              <motion.div key={i}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08 }}
+                whileHover={{ y: -2 }}
+                className="text-center p-4 rounded-2xl bg-surface/30 border border-electric-violet/10 hover:border-neon-cyan/30 transition-all duration-300"
+              >
+                <p className="text-xl md:text-2xl font-bold text-neon-cyan">{s.value}</p>
+                <p className="text-xs text-text-muted mt-1">{s.label}</p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        <motion.div className="mb-12" {...fadeUp}>
+          <div className="rounded-2xl p-8 border border-neon-cyan/20 bg-gradient-to-br from-neon-cyan/5 via-transparent to-electric-violet/5">
+            <motion.div className="text-center mb-6" {...fadeUp}>
+              <span className="text-3xl block mb-3">🌟</span>
+              <h2 className="text-2xl font-bold text-text-primary">Why Choose Calcutta Node. in 2026?</h2>
+              <p className="text-text-muted text-sm mt-2">We're evolving with the times — here's what makes us different this year.</p>
+            </motion.div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              {whyUs2026.map((item, i) => (
+                <motion.div key={i}
+                  initial={{ opacity: 0, y: 15 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.08 }}
+                  whileHover={{ y: -3 }}
+                  className="flex gap-3 p-4 rounded-xl bg-surface/30 border border-electric-violet/10 hover:border-neon-cyan/30 transition-all duration-300"
+                >
+                  <span className="text-xl shrink-0 mt-0.5">{item.emoji}</span>
+                  <div>
+                    <h3 className="text-text-primary font-semibold text-sm mb-1">{item.title}</h3>
+                    <p className="text-text-muted text-xs">{item.desc}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </motion.div>
 
@@ -161,6 +229,9 @@ export default function About() {
                 }
               </motion.div>
             ))}
+          </div>
+          <div className="mt-6 text-center">
+            <Link to="/contact" className="text-sm text-neon-cyan hover:underline">Get in touch →</Link>
           </div>
         </motion.div>
       </div>

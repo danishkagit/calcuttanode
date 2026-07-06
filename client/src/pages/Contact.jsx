@@ -4,8 +4,27 @@ import api from '../utils/api';
 import companyInfo from '../data/companyInfo';
 import ParticleField from '../components/common/ParticleField';
 
+const subjects = [
+  'General Inquiry',
+  'Technical Support',
+  'Website Development',
+  'Digital Marketing',
+  'Design (UI/UX / Graphics)',
+  'Data Recovery',
+  'Subscription / Membership',
+  'Partnership / Collaboration',
+  'Feedback / Suggestion',
+  'Other',
+];
+
+const businessHours = [
+  { day: 'Monday – Friday', hours: '10:00 AM – 7:00 PM' },
+  { day: 'Saturday', hours: '10:00 AM – 4:00 PM' },
+  { day: 'Sunday', hours: 'Closed (Emergency only)' },
+];
+
 export default function Contact() {
-  const [form, setForm] = useState({ name: '', email: '', message: '' });
+  const [form, setForm] = useState({ name: '', email: '', phone: '', subject: '', message: '' });
   const [sent, setSent] = useState(false);
   const [sending, setSending] = useState(false);
 
@@ -16,7 +35,7 @@ export default function Contact() {
       await api.post('/auth/contact', form);
       setSent(true);
     } catch {
-      alert('Failed to send message. Please email us directly.');
+      alert('Failed to send message. Please email us directly at ' + companyInfo.email);
     } finally {
       setSending(false);
     }
@@ -37,6 +56,15 @@ export default function Contact() {
           </motion.div>
           <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-neon-cyan to-electric-violet bg-clip-text text-transparent mb-4">Contact Us</h1>
           <p className="text-lg text-text-muted">Have a question or need help? We're just a message away.</p>
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="mt-4 inline-flex items-center gap-2 text-sm bg-neon-cyan/10 text-neon-cyan px-4 py-2 rounded-full border border-neon-cyan/20"
+          >
+            <span>⚡</span>
+            <span>Most inquiries get a response within 4 hours</span>
+          </motion.div>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -44,7 +72,7 @@ export default function Contact() {
             {[
               { icon: 'M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z', icon2: 'M12 10a3 3 0 100-6 3 3 0 000 6z', label: 'Address', value: companyInfo.address },
               { icon: 'M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z', label: 'Email', value: companyInfo.email, href: `mailto:${companyInfo.email}` },
-              { icon: 'M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z', label: 'Phone', value: companyInfo.phone },
+              { icon: 'M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z', label: 'Phone', value: companyInfo.phone, href: `tel:${companyInfo.phone}` },
             ].map((item, i) => (
               <motion.div key={i}
                 initial={{ opacity: 0, x: -20 }}
@@ -67,12 +95,40 @@ export default function Contact() {
                 </div>
               </motion.div>
             ))}
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.25 }}
+              className="p-4 rounded-xl border border-electric-violet/10 bg-surface/30 hover:border-neon-cyan/30 transition-all duration-300"
+            >
+              <h3 className="text-text-primary font-semibold text-sm mb-3 flex items-center gap-2">
+                <svg className="w-4 h-4 text-neon-cyan" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                Business Hours
+              </h3>
+              <div className="space-y-2">
+                {businessHours.map((b, i) => (
+                  <div key={i} className="flex justify-between text-sm">
+                    <span className="text-text-muted">{b.day}</span>
+                    <span className={`text-xs font-medium ${b.hours.includes('Closed') ? 'text-red-400' : 'text-neon-cyan'}`}>{b.hours}</span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="flex gap-3 pt-2"
+              className="flex flex-wrap gap-3 pt-2"
             >
+              <motion.a whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
+                href={`https://wa.me/91${companyInfo.phone.replace(/\D/g, '')}`} target="_blank" rel="noopener noreferrer"
+                className="flex items-center gap-2 px-4 py-2 rounded-lg border border-green-500/30 text-green-400 hover:bg-green-500/10 hover:border-green-500/50 transition-all duration-200 text-sm"
+              >
+                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                WhatsApp
+              </motion.a>
               {['instagram', 'facebook'].map((s) => (
                 <motion.a key={s} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
                   href={`https://${s}.com/${companyInfo.socials?.[s] || '#'}`} target="_blank" rel="noopener noreferrer"
@@ -102,25 +158,47 @@ export default function Contact() {
                     <svg className="w-8 h-8 text-neon-cyan" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg>
                   </motion.div>
                   <p className="text-neon-cyan text-lg font-medium">Message sent!</p>
-                  <p className="text-text-muted text-sm mt-1">We'll get back to you soon.</p>
+                  <p className="text-text-muted text-sm mt-1">We'll get back to you within 24 hours.</p>
+                  <button onClick={() => { setSent(false); setForm({ name: '', email: '', phone: '', subject: '', message: '' }); }}
+                    className="mt-4 text-sm text-neon-cyan hover:underline"
+                  >
+                    Send another message
+                  </button>
                 </motion.div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div>
-                    <label className="text-sm text-text-muted mb-1.5 block font-medium">Your Name</label>
+                    <label className="text-sm text-text-muted mb-1.5 block font-medium">Your Name *</label>
                     <input type="text" placeholder="John Doe" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} required
                       className="w-full bg-background border border-electric-violet/20 rounded-lg px-4 py-2.5 text-text-primary placeholder-text-muted focus:outline-none focus:border-neon-cyan focus:ring-1 focus:ring-neon-cyan/20 transition-all"
                     />
                   </div>
                   <div>
-                    <label className="text-sm text-text-muted mb-1.5 block font-medium">Your Email</label>
+                    <label className="text-sm text-text-muted mb-1.5 block font-medium">Your Email *</label>
                     <input type="email" placeholder="john@example.com" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} required
                       className="w-full bg-background border border-electric-violet/20 rounded-lg px-4 py-2.5 text-text-primary placeholder-text-muted focus:outline-none focus:border-neon-cyan focus:ring-1 focus:ring-neon-cyan/20 transition-all"
                     />
                   </div>
                   <div>
-                    <label className="text-sm text-text-muted mb-1.5 block font-medium">Message</label>
-                    <textarea placeholder="How can we help you?" value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} required rows={5}
+                    <label className="text-sm text-text-muted mb-1.5 block font-medium">Phone Number</label>
+                    <input type="tel" placeholder="+91 98765 43210" value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                      className="w-full bg-background border border-electric-violet/20 rounded-lg px-4 py-2.5 text-text-primary placeholder-text-muted focus:outline-none focus:border-neon-cyan focus:ring-1 focus:ring-neon-cyan/20 transition-all"
+                    />
+                  </div>
+                  <div>
+                    <label className="text-sm text-text-muted mb-1.5 block font-medium">Subject</label>
+                    <select value={form.subject} onChange={(e) => setForm({ ...form, subject: e.target.value })}
+                      className="w-full bg-background border border-electric-violet/20 rounded-lg px-4 py-2.5 text-text-primary focus:outline-none focus:border-neon-cyan focus:ring-1 focus:ring-neon-cyan/20 transition-all"
+                    >
+                      <option value="">Select a subject</option>
+                      {subjects.map((s) => (
+                        <option key={s} value={s}>{s}</option>
+                      ))}
+                    </select>
+                  </div>
+                  <div>
+                    <label className="text-sm text-text-muted mb-1.5 block font-medium">Message *</label>
+                    <textarea placeholder="Tell us how we can help you..." value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} required rows={5}
                       className="w-full bg-background border border-electric-violet/20 rounded-lg px-4 py-2.5 text-text-primary placeholder-text-muted focus:outline-none focus:border-neon-cyan focus:ring-1 focus:ring-neon-cyan/20 transition-colors resize-none"
                     />
                   </div>
@@ -130,6 +208,7 @@ export default function Contact() {
                   >
                     {sending ? 'Sending...' : 'Send Message'}
                   </motion.button>
+                  <p className="text-xs text-text-muted text-center">We typically respond within 4 hours during business hours.</p>
                 </form>
               )}
             </div>
