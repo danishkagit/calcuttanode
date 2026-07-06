@@ -266,7 +266,7 @@ export default function AI() {
         >
           <h1 className="text-3xl md:text-4xl font-bold">
             <span className="bg-gradient-to-r from-neon-cyan via-electric-violet to-neon-cyan bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient-x">
-              Calcutta Node AI
+Calcutta Node.AI
             </span>
           </h1>
           <p className="text-text-muted text-xs mt-1">4 free models · auto-fallback · unlimited chat</p>
