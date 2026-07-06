@@ -1,6 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60">
-  <circle cx="22" cy="30" r="12" fill="#E91E63"/>
-  <path d="M10 42c0-4 4-8 12-8s12 4 12 8c0 5-3 10-12 10s-12-5-12-10z" fill="#E91E63" opacity="0.8"/>
-  <text x="44" y="34" font-family="Arial, sans-serif" font-weight="700" font-size="22" fill="#E91E63" letter-spacing="-0.3">Meesho</text>
-  <text x="44" y="50" font-family="Arial, sans-serif" font-weight="400" font-size="10" fill="#999">Social Commerce</text>
-</svg>
+<svg fill="#ffffff" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Meesho</title><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-3-3h2V7h2v7h2l-3 3zm5-3h-2V7h-2v7h-2l3 3 3-3z"/></svg>

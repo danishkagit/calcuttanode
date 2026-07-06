@@ -3,9 +3,11 @@ import works from '../data/works';
 
 function CompanyLogo({ logo, name }) {
   return (
-    <div className="flex flex-col items-center gap-3 shrink-0 mx-10">
-      <img src={logo} alt={name} className="w-24 h-24 rounded-2xl object-contain bg-white/5 p-3 border border-electric-violet/10" />
-      <span className="text-sm font-medium text-text-muted whitespace-nowrap">{name}</span>
+    <div className="flex flex-col items-center gap-3 shrink-0 mx-10 group">
+      <div className="w-24 h-24 rounded-2xl flex items-center justify-center bg-white/5 p-3 border border-electric-violet/10 group-hover:border-neon-cyan/30 group-hover:bg-white/[0.07] group-hover:shadow-lg group-hover:shadow-neon-cyan/5 transition-all duration-300">
+        <img src={logo} alt={name} className="w-full h-full object-contain opacity-80 group-hover:opacity-100 transition-opacity duration-300" />
+      </div>
+      <span className="text-sm font-medium text-text-muted group-hover:text-neon-cyan transition-colors duration-300 whitespace-nowrap">{name}</span>
     </div>
   );
 }
@@ -50,9 +52,9 @@ export default function Work() {
       <div className="max-w-7xl mx-auto px-4 pb-20 space-y-24">
         {works.map((company, idx) => (
           <motion.section key={company.id} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-80px' }} transition={{ duration: 0.5, delay: idx * 0.05 }}>
-            <div className="flex items-center gap-5 mb-8 p-4 rounded-2xl bg-surface/30 border border-electric-violet/10">
-              <div className="w-16 h-16 rounded-xl bg-white/5 p-2 border border-electric-violet/10 flex items-center justify-center shrink-0">
-                <img src={company.logo} alt={company.name} className="w-12 h-12 object-contain" />
+            <div className="flex items-center gap-5 mb-8 p-4 rounded-2xl bg-surface/30 border border-electric-violet/10 hover:border-neon-cyan/30 transition-all duration-300">
+              <div className="w-16 h-16 rounded-xl bg-white/5 p-2 border border-electric-violet/10 flex items-center justify-center shrink-0 hover:border-neon-cyan/30 hover:bg-white/[0.07] transition-all duration-300">
+                <img src={company.logo} alt={company.name} className="w-12 h-12 object-contain hover:opacity-100 transition-opacity duration-300" />
               </div>
               <div>
                 <h2 className="text-2xl font-bold text-text-primary">{company.name}</h2>
