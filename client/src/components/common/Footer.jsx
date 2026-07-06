@@ -34,8 +34,8 @@ export default function Footer() {
         <motion.div {...fadeUp} transition={{ duration: 0.5, delay: 0.05 }}>
           <h4 className="text-text-primary font-semibold mb-4">Quick Links</h4>
           <div className="flex flex-col gap-2.5 text-sm">
-            {['Home', 'Pricing', 'About', 'Contact', 'Free Tools'].map((label) => {
-              const path = label === 'Home' ? '/' : label === 'Free Tools' ? '/tools' : `/${label.toLowerCase().replace(/\s+/g, '-')}`;
+            {['Home', 'Our Work', 'Pricing', 'About', 'Contact', 'Free Tools'].map((label) => {
+              const path = label === 'Home' ? '/' : label === 'Free Tools' ? '/tools' : label === 'Our Work' ? '/work' : `/${label.toLowerCase().replace(/\s+/g, '-')}`;
               return (
                 <Link key={label} to={path}
                   className="text-text-muted hover:text-neon-cyan transition-colors duration-200 hover:translate-x-1 inline-block"
