@@ -27,7 +27,7 @@ const categoryIcons = {
 const howItWorks = [
   { step: 1, title: 'Choose a Service', desc: 'Browse our services, plans, or products. Pick what fits your needs.', icon: '🔍' },
   { step: 2, title: 'Book & Pay', desc: 'Book online or contact us. Pay securely via UPI, card, or wallet.', icon: '💳' },
-  { step: 3, title: 'We Deliver', desc: 'We handle everything remotely or on-site. Get updates at every step.', icon: '⚡' },
+  { step: 3, title: 'We Deliver', desc: 'We handle everything remotely. Fast, secure, and fully trackable.', icon: '⚡' },
   { step: 4, title: 'You Succeed', desc: 'Happy with the result? Leave a review and earn loyalty points!', icon: '🎯' },
 ];
 
@@ -93,7 +93,7 @@ export default function Home() {
             transition={{ delay: 0.2 }}
             className="text-lg md:text-xl text-transparent bg-clip-text bg-gradient-to-r from-text-primary to-neon-cyan font-medium mb-3"
           >
-            IT Services & Digital Growth Agency
+            AI-Powered Digital Services. Delivered Instantly. Anywhere.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 10 }}
@@ -188,6 +188,36 @@ export default function Home() {
       </motion.section>
 
       <motion.section className="py-16 px-4 relative" {...fadeUp}>
+        <div className="max-w-4xl mx-auto">
+          <motion.div className="text-center mb-10" {...fadeUp}>
+            <span className="text-sm font-medium text-neon-cyan bg-neon-cyan/10 px-4 py-1.5 rounded-full border border-neon-cyan/20">Our Speed Promise</span>
+            <h2 className="text-3xl font-bold text-text-primary mt-4">From Request to Delivery</h2>
+          </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {[
+              { icon: '⚡', title: '2hr Response', desc: 'We acknowledge every inquiry within 2 hours — no matter your time zone.', color: 'from-neon-cyan/20 to-neon-cyan/5 border-neon-cyan/30' },
+              { icon: '🚀', title: '24hr Start', desc: 'Most projects kick off within 24 hours of booking. Urgent requests start same day.', color: 'from-electric-violet/20 to-electric-violet/5 border-electric-violet/30' },
+              { icon: '✅', title: '3–5 Day Delivery', desc: 'Standard delivery in 3–5 business days. Complex projects include a clear timeline upfront.', color: 'from-neon-cyan/20 to-neon-cyan/5 border-neon-cyan/30' },
+            ].map((item, i) => (
+              <motion.div key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                whileHover={{ y: -4 }}
+                className={`p-5 rounded-2xl bg-gradient-to-b ${item.color} border text-center relative overflow-hidden group`}
+              >
+                <motion.div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <span className="text-3xl block mb-3 relative">{item.icon}</span>
+                <h3 className="text-text-primary font-semibold mb-1 text-sm relative">{item.title}</h3>
+                <p className="text-text-muted text-xs relative">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </motion.section>
+
+      <motion.section className="py-16 px-4 relative" {...fadeUp}>
         <div className="max-w-6xl mx-auto">
           <motion.div className="text-center mb-10" {...fadeUp}>
             <span className="text-sm font-medium text-electric-violet bg-electric-violet/10 px-4 py-1.5 rounded-full border border-electric-violet/20">What's New in 2026</span>
@@ -214,6 +244,51 @@ export default function Home() {
                 <p className="text-text-muted text-xs">{item.desc}</p>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </motion.section>
+
+      <motion.section className="py-16 px-4 relative" {...fadeUp}>
+        <div className="max-w-5xl mx-auto">
+          <motion.div className="text-center mb-10" {...fadeUp}>
+            <span className="text-sm font-medium text-electric-violet bg-electric-violet/10 px-4 py-1.5 rounded-full border border-electric-violet/20">AI Showcase</span>
+            <h2 className="text-3xl font-bold text-text-primary mt-4">4 Free AI Models — One Chat</h2>
+            <p className="text-text-muted max-w-xl mx-auto mt-2">Pick a model or let auto-fallback choose the best one for your question. All free, all in one place.</p>
+          </motion.div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[
+              { name: 'DeepSeek', desc: 'V4 Flash — fast reasoning & code', icon: '🧠', color: 'neon-cyan' },
+              { name: 'MiMo', desc: 'V2.5 — creative & contextual', icon: '✨', color: 'electric-violet' },
+              { name: 'North', desc: 'Mini Code — lightweight & fast', icon: '⚡', color: 'neon-cyan' },
+              { name: 'Nemotron', desc: '3 Ultra — deep analysis', icon: '🔬', color: 'electric-violet' },
+            ].map((model, i) => (
+              <motion.div key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08 }}
+                whileHover={{ y: -4, scale: 1.02 }}
+                className={`p-4 rounded-2xl bg-surface/40 border border-${model.color}/20 hover:border-${model.color}/50 transition-all duration-300 text-center group`}
+              >
+                <motion.div
+                  animate={{ scale: [1, 1.1, 1], rotate: [0, 5, -5, 0] }}
+                  transition={{ repeat: Infinity, duration: 3, delay: i * 0.3 }}
+                  className="text-3xl mb-2"
+                >
+                  {model.icon}
+                </motion.div>
+                <h3 className={`text-text-primary font-semibold text-sm group-hover:text-${model.color} transition-colors`}>{model.name}</h3>
+                <p className="text-text-muted text-xs mt-1">{model.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+          <div className="text-center mt-8">
+            <motion.a href="/ai" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
+              className="inline-flex items-center gap-2 bg-brand-gradient text-white px-6 py-2.5 rounded-xl font-medium text-sm transition-all duration-200 hover:shadow-lg hover:shadow-neon-cyan/20"
+            >
+              Try AI Chat Free
+              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </motion.a>
           </div>
         </div>
       </motion.section>
@@ -358,8 +433,13 @@ export default function Home() {
               ))}
             </div>
           ) : (
-            <div className="text-center py-8">
-              <p className="text-text-muted text-sm">Blog posts coming soon. Stay tuned!</p>
+            <div className="text-center py-10 px-6 rounded-2xl border border-dashed border-electric-violet/20 bg-surface/20 max-w-md mx-auto">
+              <span className="text-3xl block mb-3">📬</span>
+              <p className="text-text-muted text-sm mb-4">Be the first to know — subscribe for product launches, tips, and tech updates.</p>
+              <div className="flex gap-2 max-w-xs mx-auto">
+                <input type="email" placeholder="Enter your email" className="flex-1 px-3 py-2 rounded-lg bg-white/5 border border-electric-violet/20 text-text-primary text-xs focus:outline-none focus:border-neon-cyan transition-colors" />
+                <button className="bg-brand-gradient text-white px-4 py-2 rounded-lg text-xs font-medium hover:shadow-lg hover:shadow-neon-cyan/20 transition-all duration-200 shrink-0">Subscribe</button>
+              </div>
             </div>
           )}
           <div className="text-center mt-8">
@@ -443,7 +523,7 @@ export default function Home() {
           <span>🔒 Secure Payment</span>
           <span>⚡ Instant Support</span>
           <span>🌐 Global Remote Service</span>
-          <span>📱 Remote or On-site</span>
+          <span>📱 100% Remote Delivery</span>
         </div>
       </motion.section>
     </div>

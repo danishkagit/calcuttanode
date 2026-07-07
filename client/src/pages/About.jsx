@@ -96,6 +96,44 @@ export default function About() {
           ))}
         </div>
 
+        <motion.div className="mb-12 rounded-2xl p-6 md:p-8 border border-neon-cyan/20 bg-gradient-to-br from-neon-cyan/[0.03] via-surface/20 to-electric-violet/[0.03] relative overflow-hidden" {...fadeUp}>
+          <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-neon-cyan to-transparent" />
+          <div className="flex flex-col md:flex-row gap-6 items-start">
+            <motion.div
+              initial={{ scale: 0 }}
+              whileInView={{ scale: 1 }}
+              viewport={{ once: true }}
+              className="w-20 h-20 rounded-2xl bg-gradient-to-br from-neon-cyan/30 to-electric-violet/30 flex items-center justify-center text-3xl shrink-0 shadow-lg shadow-neon-cyan/10"
+            >
+              👨‍💻
+            </motion.div>
+            <div className="flex-1">
+              <div className="flex items-center gap-3 mb-2 flex-wrap">
+                <span className="text-xs font-semibold text-neon-cyan bg-neon-cyan/10 px-3 py-1 rounded-full border border-neon-cyan/20">Founder Story</span>
+                <span className="text-sm font-medium text-text-primary">Danish Shoaib</span>
+              </div>
+              <h2 className="text-xl font-bold text-text-primary mb-3">From Pharmacy to AI Agency</h2>
+              <div className="space-y-3 text-sm text-text-muted leading-relaxed">
+                <p>
+                  Before Calcutta Node., Danish Shoaib ran a pharmacy. Long hours, high pressure, and a growing realization
+                  that small businesses were being left behind by digital transformation. He saw clinic owners struggling
+                  with basic IT, entrepreneurs paying too much for simple websites, and a gap between what people needed
+                  and what the market offered.
+                </p>
+                <p>
+                  Self-taught in digital marketing, AI prompt engineering, and full-stack development, Danish decided
+                  to bridge that gap. What started as helping a few local businesses with remote IT support turned into
+                  Calcutta Node. — a remote-first digital growth agency serving clients across the globe.
+                </p>
+                <p>
+                  Today, Danish manages a lean global team, oversees AI-assisted support operations, and continues
+                  to study (D.Pharm) while running the agency. His personal motto: <span className="text-neon-cyan font-medium">"Technology should be accessible to everyone — not just big corporations."</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
         <motion.div className="mb-12" {...fadeUp}>
           <h2 className="text-2xl font-bold text-text-primary mb-8 border-l-4 border-neon-cyan pl-4">Our Journey</h2>
           <div className="relative">

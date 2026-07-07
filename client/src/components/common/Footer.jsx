@@ -91,7 +91,7 @@ export default function Footer() {
             </motion.div>
             <motion.div whileHover={{ x: 2 }} className="flex items-center gap-2">
               <svg className="w-4 h-4 shrink-0 text-neon-cyan" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-              <span className="text-xs sm:text-sm">Mon–Sat, 10 AM – 7 PM</span>
+              <span className="text-xs sm:text-sm">24/7 AI Support · Human response within 4 hrs</span>
             </motion.div>
           </div>
         </motion.div>
