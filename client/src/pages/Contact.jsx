@@ -18,9 +18,9 @@ const subjects = [
 ];
 
 const businessHours = [
-  { day: 'Monday – Friday', hours: '10:00 AM – 7:00 PM' },
-  { day: 'Saturday', hours: '10:00 AM – 4:00 PM' },
-  { day: 'Sunday', hours: 'Closed (Emergency only)' },
+  { day: 'AI Chat Support', hours: '24/7 — Instant' },
+  { day: 'Human Response', hours: 'Within 4 hours' },
+  { day: 'Weekend Support', hours: 'Available (reduced staff)' },
 ];
 
 export default function Contact() {
@@ -104,16 +104,17 @@ export default function Contact() {
             >
               <h3 className="text-text-primary font-semibold text-sm mb-3 flex items-center gap-2">
                 <svg className="w-4 h-4 text-neon-cyan" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                Business Hours
+                Availability
               </h3>
               <div className="space-y-2">
                 {businessHours.map((b, i) => (
                   <div key={i} className="flex justify-between text-sm">
                     <span className="text-text-muted">{b.day}</span>
-                    <span className={`text-xs font-medium ${b.hours.includes('Closed') ? 'text-red-400' : 'text-neon-cyan'}`}>{b.hours}</span>
+                    <span className="text-xs font-medium text-neon-cyan">{b.hours}</span>
                   </div>
                 ))}
               </div>
+              <p className="text-xs text-text-muted mt-3 border-t border-electric-violet/10 pt-3">🌐 Available worldwide — time zone friendly</p>
             </motion.div>
 
             <motion.div
@@ -208,7 +209,7 @@ export default function Contact() {
                   >
                     {sending ? 'Sending...' : 'Send Message'}
                   </motion.button>
-                  <p className="text-xs text-text-muted text-center">We typically respond within 4 hours during business hours.</p>
+                  <p className="text-xs text-text-muted text-center">We typically respond within 4 hours. AI support is available 24/7.</p>
                 </form>
               )}
             </div>

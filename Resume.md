@@ -2,7 +2,7 @@
 
 ```
 Digital Marketing | AI Prompt Engineer | Freelance social media & Content Specialist | D. Pharm Student
-+91 85848 85450 | dnsh00786@gmail.com | Champdani, Hooghly - 712222, West Bengal
++91 85848 85450 | calcuttanode@gmail.com | Champdani, Hooghly - 712222, West Bengal
 ```
 
 ## C A R E E R O B J E C T I V E
