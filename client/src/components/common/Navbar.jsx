@@ -299,6 +299,14 @@ export default function Navbar() {
 
           {/* Right side: Social icons + Hamburger */}
           <div className="flex items-center gap-0.5">
+            <Link to="/app"
+              className="w-9 h-9 flex items-center justify-center rounded-lg transition-all hover:bg-white/5"
+              aria-label="Play Store"
+            >
+              <svg className="w-5.5 h-5.5" viewBox="0 0 24 24" fill="#3DDC84">
+                <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.807 1.626a1 1 0 010 1.732l-2.807 1.626L15.206 12l2.492-2.492zM5.864 2.658L16.8 8.99l-2.302 2.302-8.634-8.634z"/>
+              </svg>
+            </Link>
             <a href="https://wa.me/918584885450" target="_blank" rel="noopener noreferrer"
               className="w-9 h-9 flex items-center justify-center rounded-lg transition-all hover:bg-white/5"
               aria-label="WhatsApp"

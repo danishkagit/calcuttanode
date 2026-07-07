@@ -9,3 +9,4 @@ server/uploads/*
 
 Google OAuth Client ID.json
 Twillio Sendgrid.txt
+server/public/app/*.apk
