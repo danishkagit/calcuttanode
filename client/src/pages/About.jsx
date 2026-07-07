@@ -6,7 +6,7 @@ import ParticleField from '../components/common/ParticleField';
 const fadeUp = { initial: { opacity: 0, y: 30 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, margin: '-50px' }, transition: { duration: 0.5 } };
 
 const milestones = [
-  { year: '2023', title: 'Founded', text: 'Danish Shoaib started Calcutta Node. from Champdani, Hooghly with a simple mission: make professional IT support accessible and affordable for everyone in West Bengal.', icon: '🚀' },
+  { year: '2023', title: 'Founded', text: 'Danish Shoaib started Calcutta Node. with a simple mission: make professional IT support accessible and affordable for everyone.', icon: '🚀' },
   { year: '2024', title: 'Expansion', text: 'Grew to 6 service categories — from web development and design to digital marketing and data recovery. Crossed 12+ clients and 36+ successful projects.', icon: '📈' },
   { year: '2025', title: 'Digital Transformation', text: 'Launched digital products store, membership subscriptions, AI chat support, and a full-featured client dashboard with wallet, referrals, and loyalty rewards.', icon: '🏆' },
   { year: '2026', title: 'AI-Powered Future', text: 'Introducing AI-assisted troubleshooting, enhanced remote support, digital packages for every business, and same-day response guarantee for all premium clients.', icon: '🌟' },
@@ -32,7 +32,7 @@ const whyUs2026 = [
   { emoji: '🤖', title: 'AI-Assisted Support', desc: 'Our AI chat handles common queries instantly. For complex issues, human experts step in — you get the best of both worlds.' },
   { emoji: '🌐', title: 'Global Remote Delivery', desc: '100% remote — we serve clients anywhere in the world. No location barriers, no travel needed. Just fast, reliable delivery.' },
   { emoji: '💰', title: 'Affordable & Transparent', desc: 'No hidden fees. Clear pricing upfront. Pay via UPI, card, or our in-app wallet with loyalty rewards.' },
-  { emoji: '⚡', title: 'Remote + On-Site', desc: 'Most issues solved remotely in under 24 hours. On-site visits available for local clients in Hooghly and nearby areas.' },
+  { emoji: '⚡', title: 'Remote-First Delivery', desc: 'All issues solved remotely in under 24 hours. No location barriers — we serve clients anywhere in the world.' },
   { emoji: '📱', title: 'Full Client Dashboard', desc: 'Track orders, manage subscriptions, view transactions, earn referral rewards — all from your personal dashboard.' },
   { emoji: '🔒', title: 'Secure & Private', desc: 'Encrypted connections, secure payments via Razorpay, and strict data privacy. Your information stays yours.' },
 ];
@@ -54,7 +54,7 @@ export default function About() {
           <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-neon-cyan to-electric-violet bg-clip-text text-transparent mb-4">
             About Calcutta Node.
           </h1>
-          <p className="text-lg text-text-muted max-w-2xl mx-auto">IT Services & Digital Growth Agency based in Champdani, Hooghly, West Bengal</p>
+          <p className="text-lg text-text-muted max-w-2xl mx-auto">IT Services & Digital Growth Agency based in Kolkata, India</p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
@@ -63,13 +63,13 @@ export default function About() {
               icon: 'M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2',
               icon2: 'M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75',
               title: 'Who We Are',
-              text: 'Calcutta Node. is an IT services and digital growth agency based in Champdani, Hooghly, West Bengal. We provide remote IT support, web development, UI/UX and graphics design, digital marketing, data recovery, and technical troubleshooting — all at affordable, transparent prices.',
+              text: 'Calcutta Node. is an IT services and digital growth agency based in Kolkata, India. We provide remote IT support, web development, UI/UX and graphics design, digital marketing, data recovery, and technical troubleshooting — all at affordable, transparent prices.',
               color: 'neon-cyan',
             },
             {
               icon: 'M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z',
               title: 'Our Mission',
-              text: 'Founded by Danish Shoaib, our mission is to make professional IT support and digital services accessible and affordable for everyone — from students and freelancers to small businesses and growing enterprises in West Bengal and beyond.',
+              text: 'Founded by Danish Shoaib, our mission is to make professional IT support and digital services accessible and affordable for everyone — from students and freelancers to small businesses and growing enterprises worldwide.',
               color: 'electric-violet',
             },
           ].map((card, i) => (
