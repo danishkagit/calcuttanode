@@ -3,73 +3,24 @@ import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import logo from '../../assets/logo.png';
 
-const menuSections = [
-  {
-    title: 'Services',
-    items: [
-      { label: 'Website Development', path: '/pricing', icon: '🌐' },
-      { label: 'Full Stack Web', path: '/pricing', icon: '🔷' },
-      { label: 'Mobile App Development', path: '/pricing', icon: '📱' },
-      { label: 'E-Commerce Setup', path: '/pricing', icon: '🛒' },
-      { label: 'SEO & Digital Marketing', path: '/pricing', icon: '📈' },
-      { label: 'UI/UX & Graphic Design', path: '/pricing', icon: '🎨' },
-      { label: 'Video Editing', path: '/pricing', icon: '🎬' },
-      { label: 'Remote IT Support', path: '/pricing', icon: '🖥️' },
-      { label: 'Data Recovery', path: '/pricing', icon: '💾' },
-    ],
-  },
-  {
-    title: 'Resources',
-    items: [
-      { label: 'Blog', path: '/blogs', icon: '📝' },
-      { label: 'Courses', path: '/courses', icon: '🎓' },
-      { label: 'Free Tools', path: '/tools', icon: '🛠️' },
-      { label: 'Products', path: '/products', icon: '📦' },
-      { label: 'Plans & Pricing', path: '/plans', icon: '📋' },
-    ],
-  },
-  {
-    title: 'Company',
-    items: [
-      { label: 'About', path: '/about', icon: '👤' },
-      { label: 'Our Work', path: '/work', icon: '🏆' },
-      { label: 'Contact', path: '/contact', icon: '📬' },
-    ],
-  },
-  {
-    title: 'Account',
-    items: [
-      { label: 'Login', path: '/login', icon: '🔑' },
-      { label: 'Register', path: '/register', icon: '📝' },
-      { label: 'Dashboard', path: '/dashboard', icon: '📊' },
-    ],
-  },
+const services = [
+  { label: 'Website Development', path: '/pricing', icon: '🌐', desc: 'Responsive 5-page sites' },
+  { label: 'Full Stack Web', path: '/pricing', icon: '🔷', desc: 'Frontend + backend + database' },
+  { label: 'Mobile App Development', path: '/pricing', icon: '📱', desc: 'Android & iOS apps' },
+  { label: 'E-Commerce Setup', path: '/pricing', icon: '🛒', desc: 'Stores with payment gateways' },
+  { label: 'SEO & Digital Marketing', path: '/pricing', icon: '📈', desc: 'Rank higher, grow faster' },
+  { label: 'UI/UX & Graphic Design', path: '/pricing', icon: '🎨', desc: 'Brand identity & interfaces' },
+  { label: 'Video Editing', path: '/pricing', icon: '🎬', desc: 'Promos, reels, tutorials' },
+  { label: 'Remote IT Support', path: '/pricing', icon: '🖥️', desc: 'PC, network, system help' },
+  { label: 'Data Recovery', path: '/pricing', icon: '💾', desc: 'HDD, SSD, NVMe recovery' },
 ];
-
-const allPages = menuSections.flatMap((s) => s.items);
-
-function useDebounce(value, delay) {
-  const [debounced, setDebounced] = useState(value);
-  useEffect(() => {
-    const t = setTimeout(() => setDebounced(value), delay);
-    return () => clearTimeout(t);
-  }, [value, delay]);
-  return debounced;
-}
 
 export default function Navbar() {
   const { pathname } = useLocation();
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
-  const debouncedQuery = useDebounce(searchQuery, 150);
-  const searchRef = useRef(null);
-
-  const searchResults = debouncedQuery.trim()
-    ? allPages.filter((p) =>
-        p.label.toLowerCase().includes(debouncedQuery.toLowerCase())
-      )
-    : [];
+  const [openDropdown, setOpenDropdown] = useState(null);
+  const dropdownRef = useRef(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -78,20 +29,28 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    setMenuOpen(false);
-    setSearchQuery('');
+    setMobileOpen(false);
+    setOpenDropdown(null);
   }, [pathname]);
 
   useEffect(() => {
-    document.body.style.overflow = menuOpen ? 'hidden' : '';
+    document.body.style.overflow = mobileOpen ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
-  }, [menuOpen]);
+  }, [mobileOpen]);
 
   useEffect(() => {
-    if (menuOpen && searchRef.current) {
-      setTimeout(() => searchRef.current?.focus(), 200);
-    }
-  }, [menuOpen]);
+    const handleClickOutside = (e) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setOpenDropdown(null);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  const toggleDropdown = (name) => {
+    setOpenDropdown(openDropdown === name ? null : name);
+  };
 
   return (
     <>
@@ -101,195 +60,269 @@ export default function Navbar() {
           : 'bg-background/60 backdrop-blur-md border-b border-transparent'
       }`}>
         <div className="max-w-7xl mx-auto px-4 flex items-center justify-between h-16">
-          <Link to="/" className="flex items-center gap-2 group">
+          <Link to="/" className="flex items-center gap-2 group shrink-0">
             <img src={logo} alt="Calcutta Node." className="h-10 w-auto transition-transform duration-300 group-hover:scale-105" />
             <span className="text-neon-cyan font-bold text-lg hidden sm:block transition-all duration-300 group-hover:neon-glow-cyan">Calcutta Node.</span>
           </Link>
 
-          <div className="flex items-center gap-2">
+          {/* Desktop nav */}
+          <div className="hidden md:flex items-center gap-1" ref={dropdownRef}>
+            {/* Services - Mega Menu */}
+            <div className="relative">
+              <button onClick={() => toggleDropdown('services')}
+                className={`flex items-center gap-1 px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${
+                  openDropdown === 'services' ? 'text-neon-cyan bg-neon-cyan/10' : 'text-text-muted hover:text-text-primary hover:bg-white/5'
+                }`}
+              >
+                Services
+                <motion.svg animate={{ rotate: openDropdown === 'services' ? 180 : 0 }} className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="6 9 12 15 18 9" /></motion.svg>
+              </button>
+              <AnimatePresence>
+                {openDropdown === 'services' && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 8, scale: 0.96 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 8, scale: 0.96 }}
+                    transition={{ duration: 0.15 }}
+                    className="absolute top-full left-0 mt-2 w-[640px] rounded-2xl border border-electric-violet/20 bg-surface/95 backdrop-blur-2xl shadow-2xl shadow-black/40 overflow-hidden"
+                  >
+                    <div className="grid grid-cols-3 gap-1 p-3">
+                      {services.map((s) => (
+                        <Link key={s.label} to={s.path} onClick={() => setOpenDropdown(null)}
+                          className="flex items-start gap-3 p-3 rounded-xl hover:bg-white/5 transition-all group"
+                        >
+                          <span className="text-lg shrink-0 mt-0.5">{s.icon}</span>
+                          <div>
+                            <div className="text-sm font-medium text-text-primary group-hover:text-neon-cyan transition-colors">{s.label}</div>
+                            <div className="text-xs text-text-muted/60 mt-0.5">{s.desc}</div>
+                          </div>
+                        </Link>
+                      ))}
+                    </div>
+                    <div className="border-t border-electric-violet/10 px-4 py-2.5 bg-black/20">
+                      <Link to="/pricing" onClick={() => setOpenDropdown(null)}
+                        className="text-xs text-neon-cyan hover:underline flex items-center gap-1"
+                      >
+                        View full pricing → <span className="text-text-muted/50 ml-1">(all services with transparent rates)</span>
+                      </Link>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
+            {/* Resources dropdown */}
+            <div className="relative">
+              <button onClick={() => toggleDropdown('resources')}
+                className={`flex items-center gap-1 px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${
+                  openDropdown === 'resources' ? 'text-neon-cyan bg-neon-cyan/10' : 'text-text-muted hover:text-text-primary hover:bg-white/5'
+                }`}
+              >
+                Resources
+                <motion.svg animate={{ rotate: openDropdown === 'resources' ? 180 : 0 }} className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="6 9 12 15 18 9" /></motion.svg>
+              </button>
+              <AnimatePresence>
+                {openDropdown === 'resources' && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 8, scale: 0.96 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 8, scale: 0.96 }}
+                    transition={{ duration: 0.15 }}
+                    className="absolute top-full left-0 mt-2 w-52 rounded-xl border border-electric-violet/20 bg-surface/95 backdrop-blur-2xl shadow-2xl shadow-black/40 overflow-hidden p-2"
+                  >
+                    {[
+                      { label: 'Blog', path: '/blogs', icon: '📝' },
+                      { label: 'Courses', path: '/courses', icon: '🎓' },
+                      { label: 'Free Tools', path: '/tools', icon: '🛠️' },
+                      { label: 'Products', path: '/products', icon: '📦' },
+                      { label: 'Plans', path: '/plans', icon: '📋' },
+                    ].map((item) => (
+                      <Link key={item.label} to={item.path} onClick={() => setOpenDropdown(null)}
+                        className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-text-muted hover:text-text-primary hover:bg-white/5 transition-all group"
+                      >
+                        <span className="text-base">{item.icon}</span>
+                        <span className="group-hover:text-neon-cyan transition-colors">{item.label}</span>
+                      </Link>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
+            {/* Company dropdown */}
+            <div className="relative">
+              <button onClick={() => toggleDropdown('company')}
+                className={`flex items-center gap-1 px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${
+                  openDropdown === 'company' ? 'text-neon-cyan bg-neon-cyan/10' : 'text-text-muted hover:text-text-primary hover:bg-white/5'
+                }`}
+              >
+                Company
+                <motion.svg animate={{ rotate: openDropdown === 'company' ? 180 : 0 }} className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="6 9 12 15 18 9" /></motion.svg>
+              </button>
+              <AnimatePresence>
+                {openDropdown === 'company' && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 8, scale: 0.96 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 8, scale: 0.96 }}
+                    transition={{ duration: 0.15 }}
+                    className="absolute top-full left-0 mt-2 w-44 rounded-xl border border-electric-violet/20 bg-surface/95 backdrop-blur-2xl shadow-2xl shadow-black/40 overflow-hidden p-2"
+                  >
+                    {[
+                      { label: 'About', path: '/about', icon: '👤' },
+                      { label: 'Our Work', path: '/work', icon: '🏆' },
+                      { label: 'Contact', path: '/contact', icon: '📬' },
+                    ].map((item) => (
+                      <Link key={item.label} to={item.path} onClick={() => setOpenDropdown(null)}
+                        className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-text-muted hover:text-text-primary hover:bg-white/5 transition-all group"
+                      >
+                        <span className="text-base">{item.icon}</span>
+                        <span className="group-hover:text-neon-cyan transition-colors">{item.label}</span>
+                      </Link>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
             <Link to="/ai"
-              className="hidden sm:flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium bg-gradient-to-r from-neon-cyan/15 to-electric-violet/15 border border-neon-cyan/30 text-neon-cyan hover:from-neon-cyan/25 hover:to-electric-violet/25 hover:border-neon-cyan/50 transition-all duration-200"
+              className="ml-2 flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium bg-gradient-to-r from-neon-cyan/15 to-electric-violet/15 border border-neon-cyan/30 text-neon-cyan hover:from-neon-cyan/25 hover:to-electric-violet/25 hover:border-neon-cyan/50 transition-all duration-200"
             >
               <span>🧠</span>
               <span>AI Chat</span>
             </Link>
             <Link to="/login"
-              className="hidden sm:inline-block bg-brand-gradient text-white px-5 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:shadow-lg hover:shadow-neon-cyan/20 hover:scale-105 active:scale-95"
+              className="ml-1 bg-brand-gradient text-white px-5 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:shadow-lg hover:shadow-neon-cyan/20 hover:scale-105 active:scale-95"
             >
               Login
             </Link>
-            <button onClick={() => setMenuOpen(true)}
-              className="relative w-10 h-10 flex items-center justify-center text-text-primary hover:text-neon-cyan transition-colors rounded-lg hover:bg-white/5"
-              aria-label="Open menu"
-            >
-              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                <line x1="4" y1="6" x2="20" y2="6" />
-                <line x1="4" y1="12" x2="20" y2="12" />
-                <line x1="4" y1="18" x2="20" y2="18" />
-              </svg>
-            </button>
           </div>
+
+          {/* Mobile hamburger */}
+          <button onClick={() => setMobileOpen(!mobileOpen)}
+            className="md:hidden relative w-10 h-10 flex items-center justify-center text-text-primary hover:text-neon-cyan transition-colors"
+            aria-label="Toggle menu"
+          >
+            <div className="flex flex-col items-center justify-center gap-1.5">
+              <motion.span animate={mobileOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }} className="block w-5 h-[2px] bg-current rounded-full transition-colors" />
+              <motion.span animate={mobileOpen ? { opacity: 0 } : { opacity: 1 }} className="block w-5 h-[2px] bg-current rounded-full transition-colors" />
+              <motion.span animate={mobileOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }} className="block w-5 h-[2px] bg-current rounded-full transition-colors" />
+            </div>
+          </button>
         </div>
-      </nav>
 
-      {/* Full-screen overlay menu */}
-      <AnimatePresence>
-        {menuOpen && (
-          <>
+        {/* Mobile slide-in menu */}
+        <AnimatePresence>
+          {mobileOpen && (
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
-              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[60]"
-              onClick={() => setMenuOpen(false)}
-            />
-
-            <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.25, ease: 'easeOut' }}
-              className="fixed inset-0 z-[70] overflow-y-auto"
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.25, ease: 'easeInOut' }}
+              className="md:hidden overflow-hidden border-t border-electric-violet/10"
             >
-              <div className="min-h-screen bg-background/95 backdrop-blur-2xl">
-                {/* Top bar inside overlay */}
-                <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-                  <Link to="/" onClick={() => setMenuOpen(false)} className="flex items-center gap-2">
-                    <span className="logo-dot w-3 h-3 rounded-full bg-neon-cyan shadow-lg shadow-neon-cyan/50" />
-                    <span className="text-neon-cyan font-bold text-lg">Calcutta Node.</span>
+              <div className="bg-background/95 backdrop-blur-xl px-4 py-4 space-y-1 max-h-[75vh] overflow-y-auto">
+                {/* Services section */}
+                <div className="text-xs font-bold text-electric-violet uppercase tracking-wider px-4 pt-2 pb-1">Services</div>
+                {services.map((s) => (
+                  <Link key={s.label} to={s.path} onClick={() => setMobileOpen(false)}
+                    className="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm text-text-muted hover:text-text-primary hover:bg-white/5 transition-all"
+                  >
+                    <span>{s.icon}</span>
+                    <span>{s.label}</span>
                   </Link>
-                  <div className="flex items-center gap-3">
-                    <Link to="/ai" onClick={() => setMenuOpen(false)}
-                      className="flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium bg-gradient-to-r from-neon-cyan/15 to-electric-violet/15 border border-neon-cyan/30 text-neon-cyan hover:from-neon-cyan/25 hover:to-electric-violet/25 transition-all duration-200"
-                    >
-                      <span>🧠</span>
-                      <span className="hidden sm:inline">AI Chat</span>
-                    </Link>
-                    <button onClick={() => setMenuOpen(false)}
-                      className="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-white/5 text-text-primary hover:text-neon-cyan transition-all"
-                      aria-label="Close menu"
-                    >
-                      <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                        <line x1="18" y1="6" x2="6" y2="18" />
-                        <line x1="6" y1="6" x2="18" y2="18" />
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-
-                {/* Search bar */}
-                <div className="max-w-2xl mx-auto px-4 mb-8">
-                  <div className="relative">
-                    <span className="absolute left-4 top-1/2 -translate-y-1/2 text-lg">🔍</span>
-                    <input
-                      ref={searchRef}
-                      type="text"
-                      placeholder="Search services, pages, tools..."
-                      value={searchQuery}
-                      onChange={(e) => setSearchQuery(e.target.value)}
-                      className="w-full bg-surface/60 border border-electric-violet/20 rounded-2xl pl-12 pr-4 py-4 text-text-primary placeholder-text-muted/50 focus:outline-none focus:border-neon-cyan/50 focus:ring-2 focus:ring-neon-cyan/10 text-lg transition-all"
-                    />
-                    {searchQuery && (
-                      <button
-                        onClick={() => setSearchQuery('')}
-                        className="absolute right-4 top-1/2 -translate-y-1/2 text-text-muted hover:text-text-primary transition-colors"
-                      >
-                        ✕
-                      </button>
-                    )}
-                  </div>
-
-                  {/* Search results */}
-                  <AnimatePresence>
-                    {searchQuery.trim() && (
-                      <motion.div
-                        initial={{ opacity: 0, y: -8 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -8 }}
-                        className="mt-2 rounded-xl bg-surface/80 backdrop-blur-md border border-electric-violet/20 overflow-hidden"
-                      >
-                        {searchResults.length > 0 ? (
-                          <div className="py-2">
-                            {searchResults.slice(0, 8).map((result, i) => (
-                              <Link key={i} to={result.path}
-                                onClick={() => setMenuOpen(false)}
-                                className="flex items-center gap-3 px-4 py-3 text-sm text-text-muted hover:text-text-primary hover:bg-white/5 transition-all"
-                              >
-                                <span>{result.icon}</span>
-                                <span>{result.label}</span>
-                              </Link>
-                            ))}
-                            {searchResults.length > 8 && (
-                              <div className="px-4 py-2 text-xs text-text-muted/50">
-                                +{searchResults.length - 8} more results
-                              </div>
-                            )}
-                          </div>
-                        ) : (
-                          <div className="px-4 py-6 text-center text-sm text-text-muted/50">
-                            No results found for "{searchQuery}"
-                          </div>
-                        )}
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-
-                {/* Categorized links grid */}
-                <div className="max-w-6xl mx-auto px-4 pb-12">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                    {menuSections.map((section, si) => (
-                      <motion.div
-                        key={section.title}
-                        initial={{ opacity: 0, y: 16 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.05 + si * 0.04 }}
-                      >
-                        <h3 className="text-xs font-bold text-electric-violet uppercase tracking-widest mb-4">
-                          {section.title}
-                        </h3>
-                        <div className="flex flex-col gap-1">
-                          {section.items.map((item) => (
-                            <Link key={item.label} to={item.path}
-                              onClick={() => setMenuOpen(false)}
-                              className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-text-muted hover:text-text-primary hover:bg-white/5 transition-all group"
-                            >
-                              <span className="text-lg shrink-0">{item.icon}</span>
-                              <span className="group-hover:text-neon-cyan transition-colors">{item.label}</span>
-                            </Link>
-                          ))}
-                        </div>
-                      </motion.div>
-                    ))}
-                  </div>
-
-                  {/* Mobile-only quick actions */}
-                  <div className="mt-10 sm:hidden flex flex-col gap-3">
-                    <Link to="/ai" onClick={() => setMenuOpen(false)}
-                      className="flex items-center justify-center gap-2 bg-gradient-to-r from-neon-cyan/15 to-electric-violet/15 border border-neon-cyan/30 text-neon-cyan px-5 py-3 rounded-xl text-sm font-medium"
-                    >
-                      <span>🧠</span> AI Chat
-                    </Link>
-                    <Link to="/login" onClick={() => setMenuOpen(false)}
-                      className="flex items-center justify-center gap-2 bg-brand-gradient text-white px-5 py-3 rounded-xl text-sm font-medium"
-                    >
-                      <span>🔑</span> Login
-                    </Link>
-                  </div>
-
-                  {/* Footer note */}
-                  <div className="mt-12 text-center">
-                    <p className="text-xs text-text-muted/30">
-                      Calcutta Node. — IT Services & Digital Growth Agency
-                    </p>
-                  </div>
-                </div>
+                ))}
+                <div className="border-t border-electric-violet/10 my-2" />
+                {/* Resources */}
+                <div className="text-xs font-bold text-electric-violet uppercase tracking-wider px-4 pt-2 pb-1">Resources</div>
+                {[
+                  { label: 'Blog', path: '/blogs', icon: '📝' },
+                  { label: 'Courses', path: '/courses', icon: '🎓' },
+                  { label: 'Free Tools', path: '/tools', icon: '🛠️' },
+                  { label: 'Products', path: '/products', icon: '📦' },
+                  { label: 'Plans', path: '/plans', icon: '📋' },
+                ].map((item) => (
+                  <Link key={item.label} to={item.path} onClick={() => setMobileOpen(false)}
+                    className="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm text-text-muted hover:text-text-primary hover:bg-white/5 transition-all"
+                  >
+                    <span>{item.icon}</span>
+                    <span>{item.label}</span>
+                  </Link>
+                ))}
+                <div className="border-t border-electric-violet/10 my-2" />
+                {/* Company */}
+                <div className="text-xs font-bold text-electric-violet uppercase tracking-wider px-4 pt-2 pb-1">Company</div>
+                {[
+                  { label: 'About', path: '/about', icon: '👤' },
+                  { label: 'Our Work', path: '/work', icon: '🏆' },
+                  { label: 'Contact', path: '/contact', icon: '📬' },
+                ].map((item) => (
+                  <Link key={item.label} to={item.path} onClick={() => setMobileOpen(false)}
+                    className="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm text-text-muted hover:text-text-primary hover:bg-white/5 transition-all"
+                  >
+                    <span>{item.icon}</span>
+                    <span>{item.label}</span>
+                  </Link>
+                ))}
+                <div className="border-t border-electric-violet/10 my-2" />
+                {/* Mobile CTAs */}
+                <Link to="/ai" onClick={() => setMobileOpen(false)}
+                  className="flex items-center justify-center gap-2 mx-2 mt-3 bg-gradient-to-r from-neon-cyan/15 to-electric-violet/15 border border-neon-cyan/30 text-neon-cyan px-4 py-3 rounded-xl text-sm font-medium"
+                >
+                  🧠 AI Chat
+                </Link>
+                <Link to="/login" onClick={() => setMobileOpen(false)}
+                  className="block mx-2 mt-2 bg-brand-gradient text-white px-4 py-3 rounded-xl text-sm font-medium text-center"
+                >
+                  Login
+                </Link>
               </div>
             </motion.div>
-          </>
-        )}
-      </AnimatePresence>
+          )}
+        </AnimatePresence>
+      </nav>
+
+      {/* Mobile bottom tab bar */}
+      <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-background/90 backdrop-blur-xl border-t border-electric-violet/10 safe-area-bottom">
+        <div className="flex items-center justify-around py-1.5">
+          {[
+            { label: 'Home', path: '/', icon: '🏠' },
+            { label: 'Services', path: '/pricing', icon: '📋' },
+            { label: 'AI Chat', path: '/ai', icon: '🧠', highlight: true },
+            { label: 'Learn', path: '/courses', icon: '📚' },
+            { label: 'Menu', path: null, icon: '☰', toggle: true },
+          ].map((tab) => {
+            const isActive = tab.path && pathname === tab.path;
+            if (tab.toggle) {
+              return (
+                <button key={tab.label} onClick={() => setMobileOpen((prev) => !prev)}
+                  className={`flex flex-col items-center gap-0.5 px-4 py-1 rounded-lg text-[10px] transition-all ${mobileOpen ? 'text-neon-cyan' : 'text-text-muted'}`}
+                >
+                  <span className="text-xl">{tab.icon}</span>
+                  <span>{tab.label}</span>
+                </button>
+              );
+            }
+            return (
+              <Link key={tab.label} to={tab.path} onClick={() => setMobileOpen(false)}
+                className={`flex flex-col items-center gap-0.5 px-4 py-1 rounded-lg text-[10px] transition-all ${
+                  tab.highlight
+                    ? 'bg-gradient-to-r from-neon-cyan/15 to-electric-violet/15 border border-neon-cyan/30 text-neon-cyan px-5 py-1.5'
+                    : isActive
+                      ? 'text-neon-cyan'
+                      : 'text-text-muted hover:text-text-primary'
+                }`}
+              >
+                <span className="text-xl">{tab.icon}</span>
+                <span>{tab.label}</span>
+              </Link>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Spacer for mobile bottom tab */}
+      <div className="md:hidden h-16" />
     </>
   );
 }
