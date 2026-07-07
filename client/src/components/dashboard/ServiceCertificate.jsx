@@ -27,7 +27,7 @@ const ServiceCertificate = ({ order }) => {
             <p>has been successfully completed on ${new Date(order.updatedAt || order.createdAt).toLocaleDateString('en-IN', { year: 'numeric', month: 'long', day: 'numeric' })}.</p>
             <p>Service ID: ${order._id.slice(-8).toUpperCase()}</p>
           </div>
-          <p class="date">Champdani, Hooghly, West Bengal</p>
+          <p class="date">Kolkata, India</p>
           <div class="footer">Calcutta Node &mdash; calcuttanode.com</div>
         </div>
         <script>window.print();</script>

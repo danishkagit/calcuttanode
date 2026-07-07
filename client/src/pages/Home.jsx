@@ -32,7 +32,7 @@ const howItWorks = [
 ];
 
 const faqs = [
-  { q: 'What areas do you serve?', a: 'We primarily serve Champdani, Hooghly, and surrounding areas in West Bengal. Most of our services can be delivered remotely, so location is rarely a barrier.' },
+   { q: 'What areas do you serve?', a: 'We serve clients anywhere in the world — all services are delivered remotely. Location is never a barrier.' },
   { q: 'How quickly can you start?', a: 'Most services can begin within 24 hours of booking. For urgent issues, same-day support is available on our Premium plans.' },
    { q: 'What languages do you support?', a: 'We serve clients globally in English, with AI-powered capabilities to assist across multiple languages as needed.' },
   { q: 'Is remote support safe?', a: 'Absolutely. We use encrypted remote desktop tools. You\'re in control at all times — you can revoke access anytime.' },
