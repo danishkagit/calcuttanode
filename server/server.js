@@ -1,4 +1,7 @@
 import express from 'express';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import helmet from 'helmet';
@@ -67,6 +70,16 @@ app.use('/api/wishlist', wishlistRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/notifications', notificationRoutes);
 app.use('/api/ai', aiRoutes);
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+app.get('/api/app/download/android', (req, res) => {
+  const apkPath = path.join(__dirname, 'public', 'app', 'calcuttanode-app.apk');
+  if (fs.existsSync(apkPath)) {
+    return res.download(apkPath, 'CalcuttaNode.apk');
+  }
+  res.status(404).json({ success: false, message: 'APK not built yet.' });
+});
 
 app.get('/api/health', (req, res) => {
   res.json({ success: true, message: 'Server is running', timestamp: new Date().toISOString() });

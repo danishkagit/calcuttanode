@@ -215,6 +215,7 @@ export default function Navbar() {
                       { label: 'Free Tools', path: '/tools', icon: '🛠️', desc: '50+ SEO & AI tools' },
                       { label: 'Products', path: '/products', icon: '📦', desc: 'Templates & scripts' },
                       { label: 'Plans', path: '/plans', icon: '📋', desc: 'Membership & support' },
+                      { label: 'Mobile App', path: '/app', icon: '📱', desc: 'Android APK download' },
                     ].map((item) => (
                       <Link key={item.label} to={item.path} onClick={() => setOpenDropdown(null)}
                         className="group relative flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-gradient-to-r hover:from-neon-cyan/[0.07] hover:to-electric-violet/[0.04] transition-all duration-200"
@@ -358,20 +359,21 @@ export default function Navbar() {
                   <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
                   Resources
                 </div>
-                {[
-                  { label: 'Blog', path: '/blogs', icon: '📝' },
-                  { label: 'Courses', path: '/courses', icon: '🎓' },
-                  { label: 'Free Tools', path: '/tools', icon: '🛠️' },
-                  { label: 'Products', path: '/products', icon: '📦' },
-                  { label: 'Plans', path: '/plans', icon: '📋' },
-                ].map((item) => (
-                  <Link key={item.label} to={item.path} onClick={() => setMobileOpen(false)}
-                    className="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm text-text-muted hover:text-text-primary hover:bg-gradient-to-r hover:from-neon-cyan/[0.07] hover:to-electric-violet/[0.04] transition-all"
-                  >
-                    <span>{item.icon}</span>
-                    <span>{item.label}</span>
-                  </Link>
-                ))}
+                  {[
+                    { label: 'Blog', path: '/blogs', icon: '📝' },
+                    { label: 'Courses', path: '/courses', icon: '🎓' },
+                    { label: 'Free Tools', path: '/tools', icon: '🛠️' },
+                    { label: 'Products', path: '/products', icon: '📦' },
+                    { label: 'Plans', path: '/plans', icon: '📋' },
+                    { label: 'Mobile App', path: '/app', icon: '📱' },
+                  ].map((item) => (
+                    <Link key={item.label} to={item.path} onClick={() => setMobileOpen(false)}
+                      className="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm text-text-muted hover:text-text-primary hover:bg-gradient-to-r hover:from-neon-cyan/[0.07] hover:to-electric-violet/[0.04] transition-all"
+                    >
+                      <span>{item.icon}</span>
+                      <span>{item.label}</span>
+                    </Link>
+                  ))}
                 <div className="border-t border-electric-violet/10 my-2" />
                 <div className="text-xs font-bold text-electric-violet uppercase tracking-wider px-4 pt-2 pb-1 flex items-center gap-2">
                   <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
