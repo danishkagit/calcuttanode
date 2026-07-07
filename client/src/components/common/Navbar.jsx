@@ -136,9 +136,10 @@ export default function Navbar() {
                     initial="hidden"
                     animate="visible"
                     exit="exit"
-                    className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[720px] rounded-2xl border border-neon-cyan/20 bg-surface/95 backdrop-blur-2xl shadow-2xl shadow-black/50 overflow-hidden"
+                    className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[720px] rounded-2xl border border-neon-cyan/25 bg-[#171A26] shadow-2xl shadow-black/60 overflow-hidden"
                   >
-                    <div className="absolute inset-0 bg-gradient-to-br from-neon-cyan/[0.03] via-transparent to-electric-violet/[0.03] pointer-events-none" />
+                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-neon-cyan/[0.04] via-transparent to-electric-violet/[0.04] pointer-events-none" />
+                    <div className="absolute top-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-neon-cyan/40 to-transparent" />
                     <div className="grid grid-cols-3 gap-0.5 p-2 relative">
                       {serviceGroups.map((group) =>
                         group.items.map((s) => (
@@ -204,9 +205,10 @@ export default function Navbar() {
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 6, scale: 0.96 }}
                     transition={{ duration: 0.15 }}
-                    className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-56 rounded-2xl border border-neon-cyan/20 bg-surface/95 backdrop-blur-2xl shadow-2xl shadow-black/50 overflow-hidden p-2"
+                    className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-56 rounded-2xl border border-neon-cyan/25 bg-[#171A26] shadow-2xl shadow-black/60 overflow-hidden p-2"
                   >
-                    <div className="absolute inset-0 bg-gradient-to-br from-neon-cyan/[0.03] via-transparent to-electric-violet/[0.03] pointer-events-none" />
+                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-neon-cyan/[0.04] via-transparent to-electric-violet/[0.04] pointer-events-none" />
+                    <div className="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-neon-cyan/40 to-transparent" />
                     {[
                       { label: 'Blog', path: '/blogs', icon: '📝', desc: 'Tech tips & insights' },
                       { label: 'Courses', path: '/courses', icon: '🎓', desc: 'Free & paid courses' },
@@ -257,9 +259,10 @@ export default function Navbar() {
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 6, scale: 0.96 }}
                     transition={{ duration: 0.15 }}
-                    className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-48 rounded-2xl border border-neon-cyan/20 bg-surface/95 backdrop-blur-2xl shadow-2xl shadow-black/50 overflow-hidden p-2"
+                    className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-48 rounded-2xl border border-neon-cyan/25 bg-[#171A26] shadow-2xl shadow-black/60 overflow-hidden p-2"
                   >
-                    <div className="absolute inset-0 bg-gradient-to-br from-neon-cyan/[0.03] via-transparent to-electric-violet/[0.03] pointer-events-none" />
+                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-neon-cyan/[0.04] via-transparent to-electric-violet/[0.04] pointer-events-none" />
+                    <div className="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-neon-cyan/40 to-transparent" />
                     {[
                       { label: 'About', path: '/about', icon: '👤', desc: 'Our story & team' },
                       { label: 'Our Work', path: '/work', icon: '🏆', desc: 'Portfolio & case studies' },
