@@ -73,12 +73,10 @@ app.use('/api/ai', aiRoutes);
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
+const APK_DOWNLOAD_URL = 'https://github.com/danishkagit/calcuttanode/releases/download/v1.0.0/calcuttanode-app.apk';
+
 app.get('/api/app/download/android', (req, res) => {
-  const apkPath = path.join(__dirname, 'public', 'app', 'calcuttanode-app.apk');
-  if (fs.existsSync(apkPath)) {
-    return res.download(apkPath, 'CalcuttaNode.apk');
-  }
-  res.status(404).json({ success: false, message: 'APK not built yet.' });
+  res.redirect(302, APK_DOWNLOAD_URL);
 });
 
 app.get('/api/health', (req, res) => {

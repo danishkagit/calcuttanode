@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion';
 import ParticleField from '../components/common/ParticleField';
 
+const DOWNLOAD_URL = 'https://github.com/danishkagit/calcuttanode/releases/download/v1.0.0/calcuttanode-app.apk';
+
 const fadeUp = { initial: { opacity: 0, y: 30 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, margin: '-50px' }, transition: { duration: 0.5 } };
 
 const features = [
@@ -49,7 +51,7 @@ export default function MobileApp() {
             </p>
             <div className="flex flex-col sm:flex-row gap-3 mb-6">
               <motion.a
-                href="/api/app/download/android"
+                href={DOWNLOAD_URL}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="inline-flex items-center justify-center gap-3 bg-brand-gradient text-white px-6 py-3.5 rounded-xl font-semibold text-base hover:shadow-lg hover:shadow-neon-cyan/20 transition-all"
@@ -219,7 +221,7 @@ export default function MobileApp() {
             <h2 className="text-xl md:text-2xl font-bold text-text-primary mb-2">Get the App</h2>
             <p className="text-sm text-text-muted mb-6">Download the Android APK directly. No Play Store required.</p>
             <motion.a
-              href="/api/app/download/android"
+              href={DOWNLOAD_URL}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="inline-flex items-center gap-2 bg-brand-gradient text-white px-8 py-3.5 rounded-xl font-semibold hover:shadow-lg hover:shadow-neon-cyan/20 transition-all"
