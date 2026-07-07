@@ -325,68 +325,70 @@ export default function Navbar() {
                 initial={{ x: '100%' }}
                 animate={{ x: 0 }}
                 exit={{ x: '100%' }}
-                transition={{ type: 'spring', damping: 28, stiffness: 300 }}
-                className="md:hidden fixed top-0 right-0 bottom-0 z-50 w-[85vw] max-w-sm bg-background/98 backdrop-blur-2xl border-l border-electric-violet/20 shadow-2xl shadow-black/60 overflow-y-auto"
+                transition={{ duration: 0.25, ease: 'easeOut' }}
+                className="md:hidden fixed top-0 right-0 bottom-0 z-50 w-[85vw] max-w-sm bg-background/98 backdrop-blur-2xl border-l border-electric-violet/20 shadow-2xl shadow-black/60 flex flex-col"
               >
                 <div className="absolute inset-0 bg-gradient-to-b from-neon-cyan/[0.03] via-transparent to-electric-violet/[0.03] pointer-events-none" />
-                <div className="flex items-center justify-between px-5 h-16 border-b border-electric-violet/10">
+                <div className="flex items-center justify-between px-5 h-14 shrink-0 border-b border-electric-violet/10 relative">
                   <span className="text-sm font-bold text-neon-cyan">Navigation</span>
                   <button onClick={() => setMobileOpen(false)} className="w-9 h-9 flex items-center justify-center rounded-lg hover:bg-white/5 text-text-muted hover:text-text-primary transition-all">
                     <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
                   </button>
                 </div>
-                <div className="px-3 py-3 space-y-0.5 relative">
-                  <div className="text-[10px] font-bold text-electric-violet uppercase tracking-widest px-3 pb-1 pt-2">Services</div>
-                  {serviceGroups.flatMap((g) => g.items).map((s) => (
-                    <Link key={s.label} to={s.path} onClick={() => setMobileOpen(false)}
-                      className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-text-muted hover:text-text-primary hover:bg-gradient-to-r hover:from-neon-cyan/[0.07] hover:to-electric-violet/[0.04] hover:border hover:border-neon-cyan/10 transition-all"
-                    >
-                      <span className="text-lg shrink-0">{s.icon}</span>
-                      <span className="flex-1">{s.label}</span>
-                      <span className="text-[10px] font-semibold text-neon-cyan/60 bg-neon-cyan/10 px-2 py-0.5 rounded-full">{s.price}</span>
-                    </Link>
-                  ))}
-                  <div className="h-px bg-gradient-to-r from-transparent via-electric-violet/20 to-transparent my-2 mx-3" />
-                  <div className="text-[10px] font-bold text-electric-violet uppercase tracking-widest px-3 pb-1 pt-1">Resources</div>
-                  {[
-                    { label: 'Blog', path: '/blogs', icon: '📝' },
-                    { label: 'Courses', path: '/courses', icon: '🎓' },
-                    { label: 'Free Tools', path: '/tools', icon: '🛠️' },
-                    { label: 'Products', path: '/products', icon: '📦' },
-                    { label: 'Plans', path: '/plans', icon: '📋' },
-                  ].map((item) => (
-                    <Link key={item.label} to={item.path} onClick={() => setMobileOpen(false)}
-                      className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-text-muted hover:text-text-primary hover:bg-gradient-to-r hover:from-neon-cyan/[0.07] hover:to-electric-violet/[0.04] transition-all"
-                    >
-                      <span className="text-lg shrink-0">{item.icon}</span>
-                      <span>{item.label}</span>
-                    </Link>
-                  ))}
-                  <div className="h-px bg-gradient-to-r from-transparent via-electric-violet/20 to-transparent my-2 mx-3" />
-                  <div className="text-[10px] font-bold text-electric-violet uppercase tracking-widest px-3 pb-1 pt-1">Company</div>
-                  {[
-                    { label: 'About', path: '/about', icon: '👤' },
-                    { label: 'Our Work', path: '/work', icon: '🏆' },
-                    { label: 'Contact', path: '/contact', icon: '📬' },
-                  ].map((item) => (
-                    <Link key={item.label} to={item.path} onClick={() => setMobileOpen(false)}
-                      className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-text-muted hover:text-text-primary hover:bg-gradient-to-r hover:from-neon-cyan/[0.07] hover:to-electric-violet/[0.04] transition-all"
-                    >
-                      <span className="text-lg shrink-0">{item.icon}</span>
-                      <span>{item.label}</span>
-                    </Link>
-                  ))}
-                  <div className="pt-3 px-1 space-y-2">
-                    <Link to="/ai" onClick={() => setMobileOpen(false)}
-                      className="flex items-center justify-center gap-2 bg-gradient-to-r from-neon-cyan/15 to-electric-violet/15 border border-neon-cyan/30 text-neon-cyan px-4 py-3 rounded-xl text-sm font-semibold hover:from-neon-cyan/25 hover:to-electric-violet/25 hover:shadow-lg hover:shadow-neon-cyan/10 transition-all"
-                    >
-                      <span>🧠</span> AI Chat
-                    </Link>
-                    <Link to="/login" onClick={() => setMobileOpen(false)}
-                      className="block bg-brand-gradient text-white px-4 py-3 rounded-xl text-sm font-semibold text-center hover:shadow-lg hover:shadow-neon-cyan/20 transition-all"
-                    >
-                      Login
-                    </Link>
+                <div className="flex-1 overflow-y-auto min-h-0">
+                  <div className="px-3 py-3 space-y-0.5">
+                    <div className="text-[10px] font-bold text-electric-violet uppercase tracking-widest px-3 pb-1 pt-2">Services</div>
+                    {serviceGroups.flatMap((g) => g.items).map((s) => (
+                      <Link key={s.label} to={s.path} onClick={() => setMobileOpen(false)}
+                        className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-text-muted hover:text-text-primary hover:bg-gradient-to-r hover:from-neon-cyan/[0.07] hover:to-electric-violet/[0.04] transition-all"
+                      >
+                        <span className="text-lg shrink-0">{s.icon}</span>
+                        <span className="flex-1">{s.label}</span>
+                        <span className="text-[10px] font-semibold text-neon-cyan/60 bg-neon-cyan/10 px-2 py-0.5 rounded-full">{s.price}</span>
+                      </Link>
+                    ))}
+                    <div className="h-px bg-gradient-to-r from-transparent via-electric-violet/20 to-transparent my-2 mx-3" />
+                    <div className="text-[10px] font-bold text-electric-violet uppercase tracking-widest px-3 pb-1 pt-1">Resources</div>
+                    {[
+                      { label: 'Blog', path: '/blogs', icon: '📝' },
+                      { label: 'Courses', path: '/courses', icon: '🎓' },
+                      { label: 'Free Tools', path: '/tools', icon: '🛠️' },
+                      { label: 'Products', path: '/products', icon: '📦' },
+                      { label: 'Plans', path: '/plans', icon: '📋' },
+                    ].map((item) => (
+                      <Link key={item.label} to={item.path} onClick={() => setMobileOpen(false)}
+                        className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-text-muted hover:text-text-primary hover:bg-gradient-to-r hover:from-neon-cyan/[0.07] hover:to-electric-violet/[0.04] transition-all"
+                      >
+                        <span className="text-lg shrink-0">{item.icon}</span>
+                        <span>{item.label}</span>
+                      </Link>
+                    ))}
+                    <div className="h-px bg-gradient-to-r from-transparent via-electric-violet/20 to-transparent my-2 mx-3" />
+                    <div className="text-[10px] font-bold text-electric-violet uppercase tracking-widest px-3 pb-1 pt-1">Company</div>
+                    {[
+                      { label: 'About', path: '/about', icon: '👤' },
+                      { label: 'Our Work', path: '/work', icon: '🏆' },
+                      { label: 'Contact', path: '/contact', icon: '📬' },
+                    ].map((item) => (
+                      <Link key={item.label} to={item.path} onClick={() => setMobileOpen(false)}
+                        className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-text-muted hover:text-text-primary hover:bg-gradient-to-r hover:from-neon-cyan/[0.07] hover:to-electric-violet/[0.04] transition-all"
+                      >
+                        <span className="text-lg shrink-0">{item.icon}</span>
+                        <span>{item.label}</span>
+                      </Link>
+                    ))}
+                    <div className="pt-3 px-1 space-y-2">
+                      <Link to="/ai" onClick={() => setMobileOpen(false)}
+                        className="flex items-center justify-center gap-2 bg-gradient-to-r from-neon-cyan/15 to-electric-violet/15 border border-neon-cyan/30 text-neon-cyan px-4 py-3 rounded-xl text-sm font-semibold hover:from-neon-cyan/25 hover:to-electric-violet/25 hover:shadow-lg hover:shadow-neon-cyan/10 transition-all"
+                      >
+                        <span>🧠</span> AI Chat
+                      </Link>
+                      <Link to="/login" onClick={() => setMobileOpen(false)}
+                        className="block bg-brand-gradient text-white px-4 py-3 rounded-xl text-sm font-semibold text-center hover:shadow-lg hover:shadow-neon-cyan/20 transition-all"
+                      >
+                        Login
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </motion.div>
