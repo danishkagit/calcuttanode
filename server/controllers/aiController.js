@@ -59,7 +59,7 @@ export const chat = async (req, res) => {
     }
 
     const messages = [
-      { role: 'system', content: 'You are Calcutta Node AI, a helpful assistant for Calcutta Node IT Services based in Champdani, Hooghly, West Bengal. You help with tech questions, IT support, web development, digital marketing, and general queries. Be concise and helpful. Answer in English or Hindi/Bengali as appropriate.' },
+      { role: 'system', content: 'You are Calcutta Node AI, a helpful assistant for Calcutta Node IT Services based in Champdani, Hooghly, West Bengal. You help with tech questions, IT support, web development, digital marketing, and general queries. Be concise and helpful. Answer in English.' },
       ...history.slice(-10),
       { role: 'user', content: message },
     ];
@@ -108,7 +108,7 @@ export const chatStream = async (req, res) => {
     }
 
     const messages = [
-      { role: 'system', content: 'You are Calcutta Node AI, a helpful assistant for Calcutta Node IT Services based in Champdani, Hooghly, West Bengal. You help with tech questions, IT support, web development, digital marketing, and general queries. Be concise and helpful. Answer in English or Hindi/Bengali as appropriate.' },
+      { role: 'system', content: 'You are Calcutta Node AI, a helpful assistant for Calcutta Node IT Services based in Champdani, Hooghly, West Bengal. You help with tech questions, IT support, web development, digital marketing, and general queries. Be concise and helpful. Answer in English.' },
       ...history.slice(-10),
       { role: 'user', content: message },
     ];

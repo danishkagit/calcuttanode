@@ -30,7 +30,7 @@ const stats = [
 
 const whyUs2026 = [
   { emoji: '🤖', title: 'AI-Assisted Support', desc: 'Our AI chat handles common queries instantly. For complex issues, human experts step in — you get the best of both worlds.' },
-  { emoji: '🌐', title: 'Hindi & English Support', desc: 'We provide full support in Hindi (हिंदी) and English — serving clients across India and worldwide with clear communication.' },
+  { emoji: '🌐', title: 'Global Remote Delivery', desc: '100% remote — we serve clients anywhere in the world. No location barriers, no travel needed. Just fast, reliable delivery.' },
   { emoji: '💰', title: 'Affordable & Transparent', desc: 'No hidden fees. Clear pricing upfront. Pay via UPI, card, or our in-app wallet with loyalty rewards.' },
   { emoji: '⚡', title: 'Remote + On-Site', desc: 'Most issues solved remotely in under 24 hours. On-site visits available for local clients in Hooghly and nearby areas.' },
   { emoji: '📱', title: 'Full Client Dashboard', desc: 'Track orders, manage subscriptions, view transactions, earn referral rewards — all from your personal dashboard.' },

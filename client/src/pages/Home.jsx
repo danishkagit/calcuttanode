@@ -34,7 +34,7 @@ const howItWorks = [
 const faqs = [
   { q: 'What areas do you serve?', a: 'We primarily serve Champdani, Hooghly, and surrounding areas in West Bengal. Most of our services can be delivered remotely, so location is rarely a barrier.' },
   { q: 'How quickly can you start?', a: 'Most services can begin within 24 hours of booking. For urgent issues, same-day support is available on our Premium plans.' },
-  { q: 'What languages do you support?', a: 'We provide full support in Hindi and English — so whether you prefer हिंदी or English, we\'ve got you covered.' },
+   { q: 'What languages do you support?', a: 'We serve clients globally in English, with AI-powered capabilities to assist across multiple languages as needed.' },
   { q: 'Is remote support safe?', a: 'Absolutely. We use encrypted remote desktop tools. You\'re in control at all times — you can revoke access anytime.' },
   { q: 'What if I\'m not satisfied?', a: 'We offer revisions on design work and a "no recovery, no charge" policy on data recovery. Your satisfaction is our priority.' },
   { q: 'Can I get a custom website?', a: 'Yes! Our ₹4,999 package covers a 5-page responsive site. For custom requirements, contact us for a tailored quote.' },
@@ -76,7 +76,7 @@ export default function Home() {
             transition={{ repeat: Infinity, duration: 2.5 }}
             className="inline-block text-xs font-semibold text-electric-violet bg-electric-violet/15 px-4 py-1.5 rounded-full mb-5 border border-electric-violet/30 shadow-lg shadow-electric-violet/10"
           >
-            ⚡ India's Remote IT & Digital Partner Since 2023
+            ⚡ Global Remote IT & Digital Partner Since 2023
           </motion.span>
           <motion.div
             animate={{ y: [0, -8, 0] }}
@@ -128,7 +128,7 @@ export default function Home() {
             className="text-xs text-text-muted/60 max-w-xl mx-auto mb-8 leading-relaxed"
           >
             From fixing a slow PC to building your dream website — we deliver practical tech solutions 
-            across India. <span className="text-neon-cyan font-medium">Support in हिंदी & English.</span>
+            worldwide. <span className="text-neon-cyan font-medium">100% remote delivery.</span>
           </motion.p>
           <div className="flex gap-4 justify-center flex-wrap">
             <motion.a href="/pricing" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
@@ -197,7 +197,7 @@ export default function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {[
               { emoji: '🤖', title: 'AI-Powered Support', desc: 'Instant troubleshooting with our AI chat. Get answers 24/7 without waiting.' },
-              { emoji: '🌐', title: 'Hindi & English Support', desc: 'Full support in Hindi (हिंदी) and English. Serving clients across India and worldwide.' },
+              { emoji: '🌐', title: 'Global Remote Service', desc: '100% remote delivery to any location worldwide. No barriers, no delays — just fast results.' },
               { emoji: '🏪', title: 'Local Business Packages', desc: 'Digital presence packages designed for small shops, clinics, and local enterprises.' },
               { emoji: '⚡', title: 'Same-Day Response', desc: 'Priority response within 4 hours for urgent IT issues. No more waiting days.' },
             ].map((item, i) => (
@@ -442,7 +442,7 @@ export default function Home() {
         <div className="flex items-center justify-center gap-6 mt-8 text-xs text-text-muted">
           <span>🔒 Secure Payment</span>
           <span>⚡ Instant Support</span>
-          <span>🌐 Hindi & English</span>
+          <span>🌐 Global Remote Service</span>
           <span>📱 Remote or On-site</span>
         </div>
       </motion.section>
