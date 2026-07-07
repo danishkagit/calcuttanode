@@ -31,7 +31,7 @@ function AnimatedPage({ children }) {
 export default function App() {
   const location = useLocation();
   return (
-    <div className="min-h-screen bg-background flex flex-col">
+    <div className="min-h-screen bg-background flex flex-col w-full">
       <Navbar />
       <main className="flex-1">
         <AnimatePresence mode="wait">
