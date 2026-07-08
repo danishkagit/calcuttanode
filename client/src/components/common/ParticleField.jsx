@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 
-export default function ParticleField({ color = '#2EE6E6', count = 40, speed = 0.3 }) {
+export default function ParticleField({ color = '#546676', count = 40, speed = 0.3 }) {
   const canvasRef = useRef(null);
 
   useEffect(() => {
@@ -36,7 +36,11 @@ export default function ParticleField({ color = '#2EE6E6', count = 40, speed = 0
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
         ctx.fillStyle = color.replace(')', `, ${p.o})`).replace('rgb', 'rgba');
         if (!color.startsWith('rgba')) {
-          ctx.fillStyle = `rgba(46, 230, 230, ${p.o})`;
+          const hex = color.replace('#', '');
+          const r = parseInt(hex.substring(0, 2), 16);
+          const g = parseInt(hex.substring(2, 4), 16);
+          const b = parseInt(hex.substring(4, 6), 16);
+          ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${p.o})`;
         }
         ctx.fill();
       });
@@ -47,7 +51,11 @@ export default function ParticleField({ color = '#2EE6E6', count = 40, speed = 0
             ctx.beginPath();
             ctx.moveTo(a.x, a.y);
             ctx.lineTo(b.x, b.y);
-            ctx.strokeStyle = `rgba(46, 230, 230, ${(1 - dist / 100) * 0.06})`;
+            const hex = color.replace('#', '');
+            const r = parseInt(hex.substring(0, 2), 16);
+            const g = parseInt(hex.substring(2, 4), 16);
+            const b = parseInt(hex.substring(4, 6), 16);
+            ctx.strokeStyle = `rgba(${r}, ${g}, ${b}, ${(1 - dist / 100) * 0.06})`;
             ctx.stroke();
           }
         });
