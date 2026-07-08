@@ -3,14 +3,14 @@ import { motion, AnimatePresence } from 'framer-motion';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 
-const models = [
+const API_BASE = import.meta.env.PROD ? 'https://calcuttanode-api.onrender.com' : '';
+
+const defaultModels = [
   { id: 'deepseek-v4-flash-free', name: 'DeepSeek V4 Flash', icon: '🔍', color: '#7EBBC5' },
   { id: 'mimo-v2.5-free', name: 'MiMo V2.5', icon: '🧠', color: '#543A67' },
   { id: 'north-mini-code-free', name: 'North Mini Code', icon: '⚡', color: '#FFD700' },
   { id: 'nemotron-3-ultra-free', name: 'Nemotron 3 Ultra', icon: '🚀', color: '#FF6B6B' },
 ];
-
-const API_BASE = import.meta.env.PROD ? 'https://calcuttanode-api.onrender.com' : '';
 
 const suggestedQuestions = [
   'What services does Calcutta Node offer?',
@@ -147,9 +147,17 @@ export default function AI() {
   const [currentModel, setCurrentModel] = useState(null);
   const [showModels, setShowModels] = useState(false);
   const [showScrollBtn, setShowScrollBtn] = useState(false);
+  const [models, setModels] = useState(defaultModels);
   const chatRef = useRef(null);
   const inputRef = useRef(null);
   const [streamingContent, setStreamingContent] = useState('');
+
+  useEffect(() => {
+    fetch(`${API_BASE}/api/ai/models`)
+      .then(res => res.json())
+      .then(data => { if (Array.isArray(data) && data.length) setModels(data); })
+      .catch(() => {});
+  }, []);
 
   const scrollToBottom = useCallback((smooth = true) => {
     chatRef.current?.scrollTo({ top: chatRef.current.scrollHeight, behavior: smooth ? 'smooth' : 'auto' });
@@ -277,7 +285,7 @@ export default function AI() {
 Calcutta Node.AI
             </span>
           </h1>
-          <p className="text-text-muted text-xs mt-1">4 free models · auto-fallback · unlimited chat</p>
+          <p className="text-text-muted text-xs mt-1">{models.length} free models · auto-fallback · unlimited chat</p>
         </motion.div>
 
           <div className="flex items-center gap-2 mb-3 flex-wrap justify-center">
@@ -641,7 +649,7 @@ Calcutta Node.AI
         </motion.div>
 
         <p className="text-center text-[9px] text-text-muted/30 mt-2">
-          4 free models via OpenCode Zen · 20 req/min · auto-fallback on quota exhaustion
+          {models.length} free models via OpenCode · 20 req/min · auto-fallback on quota exhaustion
         </p>
       </div>
     </div>

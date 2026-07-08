@@ -6,10 +6,17 @@ if (!ZEN_KEY) {
 }
 
 const modelList = [
-  { id: 'deepseek-v4-flash-free', name: 'DeepSeek V4 Flash Free', icon: '🔍', tier: 1 },
-  { id: 'mimo-v2.5-free', name: 'MiMo V2.5 Free', icon: '🧠', tier: 1 },
-  { id: 'north-mini-code-free', name: 'North Mini Code Free', icon: '⚡', tier: 1 },
-  { id: 'nemotron-3-ultra-free', name: 'Nemotron 3 Ultra Free', icon: '🚀', tier: 1 },
+  { id: 'deepseek-v4-flash-free', name: 'DeepSeek V4 Flash Free', icon: '🔍', color: '#7EBBC5', tier: 1, provider: 'opencode' },
+  { id: 'mimo-v2.5-free', name: 'MiMo V2.5 Free', icon: '🧠', color: '#543A67', tier: 1, provider: 'opencode' },
+  { id: 'north-mini-code-free', name: 'North Mini Code Free', icon: '⚡', color: '#FFD700', tier: 1, provider: 'opencode' },
+  { id: 'nemotron-3-ultra-free', name: 'Nemotron 3 Ultra Free', icon: '🚀', color: '#FF6B6B', tier: 1, provider: 'opencode' },
+  { id: 'hy3-free', name: 'Hy3 Free', icon: '🌊', color: '#4FC3F7', tier: 1, provider: 'opencode' },
+  { id: 'big-pickle', name: 'Big Pickle Free', icon: '🥒', color: '#81C784', tier: 1, provider: 'opencode' },
+  { id: 'antigravity-gemini-3.1-pro', name: 'Gemini 3.1 Pro', icon: '🌟', color: '#4285F4', tier: 1, provider: 'antigravity' },
+  { id: 'antigravity-gemini-3-flash', name: 'Gemini 3 Flash', icon: '⚡', color: '#34A853', tier: 1, provider: 'antigravity' },
+  { id: 'gemini-2.5-flash', name: 'Gemini 2.5 Flash', icon: '💎', color: '#EA4335', tier: 1, provider: 'antigravity' },
+  { id: 'antigravity-claude-sonnet-4-6', name: 'Claude Sonnet 4.6', icon: '🎯', color: '#FBBC04', tier: 1, provider: 'antigravity' },
+  { id: 'antigravity-claude-opus-4-6-thinking', name: 'Claude Opus 4.6 Thinking', icon: '🧠', color: '#8E24AA', tier: 1, provider: 'antigravity' },
 ];
 
 const rateLimitStore = new Map();
@@ -74,7 +81,7 @@ export const chat = async (req, res) => {
         const content = await callModel(model.id, messages);
         return res.json({
           reply: content,
-          model: { id: model.id, name: model.name, provider: 'opencode-zen' },
+          model: { id: model.id, name: model.name, provider: model.provider, color: model.color, icon: model.icon },
         });
       } catch (err) {
         errors.push(`${model.name}: ${err.message}`);
@@ -143,7 +150,7 @@ export const chatStream = async (req, res) => {
         const decoder = new TextDecoder();
         let buffer = '';
 
-        res.write(`data: ${JSON.stringify({ model: { id: model.id, name: model.name } })}\n\n`);
+        res.write(`data: ${JSON.stringify({ model: { id: model.id, name: model.name, provider: model.provider, color: model.color, icon: model.icon } })}\n\n`);
 
         while (true) {
           const { done, value } = await reader.read();
