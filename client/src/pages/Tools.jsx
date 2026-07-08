@@ -25,7 +25,7 @@ export default function Tools() {
 
   return (
     <div className="relative min-h-screen">
-      <ParticleField count={35} speed={0.15} color="#3B4854" />
+      <ParticleField count={35} speed={0.15} color="#543A67" />
 
       <div className="max-w-7xl mx-auto px-4 py-12 relative z-10">
         <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-12">
