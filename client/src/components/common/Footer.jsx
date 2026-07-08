@@ -13,7 +13,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 py-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
         <motion.div className="sm:col-span-2 md:col-span-1" {...fadeUp}>
           <div className="flex items-center gap-2 mb-4">
-            <div className="bg-white rounded-lg p-0.5 flex items-center justify-center"><img src={logo} alt="Calcutta Node." className="h-7 w-auto" /></div>
+            <img src={logo} alt="Calcutta Node." className="h-10 w-auto" />
             <span className="text-neon-cyan font-bold">Calcutta Node.</span>
           </div>
           <p className="text-text-muted text-sm leading-relaxed">IT Services & Digital Growth Agency based in Kolkata, India. Serving clients worldwide since 2023.</p>
