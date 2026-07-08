@@ -101,7 +101,7 @@ export default function Navbar() {
       }`}>
         <div className="max-w-7xl mx-auto px-4 flex items-center justify-between h-16">
           <Link to="/" className="flex items-center gap-2 group shrink-0">
-            <img src={logo} alt="Calcutta Node." className="h-10 w-auto transition-transform duration-300 group-hover:scale-105" />
+            <div className="bg-white rounded-lg p-0.5 flex items-center justify-center"><img src={logo} alt="Calcutta Node." className="h-9 w-auto transition-transform duration-300 group-hover:scale-105" /></div>
             <span className="text-neon-cyan font-bold text-lg hidden sm:block transition-all duration-300 group-hover:neon-glow-cyan">Calcutta Node.</span>
           </Link>
 

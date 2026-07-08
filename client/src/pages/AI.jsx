@@ -596,7 +596,7 @@ Calcutta Node.AI
           className="relative"
         >
           <motion.div
-            animate={{ boxShadow: ['0 0 15px rgba(46,230,230,0.15)', '0 0 30px rgba(46,230,230,0.3)', '0 0 15px rgba(46,230,230,0.15)'] }}
+            animate={{ boxShadow: ['0 0 15px rgba(126,187,197,0.15)', '0 0 30px rgba(126,187,197,0.3)', '0 0 15px rgba(126,187,197,0.15)'] }}
             transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
             className="bg-surface/60 backdrop-blur-xl border-2 border-neon-cyan/40 rounded-2xl p-1.5 shadow-2xl shadow-neon-cyan/20 flex items-end gap-1.5"
           >
