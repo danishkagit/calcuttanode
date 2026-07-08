@@ -22,7 +22,7 @@ export default function ParticleField({ color = '#546676', count = 40, speed = 0
       vx: (Math.random() - 0.5) * speed,
       vy: (Math.random() - 0.5) * speed,
       r: Math.random() * 2 + 0.5,
-      o: Math.random() * 0.3 + 0.05,
+      o: Math.random() * 0.4 + 0.2,
     }));
 
     const draw = () => {
@@ -55,7 +55,7 @@ export default function ParticleField({ color = '#546676', count = 40, speed = 0
             const r = parseInt(hex.substring(0, 2), 16);
             const g = parseInt(hex.substring(2, 4), 16);
             const b = parseInt(hex.substring(4, 6), 16);
-            ctx.strokeStyle = `rgba(${r}, ${g}, ${b}, ${(1 - dist / 100) * 0.06})`;
+            ctx.strokeStyle = `rgba(${r}, ${g}, ${b}, ${(1 - dist / 100) * 0.15})`;
             ctx.stroke();
           }
         });

@@ -65,7 +65,7 @@ function ParticleField() {
       vx: (Math.random() - 0.5) * 0.3,
       vy: (Math.random() - 0.5) * 0.3,
       r: Math.random() * 2 + 0.5,
-      o: Math.random() * 0.4 + 0.1,
+      o: Math.random() * 0.4 + 0.25,
     }));
 
     const resize = () => { canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight; };
@@ -90,7 +90,7 @@ function ParticleField() {
             ctx.beginPath();
             ctx.moveTo(a.x, a.y);
             ctx.lineTo(b.x, b.y);
-            ctx.strokeStyle = `rgba(84, 102, 118, ${(1 - dist / 120) * 0.1})`;
+            ctx.strokeStyle = `rgba(84, 102, 118, ${(1 - dist / 120) * 0.2})`;
             ctx.stroke();
           }
         });
