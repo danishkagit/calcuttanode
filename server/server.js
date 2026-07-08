@@ -54,6 +54,7 @@ import wishlistRoutes from './routes/wishlistRoutes.js';
 import adminRoutes from './routes/adminRoutes.js';
 import notificationRoutes from './routes/notificationRoutes.js';
 import aiRoutes from './routes/aiRoutes.js';
+import seoRoutes from './routes/seoRoutes.js';
 
 app.use('/api/auth', authRoutes);
 app.use('/api/blogs', blogRoutes);
@@ -67,6 +68,7 @@ app.use('/api/loyalty', loyaltyRoutes);
 app.use('/api/coupons', couponRoutes);
 app.use('/api/reviews', reviewRoutes);
 app.use('/api/wishlist', wishlistRoutes);
+app.use('/api/seo', seoRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/notifications', notificationRoutes);
 app.use('/api/ai', aiRoutes);
@@ -77,6 +79,10 @@ const APK_DOWNLOAD_URL = 'https://github.com/danishkagit/calcuttanode/releases/d
 
 app.get('/api/app/download/android', (req, res) => {
   res.redirect(302, APK_DOWNLOAD_URL);
+});
+
+app.get('/sitemap.xml', (req, res) => {
+  res.redirect(301, 'https://calcuttanode-api.onrender.com/api/seo/sitemap');
 });
 
 app.get('/api/health', (req, res) => {

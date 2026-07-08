@@ -1,0 +1,18 @@
+{
+  "name": "Calcutta Node — IT Services & Digital Growth Agency",
+  "short_name": "Calcutta Node",
+  "description": "Professional IT support, web development, design, and marketing services in Champdani, Hooghly.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#171A26",
+  "theme_color": "#7EBBC5",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

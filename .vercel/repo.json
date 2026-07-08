@@ -1,0 +1,11 @@
+{
+  "remoteName": "origin",
+  "projects": [
+    {
+      "id": "prj_Dagm9IS2TAsgUxhW1BDdpoRPrukh",
+      "name": "calcuttanode",
+      "directory": "client",
+      "orgId": "team_oDONnmXpGYbGEMOTeAbpEdIi"
+    }
+  ]
+}

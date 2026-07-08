@@ -216,6 +216,7 @@ export default function Navbar() {
                       { label: 'Products', path: '/products', icon: '📦', desc: 'Templates & scripts' },
                       { label: 'Plans', path: '/plans', icon: '📋', desc: 'Membership & support' },
                       { label: 'Mobile App', path: '/app', icon: '📱', desc: 'Android APK download' },
+                      { label: 'SEO Tools', path: '/seo', icon: '🚀', desc: 'AI-powered SEO & content tools' },
                     ].map((item) => (
                       <Link key={item.label} to={item.path} onClick={() => setOpenDropdown(null)}
                         className="group relative flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-gradient-to-r hover:from-neon-cyan/[0.07] hover:to-electric-violet/[0.04] transition-all duration-200"

@@ -2,6 +2,7 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import Navbar from './components/common/Navbar';
 import Footer from './components/common/Footer';
+import SEOHead from './components/common/SEOHead';
 import Home from './pages/Home';
 import Blogs from './pages/Blogs';
 import BlogDetail from './pages/BlogDetail';
@@ -18,6 +19,7 @@ import Products from './pages/Products';
 import Plans from './pages/Plans';
 import AI from './pages/AI';
 import MobileApp from './pages/MobileApp';
+import SEOTools from './pages/SEOTools';
 
 const pageVariants = {
   initial: { opacity: 0, y: 8 },
@@ -33,6 +35,7 @@ export default function App() {
   const location = useLocation();
   return (
     <div className="min-h-screen bg-background flex flex-col w-full">
+      <SEOHead />
       <Navbar />
       <main className="flex-1">
         <AnimatePresence mode="wait">
@@ -54,6 +57,7 @@ export default function App() {
             <Route path="/plans" element={<AnimatedPage><Plans /></AnimatedPage>} />
             <Route path="/ai" element={<AnimatedPage><AI /></AnimatedPage>} />
             <Route path="/app" element={<AnimatedPage><MobileApp /></AnimatedPage>} />
+            <Route path="/seo" element={<AnimatedPage><SEOTools /></AnimatedPage>} />
           </Routes>
         </AnimatePresence>
       </main>
