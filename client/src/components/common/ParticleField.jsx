@@ -54,8 +54,8 @@ export default function ParticleField({ color = '#7EBBC5', count = 40, speed = 0
             const hex = color.replace('#', '');
             const r = parseInt(hex.substring(0, 2), 16);
             const g = parseInt(hex.substring(2, 4), 16);
-            const b = parseInt(hex.substring(4, 6), 16);
-            ctx.strokeStyle = `rgba(${r}, ${g}, ${b}, ${(1 - dist / 100) * 0.15})`;
+            const blue = parseInt(hex.substring(4, 6), 16);
+            ctx.strokeStyle = `rgba(${r}, ${g}, ${blue}, ${(1 - dist / 100) * 0.15})`;
             ctx.stroke();
           }
         });
