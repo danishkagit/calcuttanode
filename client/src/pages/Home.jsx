@@ -487,7 +487,7 @@ export default function Home() {
 
       <motion.section className="py-16 px-4 relative" {...fadeUp}>
         <div className="max-w-3xl mx-auto text-center rounded-2xl p-10 border border-neon-cyan/20 bg-gradient-to-br from-neon-cyan/5 via-transparent to-electric-violet/5 relative overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(46,230,230,0.05)_0%,transparent_70%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(126,187,197,0.05)_0%,transparent_70%)]" />
           <motion.span className="inline-block text-4xl mb-4" animate={{ scale: [1, 1.15, 1], rotate: [0, 5, -5, 0] }} transition={{ repeat: Infinity, duration: 3 }}>🧠</motion.span>
           <h2 className="text-2xl font-bold text-text-primary mb-3 relative">Need quick help? Ask AI</h2>
           <p className="text-text-muted mb-6 max-w-lg mx-auto relative">Get instant answers, troubleshooting, or recommendations from our AI assistant — powered by 4 free models. Available 24/7.</p>
