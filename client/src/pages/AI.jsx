@@ -4,8 +4,8 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 
 const models = [
-  { id: 'deepseek-v4-flash-free', name: 'DeepSeek V4 Flash', icon: '🔍', color: '#7EBBC5' },
-  { id: 'mimo-v2.5-free', name: 'MiMo V2.5', icon: '🧠', color: '#543A67' },
+  { id: 'deepseek-v4-flash-free', name: 'DeepSeek V4 Flash', icon: '🔍', color: '#435A63' },
+  { id: 'mimo-v2.5-free', name: 'MiMo V2.5', icon: '🧠', color: '#593C5F' },
   { id: 'north-mini-code-free', name: 'North Mini Code', icon: '⚡', color: '#FFD700' },
   { id: 'nemotron-3-ultra-free', name: 'Nemotron 3 Ultra', icon: '🚀', color: '#FF6B6B' },
 ];
@@ -80,7 +80,7 @@ function ParticleField() {
         if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(126, 187, 197, ${p.o})`;
+        ctx.fillStyle = `rgba(67, 90, 99, ${p.o})`;
         ctx.fill();
       });
       particles.forEach((a, i) => {
@@ -90,7 +90,7 @@ function ParticleField() {
             ctx.beginPath();
             ctx.moveTo(a.x, a.y);
             ctx.lineTo(b.x, b.y);
-            ctx.strokeStyle = `rgba(126, 187, 197, ${(1 - dist / 120) * 0.2})`;
+            ctx.strokeStyle = `rgba(67, 90, 99, ${(1 - dist / 120) * 0.2})`;
             ctx.stroke();
           }
         });
