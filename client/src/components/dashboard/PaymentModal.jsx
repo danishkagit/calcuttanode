@@ -47,7 +47,7 @@ export default function PaymentModal({ onClose, onSuccess }) {
         },
         modal: { ondismiss: () => setLoading(false) },
         prefill: { contact: '', email: '' },
-        theme: { color: '#435A63' },
+        theme: { color: '#7EBBC5' },
       };
       const rzp = new Razorpay(options);
       rzp.on('payment.failed', () => alert('Payment failed. Please try again.'));

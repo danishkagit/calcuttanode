@@ -54,7 +54,7 @@ export default function Login() {
 
   return (
     <div className="relative min-h-screen flex items-center justify-center">
-      <ParticleField count={25} speed={0.15} color="#593C5F" />
+      <ParticleField count={25} speed={0.15} color="#543A67" />
 
       <div className="max-w-md w-full mx-auto px-4 py-16 relative z-10">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
