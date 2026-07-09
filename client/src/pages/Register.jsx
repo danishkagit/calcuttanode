@@ -45,7 +45,7 @@ export default function Register() {
 
           <motion.div
             whileHover={{ boxShadow: '0 0 30px rgba(126,187,197,0.08)' }}
-            className="rounded-2xl p-8 border border-electric-violet/20 bg-gradient-to-b from-surface/80 to-surface/30 backdrop-blur-sm"
+            className="rounded-2xl p-8 glass-card"
           >
             {form.referralCode && (
               <motion.div initial={{ opacity: 0, y: -5 }} animate={{ opacity: 1, y: 0 }}

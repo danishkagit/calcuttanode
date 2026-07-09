@@ -79,7 +79,7 @@ export default function Contact() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: i * 0.1 }}
                 whileHover={{ x: 4, y: -2 }}
-                className="flex items-start gap-3 p-4 rounded-xl border border-electric-violet/10 bg-surface/30 hover:border-neon-cyan/30 transition-all duration-300 group"
+                className="flex items-start gap-3 p-4 rounded-xl glass-card group"
               >
                 <div className="w-10 h-10 rounded-lg bg-neon-cyan/10 flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:bg-neon-cyan/20 transition-all duration-300">
                   <svg className="w-5 h-5 text-neon-cyan" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
@@ -100,7 +100,7 @@ export default function Contact() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.25 }}
-              className="p-4 rounded-xl border border-electric-violet/10 bg-surface/30 hover:border-neon-cyan/30 transition-all duration-300"
+              className="p-4 rounded-xl glass-card"
             >
               <h3 className="text-text-primary font-semibold text-sm mb-3 flex items-center gap-2">
                 <svg className="w-4 h-4 text-neon-cyan" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
@@ -148,7 +148,7 @@ export default function Contact() {
           </motion.div>
 
           <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5, delay: 0.2 }}>
-            <div className="rounded-2xl p-6 border border-electric-violet/20 bg-gradient-to-b from-surface/80 to-surface/30 backdrop-blur-sm">
+            <div className="rounded-2xl p-6 glass-card">
               {sent ? (
                 <motion.div className="text-center py-10" initial={{ scale: 0.9 }} animate={{ scale: 1 }}>
                   <motion.div

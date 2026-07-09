@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import companyInfo from '../data/companyInfo';
 import ParticleField from '../components/common/ParticleField';
 import api from '../utils/api';
+import logo from '../assets/logo.png';
 
 const fadeUp = { initial: { opacity: 0, y: 30 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, margin: '-50px' }, transition: { duration: 0.5 } };
 
@@ -71,6 +72,14 @@ export default function Home() {
           <div className="absolute bottom-20 right-10 w-96 h-96 bg-electric-violet/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
         </div>
         <motion.div className="max-w-4xl mx-auto relative" initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            className="mb-8"
+          >
+            <img src={logo} alt="Calcutta Node." className="h-32 md:h-40 mx-auto animate-float drop-shadow-2xl" />
+          </motion.div>
           <motion.span
             animate={{ y: [0, -5, 0] }}
             transition={{ repeat: Infinity, duration: 2.5 }}
@@ -161,7 +170,7 @@ export default function Home() {
               onMouseEnter={() => setHoveredStat(i)}
               onMouseLeave={() => setHoveredStat(null)}
               whileHover={{ y: -4, scale: 1.02 }}
-              className="text-center p-6 rounded-2xl bg-surface/50 border border-electric-violet/10 hover:border-neon-cyan/30 transition-all duration-300 cursor-default relative overflow-hidden group"
+              className="text-center p-6 rounded-2xl glass-card cursor-default relative overflow-hidden group"
             >
               <motion.div className="absolute inset-0 bg-gradient-to-b from-neon-cyan/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <motion.div
@@ -205,7 +214,7 @@ export default function Home() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
                 whileHover={{ y: -4 }}
-                className={`p-5 rounded-2xl bg-gradient-to-b ${item.color} border text-center relative overflow-hidden group`}
+                className={`p-5 rounded-2xl glass-card text-center relative overflow-hidden group`}
               >
                 <motion.div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <span className="text-3xl block mb-3 relative">{item.icon}</span>
@@ -237,7 +246,7 @@ export default function Home() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
                 whileHover={{ y: -4 }}
-                className="p-5 rounded-2xl bg-surface/40 border border-electric-violet/10 hover:border-neon-cyan/30 transition-all duration-300 text-center"
+                className="p-5 rounded-2xl glass-card text-center"
               >
                 <span className="text-3xl block mb-3">{item.emoji}</span>
                 <h3 className="text-text-primary font-semibold mb-1 text-sm">{item.title}</h3>
@@ -268,7 +277,7 @@ export default function Home() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
                 whileHover={{ y: -4, scale: 1.02 }}
-                className={`p-4 rounded-2xl bg-surface/40 border border-${model.color}/20 hover:border-${model.color}/50 transition-all duration-300 text-center group`}
+                className={`p-4 rounded-2xl glass-card text-center group`}
               >
                 <motion.div
                   animate={{ scale: [1, 1.1, 1], rotate: [0, 5, -5, 0] }}
@@ -341,7 +350,7 @@ export default function Home() {
                   onMouseEnter={() => setHoveredService(service._id)}
                   onMouseLeave={() => setHoveredService(null)}
                   whileHover={{ y: -6, scale: 1.02 }}
-                  className="group relative rounded-2xl p-6 border border-electric-violet/20 bg-gradient-to-b from-surface/80 to-surface/30 hover:border-neon-cyan/40 transition-all duration-300 hover:shadow-xl hover:shadow-neon-cyan/10 overflow-hidden"
+                  className="group relative rounded-2xl p-6 glass-card overflow-hidden"
                 >
                   <motion.div className="absolute inset-0 bg-gradient-to-br from-neon-cyan/5 via-transparent to-electric-violet/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   <div className="relative">
@@ -382,7 +391,7 @@ export default function Home() {
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="relative rounded-2xl p-8 border border-electric-violet/20 bg-gradient-to-b from-surface/80 to-surface/30 overflow-hidden"
+            className="relative rounded-2xl p-8 glass-section overflow-hidden"
           >
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-48 h-1 bg-gradient-to-r from-transparent via-neon-cyan to-transparent" />
             <svg className="w-8 h-8 text-neon-cyan/30 mb-4 mx-auto" viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10H14.017zM0 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151C7.546 6.068 5.983 8.789 5.983 11H10v10H0z"/></svg>
@@ -419,7 +428,7 @@ export default function Home() {
                   transition={{ delay: i * 0.1 }}
                   whileHover={{ y: -4 }}
                 >
-                  <Link to={`/blogs/${blog.slug}`} className="block p-5 rounded-2xl bg-surface/40 border border-electric-violet/10 hover:border-neon-cyan/30 transition-all duration-300 h-full">
+                  <Link to={`/blogs/${blog.slug}`} className="block p-5 rounded-2xl glass-card h-full">
                     <div className="flex items-center gap-2 mb-2">
                       <span className="text-xs bg-electric-violet/10 text-electric-violet px-2 py-0.5 rounded-full">{blog.category || 'General'}</span>
                       {blog.createdAt && (
@@ -461,7 +470,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.05 }}
-                className="rounded-xl border border-electric-violet/10 bg-surface/30 overflow-hidden"
+                className="rounded-xl glass-card overflow-hidden"
               >
                 <button onClick={() => setOpenFaq(openFaq === i ? null : i)}
                   className="w-full flex items-center justify-between p-4 text-left text-sm font-medium text-text-primary hover:text-neon-cyan transition-colors"
@@ -486,7 +495,7 @@ export default function Home() {
       </motion.section>
 
       <motion.section className="py-16 px-4 relative" {...fadeUp}>
-        <div className="max-w-3xl mx-auto text-center rounded-2xl p-10 border border-neon-cyan/20 bg-gradient-to-br from-neon-cyan/5 via-transparent to-electric-violet/5 relative overflow-hidden">
+        <div className="max-w-3xl mx-auto text-center glass-section relative overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(126,187,197,0.05)_0%,transparent_70%)]" />
           <motion.span className="inline-block text-4xl mb-4" animate={{ scale: [1, 1.15, 1], rotate: [0, 5, -5, 0] }} transition={{ repeat: Infinity, duration: 3 }}>🧠</motion.span>
           <h2 className="text-2xl font-bold text-text-primary mb-3 relative">Need quick help? Ask AI</h2>

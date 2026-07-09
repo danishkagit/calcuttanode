@@ -68,7 +68,7 @@ export default function Tools() {
               <motion.div key={i} layout initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: i * 0.06 }}>
                 <motion.a href={tool.link} target="_blank" rel="noopener noreferrer"
                   whileHover={{ y: -6, scale: 1.02 }}
-                  className="block bg-surface/50 rounded-xl p-6 border border-electric-violet/20 hover:border-neon-cyan/40 transition-all group h-full relative overflow-hidden"
+                  className="block glass-card rounded-xl p-6 group h-full relative overflow-hidden"
                 >
                   <motion.div className="absolute inset-0 bg-gradient-to-br from-neon-cyan/5 via-transparent to-electric-violet/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   <div className="relative">

@@ -22,7 +22,7 @@ function LoadingSpinner() {
 
 function ResultBox({ title, children, onCopy }) {
   return (
-    <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="mt-6 bg-surface/50 rounded-xl border border-electric-violet/20 p-5">
+    <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="mt-6 glass-card rounded-xl p-5">
       <div className="flex items-center justify-between mb-3">
         <h3 className="text-neon-cyan font-semibold text-sm">{title}</h3>
         {onCopy && (
@@ -105,7 +105,7 @@ export default function SEOTools() {
           <motion.div key={activeTab} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}>
 
             {activeTab === 'content' && (
-              <div className="bg-surface/30 rounded-2xl border border-electric-violet/20 p-6 md:p-8">
+              <div className="glass-card rounded-2xl p-6 md:p-8">
                 <h2 className="text-xl font-bold text-text-primary mb-6">AI Content Generator</h2>
                 <div className="space-y-4">
                   <div>
@@ -160,7 +160,7 @@ export default function SEOTools() {
             )}
 
             {activeTab === 'meta' && (
-              <div className="bg-surface/30 rounded-2xl border border-electric-violet/20 p-6 md:p-8">
+              <div className="glass-card rounded-2xl p-6 md:p-8">
                 <h2 className="text-xl font-bold text-text-primary mb-6">Meta Tag Generator</h2>
                 <div className="space-y-4">
                   <div>
@@ -202,7 +202,7 @@ export default function SEOTools() {
             )}
 
             {activeTab === 'keywords' && (
-              <div className="bg-surface/30 rounded-2xl border border-electric-violet/20 p-6 md:p-8">
+              <div className="glass-card rounded-2xl p-6 md:p-8">
                 <h2 className="text-xl font-bold text-text-primary mb-6">Keyword Research</h2>
                 <div className="space-y-4">
                   <div>
@@ -227,7 +227,7 @@ export default function SEOTools() {
             )}
 
             {activeTab === 'analyze' && (
-              <div className="bg-surface/30 rounded-2xl border border-electric-violet/20 p-6 md:p-8">
+              <div className="glass-card rounded-2xl p-6 md:p-8">
                 <h2 className="text-xl font-bold text-text-primary mb-6">Content SEO Analyzer</h2>
                 <div className="space-y-4">
                   <div>
@@ -252,7 +252,7 @@ export default function SEOTools() {
             )}
 
             {activeTab === 'schema' && (
-              <div className="bg-surface/30 rounded-2xl border border-electric-violet/20 p-6 md:p-8">
+              <div className="glass-card rounded-2xl p-6 md:p-8">
                 <h2 className="text-xl font-bold text-text-primary mb-6">Schema Markup Generator</h2>
                 <div className="space-y-4">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

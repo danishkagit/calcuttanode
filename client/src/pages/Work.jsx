@@ -105,7 +105,7 @@ export default function Work() {
               <motion.section key={company.id} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-80px' }} transition={{ duration: 0.5, delay: idx * 0.05 }}>
                 <motion.div
                   whileHover={{ y: -2 }}
-                  className="flex items-center gap-5 mb-8 p-4 rounded-2xl bg-surface/30 border border-electric-violet/10 hover:border-neon-cyan/30 transition-all duration-300"
+                  className="flex items-center gap-5 mb-8 p-4 rounded-2xl glass-card"
                 >
                   <motion.div
                     whileHover={{ rotate: 5, scale: 1.05 }}
@@ -129,7 +129,7 @@ export default function Work() {
                       viewport={{ once: true }}
                       transition={{ duration: 0.4, delay: i * 0.08 }}
                       whileHover={{ y: -6, scale: 1.02 }}
-                      className="group relative rounded-2xl p-6 border border-electric-violet/20 bg-gradient-to-b from-surface/80 to-surface/30 hover:border-neon-cyan/40 transition-all duration-300 hover:shadow-xl hover:shadow-neon-cyan/10 overflow-hidden"
+                      className="group relative rounded-2xl p-6 glass-card overflow-hidden"
                     >
                       <motion.div className="absolute inset-0 bg-gradient-to-br from-neon-cyan/5 via-transparent to-electric-violet/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                       <div className="relative">
@@ -157,7 +157,7 @@ export default function Work() {
 
         {filteredWorks.length > 0 && (
           <motion.div className="mt-16 text-center" {...{ initial: { opacity: 0, y: 20 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true } }}>
-            <div className="rounded-2xl p-8 border border-neon-cyan/20 bg-gradient-to-br from-neon-cyan/5 via-transparent to-electric-violet/5 max-w-2xl mx-auto">
+            <div className="rounded-2xl p-8 glass-section max-w-2xl mx-auto">
               <span className="text-3xl block mb-3">🚀</span>
               <h2 className="text-2xl font-bold text-text-primary mb-3">Want Results Like These?</h2>
               <p className="text-text-muted text-sm mb-6 max-w-lg mx-auto">Whether you need a website, IT support, digital marketing, or a complete digital transformation — we're ready to help your business grow in 2026.</p>

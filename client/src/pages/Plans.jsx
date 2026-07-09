@@ -111,10 +111,10 @@ export default function Plans() {
             {localPlans.map((plan, i) => (
               <motion.div key={plan.id} initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: i * 0.1 }}
                 whileHover={{ y: -8 }}
-                className={`relative rounded-2xl p-6 border transition-all duration-300 flex flex-col overflow-hidden group ${
+                className={`relative rounded-2xl p-6 glass-card flex flex-col overflow-hidden group ${
                   plan.badge
-                    ? 'bg-gradient-to-b from-neon-cyan/10 to-surface border-neon-cyan/40 shadow-lg shadow-neon-cyan/10 hover:shadow-neon-cyan/20'
-                    : 'bg-surface/50 border-electric-violet/20 hover:border-neon-cyan/30 hover:shadow-lg hover:shadow-neon-cyan/5'
+                    ? 'border-neon-cyan/40 shadow-lg shadow-neon-cyan/10 hover:shadow-neon-cyan/20'
+                    : ''
                 }`}
               >
                 <motion.div className="absolute inset-0 bg-gradient-to-br from-neon-cyan/5 via-transparent to-electric-violet/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />

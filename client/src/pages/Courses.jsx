@@ -37,7 +37,7 @@ export default function Courses() {
         </motion.div>
 
         <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
-          className="flex flex-wrap gap-3 mb-8 items-center p-4 rounded-2xl bg-surface/30 border border-electric-violet/10 backdrop-blur-sm"
+          className="flex flex-wrap gap-3 mb-8 items-center p-4 rounded-2xl glass-card"
         >
           <label className="flex items-center gap-2 text-text-muted text-sm cursor-pointer px-3 py-1.5 rounded-lg hover:bg-white/5 transition-colors">
             <input type="checkbox" checked={filterFree} onChange={(e) => setFilterFree(e.target.checked)} className="accent-neon-cyan w-4 h-4" />
@@ -77,7 +77,7 @@ export default function Courses() {
               <motion.div key={i} layout initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: i * 0.06 }}>
                 <motion.a href={course.link} target="_blank" rel="noopener noreferrer"
                   whileHover={{ y: -6, scale: 1.02 }}
-                  className="block bg-surface/50 rounded-xl p-6 border border-electric-violet/20 hover:border-neon-cyan/40 transition-all group h-full relative overflow-hidden"
+                  className="block glass-card rounded-xl p-6 group h-full relative overflow-hidden"
                 >
                   <motion.div className="absolute inset-0 bg-gradient-to-br from-neon-cyan/5 via-transparent to-electric-violet/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   <div className="relative">

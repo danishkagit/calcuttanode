@@ -94,10 +94,10 @@ export default function Navbar() {
 
   return (
     <>
-      <nav ref={navRef} className={`sticky top-0 z-50 transition-all duration-300 ${
+      <nav ref={navRef} className={`sticky top-0 z-50 transition-all duration-500 ${
         scrolled
-          ? 'bg-background/90 backdrop-blur-xl border-b border-electric-violet/10 shadow-lg shadow-black/20'
-          : 'bg-background/60 backdrop-blur-md border-b border-transparent'
+          ? 'glass shadow-lg shadow-black/20 border-b border-neon-cyan/10'
+          : 'bg-background/40 backdrop-blur-md border-b border-transparent'
       }`}>
         <div className="max-w-7xl mx-auto px-4 flex items-center justify-between h-16">
           <Link to="/" className="flex items-center gap-2 group shrink-0">

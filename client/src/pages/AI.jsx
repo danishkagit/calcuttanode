@@ -368,7 +368,7 @@ Calcutta Node.AI
 
         <div
           ref={chatRef}
-          className="flex-1 overflow-y-auto space-y-2 mb-3 px-2 py-3 scroll-smooth bg-background/30 rounded-2xl border border-electric-violet/10 backdrop-blur-sm"
+          className="flex-1 overflow-y-auto space-y-2 mb-3 px-2 py-3 scroll-smooth glass-card"
           style={{ maxHeight: 'calc(100vh - 280px)' }}
         >
           {messages.length === 0 && !streamingContent ? (
@@ -606,7 +606,7 @@ Calcutta Node.AI
           <motion.div
             animate={{ boxShadow: ['0 0 15px rgba(126,187,197,0.15)', '0 0 30px rgba(126,187,197,0.3)', '0 0 15px rgba(126,187,197,0.15)'] }}
             transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
-            className="bg-surface/60 backdrop-blur-xl border-2 border-neon-cyan/40 rounded-2xl p-1.5 shadow-2xl shadow-neon-cyan/20 flex items-end gap-1.5"
+            className="glass rounded-2xl p-1.5 shadow-2xl shadow-neon-cyan/20 flex items-end gap-1.5"
           >
             <textarea
               ref={inputRef}

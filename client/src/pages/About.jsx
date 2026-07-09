@@ -79,7 +79,7 @@ export default function About() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
               whileHover={{ y: -4 }}
-              className={`rounded-2xl p-6 border border-${card.color}/20 bg-gradient-to-b from-surface/80 to-surface/30 hover:border-${card.color}/40 transition-all duration-300 group`}
+              className={`rounded-2xl p-6 glass-card group`}
             >
               <motion.div
                 whileHover={{ rotate: 15, scale: 1.1 }}
@@ -96,7 +96,7 @@ export default function About() {
           ))}
         </div>
 
-        <motion.div className="mb-12 rounded-2xl p-6 md:p-8 border border-neon-cyan/20 bg-gradient-to-br from-neon-cyan/[0.03] via-surface/20 to-electric-violet/[0.03] relative overflow-hidden" {...fadeUp}>
+        <motion.div className="mb-12 glass-section relative overflow-hidden" {...fadeUp}>
           <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-neon-cyan to-transparent" />
           <div className="flex flex-col md:flex-row gap-6 items-start">
             <motion.div
@@ -155,7 +155,7 @@ export default function About() {
                   </motion.div>
                   <motion.div
                     whileHover={{ y: -2 }}
-                    className="flex-1 p-4 rounded-xl border border-electric-violet/10 bg-surface/30 hover:border-neon-cyan/20 transition-all duration-300"
+                    className="flex-1 p-4 rounded-xl glass-card"
                   >
                     <div className="flex items-center gap-3 mb-1">
                       <span className="text-sm font-bold text-neon-cyan">{m.year}</span>
@@ -179,7 +179,7 @@ export default function About() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
                 whileHover={{ y: -4 }}
-                className="p-6 rounded-2xl border border-electric-violet/10 bg-gradient-to-b from-surface/50 to-transparent hover:border-neon-cyan/30 transition-all duration-300 group"
+                className="p-6 rounded-2xl glass-card group"
               >
                 <motion.div
                   whileHover={{ rotate: 360 }}
@@ -207,7 +207,7 @@ export default function About() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
                 whileHover={{ y: -2 }}
-                className="text-center p-4 rounded-2xl bg-surface/30 border border-electric-violet/10 hover:border-neon-cyan/30 transition-all duration-300"
+                className="text-center p-4 rounded-2xl glass-card"
               >
                 <p className="text-xl md:text-2xl font-bold text-neon-cyan">{s.value}</p>
                 <p className="text-xs text-text-muted mt-1">{s.label}</p>
@@ -217,7 +217,7 @@ export default function About() {
         </motion.div>
 
         <motion.div className="mb-12" {...fadeUp}>
-          <div className="rounded-2xl p-8 border border-neon-cyan/20 bg-gradient-to-br from-neon-cyan/5 via-transparent to-electric-violet/5">
+          <div className="rounded-2xl p-8 glass-section">
             <motion.div className="text-center mb-6" {...fadeUp}>
               <span className="text-3xl block mb-3">🌟</span>
               <h2 className="text-2xl font-bold text-text-primary">Why Choose Calcutta Node. in 2026?</h2>
@@ -244,7 +244,7 @@ export default function About() {
           </div>
         </motion.div>
 
-        <motion.div className="rounded-2xl p-6 border border-electric-violet/20 bg-gradient-to-b from-surface/80 to-surface/30 hover:border-neon-cyan/30 transition-all duration-300" {...fadeUp}>
+        <motion.div className="rounded-2xl p-6 glass-card" {...fadeUp}>
           <h2 className="text-xl font-bold text-text-primary mb-4 flex items-center gap-2">
             <svg className="w-5 h-5 text-neon-cyan" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
             Contact Information

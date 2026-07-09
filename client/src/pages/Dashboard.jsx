@@ -125,7 +125,7 @@ export default function Dashboard() {
   return (
     <div className="max-w-7xl mx-auto px-4 py-8 flex gap-6 flex-col md:flex-row">
       <aside className="w-full md:w-64 shrink-0">
-        <div className="bg-surface/50 rounded-xl p-4 border border-electric-violet/20 space-y-1 md:sticky md:top-20">
+        <div className="glass-card rounded-xl p-4 space-y-1 md:sticky md:top-20">
           <div className="flex items-center justify-between px-4 py-2 mb-2">
             <p className="text-xs text-text-muted font-medium flex items-center gap-2">
               <button onClick={() => setSidebarOpen(!sidebarOpen)} className="md:hidden p-1 hover:text-text-primary transition-colors" aria-label="Toggle sidebar">
@@ -207,7 +207,7 @@ export default function Dashboard() {
 
       <main className="flex-1">
         <motion.div key={section} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.2 }}
-          className="bg-surface/50 rounded-xl p-6 border border-electric-violet/20 min-h-[400px]"
+          className="glass-card rounded-xl p-6 min-h-[400px]"
         >
           {section === 'overview' && (
             <div>

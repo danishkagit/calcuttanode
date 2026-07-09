@@ -7,7 +7,7 @@ const fadeUp = { initial: { opacity: 0, y: 20 }, whileInView: { opacity: 1, y: 0
 
 export default function Footer() {
   return (
-    <footer className="relative bg-surface/60 border-t border-electric-violet/20 mt-auto overflow-hidden">
+    <footer className="relative glass mt-auto overflow-hidden">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-neon-cyan to-transparent opacity-50" />
 
       <div className="max-w-7xl mx-auto px-4 py-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">

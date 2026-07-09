@@ -152,7 +152,7 @@ export default function MobileApp() {
 
       {/* Stats bar */}
       <motion.div {...fadeUp} className="max-w-4xl mx-auto px-4 mb-8">
-        <div className="grid grid-cols-3 gap-4 p-4 rounded-2xl bg-surface/30 border border-electric-violet/10">
+        <div className="grid grid-cols-3 gap-4 p-4 rounded-2xl glass-card">
           {[
             { value: '4', label: 'Free AI Models' },
             { value: '6', label: 'Service Categories' },
@@ -181,7 +181,7 @@ export default function MobileApp() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
                 whileHover={{ y: -4 }}
-                className="p-5 rounded-2xl bg-surface/40 border border-electric-violet/10 hover:border-neon-cyan/30 transition-all duration-300 text-center"
+                className="p-5 rounded-2xl glass-card text-center"
               >
                 <span className="text-3xl block mb-3">{f.icon}</span>
                 <h3 className="text-text-primary font-semibold mb-1 text-sm">{f.title}</h3>
@@ -195,7 +195,7 @@ export default function MobileApp() {
       {/* Use Website Directly */}
       <motion.section className="py-12 md:py-16 px-4 relative" {...fadeUp}>
         <div className="max-w-3xl mx-auto text-center">
-          <div className="rounded-2xl p-6 md:p-8 border border-electric-violet/20 bg-gradient-to-b from-surface/80 to-surface/30 relative overflow-hidden">
+          <div className="rounded-2xl p-6 md:p-8 glass-section relative overflow-hidden">
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-48 h-1 bg-gradient-to-r from-transparent via-neon-cyan to-transparent" />
             <span className="text-3xl md:text-4xl block mb-4">📲</span>
             <h2 className="text-xl md:text-2xl font-bold text-text-primary mb-3">Use the Website Directly</h2>
@@ -216,7 +216,7 @@ export default function MobileApp() {
       {/* Download CTA */}
       <motion.section className="py-12 md:py-16 px-4 text-center relative" {...fadeUp}>
         <div className="max-w-xl mx-auto">
-          <div className="p-6 md:p-8 rounded-2xl bg-gradient-to-b from-surface/50 to-surface/20 border border-neon-cyan/15 relative">
+          <div className="p-6 md:p-8 rounded-2xl glass-section relative">
             <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-neon-cyan/[0.03] via-transparent to-electric-violet/[0.03] pointer-events-none" />
             <h2 className="text-xl md:text-2xl font-bold text-text-primary mb-2">Get the App</h2>
             <p className="text-sm text-text-muted mb-6">Download the Android APK directly. No Play Store required.</p>

@@ -87,7 +87,7 @@ export default function Products() {
             {filtered.map((product, i) => (
               <motion.div key={product.id} layout initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: i * 0.06 }}
                 whileHover={{ y: -6, scale: 1.02 }}
-                className="bg-surface/50 rounded-2xl p-6 border border-electric-violet/20 hover:border-neon-cyan/30 transition-all duration-300 flex flex-col relative overflow-hidden group"
+                className="glass-card rounded-2xl p-6 flex flex-col relative overflow-hidden group"
               >
                 <motion.div className="absolute inset-0 bg-gradient-to-br from-neon-cyan/5 via-transparent to-electric-violet/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="relative flex-1 flex flex-col">

@@ -62,7 +62,7 @@ export default function BlogDetail() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.1 }}
-          className="bg-surface/50 rounded-2xl p-8 border border-electric-violet/20 hover:border-neon-cyan/30 transition-all duration-300"
+          className="glass-card rounded-2xl p-8"
         >
           <div className="flex items-center gap-3 mb-4">
             <motion.span
