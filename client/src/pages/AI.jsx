@@ -10,6 +10,13 @@ const defaultModels = [
   { id: 'mimo-v2.5-free', name: 'MiMo V2.5', icon: '🧠', color: '#543A67' },
   { id: 'north-mini-code-free', name: 'North Mini Code', icon: '⚡', color: '#FFD700' },
   { id: 'nemotron-3-ultra-free', name: 'Nemotron 3 Ultra', icon: '🚀', color: '#FF6B6B' },
+  { id: 'hy3-free', name: 'Hy3', icon: '🌊', color: '#4FC3F7' },
+  { id: 'big-pickle', name: 'Big Pickle', icon: '🥒', color: '#81C784' },
+  { id: 'antigravity-gemini-3.1-pro', name: 'Gemini 3.1 Pro', icon: '🌟', color: '#4285F4' },
+  { id: 'antigravity-gemini-3-flash', name: 'Gemini 3 Flash', icon: '⚡', color: '#34A853' },
+  { id: 'gemini-2.5-flash', name: 'Gemini 2.5 Flash', icon: '💎', color: '#EA4335' },
+  { id: 'antigravity-claude-sonnet-4-6', name: 'Claude Sonnet 4.6', icon: '🎯', color: '#FBBC04' },
+  { id: 'antigravity-claude-opus-4-6-thinking', name: 'Claude Opus 4.6 Thinking', icon: '🧠', color: '#8E24AA' },
 ];
 
 const suggestedQuestions = [

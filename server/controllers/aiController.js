@@ -35,9 +35,22 @@ function isRateLimited(ip) {
   return false;
 }
 
+const MODEL_TIMEOUT = 30000;
+
+async function fetchWithTimeout(url, options, timeout = MODEL_TIMEOUT) {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeout);
+  try {
+    const res = await fetch(url, { ...options, signal: controller.signal });
+    return res;
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
 async function callModel(modelId, messages) {
   if (!ZEN_KEY) throw new Error('AI service not configured (missing API key)');
-  const res = await fetch(`${ZEN_BASE}/chat/completions`, {
+  const res = await fetchWithTimeout(`${ZEN_BASE}/chat/completions`, {
     method: 'POST',
     headers: {
       'Authorization': `Bearer ${ZEN_KEY}`,
@@ -94,7 +107,9 @@ export const chat = async (req, res) => {
       errors: errors.slice(0, 3),
     });
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    if (!res.headersSent) {
+      res.status(500).json({ message: error.message });
+    }
   }
 };
 
@@ -125,9 +140,11 @@ export const chatStream = async (req, res) => {
       : modelList;
 
     const errors = [];
+    let streamStarted = false;
+
     for (const model of modelsToTry) {
       try {
-        const response = await fetch(`${ZEN_BASE}/chat/completions`, {
+        const response = await fetchWithTimeout(`${ZEN_BASE}/chat/completions`, {
           method: 'POST',
           headers: {
             'Authorization': `Bearer ${ZEN_KEY}`,
@@ -145,6 +162,7 @@ export const chatStream = async (req, res) => {
         res.setHeader('Cache-Control', 'no-cache');
         res.setHeader('Connection', 'keep-alive');
         res.setHeader('X-Accel-Buffering', 'no');
+        streamStarted = true;
 
         const reader = response.body.getReader();
         const decoder = new TextDecoder();
@@ -179,14 +197,22 @@ export const chatStream = async (req, res) => {
         res.end();
         return;
       } catch (err) {
+        if (streamStarted) {
+          res.write(`data: ${JSON.stringify({ error: `Stream interrupted: ${err.message}`, errors: errors.concat(`${model.name}: ${err.message}`).slice(0, 3) })}\n\n`);
+          res.end();
+          return;
+        }
         errors.push(`${model.name}: ${err.message}`);
         continue;
       }
     }
 
-    res.setHeader('Content-Type', 'text/event-stream');
-    res.write(`data: ${JSON.stringify({ error: 'All models unavailable', errors: errors.slice(0, 3) })}\n\n`);
-    res.end();
+    if (!streamStarted) {
+      res.status(503).json({
+        message: 'All AI models are currently unavailable. Please try again later.',
+        errors: errors.slice(0, 3),
+      });
+    }
   } catch (error) {
     if (!res.headersSent) {
       res.status(500).json({ message: error.message });
