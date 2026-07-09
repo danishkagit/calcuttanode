@@ -30,3 +30,14 @@ export function ThemeProvider({ children }) {
 }
 
 export const useTheme = () => useContext(ThemeContext);
+
+// Sync theme class immediately on script load to prevent FOUC
+(function() {
+  try {
+    const saved = localStorage.getItem('cn-theme');
+    if (saved === 'light') {
+      document.documentElement.classList.add('light');
+      document.documentElement.classList.remove('dark');
+    }
+  } catch(e) {}
+})();
