@@ -10,7 +10,6 @@ import CouponSection from '../components/dashboard/CouponSection';
 import ReviewSection from '../components/dashboard/ReviewSection';
 import WishlistSection from '../components/dashboard/WishlistSection';
 import OrderTracker from '../components/dashboard/OrderTracker';
-import ServiceCertificate from '../components/dashboard/ServiceCertificate';
 import AdminDashboard from '../components/dashboard/AdminDashboard';
 
 export default function Dashboard() {

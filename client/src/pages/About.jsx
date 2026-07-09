@@ -83,9 +83,9 @@ export default function About() {
             >
               <motion.div
                 whileHover={{ rotate: 15, scale: 1.1 }}
-                className={`w-12 h-12 rounded-xl bg-${card.color}/10 flex items-center justify-center mb-4 group-hover:bg-${card.color}/20 transition-colors`}
+                className={`w-12 h-12 rounded-xl ${card.color === 'neon-cyan' ? 'bg-neon-cyan/10 group-hover:bg-neon-cyan/20' : 'bg-electric-violet/10 group-hover:bg-electric-violet/20'} flex items-center justify-center mb-4 transition-colors`}
               >
-                <svg className={`w-6 h-6 text-${card.color}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <svg className={`w-6 h-6 ${card.color === 'neon-cyan' ? 'text-neon-cyan' : 'text-electric-violet'}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                   <path d={card.icon} />
                   {card.icon2 && <path d={card.icon2} />}
                 </svg>

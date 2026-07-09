@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import ReactMarkdown from 'react-markdown';
 import api from '../utils/api';
 import ParticleField from '../components/common/ParticleField';
 
@@ -91,20 +92,8 @@ export default function BlogDetail() {
             ))}
           </div>
 
-          <div className="text-sm md:text-base text-text-primary leading-[1.8] space-y-4">
-            {blog.content.split('\n').map((para, i) =>
-              para.trim() ? (
-                <motion.p
-                  key={i}
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.02 }}
-                >
-                  {para}
-                </motion.p>
-              ) : null
-            )}
+          <div className="text-sm md:text-base text-text-primary leading-[1.8] prose prose-invert max-w-none">
+            <ReactMarkdown>{blog.content}</ReactMarkdown>
           </div>
 
           <div className="border-t border-electric-violet/20 mt-8 pt-4 flex items-center justify-between text-sm text-text-muted">

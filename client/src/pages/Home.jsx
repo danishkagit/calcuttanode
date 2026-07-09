@@ -286,7 +286,7 @@ export default function Home() {
                 >
                   {model.icon}
                 </motion.div>
-                <h3 className={`text-text-primary font-semibold text-sm group-hover:text-${model.color} transition-colors`}>{model.name}</h3>
+                <h3 className={`text-text-primary font-semibold text-sm group-hover:text-${model.color === 'neon-cyan' ? 'neon-cyan' : 'electric-violet'} transition-colors`}>{model.name}</h3>
                 <p className="text-text-muted text-xs mt-1">{model.desc}</p>
               </motion.div>
             ))}

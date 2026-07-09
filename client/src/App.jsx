@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import Navbar from './components/common/Navbar';
 import Footer from './components/common/Footer';
 import SEOHead from './components/common/SEOHead';
+import FloatingActions from './components/common/FloatingActions';
 import Home from './pages/Home';
 import Blogs from './pages/Blogs';
 import BlogDetail from './pages/BlogDetail';
@@ -20,6 +21,7 @@ import Plans from './pages/Plans';
 import AI from './pages/AI';
 import MobileApp from './pages/MobileApp';
 import SEOTools from './pages/SEOTools';
+import NotFound from './pages/NotFound';
 
 const pageVariants = {
   initial: { opacity: 0, y: 8 },
@@ -58,10 +60,12 @@ export default function App() {
             <Route path="/ai" element={<AnimatedPage><AI /></AnimatedPage>} />
             <Route path="/app" element={<AnimatedPage><MobileApp /></AnimatedPage>} />
             <Route path="/seo" element={<AnimatedPage><SEOTools /></AnimatedPage>} />
+            <Route path="*" element={<AnimatedPage><NotFound /></AnimatedPage>} />
           </Routes>
         </AnimatePresence>
       </main>
       <Footer />
+      <FloatingActions />
     </div>
   );
 }
