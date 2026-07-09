@@ -301,17 +301,23 @@ export default function Navbar() {
           </div>
 
           {/* Right side: Theme toggle + Social icons + Hamburger */}
-          <div className="flex items-center gap-0.5">
+          <div className="flex items-center gap-1">
             {/* Dark/Light Mode Toggle */}
-            <button
-              onClick={toggleTheme}
-              className="theme-toggle w-[52px] h-[28px]"
-              aria-label="Toggle dark/light mode"
-            >
-              <div className={`theme-toggle-knob ${isDark ? '' : 'light'}`}>
-                {isDark ? '🌙' : '☀️'}
-              </div>
-            </button>
+            <div className="flex items-center gap-1.5 pr-1.5 border-r border-neon-cyan/15 h-7">
+              <button
+                onClick={toggleTheme}
+                className="theme-toggle w-[54px] h-[30px]"
+                title={isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+                aria-label={isDark ? 'Switch to Light Mode — currently Dark Mode' : 'Switch to Dark Mode — currently Light Mode'}
+              >
+                <div className={`theme-toggle-knob ${isDark ? '' : 'light'}`}>
+                  {isDark ? '🌙' : '☀️'}
+                </div>
+              </button>
+              <span className="text-[10px] font-medium text-text-muted/60 hidden sm:block select-none">
+                {isDark ? 'Dark' : 'Light'}
+              </span>
+            </div>
 
             <Link to="/app"
               className="w-9 h-9 flex items-center justify-center rounded-lg transition-all hover:bg-white/5"
@@ -416,9 +422,10 @@ export default function Navbar() {
                 <div className="border-t border-electric-violet/10 my-2" />
                 <button onClick={toggleTheme}
                   className="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm text-text-muted hover:text-text-primary hover:bg-gradient-to-r hover:from-neon-cyan/[0.07] hover:to-electric-violet/[0.04] transition-all w-full"
+                  title={isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
                 >
                   <span>{isDark ? '☀️' : '🌙'}</span>
-                  <span>{isDark ? 'Light Mode' : 'Dark Mode'}</span>
+                  <span>Switch to <span className="font-semibold text-neon-cyan">{isDark ? 'Light' : 'Dark'}</span> Mode</span>
                 </button>
                 <div className="border-t border-electric-violet/10 my-2" />
                 <Link to="/ai" onClick={() => setMobileOpen(false)}
