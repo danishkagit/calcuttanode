@@ -26,6 +26,12 @@ html { scroll-behavior: smooth; overflow-x: hidden; }
 /* ============================================
    DARK MODE — Default
    ============================================ */
+.dark {
+  --color-text-muted: #a5aec4;
+  --color-text-primary: #EAF6F6;
+  --color-neon-cyan: #7EBBC5;
+  --color-electric-violet: #543A67;
+}
 body {
   overflow-x: hidden; max-width: 100vw;
   background: #171A26;
