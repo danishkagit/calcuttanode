@@ -2,6 +2,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import logo from '../../assets/logo.png';
+import { useTheme } from '../../context/ThemeContext';
 
 const serviceGroups = [
   {
@@ -46,6 +47,7 @@ const itemVariants = {
 
 export default function Navbar() {
   const { pathname } = useLocation();
+  const { isDark, toggleTheme } = useTheme();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
@@ -136,7 +138,7 @@ export default function Navbar() {
                     initial="hidden"
                     animate="visible"
                     exit="exit"
-                    className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[720px] rounded-2xl border border-neon-cyan/25 bg-[#171A26] shadow-2xl shadow-black/60 overflow-hidden"
+                    className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[720px] rounded-2xl border border-neon-cyan/25 bg-background shadow-2xl shadow-black/60 overflow-hidden"
                   >
                     <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-neon-cyan/[0.04] via-transparent to-electric-violet/[0.04] pointer-events-none" />
                     <div className="absolute top-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-neon-cyan/40 to-transparent" />
@@ -205,7 +207,7 @@ export default function Navbar() {
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 6, scale: 0.96 }}
                     transition={{ duration: 0.15 }}
-                    className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-56 rounded-2xl border border-neon-cyan/25 bg-[#171A26] shadow-2xl shadow-black/60 overflow-hidden p-2"
+                    className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-56 rounded-2xl border border-neon-cyan/25 bg-background shadow-2xl shadow-black/60 overflow-hidden p-2"
                   >
                     <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-neon-cyan/[0.04] via-transparent to-electric-violet/[0.04] pointer-events-none" />
                     <div className="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-neon-cyan/40 to-transparent" />
@@ -261,7 +263,7 @@ export default function Navbar() {
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 6, scale: 0.96 }}
                     transition={{ duration: 0.15 }}
-                    className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-48 rounded-2xl border border-neon-cyan/25 bg-[#171A26] shadow-2xl shadow-black/60 overflow-hidden p-2"
+                    className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-48 rounded-2xl border border-neon-cyan/25 bg-background shadow-2xl shadow-black/60 overflow-hidden p-2"
                   >
                     <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-neon-cyan/[0.04] via-transparent to-electric-violet/[0.04] pointer-events-none" />
                     <div className="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-neon-cyan/40 to-transparent" />
@@ -298,8 +300,19 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Right side: Social icons + Hamburger */}
+          {/* Right side: Theme toggle + Social icons + Hamburger */}
           <div className="flex items-center gap-0.5">
+            {/* Dark/Light Mode Toggle */}
+            <button
+              onClick={toggleTheme}
+              className="theme-toggle w-[52px] h-[28px]"
+              aria-label="Toggle dark/light mode"
+            >
+              <div className={`theme-toggle-knob ${isDark ? '' : 'light'}`}>
+                {isDark ? '🌙' : '☀️'}
+              </div>
+            </button>
+
             <Link to="/app"
               className="w-9 h-9 flex items-center justify-center rounded-lg transition-all hover:bg-white/5"
               aria-label="Play Store"
@@ -400,6 +413,13 @@ export default function Navbar() {
                     <span>{item.label}</span>
                   </Link>
                 ))}
+                <div className="border-t border-electric-violet/10 my-2" />
+                <button onClick={toggleTheme}
+                  className="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm text-text-muted hover:text-text-primary hover:bg-gradient-to-r hover:from-neon-cyan/[0.07] hover:to-electric-violet/[0.04] transition-all w-full"
+                >
+                  <span>{isDark ? '☀️' : '🌙'}</span>
+                  <span>{isDark ? 'Light Mode' : 'Dark Mode'}</span>
+                </button>
                 <div className="border-t border-electric-violet/10 my-2" />
                 <Link to="/ai" onClick={() => setMobileOpen(false)}
                   className="flex items-center justify-center gap-2 mx-2 mt-3 bg-gradient-to-r from-neon-cyan/15 to-electric-violet/15 border border-neon-cyan/30 text-neon-cyan px-4 py-3 rounded-xl text-sm font-semibold"
