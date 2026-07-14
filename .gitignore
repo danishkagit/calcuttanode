@@ -1,12 +1,16 @@
 node_modules
 dist
 .env
+.env.local
+.env.*.local
 server/uploads/*
 !server/uploads/.gitkeep
 *.log
 *.err
 .DS_Store
+.vercel
 
 Google OAuth Client ID.json
 Twillio Sendgrid.txt
 server/public/app/*.apk
+test-results/

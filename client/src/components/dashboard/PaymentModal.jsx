@@ -26,7 +26,7 @@ export default function PaymentModal({ onClose, onSuccess }) {
       if (!Razorpay) { alert('Failed to load Razorpay. Please try again.'); setLoading(false); return; }
       const { data: { orderId, amount: amt } } = await api.post('/payments/razorpay/create-order', { amount: Number(amount) });
       const options = {
-        key: 'rzp_test_T9pFMASMqkYj4m',
+        key: import.meta.env.VITE_RAZORPAY_KEY_ID || 'rzp_test_T9pFMASMqkYj4m',
         amount: amt,
         currency: 'INR',
         name: 'Calcutta Node.',
