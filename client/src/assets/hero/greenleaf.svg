@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <defs><linearGradient id="g7" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#166534"/><stop offset="100%" stop-color="#22C55E"/></linearGradient></defs>
+  <rect width="800" height="400" fill="url(#g7)"/>
+  <rect x="0" y="0" width="800" height="400" fill="rgba(0,0,0,0.3)"/>
+  <text x="400" y="170" text-anchor="middle" font-family="Arial,sans-serif" font-size="42" fill="white" font-weight="bold">GreenLeaf Organics</text>
+  <text x="400" y="215" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" fill="rgba(255,255,255,0.8)">Pure. Organic. Farm-to-Table.</text>
+  <g transform="translate(400,280)" fill="none" stroke="white" stroke-width="2" opacity="0.5">
+    <path d="M0 20 Q-20 -10 0 -20 Q20 -10 0 20Z"/>
+    <line x1="0" y1="20" x2="0" y2="40"/>
+  </g>
+  <rect x="160" y="320" width="480" height="4" rx="2" fill="rgba(255,255,255,0.3)"/>
+</svg>

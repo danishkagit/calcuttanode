@@ -1,24 +1,31 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 500" fill="none">
-  <rect x="40" y="10" width="220" height="480" rx="36" fill="#1E293B" stroke="#334155" stroke-width="3"/>
-  <rect x="60" y="35" width="180" height="420" rx="24" fill="#0F172A"/>
-  <rect x="130" y="20" width="40" height="6" rx="3" fill="#334155"/>
-  <rect x="60" y="55" width="180" height="40" rx="12" fill="#38BDF8" opacity="0.15"/>
-  <text x="150" y="80" fill="#38BDF8" font-size="14" font-weight="700" text-anchor="middle" font-family="Inter,sans-serif">Brand Name</text>
-  <rect x="75" y="110" width="150" height="150" rx="16" fill="#334155"/>
-  <text x="150" y="170" fill="#F8FAFC" font-size="20" font-weight="800" text-anchor="middle" font-family="Inter,sans-serif">Welcome!</text>
-  <text x="150" y="195" fill="#94A3B8" font-size="10" text-anchor="middle" font-family="Inter,sans-serif">Your digital experience</text>
-  <text x="150" y="210" fill="#94A3B8" font-size="10" text-anchor="middle" font-family="Inter,sans-serif">starts here.</text>
-  <rect x="90" y="235" width="120" height="12" rx="6" fill="#38BDF8" opacity="0.8"/>
-  <rect x="60" y="280" width="180" height="60" rx="10" fill="#1E293B" stroke="#334155" stroke-width="1"/>
-  <rectangle x="70" y="290" width="40" height="40" rx="8" fill="#38BDF8" opacity="0.2"/>
-  <text x="80" y="314" fill="#38BDF8" font-size="16" font-weight="700" text-anchor="middle">⇱</text>
-  <text x="120" y="305" fill="#F1F5F9" font-size="12" font-weight="600">Online Booking</text>
-  <text x="120" y="320" fill="#94A3B8" font-size="9">Easy scheduling</text>
-  <rect x="60" y="350" width="180" height="60" rx="10" fill="#1E293B" stroke="#334155" stroke-width="1"/>
-  <rectangle x="70" y="360" width="40" height="40" rx="8" fill="#10B981" opacity="0.2"/>
-  <text x="80" y="384" fill="#10B981" font-size="16" font-weight="700" text-anchor="middle">♥</text>
-  <text x="120" y="375" fill="#F1F5F9" font-size="12" font-weight="600">Track Progress</text>
-  <text x="120" y="390" fill="#94A3B8" font-size="9">Stay on top</text>
-  <rect x="60" y="420" width="180" height="40" rx="10" fill="#38BDF8"/>
-  <text x="150" y="445" fill="#FFF" font-size="12" font-weight="700" text-anchor="middle">Get Started Free</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 600" fill="none">
+  <rect x="20" y="10" width="360" height="580" rx="30" fill="#1E293B"/>
+  <rect x="20" y="10" width="360" height="580" rx="30" fill="url(#ma1)"/>
+  <defs><linearGradient id="ma1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0F172A"/><stop offset="100%" stop-color="#1E293B"/></linearGradient></defs>
+  <rect x="150" y="25" width="100" height="6" rx="3" fill="#475569"/>
+  <text x="200" y="58" fill="#FFF" font-size="14" font-weight="700" text-anchor="middle">MyApp</text>
+  <rect x="340" y="45" width="20" height="12" rx="3" fill="#334155"/>
+  <rect x="40" y="50" width="20" height="12" rx="3" fill="#334155"/>
+  <text x="200" y="95" fill="#FFF" font-size="22" font-weight="800" text-anchor="middle">Welcome!</text>
+  <text x="200" y="115" fill="#94A3B8" font-size="11" text-anchor="middle">Your digital companion</text>
+  <rect x="40" y="140" width="320" height="44" rx="22" fill="#334155"/>
+  <text x="200" y="167" fill="#94A3B8" font-size="11" text-anchor="middle">🔍 Search anything...</text>
+  <rect x="40" y="200" width="150" height="100" rx="10" fill="#1E293B" stroke="#334155" stroke-width="1"/>
+  <text x="60" y="225" fill="#38BDF8" font-size="20">📊</text>
+  <text x="60" y="250" fill="#F1F5F9" font-size="12" font-weight="600">Dashboard</text>
+  <text x="60" y="268" fill="#94A3B8" font-size="9">View your stats</text>
+  <rect x="210" y="200" width="150" height="100" rx="10" fill="#1E293B" stroke="#334155" stroke-width="1"/>
+  <text x="230" y="225" fill="#10B981" font-size="20">📅</text>
+  <text x="230" y="250" fill="#F1F5F9" font-size="12" font-weight="600">Bookings</text>
+  <text x="230" y="268" fill="#94A3B8" font-size="9">Manage appointments</text>
+  <rect x="40" y="320" width="320" height="80" rx="12" fill="url(#ma2)"/>
+  <defs><linearGradient id="ma2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#3B82F6"/><stop offset="100%" stop-color="#8B5CF6"/></linearGradient></defs>
+  <text x="200" y="348" fill="#FFF" font-size="14" font-weight="700" text-anchor="middle">🎉 Special Offer!</text>
+  <text x="200" y="370" fill="#DBEAFE" font-size="10" text-anchor="middle">20% off your first booking</text>
+  <rect x="40" y="415" width="320" height="50" rx="10" fill="#334155"/>
+  <text x="60" y="440" fill="#F1F5F9" font-size="13" font-weight="600">📱 Notifications</text>
+  <text x="60" y="455" fill="#94A3B8" font-size="9">You have 3 new updates</text>
+  <rect x="40" y="480" width="320" height="40" rx="20" fill="#3B82F6"/>
+  <text x="200" y="506" fill="#FFF" font-size="12" font-weight="700" text-anchor="middle">Get Started Free</text>
+  <rect x="150" y="555" width="100" height="5" rx="2.5" fill="#475569"/>
 </svg>

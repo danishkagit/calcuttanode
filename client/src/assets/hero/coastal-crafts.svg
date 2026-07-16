@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <defs><linearGradient id="g9" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#92400E"/><stop offset="100%" stop-color="#D97706"/></linearGradient></defs>
+  <rect width="800" height="400" fill="url(#g9)"/>
+  <rect x="0" y="0" width="800" height="400" fill="rgba(0,0,0,0.3)"/>
+  <text x="400" y="170" text-anchor="middle" font-family="Arial,sans-serif" font-size="42" fill="white" font-weight="bold">Coastal Crafts Co.</text>
+  <text x="400" y="215" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" fill="rgba(255,255,255,0.8)">Handmade with Love, from Goa</text>
+  <g transform="translate(400,280)" fill="none" stroke="white" stroke-width="2" opacity="0.5">
+    <circle cx="0" cy="0" r="20"/><circle cx="0" cy="0" r="10"/>
+    <path d="M-25 0 L25 0 M0 -25 L0 25"/>
+  </g>
+  <rect x="160" y="320" width="480" height="4" rx="2" fill="rgba(255,255,255,0.3)"/>
+</svg>

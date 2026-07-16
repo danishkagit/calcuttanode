@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <defs><linearGradient id="g8" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0F172A"/><stop offset="100%" stop-color="#3B82F6"/></linearGradient></defs>
+  <rect width="800" height="400" fill="url(#g8)"/>
+  <rect x="0" y="0" width="800" height="400" fill="rgba(0,0,0,0.25)"/>
+  <text x="400" y="170" text-anchor="middle" font-family="Arial,sans-serif" font-size="42" fill="white" font-weight="bold">UrbanStride Fitness</text>
+  <text x="400" y="215" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" fill="rgba(255,255,255,0.8)">Stronger Every Day</text>
+  <g transform="translate(400,280)" fill="none" stroke="white" stroke-width="3" opacity="0.5">
+    <circle cx="0" cy="0" r="25"/>
+    <path d="M-15 -5 Q0 -25 15 -5" fill="none"/>
+    <circle cx="0" cy="5" r="5" fill="white"/>
+  </g>
+  <rect x="160" y="320" width="480" height="4" rx="2" fill="rgba(255,255,255,0.3)"/>
+</svg>

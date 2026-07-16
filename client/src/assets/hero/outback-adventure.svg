@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <defs><linearGradient id="g16" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#7C2D12"/><stop offset="100%" stop-color="#EA580C"/></linearGradient></defs>
+  <rect width="800" height="400" fill="url(#g16)"/>
+  <rect x="0" y="0" width="800" height="400" fill="rgba(0,0,0,0.3)"/>
+  <text x="400" y="170" text-anchor="middle" font-family="Arial,sans-serif" font-size="38" fill="white" font-weight="bold">Outback Adventure Co.</text>
+  <text x="400" y="215" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" fill="rgba(255,255,255,0.8)">Sydney — Explore the Wild</text>
+  <g transform="translate(400,280)" fill="none" stroke="white" stroke-width="2" opacity="0.5">
+    <path d="M-30 10 L-20 -10 L0 -5 L20 -10 L30 10 Z" fill="rgba(255,255,255,0.15)"/>
+    <line x1="-35" y1="15" x2="35" y2="15"/>
+  </g>
+  <rect x="160" y="320" width="480" height="4" rx="2" fill="rgba(255,255,255,0.3)"/>
+</svg>

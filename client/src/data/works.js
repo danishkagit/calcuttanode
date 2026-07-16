@@ -20,11 +20,41 @@ import logo19 from '../assets/logos/powerhouse.svg';
 import logo20 from '../assets/logos/tandoori-nights.svg';
 import logo21 from '../assets/logos/quickfix.svg';
 import logo22 from '../assets/logos/medicare-pharmacy.svg';
+import hero1 from '../assets/hero/moubani-kitchen.svg';
+import hero2 from '../assets/hero/dr-das-clinic.svg';
+import hero3 from '../assets/hero/sree-ram-store.svg';
+import hero4 from '../assets/hero/srijan-coaching.svg';
+import hero5 from '../assets/hero/roshni-beauty.svg';
+import hero6 from '../assets/hero/nexatech.svg';
+import hero7 from '../assets/hero/greenleaf.svg';
+import hero8 from '../assets/hero/urbanstride.svg';
+import hero9 from '../assets/hero/coastal-crafts.svg';
+import hero10 from '../assets/hero/pristine-dental.svg';
+import hero11 from '../assets/hero/casa-verde.svg';
+import hero12 from '../assets/hero/sakura-ramen.svg';
+import hero13 from '../assets/hero/blue-ocean.svg';
+import hero14 from '../assets/hero/lions-pride.svg';
+import hero15 from '../assets/hero/bella-vita.svg';
+import hero16 from '../assets/hero/outback-adventure.svg';
+import hero17 from '../assets/hero/smilecraft.svg';
+import hero18 from '../assets/hero/glam-grace.svg';
+import hero19 from '../assets/hero/powerhouse.svg';
+import hero20 from '../assets/hero/tandoori-nights.svg';
+import hero21 from '../assets/hero/quickfix.svg';
+import hero22 from '../assets/hero/medicare-pharmacy.svg';
 import mockupWebsite from '../assets/projects/website-mockup.svg';
 import mockupEcommerce from '../assets/projects/ecommerce-mockup.svg';
 import mockupMobile from '../assets/projects/mobile-app-mockup.svg';
 import mockupDashboard from '../assets/projects/dashboard-mockup.svg';
 import mockupSocial from '../assets/projects/social-media-mockup.svg';
+import mockupFood from '../assets/projects/food-restaurant.svg';
+import mockupClinic from '../assets/projects/clinic-health.svg';
+import mockupSalon from '../assets/projects/beauty-salon.svg';
+import mockupOrder from '../assets/projects/online-order.svg';
+import mockupFitness from '../assets/projects/fitness-app.svg';
+import mockupService from '../assets/projects/service-booking.svg';
+import mockupDental from '../assets/projects/dental-clinic.svg';
+import mockupEdu from '../assets/projects/educational.svg';
 
 const works = [
   {
@@ -35,7 +65,7 @@ const works = [
     founded: 2019,
     website: 'https://moubaniskitchen.example.com',
     logo: logo1,
-    image: mockupWebsite,
+    image: hero1,
     challenge: "Moubani's Kitchen started as a small home-based catering service run by Moubani Das in North Kolkata. Despite exceptional home-style Bengali food, they had zero online presence — no website, no social media, no way for customers to discover them beyond word-of-mouth. Orders were managed manually over phone calls, leading to missed calls, lost orders, and an inability to scale beyond their immediate neighbourhood.",
     solution: "We built a complete digital ecosystem for Moubani's Kitchen: a responsive website with an online ordering system, an Instagram-first social media strategy showcasing their daily menu with high-quality food photography, and a Google My Business profile optimized for local search. The website featured a real-time order management dashboard so Moubani could track orders without juggling phone calls.",
     results: {
@@ -54,13 +84,13 @@ const works = [
       person: 'Moubani Das',
       role: 'Founder & Chef',
     },
-    slug: 'moubanis-kitchen',
+        slug: 'moubanis-kitchen',
     projects: [
       {
         service: 'Website Development',
         description: 'Built a responsive website with online ordering, menu display, and real-time order dashboard for the kitchen.',
         outcome: '200% increase in monthly orders within first 2 months',
-        image: mockupWebsite,
+        image: mockupFood,
       },
       {
         service: 'Digital Marketing',
@@ -83,7 +113,7 @@ const works = [
     location: 'Hooghly, West Bengal',
     founded: 2015,
     logo: logo2,
-    image: mockupWebsite,
+    image: hero2,
     challenge: "Dr. Sanjib Das ran a well-regarded physiotherapy clinic in Hooghly for years, relying entirely on patient word-of-mouth. New patients came only through referrals, and the clinic was invisible on Google Maps and search results. A competing clinic opened nearby with a modern website and online booking — and Dr. Das started losing patients. He needed to establish an online presence urgently.",
     solution: "We built a professional website for the clinic with online appointment booking, doctor profiles, treatment information, and patient testimonials. We implemented a comprehensive local SEO strategy including Google My Business optimization with 50+ patient reviews collected over 3 months, location-specific landing pages, and a blog answering common physiotherapy questions.",
     results: {
@@ -102,13 +132,13 @@ const works = [
       person: 'Dr. Sanjib Das',
       role: 'Chief Physiotherapist',
     },
-    slug: 'dr-das-physiotherapy',
+        slug: 'dr-das-physiotherapy',
     projects: [
       {
         service: 'Website Development',
         description: 'Built a professional clinic website with online booking, doctor profiles, treatment info, and patient portal.',
         outcome: '150+ appointments booked online monthly, 300% increase in inquiries',
-        image: mockupWebsite,
+        image: mockupClinic,
       },
       {
         service: 'SEO Optimization',
@@ -131,7 +161,7 @@ const works = [
     location: 'Kolkata, West Bengal',
     founded: 2008,
     logo: logo3,
-    image: mockupEcommerce,
+    image: hero3,
     challenge: "Sree Ram General Store had been serving their local community for over 15 years, but with the rise of quick-commerce apps like Blinkit and Zepto, foot traffic was declining steadily. The owner, Mr. Sharma, saw his regular customers — especially younger ones — ordering from apps instead. He needed a way to offer the convenience of online ordering while keeping the personal touch of a local store.",
     solution: "We built a WhatsApp-based ordering system integrated with a lightweight product catalog website. Customers could browse products on the website and order directly via WhatsApp with automatic order confirmation. We also set up a simple loyalty program (digital stamp cards) and a weekly promotional newsletter via WhatsApp Broadcast. The system was designed to be manageable by Mr. Sharma himself with minimal tech skills.",
     results: {
@@ -150,13 +180,13 @@ const works = [
       person: 'Rajesh Sharma',
       role: 'Owner, Sree Ram General Store',
     },
-    slug: 'sree-ram-general-store',
+        slug: 'sree-ram-general-store',
     projects: [
       {
         service: 'E-Commerce Setup',
         description: 'Built a lightweight product catalog website with WhatsApp ordering integration and automated confirmation.',
         outcome: '80+ weekly digital orders, 120+ products listed',
-        image: mockupEcommerce,
+        image: mockupOrder,
       },
       {
         service: 'Digital Marketing',
@@ -179,7 +209,7 @@ const works = [
     location: 'Hooghly, West Bengal',
     founded: 2017,
     logo: logo4,
-    image: mockupWebsite,
+    image: hero4,
     challenge: "Srijan Coaching Centre was a small but effective coaching institute run by Mrs. Banerjee, focusing on science and mathematics for classes 8-12. Despite consistently good board results and dedicated teachers, enrollment was stagnant. Parents often said they 'couldn't find any information online' and opted for bigger, more well-known coaching brands. Srijan needed digital credibility.",
     solution: "We built a comprehensive website showcasing student results, teacher profiles, course details, and a blog with study tips. We created a social media presence on Instagram and Facebook with daily study content, student success stories, and live Q&A sessions. A Google Ads campaign targeting local parents searching for 'tuition near me' drove qualified leads.",
     results: {
@@ -198,13 +228,13 @@ const works = [
       person: 'Ananya Banerjee',
       role: 'Founder & Head Teacher',
     },
-    slug: 'srijan-coaching-centre',
+        slug: 'srijan-coaching-centre',
     projects: [
       {
         service: 'Website Development',
         description: 'Built a results-focused website with student achievements, teacher profiles, course catalog, and admission inquiry forms.',
         outcome: '40% enrollment increase, 200+ inquiries in first quarter',
-        image: mockupWebsite,
+        image: mockupEdu,
       },
       {
         service: 'Digital Marketing',
@@ -227,7 +257,7 @@ const works = [
     location: 'Kolkata, West Bengal',
     founded: 2020,
     logo: logo5,
-    image: mockupMobile,
+    image: hero5,
     challenge: "Roshni Beauty Salon started in 2020 by Roshni Devi, a talented makeup artist who built a loyal walk-in clientele in South Kolkata. However, the salon struggled with the classic small beauty business problems: appointment no-shows, inability to showcase work digitally, and relying entirely on walk-ins. During wedding season, she'd be overwhelmed with phone calls. In lean months, she'd have empty slots with no way to fill them.",
     solution: "We created an Instagram-forward brand for Roshni with a consistent visual style, reels showing transformations, and a booking link in bio. We built a simple booking website integrated with Instagram, allowing clients to book appointments, see service menus and prices, and browse a portfolio of work. We also designed a complete brand identity — logo, colour scheme, business cards, and signage — giving the salon a premium feel.",
     results: {
@@ -246,13 +276,13 @@ const works = [
       person: 'Roshni Devi',
       role: 'Founder & Head Stylist',
     },
-    slug: 'roshni-beauty-salon',
+        slug: 'roshni-beauty-salon',
     projects: [
       {
         service: 'Website Development',
         description: 'Built a booking website with service catalog, portfolio gallery, Instagram integration, and automated SMS reminders.',
         outcome: '60% booking increase, 90% reduction in no-shows',
-        image: mockupMobile,
+        image: mockupSalon,
       },
       {
         service: 'Graphics Design',
@@ -275,7 +305,7 @@ const works = [
     location: 'Dubai, UAE',
     founded: 2021,
     logo: logo6,
-    image: mockupDashboard,
+    image: hero6,
     challenge: "NexaTech Solutions was a boutique IT consultancy based in Dubai, founded by two ex-FAANG engineers. Despite having deep technical expertise in cloud architecture and DevOps, they struggled to attract high-value clients. Their existing website was a basic one-pager with no case studies, no blog, no way to demonstrate their technical depth. Prospects would visit, see nothing compelling, and move on.",
     solution: "We built a full-stack portal with three key sections: a case study library showcasing their client work with technical architecture diagrams, a tech blog platform where they published in-depth articles about cloud and DevOps, and a client portal where existing clients could submit tickets and track project progress. The site was built with Next.js for SEO performance and had a dark, developer-friendly aesthetic that appealed to their target audience.",
     results: {
@@ -323,7 +353,7 @@ const works = [
     location: 'Kochi, Kerala',
     founded: 2020,
     logo: logo7,
-    image: mockupEcommerce,
+    image: hero7,
     challenge: "GreenLeaf Organics was a collective of small organic farmers in Kerala producing high-quality spices, coconut products, and natural supplements. They had an excellent product but no way to reach customers beyond local farmers' markets. Middlemen were taking most of the profit, and the farmers were struggling to make sustainable income despite having premium products.",
     solution: "We built a full-fledged e-commerce platform with a farm-to-table story at its heart. Every product page featured the farmer's story, location, and farming practices. We integrated Razorpay for payments, Shiprocket for pan-India delivery, and set up an SEO strategy targeting health-conscious consumers searching for organic products. A subscription model for recurring orders (monthly spice boxes, coconut oil, etc.) provided predictable revenue.",
     results: {
@@ -371,7 +401,7 @@ const works = [
     location: 'Bangalore, Karnataka',
     founded: 2023,
     logo: logo8,
-    image: mockupMobile,
+    image: hero8,
     challenge: "UrbanStride Fitness launched as a premium boutique fitness studio in Bangalore's HSR Layout. They offered HIIT, yoga, and strength training — but the market was saturated. Competing studios had apps with booking, workout tracking, and loyalty programs. UrbanStride was taking bookings manually via WhatsApp and Instagram DMs, leading to double-bookings, confusion, and lost potential members.",
     solution: "We built a complete digital ecosystem: a cross-platform mobile app (React Native) with class booking, workout tracking, and a loyalty points system; a website with class schedules, trainer profiles, and membership plans; and an integrated marketing system with automated email campaigns, push notifications for class reminders, and Instagram ads targeting fitness enthusiasts within a 5km radius. The app featured a progress tracker with before/after photo uploads and achievement badges.",
     results: {
@@ -390,13 +420,13 @@ const works = [
       person: 'Vikram Rajan',
       role: 'Founder, UrbanStride Fitness',
     },
-    slug: 'urbanstride-fitness',
+        slug: 'urbanstride-fitness',
     projects: [
       {
         service: 'Mobile App Development',
         description: 'Cross-platform React Native app with class booking, workout tracking, loyalty system, and progress photos.',
         outcome: '2,000+ downloads, 90% occupancy rate, 85% retention',
-        image: mockupMobile,
+        image: mockupFitness,
       },
       {
         service: 'Website Development',
@@ -419,7 +449,7 @@ const works = [
     location: 'Goa',
     founded: 2021,
     logo: logo9,
-    image: mockupEcommerce,
+    image: hero9,
     challenge: "Goa is home to thousands of skilled artisans creating beautiful handmade products — pottery, jewellery, textiles, woodwork — but most had no way to sell beyond local flea markets and tourist seasons. Coastal Crafts Co. was founded to connect these artisans to a global audience, but their initial WooCommerce site was slow, had poor mobile experience, and couldn't handle the complexity of multi-seller listings, commission tracking, and artisan profiles.",
     solution: "We rebuilt the entire platform as a custom multi-vendor marketplace. Each artisan gets their own profile page with their story, location, and product catalog. Features include: seller dashboard for inventory management, commission auto-calculation, review system with verified purchase badges, a 'Meet the Artisan' blog series, and Instagram shopping integration. The design emphasizes the handmade, authentic feel with warm earth tones and rich product photography.",
     results: {
@@ -467,7 +497,7 @@ const works = [
     location: 'Mumbai, Maharashtra',
     founded: 2016,
     logo: logo10,
-    image: mockupWebsite,
+    image: hero10,
     challenge: "Pristine Dental Care started as a single clinic in Andheri and expanded to 3 locations across Mumbai. However, patient acquisition was inconsistent — heavily dependent on the season and local word-of-mouth. Each clinic operated independently with its own phone line and appointment book. There was no unified brand presence, no central booking system, and no way to measure which marketing efforts were working. The dental market in Mumbai is fiercely competitive, and Pristine was losing potential patients to chains with smoother online experiences.",
     solution: "We created a unified multi-location dental brand with a central website featuring: individual landing pages for each clinic with local SEO, a unified online booking system that routes patients to the nearest clinic, Google Ads campaigns per location with smart bidding, and a reputation management system automating review collection. We also designed a patient education blog and YouTube channel with Dr. Pristine explaining common procedures — building trust before the first appointment.",
     results: {
@@ -486,13 +516,13 @@ const works = [
       person: 'Dr. Priya Sharma',
       role: 'Founder & Chief Dentist, Pristine Dental Care',
     },
-    slug: 'pristine-dental-care',
+        slug: 'pristine-dental-care',
     projects: [
       {
         service: 'Website Development',
         description: 'Multi-location website with individual clinic pages, unified booking system, patient portal, and blog.',
         outcome: '300+ new patients/month, 3x website inquiries vs phone',
-        image: mockupWebsite,
+        image: mockupDental,
       },
       {
         service: 'Performance Marketing',
@@ -504,7 +534,7 @@ const works = [
         service: 'SEO Optimization',
         description: 'Multi-location local SEO, patient review automation, dental blog content strategy, and YouTube optimization.',
         outcome: '#1-3 ranking for dental keywords across all 3 locations',
-        image: mockupSocial,
+        image: mockupDashboard,
       },
     ],
   },
@@ -515,7 +545,7 @@ const works = [
     location: 'São Paulo, Brazil',
     founded: 2018,
     logo: logo11,
-    image: mockupWebsite,
+    image: hero11,
     challenge: "Casa Verde Café was a charming farm-to-table café in São Paulo's Vila Madalena neighborhood, known for its organic Brazilian coffee and seasonal menu. Despite rave reviews from locals, they had zero digital footprint — no website, no delivery platform, no social media presence. Tourists and new visitors couldn't find them, and during São Paulo's off-peak seasons, foot traffic dropped dangerously low. They needed a digital presence that matched the quality of their food.",
     solution: "We built a stunning bilingual (Portuguese/English) website showcasing their menu with high-resolution food photography, an integrated ordering system for pickup and delivery, and a blog sharing stories about their local farmer partnerships. We created an Instagram strategy focused on visual storytelling — behind-the-scenes coffee roasting, farmer spotlights, and seasonal menu launches. A Google My Business optimization ensured they appeared in local searches.",
     results: {
@@ -534,13 +564,13 @@ const works = [
       person: 'Isabella Costa',
       role: 'Owner, Casa Verde Café',
     },
-    slug: 'casa-verde-cafe',
+        slug: 'casa-verde-cafe',
     projects: [
       {
         service: 'Website Development',
         description: 'Bilingual Portuguese/English website with menu, ordering system, farmer story blog, and photo gallery.',
         outcome: '180% revenue increase, 300+ monthly delivery orders',
-        image: mockupWebsite,
+        image: mockupFood,
       },
       {
         service: 'Digital Marketing',
@@ -563,7 +593,7 @@ const works = [
     location: 'Tokyo, Japan',
     founded: 2019,
     logo: logo12,
-    image: mockupMobile,
+    image: hero12,
     challenge: "Sakura Ramen House was a beloved ramen shop in Tokyo's Shibuya district, run by Chef Tanaka and his family. Their tonkotsu ramen had a cult local following, but they were invisible to the millions of tourists visiting Shibuya each year. Competitor ramen shops had English websites, mobile apps for loyalty programs, and Instagram presences — Sakura had none. Language barriers with international visitors meant lost sales and missed opportunities.",
     solution: "We built a multilingual website (Japanese, English, Chinese, Korean) with menu translations, allergen info, and location maps. We developed a React Native mobile app with a digital loyalty card (stamp system), waitlist management, and push notifications for daily specials. An Instagram strategy focused on ramen ASMR videos, Chef Tanaka's craftsmanship stories, and tourist-friendly Shibuya guides drove massive engagement.",
     results: {
@@ -582,7 +612,7 @@ const works = [
       person: 'Kenji Tanaka',
       role: 'Chef & Owner, Sakura Ramen House',
     },
-    slug: 'sakura-ramen-house',
+        slug: 'sakura-ramen-house',
     projects: [
       {
         service: 'Mobile App Development',
@@ -594,7 +624,7 @@ const works = [
         service: 'Website Development',
         description: 'Multilingual 4-language website with menu, allergen info, maps, and reservation system.',
         outcome: '250% increase in international customers',
-        image: mockupWebsite,
+        image: mockupFood,
       },
       {
         service: 'Digital Marketing',
@@ -611,7 +641,7 @@ const works = [
     location: 'Phuket, Thailand',
     founded: 2015,
     logo: logo13,
-    image: mockupWebsite,
+    image: hero13,
     challenge: "Blue Ocean Dive Center was a well-established PADI-certified dive shop on Phuket's Kata Beach. They offered excellent diving experiences — from beginner courses to advanced wreck dives — but their booking process was stuck in 2015: phone calls, WhatsApp messages, and a paper calendar. Double-bookings were common, cancellations went unmanaged, and they had no way to showcase their equipment, safety standards, or customer reviews to potential divers researching online.",
     solution: "We built a complete dive center management system: a website with course catalogs, equipment gallery, and live availability calendar; an online booking system with integrated payment (credit card, PromptPay); a customer portal for waivers and medical forms; and automated email/SMS reminders for dive trips. An Instagram strategy focused on underwater photography, customer dive stories, and Phuket travel guides built a strong social presence.",
     results: {
@@ -659,7 +689,7 @@ const works = [
     location: 'Cape Town, South Africa',
     founded: 2014,
     logo: logo14,
-    image: mockupWebsite,
+    image: hero14,
     challenge: "Lion's Pride was a popular pub in Cape Town's Green Point neighborhood, known for its craft beer selection, South African braai (BBQ), and live rugby screenings. Despite a loyal local crowd, they struggled with slow periods between major sports events, had no way to promote daily specials or events, and relied on a paper loyalty card system that customers kept losing. During COVID, their takeaway operation was managed through chaotic WhatsApp groups.",
     solution: "We built a vibrant website with event calendar, digital menu with food photography, online ordering for pickup/delivery, and table reservations. We created a social media strategy focused on daily specials, live match screenings, and community events. A WhatsApp Business integration automated order confirmations and loyalty program updates. We also designed a complete brand refresh — logo, signage, menu boards, and merchandise — giving the pub a modern feel while keeping its classic character.",
     results: {
@@ -678,13 +708,13 @@ const works = [
       person: 'Thabo Molefe',
       role: 'Owner, Lion\'s Pride Pub & Grill',
     },
-    slug: 'lions-pride-pub',
+        slug: 'lions-pride-pub',
     projects: [
       {
         service: 'Website Development',
         description: 'Pub website with digital menu, event calendar, table reservations, and online ordering system.',
         outcome: '90% increase in weekday revenue, 40% of orders via digital',
-        image: mockupWebsite,
+        image: mockupFood,
       },
       {
         service: 'Digital Marketing',
@@ -707,7 +737,7 @@ const works = [
     location: 'Milan, Italy',
     founded: 2017,
     logo: logo15,
-    image: mockupEcommerce,
+    image: hero15,
     challenge: "Bella Vita Interiors was a boutique interior design studio in Milan's Brera district, run by Elena Rossi. Despite having a stunning portfolio of high-end residential and commercial projects, their online presence was limited to a basic one-page site. Potential clients couldn't browse their portfolio properly, there was no e-commerce for their curated home decor products, and their blog — which could have showcased their design philosophy — was untouched for two years. Milan's competitive design scene demanded more.",
     solution: "We built a sophisticated portfolio website with a masonry gallery, project case studies, and before/after sliders. We added an e-commerce section for their curated home decor collection — sourced from Italian artisans — with integrated payments and international shipping. A blog strategy covered Italian design trends, DIY styling tips, and project stories. We optimized for SEO targeting keywords like 'Milan interior designer' and 'Italian home decor online.' A Pinterest strategy drove significant traffic.",
     results: {
@@ -755,7 +785,7 @@ const works = [
     location: 'Sydney, Australia',
     founded: 2016,
     logo: logo16,
-    image: mockupWebsite,
+    image: hero16,
     challenge: "Outback Adventure Co. ran premium small-group tours from Sydney to the Blue Mountains, outback NSW, and along the Great Ocean Road. They offered exceptional experiences — guided hikes, wildlife encounters, Aboriginal cultural tours — but their booking process was manual and outdated. Customers had to email inquiries, receive PDF itineraries, and pay via bank transfer. Their website looked like it hadn't been updated since 2016. In a competitive tourism market, they were losing customers to slicker competitors with instant booking and mobile apps.",
     solution: "We built a comprehensive adventure tourism platform: a website with stunning hero imagery, detailed tour itineraries, and live availability calendars; an online booking engine with multiple payment options (credit card, PayPal, Afterpay); a mobile-optimized experience for travelers booking on-the-go; automated pre-tour email sequences with packing lists and waivers; and a review collection system that fed into Google and TripAdvisor. An Instagram and TikTok strategy showcased breathtaking tour footage and traveller testimonials.",
     results: {
@@ -803,7 +833,7 @@ const works = [
     location: 'Kolkata, West Bengal',
     founded: 2018,
     logo: logo17,
-    image: mockupWebsite,
+    image: hero17,
     challenge: "SmileCraft Dental Clinic in South Kolkata had been operating for 5 years with a loyal patient base but zero online presence. Despite having excellent Google reviews (4.8★) from existing patients, new patients couldn't find them online. They relied entirely on word-of-mouth and walk-ins. Competitor clinics with modern websites and online booking were capturing the growing segment of young professionals and families searching for 'dentist near me' on Google. Appointments were managed through a paper register, leading to scheduling conflicts and forgotten appointments.",
     solution: "We built a comprehensive dental website with online appointment booking, detailed doctor profiles, treatment information pages (root canal, braces, implants, teeth whitening), and a blog answering common dental questions. We optimized their Google My Business profile with accurate information, service categories, and a review collection strategy. Google Ads campaigns targeting local dental keywords drove targeted traffic. Automated SMS reminders reduced no-shows by 85%.",
     results: {
@@ -822,13 +852,13 @@ const works = [
       person: 'Dr. Amit Roy',
       role: 'Chief Dentist, SmileCraft Dental Clinic',
     },
-    slug: 'smilecraft-dental',
+        slug: 'smilecraft-dental',
     projects: [
       {
         service: 'Website Development',
         description: 'Built a dental clinic website with online booking, doctor profiles, treatment pages, and patient education blog.',
         outcome: '250% increase in inquiries, 120+ online appointments/month',
-        image: mockupWebsite,
+        image: mockupDental,
       },
       {
         service: 'Digital Marketing',
@@ -851,7 +881,7 @@ const works = [
     location: 'Bangalore, Karnataka',
     founded: 2021,
     logo: logo18,
-    image: mockupMobile,
+    image: hero18,
     challenge: "Glam & Grace Salon in Indiranagar, Bangalore, was a well-regarded unisex salon with skilled stylists and a loyal walk-in clientele. But in Bangalore's competitive beauty market, they were invisible online. No website, no Instagram presence, no online booking. Customers couldn't browse services or prices before visiting. During wedding seasons, the phone rang constantly with booking inquiries. During lean months, empty slots went unfilled. No-shows were a recurring problem with no automated solution.",
     solution: "We created a complete digital presence: a beautiful website with service menu, stylist portfolios, and real-time booking; an Instagram strategy with before/after transformations, styling tips, and client testimonials; and a WhatsApp Business integration for quick inquiries. We implemented automated appointment reminders via SMS and Instagram DMs. A Google My Business optimization with 50+ review collection improved local visibility dramatically.",
     results: {
@@ -870,13 +900,13 @@ const works = [
       person: 'Priya Kapoor',
       role: 'Owner, Glam & Grace Salon',
     },
-    slug: 'glam-and-grace-salon',
+        slug: 'glam-and-grace-salon',
     projects: [
       {
         service: 'Website Development',
         description: 'Built a salon website with service catalog, stylist profiles, real-time booking, and gallery portfolio.',
         outcome: '80% booking increase, seamless client experience',
-        image: mockupWebsite,
+        image: mockupSalon,
       },
       {
         service: 'Digital Marketing',
@@ -899,7 +929,7 @@ const works = [
     location: 'Pune, Maharashtra',
     founded: 2022,
     logo: logo19,
-    image: mockupMobile,
+    image: hero19,
     challenge: "PowerHouse Fitness Studio in Pune's Kharadi area had state-of-the-art equipment and certified trainers but lacked any digital footprint. They relied on walk-ins and paper membership forms. In a neighbourhood with 3 competing gyms — all with websites, apps, and Instagram presences — PowerHouse was losing potential members who couldn't find class schedules, pricing, or trainer credentials online. Trial class bookings were managed manually, causing constant scheduling confusion.",
     solution: "We built a fitness studio website with class schedules, trainer profiles, membership plans, and online trial booking. We developed a gym management dashboard for class capacity tracking and member management. An Instagram and YouTube strategy showcased workout videos, transformation stories, and nutrition tips. Google Ads targeting fitness keywords in the Kharadi locality drove qualified leads. A referral program with digital tracking turned existing members into brand ambassadors.",
     results: {
@@ -918,7 +948,7 @@ const works = [
       person: 'Rahul Deshmukh',
       role: 'Founder & Head Trainer, PowerHouse Fitness',
     },
-    slug: 'powerhouse-fitness',
+        slug: 'powerhouse-fitness',
     projects: [
       {
         service: 'Website Development',
@@ -930,7 +960,7 @@ const works = [
         service: 'Mobile App Development',
         description: 'Gym management dashboard for capacity tracking, member management, and class scheduling.',
         outcome: '85% member retention rate, streamlined operations',
-        image: mockupMobile,
+        image: mockupFitness,
       },
       {
         service: 'Digital Marketing',
@@ -947,7 +977,7 @@ const works = [
     location: 'Delhi, India',
     founded: 2019,
     logo: logo20,
-    image: mockupEcommerce,
+    image: hero20,
     challenge: "Tandoori Nights Express was a popular North Indian restaurant in Delhi's Dwarka area, known for its authentic tandoori dishes and warm hospitality. Despite a loyal local customer base and 4.5★ Google rating, they had no online ordering system, no website, no delivery platform beyond Zomato (which took 30% commission). During weekends, the restaurant was overwhelmed with phone orders, leading to long wait times and order errors. They were losing money to delivery aggregators and control over their customer relationships.",
     solution: "We built a branded online ordering website with a full digital menu, food photography, and a custom ordering system with real-time order tracking. Integrated Razorpay for payments and automated order confirmations via SMS and WhatsApp. We set up a customer loyalty program (points-based) and a weekly promotional SMS campaign. The website was optimized for mobile — where 80% of orders originated. Google My Business was optimized with menu, photos, and Q&A.",
     results: {
@@ -966,13 +996,13 @@ const works = [
       person: 'Vikram Singh',
       role: 'Owner, Tandoori Nights Express',
     },
-    slug: 'tandoori-nights-express',
+        slug: 'tandoori-nights-express',
     projects: [
       {
         service: 'Website Development',
         description: 'Online ordering website with digital menu, real-time order tracking, payment integration, and mobile optimization.',
         outcome: '500+ direct orders/month, 35% less aggregator dependency',
-        image: mockupEcommerce,
+        image: mockupFood,
       },
       {
         service: 'Digital Marketing',
@@ -995,7 +1025,7 @@ const works = [
     location: 'Mumbai, Maharashtra',
     founded: 2020,
     logo: logo21,
-    image: mockupWebsite,
+    image: hero21,
     challenge: "QuickFix Home Services was a small but skilled team of electricians, plumbers, and carpenters serving Mumbai's western suburbs. Despite high-quality work and excellent customer satisfaction, they had no online presence — customers found them only through referrals or local classifieds. They were invisible to the millions of Mumbai residents searching Google for 'plumber near me' or 'electrician in Andheri.' Competitors listed on Urban Company were capturing the digital-savvy customer base. Job scheduling was managed through a chaotic notebook.",
     solution: "We built a service booking website with categorized services, pricing transparency, and instant booking with same-day service option. We created individual service landing pages optimized for local SEO (plumber in Andheri, electrician in Bandra, carpenter in Juhu). Google My Business was set up with service areas, photos of completed work, and a review collection system. Google Local Services ads targeted hyperlocal keywords. A WhatsApp Business API automated booking confirmations and reminders.",
     results: {
@@ -1014,13 +1044,13 @@ const works = [
       person: 'Suresh Patel',
       role: 'Founder, QuickFix Home Services',
     },
-    slug: 'quickfix-home-services',
+        slug: 'quickfix-home-services',
     projects: [
       {
         service: 'Website Development',
         description: 'Service booking website with categorized services, transparent pricing, instant booking, and local SEO landing pages.',
         outcome: '300% increase in inquiries, 150+ monthly online bookings',
-        image: mockupWebsite,
+        image: mockupService,
       },
       {
         service: 'SEO Optimization',
@@ -1043,7 +1073,7 @@ const works = [
     location: 'Hyderabad, Telangana',
     founded: 2016,
     logo: logo22,
-    image: mockupEcommerce,
+    image: hero22,
     challenge: "MediCare Pharmacy in Hyderabad's Gachibowli area was a trusted neighbourhood pharmacy with a 4.8★ Google rating. But in an era of quick medicine delivery apps like PharmEasy and NetMeds, they were losing customers — especially younger residents and IT professionals working in nearby tech parks. Customers wanted home delivery, prescription uploads, and medicine reminders — services MediCare couldn't offer with their phone-and-notebook system. The pharmacy had an excellent reputation but was invisible to anyone searching online for medicine delivery.",
     solution: "We built an online pharmacy platform with medicine catalog, prescription upload, home delivery ordering, and automated refill reminders. The website featured OTC medicine browsing by category, health blog content, and a 'consult a pharmacist' chat feature. We integrated with a local delivery partner for same-day delivery within a 5km radius. Google My Business was optimized with product categories and service attributes. A WhatsApp broadcast service sent daily health tips and promotional offers to subscribed customers.",
     results: {
@@ -1062,19 +1092,19 @@ const works = [
       person: 'Dr. Sanjay Reddy',
       role: 'Owner & Chief Pharmacist, MediCare Pharmacy',
     },
-    slug: 'medicare-pharmacy',
+        slug: 'medicare-pharmacy',
     projects: [
       {
         service: 'E-Commerce Setup',
         description: 'Online pharmacy platform with medicine catalog, prescription upload, home delivery, and automated refill reminders.',
         outcome: '400% order increase, 1,000+ monthly online orders',
-        image: mockupEcommerce,
+        image: mockupOrder,
       },
       {
         service: 'Website Development',
         description: 'Responsive website with health blog, pharmacist chat, medicine categorization, and delivery zone management.',
         outcome: '₹15L+ monthly online revenue, 60% of customers online',
-        image: mockupWebsite,
+        image: mockupClinic,
       },
       {
         service: 'Digital Marketing',

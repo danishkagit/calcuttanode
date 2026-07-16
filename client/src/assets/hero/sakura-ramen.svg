@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <defs><linearGradient id="g12" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#881337"/><stop offset="100%" stop-color="#FB7185"/></linearGradient></defs>
+  <rect width="800" height="400" fill="url(#g12)"/>
+  <rect x="0" y="0" width="800" height="400" fill="rgba(0,0,0,0.3)"/>
+  <text x="400" y="170" text-anchor="middle" font-family="Arial,sans-serif" font-size="40" fill="white" font-weight="bold">Sakura Ramen House</text>
+  <text x="400" y="215" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" fill="rgba(255,255,255,0.8)">Tokyo — Authentic Tonkotsu</text>
+  <g transform="translate(400,280)" fill="none" stroke="white" stroke-width="2" opacity="0.5">
+    <ellipse cx="0" cy="0" rx="30" ry="15"/>
+    <path d="M-25 0 L-20 20 L20 20 L25 0"/>
+    <path d="M-10 -5 Q0 -15 10 -5" fill="none"/>
+  </g>
+  <rect x="160" y="320" width="480" height="4" rx="2" fill="rgba(255,255,255,0.3)"/>
+</svg>

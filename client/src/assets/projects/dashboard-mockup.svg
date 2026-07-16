@@ -1,67 +1,59 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" fill="none">
-  <rect width="800" height="500" rx="12" fill="#0F172A"/>
-  <rect x="0" y="0" width="180" height="500" fill="#1E293B" rx="12"/>
-  <rect x="0" y="40" width="180" height="500" fill="#1E293B"/>
-  <text x="16" y="24" fill="#F1F5F9" font-size="14" font-weight="800" font-family="Inter,sans-serif">Dashboard</text>
-  <rect x="12" y="52" width="156" height="28" rx="6" fill="#38BDF8" opacity="0.15"/>
-  <text x="24" y="70" fill="#38BDF8" font-size="10" font-weight="600">📊 Overview</text>
-  <text x="24" y="100" fill="#94A3B8" font-size="10">📦 Orders</text>
-  <text x="24" y="125" fill="#94A3B8" font-size="10">👥 Customers</text>
-  <text x="24" y="150" fill="#94A3B8" font-size="10">📈 Analytics</text>
-  <text x="24" y="175" fill="#94A3B8" font-size="10">⚙️ Settings</text>
-  <text x="190" y="24" fill="#F1F5F9" font-size="16" font-weight="700" font-family="Inter,sans-serif">Overview</text>
-  <rect x="190" y="40" width="140" height="60" rx="8" fill="#1E293B" stroke="#334155" stroke-width="1"/>
-  <text x="205" y="60" fill="#94A3B8" font-size="9">Total Revenue</text>
-  <text x="205" y="85" fill="#F1F5F9" font-size="18" font-weight="800">₹84,599</text>
-  <rect x="345" y="40" width="140" height="60" rx="8" fill="#1E293B" stroke="#334155" stroke-width="1"/>
-  <text x="360" y="60" fill="#94A3B8" font-size="9">Orders</text>
-  <text x="360" y="85" fill="#F1F5F9" font-size="18" font-weight="800">342</text>
-  <rect x="500" y="40" width="140" height="60" rx="8" fill="#1E293B" stroke="#334155" stroke-width="1"/>
-  <text x="515" y="60" fill="#94A3B8" font-size="9">Customers</text>
-  <text x="515" y="85" fill="#F1F5F9" font-size="18" font-weight="800">1,280</text>
-  <rect x="655" y="40" width="130" height="60" rx="8" fill="#1E293B" stroke="#334155" stroke-width="1"/>
-  <text x="670" y="60" fill="#94A3B8" font-size="9">Growth</text>
-  <text x="670" y="85" fill="#10B981" font-size="18" font-weight="800">+12.4%</text>
-  <rect x="190" y="115" width="380" height="180" rx="10" fill="#1E293B" stroke="#334155" stroke-width="1"/>
-  <text x="205" y="140" fill="#F1F5F9" font-size="12" font-weight="600">Revenue Overview</text>
-  <rect x="210" y="155" width="8" height="100" rx="4" fill="#38BDF8" opacity="0.6"/>
-  <rect x="230" y="175" width="8" height="80" rx="4" fill="#38BDF8" opacity="0.6"/>
-  <rect x="250" y="145" width="8" height="110" rx="4" fill="#38BDF8" opacity="0.6"/>
-  <rect x="270" y="165" width="8" height="90" rx="4" fill="#38BDF8" opacity="0.6"/>
-  <rect x="290" y="135" width="8" height="120" rx="4" fill="#38BDF8" opacity="0.6"/>
-  <rect x="310" y="155" width="8" height="100" rx="4" fill="#38BDF8" opacity="0.6"/>
-  <rect x="330" y="185" width="8" height="70" rx="4" fill="#38BDF8" opacity="0.6"/>
-  <rect x="350" y="125" width="8" height="130" rx="4" fill="#38BDF8" opacity="0.6"/>
-  <rect x="370" y="155" width="8" height="100" rx="4" fill="#38BDF8" opacity="0.6"/>
-  <rect x="390" y="145" width="8" height="110" rx="4" fill="#38BDF8" opacity="0.6"/>
-  <rect x="410" y="165" width="8" height="90" rx="4" fill="#38BDF8" opacity="0.6"/>
-  <rect x="430" y="138" width="8" height="120" rx="4" fill="#38BDF8" opacity="0.6"/>
-  <rect x="450" y="155" width="8" height="100" rx="4" fill="#38BDF8" opacity="0.6"/>
-  <rect x="470" y="175" width="8" height="80" rx="4" fill="#38BDF8" opacity="0.6"/>
-  <rect x="490" y="148" width="8" height="112" rx="4" fill="#38BDF8" opacity="0.6"/>
-  <rect x="510" y="160" width="8" height="95" rx="4" fill="#38BDF8" opacity="0.6"/>
-  <rect x="530" y="130" width="8" height="128" rx="4" fill="#38BDF8" opacity="0.6"/>
-  <rect x="550" y="140" width="8" height="118" rx="4" fill="#38BDF8" opacity="0.6"/>
-  <rect x="190" y="310" width="595" height="170" rx="10" fill="#1E293B" stroke="#334155" stroke-width="1"/>
-  <text x="205" y="335" fill="#F1F5F9" font-size="12" font-weight="600">Recent Orders</text>
-  <rect x="205" y="350" width="560" height="24" rx="4" fill="#334155"/>
-  <text x="215" y="366" fill="#94A3B8" font-size="9">Order #</text>
-  <text x="300" y="366" fill="#94A3B8" font-size="9">Customer</text>
-  <text x="450" y="366" fill="#94A3B8" font-size="9">Status</text>
-  <text x="550" y="366" fill="#94A3B8" font-size="9">Amount</text>
-  <line x1="205" y1="380" x2="765" y2="380" stroke="#334155" stroke-width="1"/>
-  <text x="215" y="396" fill="#F1F5F9" font-size="10">#1042</text>
-  <text x="300" y="396" fill="#F1F5F9" font-size="10">Ravi Kumar</text>
-  <text x="450" y="396" fill="#10B981" font-size="10">Delivered</text>
-  <text x="550" y="396" fill="#F1F5F9" font-size="10">₹2,499</text>
-  <line x1="205" y1="406" x2="765" y2="406" stroke="#334155" stroke-width="1"/>
-  <text x="215" y="420" fill="#F1F5F9" font-size="10">#1043</text>
-  <text x="300" y="420" fill="#F1F5F9" font-size="10">Priya Singh</text>
-  <text x="450" y="420" fill="#38BDF8" font-size="10">Shipping</text>
-  <text x="550" y="420" fill="#F1F5F9" font-size="10">₹4,999</text>
-  <line x1="205" y1="440" x2="765" y2="440" stroke="#334155" stroke-width="1"/>
-  <text x="215" y="454" fill="#F1F5F9" font-size="10">#1044</text>
-  <text x="300" y="454" fill="#F1F5F9" font-size="10">Amit Das</text>
-  <text x="450" y="454" fill="#F59E0B" font-size="10">Pending</text>
-  <text x="550" y="454" fill="#F1F5F9" font-size="10">₹1,499</text>
+  <rect width="800" height="500" rx="8" fill="#0F172A"/>
+  <rect x="0" y="0" width="200" height="500" fill="#1E293B"/>
+  <text x="20" y="30" fill="#38BDF8" font-size="14" font-weight="800" font-family="Inter,sans-serif">◈ Dashboard</text>
+  <rect x="15" y="50" width="170" height="36" rx="6" fill="#334155"/>
+  <text x="30" y="73" fill="#F1F5F9" font-size="11">📊 Overview</text>
+  <rect x="15" y="92" width="170" height="36" rx="6" fill="#1E293B"/>
+  <text x="30" y="115" fill="#64748B" font-size="11">📦 Orders</text>
+  <rect x="15" y="134" width="170" height="36" rx="6" fill="#1E293B"/>
+  <text x="30" y="157" fill="#64748B" font-size="11">👥 Customers</text>
+  <rect x="15" y="176" width="170" height="36" rx="6" fill="#1E293B"/>
+  <text x="30" y="199" fill="#64748B" font-size="11">📈 Analytics</text>
+  <rect x="15" y="218" width="170" height="36" rx="6" fill="#1E293B"/>
+  <text x="30" y="241" fill="#64748B" font-size="11">⚙️ Settings</text>
+  <text x="230" y="30" fill="#F1F5F9" font-size="18" font-weight="700">Overview</text>
+  <text x="680" y="30" fill="#94A3B8" font-size="10">Last 30 days ▼</text>
+  <rect x="230" y="50" width="170" height="80" rx="8" fill="#1E293B" stroke="#334155" stroke-width="1"/>
+  <text x="250" y="75" fill="#64748B" font-size="10">Total Revenue</text>
+  <text x="250" y="105" fill="#38BDF8" font-size="22" font-weight="800">₹12.4L</text>
+  <rect x="415" y="50" width="170" height="80" rx="8" fill="#1E293B" stroke="#334155" stroke-width="1"/>
+  <text x="435" y="75" fill="#64748B" font-size="10">Orders</text>
+  <text x="435" y="105" fill="#10B981" font-size="22" font-weight="800">342</text>
+  <rect x="600" y="50" width="170" height="80" rx="8" fill="#1E293B" stroke="#334155" stroke-width="1"/>
+  <text x="620" y="75" fill="#64748B" font-size="10">Conversion</text>
+ <text x="620" y="105" fill="#F59E0B" font-size="22" font-weight="800">4.8%</text>
+  <rect x="230" y="145" width="540" height="180" rx="8" fill="#1E293B" stroke="#334155" stroke-width="1"/>
+  <text x="250" y="170" fill="#F1F5F9" font-size="12" font-weight="600">Revenue Trend</text>
+  <rect x="260" y="185" width="30" height="40" rx="3" fill="#3B82F6" opacity="0.6"/>
+  <rect x="310" y="165" width="30" height="60" rx="3" fill="#3B82F6" opacity="0.6"/>
+  <rect x="360" y="145" width="30" height="80" rx="3" fill="#3B82F6" opacity="0.6"/>
+  <rect x="410" y="130" width="30" height="95" rx="3" fill="#3B82F6"/>
+  <rect x="460" y="150" width="30" height="75" rx="3" fill="#3B82F6" opacity="0.8"/>
+  <rect x="510" y="120" width="30" height="105" rx="3" fill="#3B82F6"/>
+  <rect x="560" y="135" width="30" height="90" rx="3" fill="#3B82F6" opacity="0.8"/>
+  <rect x="610" y="110" width="30" height="115" rx="3" fill="#10B981"/>
+  <rect x="660" y="125" width="30" height="100" rx="3" fill="#3B82F6" opacity="0.7"/>
+  <rect x="710" y="115" width="40" height="110" rx="3" fill="#3B82F6"/>
+  <text x="260" y="335" fill="#64748B" font-size="8">May</text>
+  <text x="360" y="335" fill="#64748B" font-size="8">Jun</text>
+  <text x="460" y="335" fill="#64748B" font-size="8">Jul</text>
+  <text x="560" y="335" fill="#64748B" font-size="8">Aug</text>
+  <text x="660" y="335" fill="#64748B" font-size="8">Sep</text>
+  <text x="740" y="335" fill="#64748B" font-size="8">Oct</text>
+  <rect x="230" y="345" width="255" height="100" rx="8" fill="#1E293B" stroke="#334155" stroke-width="1"/>
+  <text x="250" y="370" fill="#F1F5F9" font-size="12" font-weight="600">Recent Orders</text>
+  <text x="250" y="392" fill="#94A3B8" font-size="10">#1042 — ₹1,299 — ✅ Completed</text>
+  <text x="250" y="410" fill="#94A3B8" font-size="10">#1041 — ₹2,499 — ⏳ Processing</text>
+  <text x="250" y="428" fill="#94A3B8" font-size="10">#1040 — ₹899 — ✅ Completed</text>
+  <rect x="500" y="345" width="270" height="100" rx="8" fill="#1E293B" stroke="#334155" stroke-width="1"/>
+  <text x="520" y="370" fill="#F1F5F9" font-size="12" font-weight="600">Quick Actions</text>
+  <rect x="520" y="385" width="110" height="28" rx="6" fill="#3B82F6"/>
+  <text x="575" y="404" fill="#FFF" font-size="10" font-weight="600" text-anchor="middle">+ New Order</text>
+  <rect x="640" y="385" width="110" height="28" rx="6" fill="#334155"/>
+  <text x="695" y="404" fill="#F1F5F9" font-size="10" font-weight="600" text-anchor="middle">Export</text>
+  <rect x="520" y="420" width="230" height="18" rx="6" fill="#334155"/>
+  <text x="635" y="433" fill="#94A3B8" font-size="9" text-anchor="middle">🔍 Search orders...</text>
+  <rect x="0" y="475" width="800" height="25" fill="#0F172A"/>
+  <text x="400" y="492" fill="#475569" font-size="9" text-anchor="middle">© 2026 Dashboard. All data is for demonstration.</text>
 </svg>
