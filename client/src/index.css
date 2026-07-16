@@ -844,3 +844,76 @@ body {
 .light .prose code { background: rgba(84, 58, 103, 0.08); color: #6d4c7d; }
 .light .prose pre { background: rgba(248, 249, 254, 0.8); border-color: rgba(84, 58, 103, 0.15); }
 .light .prose blockquote { border-left-color: #6d4c7d; }
+
+/* ============================================
+   ENHANCED DESIGN — Gradient Border & Grid
+   ============================================ */
+
+@keyframes spin-gradient {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes border-glow-pulse {
+  0%, 100% { border-color: rgba(126, 187, 197, 0.1); box-shadow: 0 0 0 rgba(126, 187, 197, 0); }
+  50% { border-color: rgba(126, 187, 197, 0.3); box-shadow: 0 0 15px rgba(126, 187, 197, 0.1); }
+}
+
+.glass-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-card::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: conic-gradient(from 0deg, transparent, rgba(126, 187, 197, 0.2), transparent, rgba(84, 58, 103, 0.2), transparent, transparent);
+  z-index: -1;
+  animation: spin-gradient 4s linear infinite;
+  pointer-events: none;
+}
+
+.light .glass-card::before {
+  background: conic-gradient(from 0deg, transparent, rgba(126, 187, 197, 0.15), transparent, rgba(84, 58, 103, 0.15), transparent, transparent);
+}
+
+.neon-border-glow {
+  position: relative;
+  border: 1px solid transparent;
+  background-clip: padding-box;
+  animation: border-glow-pulse 3s ease-in-out infinite;
+}
+
+.neon-border-glow::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: conic-gradient(from 0deg, transparent, rgba(126, 187, 197, 0.6), transparent, rgba(84, 58, 103, 0.6), transparent);
+  z-index: -1;
+  animation: spin-gradient 4s linear infinite;
+  pointer-events: none;
+}
+
+.tilt-card {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease;
+}
+
+.tilt-card:hover {
+  transform: rotateX(2deg) rotateY(2deg);
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(126, 187, 197, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(126, 187, 197, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: -1;
+}

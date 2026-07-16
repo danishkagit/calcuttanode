@@ -244,6 +244,35 @@ export default function About() {
           </div>
         </motion.div>
 
+        <motion.div className="mb-12" {...fadeUp}>
+          <h2 className="text-2xl font-bold text-text-primary mb-8 border-l-4 border-neon-cyan pl-4">Meet the Founder</h2>
+          <motion.div className="glass-card p-8 rounded-2xl text-center" whileHover={{ y: -4 }}>
+            <div className="w-24 h-24 rounded-full mx-auto mb-4 bg-gradient-to-br from-neon-cyan to-electric-violet p-0.5">
+              <img src="https://danishkagit.github.io/portfolio/assets/danish-passport.jpg" alt="Danish Shoaib" className="w-full h-full rounded-full object-cover" style={{objectPosition: 'center 25%'}} />
+            </div>
+            <h3 className="text-xl font-bold text-text-primary">Danish Shoaib</h3>
+            <p className="text-neon-cyan text-sm font-medium mb-3">Digital Marketing & AI Prompt Engineer | Founder @ Calcutta Node.</p>
+            <p className="text-text-muted text-sm max-w-lg mx-auto mb-4">
+              4+ years of experience in digital marketing, AI prompt engineering, content creation, web development, and IT support.
+              Certified in Digital Marketing from Tech Mahindra Foundation. Currently pursuing D.Pharm (2026) and Data Analytics.
+            </p>
+            <div className="flex gap-4 justify-center">
+              <a href="https://danishkagit.github.io/portfolio/" target="_blank" rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-brand-gradient text-white px-5 py-2 rounded-xl text-sm font-medium hover:shadow-lg hover:shadow-neon-cyan/20 transition-all duration-200"
+              >
+                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                View Portfolio
+              </a>
+              <a href="https://www.linkedin.com/in/danishshoaib-in/" target="_blank" rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 border border-neon-cyan text-neon-cyan px-5 py-2 rounded-xl text-sm font-medium hover:bg-neon-cyan/10 transition-all duration-200"
+              >
+                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 6a2 2 0 100-4 2 2 0 000 4z"/></svg>
+                LinkedIn
+              </a>
+            </div>
+          </motion.div>
+        </motion.div>
+
         <motion.div className="rounded-2xl p-6 glass-card" {...fadeUp}>
           <h2 className="text-xl font-bold text-text-primary mb-4 flex items-center gap-2">
             <svg className="w-5 h-5 text-neon-cyan" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>

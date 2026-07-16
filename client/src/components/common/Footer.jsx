@@ -37,6 +37,11 @@ export default function Footer() {
           >
             🤖 Try AI Support
           </motion.a>
+          <a href="https://danishkagit.github.io/portfolio/" target="_blank" rel="noopener noreferrer"
+            className="mt-2 inline-flex items-center gap-1.5 text-xs text-neon-cyan/70 hover:text-neon-cyan transition-colors"
+          >
+            📂 Founder's Portfolio
+          </a>
         </motion.div>
 
         <motion.div {...fadeUp} transition={{ duration: 0.5, delay: 0.05 }}>
