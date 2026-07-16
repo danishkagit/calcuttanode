@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <rect width="120" height="120" rx="20" fill="#1E293B"/>
+  <path d="M28 40h64v8H28zM28 56h48v8H28zM28 72h56v8H28z" fill="#38BDF8" opacity="0.8"/>
+  <circle cx="90" cy="76" r="6" fill="#38BDF8" opacity="0.5"/>
+  <text x="60" y="100" text-anchor="middle" fill="#FFF" font-size="8" font-weight="700" font-family="Inter,sans-serif">NEXATECH</text>
+  <text x="60" y="112" text-anchor="middle" fill="#94A3B8" font-size="6" font-weight="500" font-family="Inter,sans-serif">SOLUTIONS</text>
+</svg>

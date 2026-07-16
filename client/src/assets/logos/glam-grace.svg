@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <rect width="200" height="200" rx="32" fill="#FCE4EC"/>
+  <path d="M100 35 L115 70 L152 72 L122 95 L130 132 L100 112 L70 132 L78 95 L48 72 L85 70 Z" fill="#E91E63" opacity="0.8"/>
+  <circle cx="100" cy="82" r="16" fill="#E91E63"/>
+  <path d="M170 85 L155 75 L158 92 Z" fill="#E91E63" opacity="0.6"/>
+  <text x="100" y="165" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#E91E63">Glam &amp; Grace</text>
+</svg>

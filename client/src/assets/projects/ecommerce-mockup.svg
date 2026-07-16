@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" fill="none">
+  <rect width="800" height="500" rx="12" fill="#1E293B"/>
+  <rect x="0" y="0" width="800" height="44" fill="#0F172A" rx="12"/>
+  <rect x="0" y="32" width="800" height="12" fill="#0F172A"/>
+  <text x="30" y="28" fill="#F1F5F9" font-size="16" font-weight="800" font-family="Inter,sans-serif">ShopLogo</text>
+  <rect x="660" y="12" width="60" height="20" rx="6" fill="#F59E0B" opacity="0.8"/>
+  <text x="690" y="26" fill="#FFF" font-size="10" font-weight="600" text-anchor="middle">Cart 🛒</text>
+  <rect x="730" y="12" width="50" height="20" rx="6" fill="#475569"/>
+  <text x="755" y="26" fill="#F1F5F9" font-size="10" text-anchor="middle">Login</text>
+  <rect x="40" y="60" width="720" height="34" rx="8" fill="#334155"/>
+  <text x="400" y="80" fill="#94A3B8" font-size="11" text-anchor="middle">Search products, categories, brands...</text>
+  <rect x="40" y="110" width="160" height="200" rx="10" fill="#1E293B" stroke="#334155" stroke-width="1"/>
+  <rect x="55" y="125" width="130" height="100" rx="8" fill="#334155"/>
+  <rect x="55" y="125" width="130" height="6" rx="3" fill="#F59E0B" opacity="0.5"/>
+  <text x="120" y="155" fill="#38BDF8" font-size="24" text-anchor="middle">✦</text>
+  <text x="55" y="243" fill="#F1F5F9" font-size="11" font-weight="600">Premium Product</text>
+  <text x="55" y="258" fill="#F59E0B" font-size="11" font-weight="700">₹1,999</text>
+  <text x="55" y="273" fill="#94A3B8" font-size="9">★ 4.5 (120 reviews)</text>
+  <rect x="220" y="110" width="160" height="200" rx="10" fill="#1E293B" stroke="#334155" stroke-width="1"/>
+  <rect x="235" y="125" width="130" height="100" rx="8" fill="#334155"/>
+  <rect x="235" y="125" width="130" height="6" rx="3" fill="#10B981" opacity="0.5"/>
+  <text x="300" y="155" fill="#38BDF8" font-size="24" text-anchor="middle">✦</text>
+  <text x="235" y="243" fill="#F1F5F9" font-size="11" font-weight="600">Eco Essentials</text>
+  <text x="235" y="258" fill="#F59E0B" font-size="11" font-weight="700">₹2,499</text>
+  <text x="235" y="273" fill="#94A3B8" font-size="9">★ 4.8 (89 reviews)</text>
+  <rect x="400" y="110" width="160" height="200" rx="10" fill="#1E293B" stroke="#334155" stroke-width="1"/>
+  <rect x="415" y="125" width="130" height="100" rx="8" fill="#334155"/>
+  <rect x="415" y="125" width="130" height="6" rx="3" fill="#8B5CF6" opacity="0.5"/>
+  <text x="480" y="155" fill="#38BDF8" font-size="24" text-anchor="middle">✦</text>
+  <text x="415" y="243" fill="#F1F5F9" font-size="11" font-weight="600">Smart Gadget</text>
+  <text x="415" y="258" fill="#F59E0B" font-size="11" font-weight="700">₹3,999</text>
+  <text x="415" y="273" fill="#94A3B8" font-size="9">★ 4.3 (210 reviews)</text>
+  <rect x="580" y="110" width="180" height="200" rx="10" fill="#1E293B" stroke="#334155" stroke-width="1"/>
+  <rect x="595" y="125" width="150" height="100" rx="8" fill="#334155"/>
+  <rect x="595" y="125" width="150" height="6" rx="3" fill="#EF4444" opacity="0.5"/>
+  <text x="670" y="155" fill="#38BDF8" font-size="24" text-anchor="middle">✦</text>
+  <text x="595" y="243" fill="#F1F5F9" font-size="11" font-weight="600">Organic Bundle</text>
+  <text x="595" y="258" fill="#F59E0B" font-size="11" font-weight="700">₹1,499</text>
+  <text x="595" y="273" fill="#94A3B8" font-size="9">★ 4.6 (340 reviews)</text>
+  <rect x="40" y="330" width="720" height="100" rx="10" fill="#334155" opacity="0.5"/>
+  <text x="400" y="360" fill="#F1F5F9" font-size="16" font-weight="700" text-anchor="middle">Free Shipping on orders above ₹499 🚚</text>
+  <text x="400" y="385" fill="#94A3B8" font-size="12" text-anchor="middle">Easy returns • Secure payments • 24/7 support</text>
+  <rect x="320" y="400" width="160" height="12" rx="6" fill="#F59E0B" opacity="0.8"/>
+  <rect x="40" y="450" width="720" height="36" rx="6" fill="#0F172A"/>
+  <text x="400" y="472" fill="#64748B" font-size="10" text-anchor="middle">© 2026 ShopLogo. All rights reserved.</text>
+</svg>

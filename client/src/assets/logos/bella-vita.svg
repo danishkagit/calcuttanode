@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <rect width="120" height="120" rx="20" fill="#831843"/>
+  <path d="M60 30l6 12 13-2-9 10 9 10-13-2-6 12-6-12-13 2 9-10-9-10 13 2 6-12z" fill="#FBCFE8"/>
+  <path d="M60 35l4 8 9-2-6 7 6 7-9-2-4 8-4-8-9 2 6-7-6-7 9 2 4-8z" fill="#EC4899" opacity="0.8"/>
+  <circle cx="60" cy="43" r="4" fill="#FFF" opacity="0.4"/>
+  <text x="60" y="97" text-anchor="middle" fill="#FFF" font-size="7" font-weight="700" font-family="Inter,sans-serif">BELLA VITA</text>
+  <text x="60" y="108" text-anchor="middle" fill="#F9A8D4" font-size="6" font-weight="500" font-family="Inter,sans-serif">INTERIORS</text>
+</svg>

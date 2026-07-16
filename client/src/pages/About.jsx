@@ -7,7 +7,7 @@ const fadeUp = { initial: { opacity: 0, y: 30 }, whileInView: { opacity: 1, y: 0
 
 const milestones = [
   { year: '2023', title: 'Founded', text: 'Danish Shoaib started Calcutta Node. with a simple mission: make professional IT support accessible and affordable for everyone.', icon: '🚀' },
-  { year: '2024', title: 'Expansion', text: 'Grew to 6 service categories — from web development and design to digital marketing and data recovery. Crossed 12+ clients and 36+ successful projects.', icon: '📈' },
+  { year: '2024', title: 'Expansion', text: 'Grew to 7 service categories — from web development and design to digital marketing and data recovery. Crossed 22+ case studies across 8 countries and 66+ successful projects.', icon: '📈' },
   { year: '2025', title: 'Digital Transformation', text: 'Launched digital products store, membership subscriptions, AI chat support, and a full-featured client dashboard with wallet, referrals, and loyalty rewards.', icon: '🏆' },
   { year: '2026', title: 'AI-Powered Future', text: 'Introducing AI-assisted troubleshooting, enhanced remote support, digital packages for every business, and same-day response guarantee for all premium clients.', icon: '🌟' },
 ];
@@ -21,7 +21,7 @@ const values = [
 
 const stats = [
   { value: '3+', label: 'Years in Business' },
-  { value: '12+', label: 'Clients Served' },
+  { value: '22+', label: 'Case Studies' },
   { value: '36+', label: 'Projects Delivered' },
   { value: '8', label: 'Service Categories' },
   { value: '99%', label: 'Client Satisfaction' },

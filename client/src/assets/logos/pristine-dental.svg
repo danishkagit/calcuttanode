@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <rect width="120" height="120" rx="20" fill="#0EA5E9"/>
+  <path d="M40 50c0-8 4-15 10-18 6-3 14-3 20 0 6 3 10 10 10 18 0 6-3 14-8 22-5 8-8 14-8 18 0-4-3-10-8-18-5-8-8-16-8-22z" fill="#E0F2FE"/>
+  <path d="M50 48c2-2 7-3 10-3s8 1 10 3" stroke="#0EA5E9" stroke-width="2" fill="none"/>
+  <circle cx="55" cy="52" r="2" fill="#0EA5E9"/>
+  <circle cx="65" cy="52" r="2" fill="#0EA5E9"/>
+  <text x="60" y="100" text-anchor="middle" fill="#FFF" font-size="7" font-weight="700" font-family="Inter,sans-serif">PRISTINE</text>
+  <text x="60" y="112" text-anchor="middle" fill="#BAE6FD" font-size="6" font-weight="500" font-family="Inter,sans-serif">DENTAL CARE</text>
+</svg>

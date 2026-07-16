@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <rect width="200" height="200" rx="32" fill="#E8F5E9"/>
+  <path d="M100 25 L105 75 L145 75 L110 105 L125 175 L100 120 L75 175 L90 105 L55 75 L95 75 Z" fill="#4CAF50"/>
+  <circle cx="100" cy="145" r="6" fill="#388E3C"/>
+  <text x="100" y="165" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#388E3C">PowerHouse</text>
+</svg>

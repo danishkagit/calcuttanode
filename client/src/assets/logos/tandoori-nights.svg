@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <rect width="200" height="200" rx="32" fill="#FFF3E0"/>
+  <ellipse cx="100" cy="85" rx="35" ry="8" fill="#FF6D00" opacity="0.3"/>
+  <path d="M70 85 Q70 40 100 30 Q130 40 130 85" fill="#FF6D00" opacity="0.7"/>
+  <path d="M75 85 L80 110 L120 110 L125 85" stroke="#FF6D00" stroke-width="3" fill="#FFF3E0"/>
+  <line x1="85" y1="110" x2="82" y2="130" stroke="#FF6D00" stroke-width="3" stroke-linecap="round"/>
+  <line x1="100" y1="110" x2="100" y2="135" stroke="#FF6D00" stroke-width="3" stroke-linecap="round"/>
+  <line x1="115" y1="110" x2="118" y2="130" stroke="#FF6D00" stroke-width="3" stroke-linecap="round"/>
+  <path d="M90 68 L100 58 L110 68" stroke="#FFF3E0" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <text x="100" y="165" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#E65100">Tandoori Nights</text>
+</svg>

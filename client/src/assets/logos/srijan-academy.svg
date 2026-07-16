@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <rect width="120" height="120" rx="20" fill="#4F46E5"/>
+  <path d="M60 28l22 14v18c0 14-9 26-22 30-13-4-22-16-22-30V42l22-14z" fill="#EEE5FF" opacity="0.9"/>
+  <path d="M55 65l-8-8 2-2 6 6 12-12 2 2-14 14z" fill="#4F46E5"/>
+  <text x="60" y="97" text-anchor="middle" fill="#FFF" font-size="8" font-weight="700" font-family="Inter,sans-serif">SRIJAN</text>
+  <text x="60" y="109" text-anchor="middle" fill="#A5B4FC" font-size="7" font-weight="500" font-family="Inter,sans-serif">ACADEMY</text>
+</svg>

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import api from '../../utils/api';
+import RevenueGoal from './RevenueGoal';
 
 export default function AdminDashboard() {
   const [section, setSection] = useState('overview');
@@ -133,6 +134,7 @@ export default function AdminDashboard() {
 
       {section === 'overview' && overview && (
         <div>
+          <RevenueGoal revenue={revenue} overview={overview} />
           <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-3 mb-6">
             <StatCard label="Total Users" value={overview.totalUsers} color="text-neon-cyan" />
             <StatCard label="Total Orders" value={overview.totalOrders} color="text-blue-400" />

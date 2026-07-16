@@ -13,6 +13,7 @@ import Pricing from './pages/Pricing';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import Work from './pages/Work';
+import CaseStudy from './pages/CaseStudy';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
@@ -51,6 +52,7 @@ export default function App() {
             <Route path="/about" element={<AnimatedPage><About /></AnimatedPage>} />
             <Route path="/contact" element={<AnimatedPage><Contact /></AnimatedPage>} />
             <Route path="/work" element={<AnimatedPage><Work /></AnimatedPage>} />
+            <Route path="/work/:slug" element={<AnimatedPage><CaseStudy /></AnimatedPage>} />
             <Route path="/login" element={<AnimatedPage><Login /></AnimatedPage>} />
             <Route path="/register" element={<AnimatedPage><Register /></AnimatedPage>} />
             <Route path="/dashboard" element={<AnimatedPage><Dashboard /></AnimatedPage>} />

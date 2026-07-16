@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <rect width="120" height="120" rx="20" fill="#15803D"/>
+  <path d="M60 85c14 0 25-11 25-25s-11-25-25-25c-3 0-5 0-8 2 4-2 8-3 13-3 16 0 28 12 28 28s-12 28-28 28c-9 0-17-4-23-10l-5-5h10l3 3c3 3 7 5 12 5z" fill="#86EFAC" opacity="0.9"/>
+  <path d="M35 60c0-8 4-15 10-20l-2 10 5 5c-2 2-3 5-3 8 0 5 3 10 7 12l-2 2c-5-3-9-9-9-15 0-2 0-3 1-5-3 4-5 8-5 13 0 10 7 18 16 21l-2 2c-10-4-18-14-18-25z" fill="#22C55E"/>
+  <text x="60" y="103" text-anchor="middle" fill="#FFF" font-size="7" font-weight="700" font-family="Inter,sans-serif">GREENLEAF</text>
+  <text x="60" y="114" text-anchor="middle" fill="#86EFAC" font-size="6" font-weight="500" font-family="Inter,sans-serif">ORGANICS</text>
+</svg>

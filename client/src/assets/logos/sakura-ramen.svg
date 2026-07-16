@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <rect width="120" height="120" rx="20" fill="#BE123C"/>
+  <circle cx="60" cy="43" r="20" fill="#FCE7F3"/>
+  <path d="M50 38c0-3 4-5 10-5s10 2 10 5" stroke="#BE123C" stroke-width="2" fill="none"/>
+  <circle cx="56" cy="44" r="3" fill="#BE123C"/>
+  <circle cx="64" cy="44" r="3" fill="#BE123C"/>
+  <path d="M55 50c0 0 2 3 5 3s5-3 5-3" stroke="#BE123C" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M45 70c0 0 8-6 15-6s15 6 15 6" stroke="#FCE7F3" stroke-width="2.5" stroke-linecap="round"/>
+  <text x="60" y="97" text-anchor="middle" fill="#FFF" font-size="7" font-weight="700" font-family="Inter,sans-serif">SAKURA</text>
+  <text x="60" y="108" text-anchor="middle" fill="#FBCFE8" font-size="6" font-weight="500" font-family="Inter,sans-serif">RAMEN HOUSE</text>
+</svg>

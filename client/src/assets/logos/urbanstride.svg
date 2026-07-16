@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <rect width="120" height="120" rx="20" fill="#7C3AED"/>
+  <path d="M38 75c0-14 10-28 22-35l3 3c-10 6-18 18-18 30 0 8 3 16 9 22l-3 3c-8-8-13-18-13-23z" fill="#DDD6FE"/>
+  <path d="M45 75c0-10 7-20 15-26l3 3c-7 5-12 14-12 22 0 6 2 11 6 15l-3 3c-6-6-9-12-9-17z" fill="#A78BFA"/>
+  <path d="M82 75c0 14-10 28-22 35l-3-3c10-6 18-18 18-30 0-8-3-16-9-22l3-3c8 8 13 18 13 23z" fill="#DDD6FE"/>
+  <path d="M75 75c0 10-7 20-15 26l-3-3c7-5 12-14 12-22 0-6-2-11-6-15l3-3c6 6 9 12 9 17z" fill="#A78BFA"/>
+  <text x="60" y="103" text-anchor="middle" fill="#FFF" font-size="7" font-weight="700" font-family="Inter,sans-serif">URBANSTRIDE</text>
+  <text x="60" y="114" text-anchor="middle" fill="#C4B5FD" font-size="6" font-weight="500" font-family="Inter,sans-serif">FITNESS</text>
+</svg>

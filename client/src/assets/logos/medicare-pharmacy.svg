@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <rect width="200" height="200" rx="32" fill="#F3E5F5"/>
+  <rect x="55" y="55" width="90" height="90" rx="12" fill="#E1BEE7"/>
+  <line x1="80" y1="100" x2="120" y2="100" stroke="#7B1FA2" stroke-width="5" stroke-linecap="round"/>
+  <line x1="100" y1="80" x2="100" y2="120" stroke="#7B1FA2" stroke-width="5" stroke-linecap="round"/>
+  <path d="M63 60 L137 60 L137 140 L63 140 Z" stroke="#7B1FA2" stroke-width="4" fill="none" rx="12"/>
+  <text x="100" y="170" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#7B1FA2">MediCare</text>
+</svg>

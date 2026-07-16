@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <rect width="120" height="120" rx="20" fill="#D97706"/>
+  <rect x="30" y="45" width="60" height="45" rx="4" fill="#FFF3E0"/>
+  <rect x="30" y="45" width="60" height="8" rx="4" fill="#F59E0B"/>
+  <path d="M42 60v20M60 60v20M78 60v20" stroke="#D97706" stroke-width="3" stroke-linecap="round"/>
+  <line x1="35" y1="58" x2="85" y2="58" stroke="#FDE68A" stroke-width="1.5"/>
+  <text x="60" y="37" text-anchor="middle" fill="#FFF" font-size="8" font-weight="700" font-family="Inter,sans-serif">SREE RAM</text>
+  <text x="60" y="107" text-anchor="middle" fill="#FCD34D" font-size="7" font-weight="500" font-family="Inter,sans-serif">GENERAL STORE</text>
+</svg>
