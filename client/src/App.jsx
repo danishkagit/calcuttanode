@@ -25,6 +25,9 @@ const Plans = lazy(() => import('./pages/Plans'));
 const AI = lazy(() => import('./pages/AI'));
 const MobileApp = lazy(() => import('./pages/MobileApp'));
 const SEOTools = lazy(() => import('./pages/SEOTools'));
+const Referral = lazy(() => import('./pages/Referral'));
+const Hire = lazy(() => import('./pages/Hire'));
+const SEOAudit = lazy(() => import('./pages/SEOAudit'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 const pageVariants = {
@@ -66,6 +69,9 @@ export default function App() {
             <Route path="/ai" element={<AnimatedPage><AI /></AnimatedPage>} />
             <Route path="/app" element={<AnimatedPage><MobileApp /></AnimatedPage>} />
             <Route path="/seo" element={<AnimatedPage><SEOTools /></AnimatedPage>} />
+            <Route path="/referral" element={<AnimatedPage><Referral /></AnimatedPage>} />
+            <Route path="/hire" element={<AnimatedPage><Hire /></AnimatedPage>} />
+            <Route path="/seo-audit" element={<AnimatedPage><SEOAudit /></AnimatedPage>} />
             <Route path="*" element={<AnimatedPage><NotFound /></AnimatedPage>} />
           </Routes>
         </AnimatePresence>

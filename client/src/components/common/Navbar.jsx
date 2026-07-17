@@ -18,6 +18,7 @@ const serviceGroups = [
     title: 'Marketing & Design',
     items: [
       { label: 'SEO & Digital Marketing', path: '/pricing', icon: '📈', desc: 'Rank higher, grow faster', price: '₹1,999' },
+      { label: 'SEO Audit', path: '/seo-audit', icon: '📊', desc: 'AI-powered site audit & tools', price: '₹1,999' },
       { label: 'UI/UX & Graphic Design', path: '/pricing', icon: '🎨', desc: 'Brand identity & interfaces', price: '₹999' },
       { label: 'Video Editing', path: '/pricing', icon: '🎬', desc: 'Promos, reels, tutorials', price: '₹1,499' },
     ],
@@ -27,6 +28,7 @@ const serviceGroups = [
     items: [
       { label: 'Remote IT Support', path: '/pricing', icon: '🖥️', desc: 'PC, network, system help', price: '₹499' },
       { label: 'Data Recovery', path: '/pricing', icon: '💾', desc: 'HDD, SSD, NVMe recovery', price: '₹1,499' },
+      { label: 'Hire Me', path: '/hire', icon: '🚀', desc: 'Custom websites, chatbots, apps', price: '₹7,999+' },
     ],
   },
 ];
@@ -270,6 +272,7 @@ export default function Navbar() {
                     {[
                       { label: 'About', path: '/about', icon: '👤', desc: 'Our story & team' },
                       { label: 'Our Work', path: '/work', icon: '🏆', desc: 'Portfolio & case studies' },
+                      { label: 'Referral Program', path: '/referral', icon: '🤝', desc: 'Refer & earn ₹100' },
                       { label: 'Contact', path: '/contact', icon: '📬', desc: 'Get in touch' },
                     ].map((item) => (
                       <Link key={item.label} to={item.path} onClick={() => setOpenDropdown(null)}
@@ -412,6 +415,7 @@ export default function Navbar() {
                 {[
                   { label: 'About', path: '/about', icon: '👤' },
                   { label: 'Our Work', path: '/work', icon: '🏆' },
+                  { label: 'Referral Program', path: '/referral', icon: '🤝' },
                   { label: 'Contact', path: '/contact', icon: '📬' },
                 ].map((item) => (
                   <Link key={item.label} to={item.path} onClick={() => setMobileOpen(false)}
