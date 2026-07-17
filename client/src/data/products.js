@@ -71,6 +71,16 @@ const products = [
     description: 'A modern, animated portfolio template built with HTML, CSS, and JavaScript. Features dark theme, smooth scroll, and project showcase.',
     features: ['Single-page portfolio', 'Dark theme', 'Smooth animations', 'Project showcase', 'Contact form ready'],
   },
+  {
+    id: 'starter-kit',
+    name: '🚀 Business Starter Kit',
+    slug: 'starter-kit',
+    category: 'Templates',
+    price: 999,
+    description: 'Everything you need to launch your online presence: SEO checklist, social media calendar, 3 website templates, and 2 Python automation scripts — at 56% off individual pricing.',
+    features: ['SEO Audit Checklist (₹199 value)', 'Social Media Calendar (₹299 value)', '3 Website Templates (₹1,497 value)', '2 Python Automation Scripts (₹599 value)', 'Instant download'],
+    originalPrice: 2594,
+  },
 ];
 
 export default products;

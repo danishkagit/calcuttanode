@@ -13,6 +13,9 @@ const defaultModels = [
   { id: 'nemotron-3-ultra-free', name: 'Nemotron 3 Ultra', icon: '🚀', color: '#FF6B6B', description: 'Ultra-high performance for demanding tasks' },
   { id: 'hy3-free', name: 'Hy3', icon: '🌊', color: '#4FC3F7', description: 'Creative writing & content generation expert' },
   { id: 'big-pickle', name: 'Big Pickle', icon: '🥒', color: '#81C784', description: 'Versatile assistant for everyday queries & tasks' },
+  { id: 'chatgpt-turbo-free', name: 'ChatGPT Turbo', icon: '💬', color: '#74AA9C', description: 'OpenAI-powered conversational AI for general tasks' },
+  { id: 'claude-haiku-free', name: 'Claude Haiku', icon: '🎯', color: '#D97757', description: 'Anthropic\'s fast & concise model for analysis' },
+  { id: 'gemini-pro-free', name: 'Gemini Pro', icon: '🌟', color: '#4285F4', description: 'Google\'s multimodal AI for reasoning & creativity' },
 ];
 
 const quickActionGroups = [
@@ -39,7 +42,7 @@ const quickActionGroups = [
 ];
 
 const heroStats = [
-  { value: '10+', label: 'Models' },
+  { value: '9+', label: 'Models' },
   { value: '24/7', label: 'Available' },
   { value: 'Free', label: 'Forever' },
   { value: 'No Login', label: 'Required' },

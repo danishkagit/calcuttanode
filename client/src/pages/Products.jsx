@@ -97,9 +97,17 @@ export default function Products() {
                   </div>
                   <h3 className="text-text-primary font-semibold text-lg mb-1 group-hover:text-neon-cyan transition-colors">{product.name}</h3>
                   <p className="text-text-muted text-sm mb-4 flex-1">{product.description}</p>
-                  <div className="flex items-baseline gap-1 mb-4">
+                  <div className="flex items-baseline gap-2 mb-4">
+                    {product.originalPrice && (
+                      <span className="text-lg text-text-dim line-through">₹{product.originalPrice}</span>
+                    )}
                     <span className="text-3xl font-bold text-neon-cyan">₹{product.price}</span>
                     <span className="text-text-muted text-sm">one-time</span>
+                    {product.originalPrice && (
+                      <span className="text-xs font-medium text-green-400 bg-green-400/10 px-2 py-0.5 rounded-full">
+                        {Math.round((1 - product.price / product.originalPrice) * 100)}% off
+                      </span>
+                    )}
                   </div>
                   <ul className="space-y-2 mb-6">
                     {product.features.map((f, j) => (
