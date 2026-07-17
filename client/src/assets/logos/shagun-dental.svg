@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00BCD4"/>
+      <stop offset="100%" stop-color="#006064"/>
+    </linearGradient>
+  </defs>
+  <circle cx="100" cy="100" r="95" fill="url(#g)"/>
+  <circle cx="100" cy="100" r="90" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+  <circle cx="100" cy="100" r="82" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1" stroke-dasharray="4,4"/>
+  <path d="M100 58 Q107 52 113 58 Q122 65 120 76 Q118 83 114 90 Q110 97 108 102 Q106 110 100 116 Q94 110 92 102 Q90 97 86 90 Q82 83 80 76 Q78 65 87 58 Q93 52 100 58Z" fill="white" opacity="0.95"/>
+  <path d="M96 66 Q98 62 100 66 Q103 72 103 78" fill="none" stroke="#00BCD4" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M104 66 Q102 62 100 66 Q97 72 97 78" fill="none" stroke="#00BCD4" stroke-width="1.5" stroke-linecap="round"/>
+  <text x="100" y="162" text-anchor="middle" fill="white" font-size="24" font-weight="700" font-family="'Segoe UI', Arial, sans-serif" letter-spacing="2">SD</text>
+</svg>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#212121"/>
+      <stop offset="100%" stop-color="#424242"/>
+    </linearGradient>
+  </defs>
+  <circle cx="100" cy="100" r="95" fill="url(#g)"/>
+  <circle cx="100" cy="100" r="90" fill="none" stroke="#FF6D00" stroke-width="2.5"/>
+  <circle cx="100" cy="100" r="82" fill="none" stroke="rgba(255,109,0,0.3)" stroke-width="1" stroke-dasharray="6 4"/>
+  <text x="100" y="105" text-anchor="middle" fill="#FF6D00" font-size="52" font-weight="900" font-family="Arial, sans-serif">CF</text>
+  <text x="100" y="143" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="9" font-weight="bold" font-family="Arial, sans-serif" letter-spacing="4">CROSSFIT</text>
+</svg>

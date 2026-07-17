@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4CAF50"/>
+      <stop offset="100%" stop-color="#2E7D32"/>
+    </linearGradient>
+    <linearGradient id="sun" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF176"/>
+      <stop offset="100%" stop-color="#FDD835"/>
+    </linearGradient>
+  </defs>
+  <circle cx="100" cy="100" r="95" fill="url(#g)"/>
+  <circle cx="100" cy="100" r="90" fill="none" stroke="rgba(255,241,118,0.2)" stroke-width="2"/>
+  <circle cx="100" cy="100" r="82" fill="none" stroke="rgba(255,241,118,0.1)" stroke-width="1" stroke-dasharray="4,4"/>
+  <path d="M100 58 Q112 60 118 70 Q124 80 120 88 Q118 92 112 94 L110 94 Q108 100 100 106 Q92 100 90 94 L88 94 Q82 92 80 88 Q76 80 82 70 Q88 60 100 58Z" fill="url(#sun)" opacity="0.3"/>
+  <text x="100" y="112" text-anchor="middle" fill="white" font-size="52" font-weight="800" font-family="'Segoe UI', Arial, sans-serif" letter-spacing="2">AT</text>
+  <text x="100" y="145" text-anchor="middle" fill="rgba(255,241,118,0.7)" font-size="11" font-weight="600" font-family="'Segoe UI', Arial, sans-serif" letter-spacing="3">TIFFINS</text>
+</svg>

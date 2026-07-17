@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E53935"/>
+      <stop offset="100%" stop-color="#B71C1C"/>
+    </linearGradient>
+  </defs>
+  <circle cx="100" cy="100" r="95" fill="url(#g)"/>
+  <circle cx="100" cy="100" r="90" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
+  <path d="M60 130 L100 55 L140 130 Z" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+  <text x="100" y="108" text-anchor="middle" fill="white" font-size="52" font-weight="900" font-family="Arial, sans-serif">NS</text>
+  <text x="100" y="145" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="11" font-weight="bold" font-family="Arial, sans-serif" letter-spacing="3">SPORTS</text>
+</svg>

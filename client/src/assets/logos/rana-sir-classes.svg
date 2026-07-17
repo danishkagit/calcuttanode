@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1A237E"/>
+      <stop offset="100%" stop-color="#0D47A1"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFD54F"/>
+      <stop offset="100%" stop-color="#FF8F00"/>
+    </linearGradient>
+  </defs>
+  <circle cx="100" cy="100" r="95" fill="url(#g)"/>
+  <circle cx="100" cy="100" r="90" fill="none" stroke="rgba(255,213,79,0.2)" stroke-width="2"/>
+  <circle cx="100" cy="100" r="82" fill="none" stroke="rgba(255,213,79,0.1)" stroke-width="1" stroke-dasharray="4,4"/>
+  <path d="M72 130 L72 70 L100 80 L128 70 L128 130Z" fill="none" stroke="url(#gold)" stroke-width="2.5" stroke-linejoin="round" opacity="0.6"/>
+  <line x1="78" y1="78" x2="78" y2="124" stroke="url(#gold)" stroke-width="2" opacity="0.6"/>
+  <line x1="86" y1="76" x2="86" y2="124" stroke="url(#gold)" stroke-width="2" opacity="0.6"/>
+  <line x1="114" y1="76" x2="114" y2="124" stroke="url(#gold)" stroke-width="2" opacity="0.6"/>
+  <line x1="122" y1="78" x2="122" y2="124" stroke="url(#gold)" stroke-width="2" opacity="0.6"/>
+  <text x="100" y="112" text-anchor="middle" fill="white" font-size="40" font-weight="800" font-family="'Segoe UI', Arial, sans-serif" letter-spacing="1">RSC</text>
+</svg>

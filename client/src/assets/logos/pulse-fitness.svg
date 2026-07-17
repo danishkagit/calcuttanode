@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00BFFF"/>
+      <stop offset="100%" stop-color="#1A237E"/>
+    </linearGradient>
+    <linearGradient id="neon" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#76FF03"/>
+      <stop offset="100%" stop-color="#00E676"/>
+    </linearGradient>
+  </defs>
+  <circle cx="100" cy="100" r="95" fill="url(#g)"/>
+  <circle cx="100" cy="100" r="90" fill="none" stroke="rgba(118,255,3,0.2)" stroke-width="2"/>
+  <circle cx="100" cy="100" r="82" fill="none" stroke="rgba(118,255,3,0.08)" stroke-width="1" stroke-dasharray="4,4"/>
+  <path d="M55 100 L75 100 L82 80 L88 110 L95 85 L100 100 L120 100" fill="none" stroke="url(#neon)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="100" cy="100" r="3" fill="url(#neon)"/>
+  <text x="100" y="112" text-anchor="middle" fill="white" font-size="44" font-weight="800" font-family="'Segoe UI', Arial, sans-serif" letter-spacing="3">PF</text>
+</svg>

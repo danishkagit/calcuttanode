@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#27AE60"/>
+      <stop offset="100%" stop-color="#1E8449"/>
+    </linearGradient>
+  </defs>
+  <circle cx="100" cy="100" r="95" fill="url(#g)"/>
+  <circle cx="100" cy="100" r="90" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+  <circle cx="100" cy="100" r="82" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1" stroke-dasharray="4,4"/>
+  <rect x="90" y="60" width="20" height="60" rx="3" fill="white"/>
+  <rect x="70" y="80" width="60" height="20" rx="3" fill="white"/>
+  <text x="100" y="170" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="13" font-weight="600" font-family="'Segoe UI', Arial, sans-serif" letter-spacing="1">PHARMACY</text>
+  <text x="100" y="112" text-anchor="middle" fill="white" font-size="52" font-weight="800" font-family="'Segoe UI', Arial, sans-serif" letter-spacing="2">BM</text>
+</svg>

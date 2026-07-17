@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#42A5F5"/>
+      <stop offset="100%" stop-color="#0D47A1"/>
+    </linearGradient>
+  </defs>
+  <circle cx="100" cy="100" r="95" fill="url(#g)"/>
+  <circle cx="100" cy="100" r="90" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
+  <path d="M85 78 Q92 72 100 78 Q108 72 115 78 L118 90 Q120 100 115 108 Q108 118 100 122 Q92 118 85 108 Q80 100 82 90 Z" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1.8"/>
+  <text x="100" y="108" text-anchor="middle" fill="white" font-size="52" font-weight="900" font-family="Arial, sans-serif">DG</text>
+  <text x="100" y="146" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="10" font-weight="bold" font-family="Arial, sans-serif" letter-spacing="3">DENTAL</text>
+</svg>

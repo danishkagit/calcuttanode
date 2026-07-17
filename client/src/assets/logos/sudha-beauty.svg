@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E91E63"/>
+      <stop offset="100%" stop-color="#AD1457"/>
+    </linearGradient>
+    <linearGradient id="rose" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F8BBD0"/>
+      <stop offset="100%" stop-color="#F06292"/>
+    </linearGradient>
+  </defs>
+  <circle cx="100" cy="100" r="95" fill="url(#g)"/>
+  <circle cx="100" cy="100" r="90" fill="none" stroke="rgba(248,187,208,0.25)" stroke-width="2"/>
+  <circle cx="100" cy="100" r="82" fill="none" stroke="rgba(248,187,208,0.1)" stroke-width="1" stroke-dasharray="4,4"/>
+  <path d="M100 56 Q112 62 118 72 Q124 82 120 92 Q116 100 108 104 Q104 108 100 114 Q96 108 92 104 Q84 100 80 92 Q76 82 82 72 Q88 62 100 56Z" fill="url(#rose)" opacity="0.35"/>
+  <circle cx="100" cy="82" r="6" fill="url(#rose)" opacity="0.5"/>
+  <text x="100" y="150" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="13" font-weight="600" font-family="'Segoe UI', Arial, sans-serif" letter-spacing="2">BEAUTY</text>
+  <text x="100" y="112" text-anchor="middle" fill="white" font-size="52" font-weight="800" font-family="'Segoe UI', Arial, sans-serif" letter-spacing="3">SB</text>
+</svg>

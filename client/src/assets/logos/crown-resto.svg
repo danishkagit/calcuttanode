@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8E44AD"/>
+      <stop offset="100%" stop-color="#6C3483"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F1C40F"/>
+      <stop offset="100%" stop-color="#D4AC0D"/>
+    </linearGradient>
+  </defs>
+  <circle cx="100" cy="100" r="95" fill="url(#g)"/>
+  <circle cx="100" cy="100" r="90" fill="none" stroke="rgba(241,196,15,0.25)" stroke-width="2"/>
+  <circle cx="100" cy="100" r="82" fill="none" stroke="rgba(241,196,15,0.1)" stroke-width="1" stroke-dasharray="4,4"/>
+  <path d="M60 115 L70 75 L85 90 L100 70 L115 90 L130 75 L140 115Z" fill="none" stroke="url(#gold)" stroke-width="3" stroke-linejoin="round"/>
+  <circle cx="100" cy="70" r="4" fill="url(#gold)"/>
+  <circle cx="85" cy="90" r="3" fill="url(#gold)"/>
+  <circle cx="115" cy="90" r="3" fill="url(#gold)"/>
+  <text x="100" y="152" text-anchor="middle" fill="url(#gold)" font-size="18" font-weight="700" font-family="'Segoe UI', Arial, sans-serif" letter-spacing="4">ROYAL</text>
+  <text x="100" y="112" text-anchor="middle" fill="white" font-size="52" font-weight="800" font-family="'Segoe UI', Arial, sans-serif" letter-spacing="2">CR</text>
+</svg>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D32F2F"/>
+      <stop offset="100%" stop-color="#FBC02D"/>
+    </linearGradient>
+  </defs>
+  <circle cx="100" cy="100" r="95" fill="url(#g)"/>
+  <circle cx="100" cy="100" r="90" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
+  <rect x="85" y="68" width="30" height="36" rx="4" fill="rgba(255,255,255,0.12)"/>
+  <rect x="80" y="104" width="40" height="6" rx="2" fill="rgba(255,255,255,0.12)"/>
+  <text x="100" y="108" text-anchor="middle" fill="white" font-size="52" font-weight="900" font-family="Arial, sans-serif">KF</text>
+  <text x="100" y="145" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="9" font-weight="bold" font-family="Arial, sans-serif" letter-spacing="3">FASTFOOD</text>
+</svg>
