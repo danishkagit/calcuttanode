@@ -1,3 +1,6 @@
+import jwt from 'jsonwebtoken';
+import Subscription from '../models/Subscription.js';
+
 const ZEN_KEY = process.env.OPENCODE_ZEN_KEY || '';
 const ZEN_BASE = 'https://opencode.ai/zen/v1';
 
@@ -18,6 +21,15 @@ const rateLimitStore = new Map();
 const RATE_LIMIT = 20;
 const RATE_WINDOW = 60000;
 
+const dailyUsageStore = new Map();
+const DAILY_FREE_LIMIT = 10;
+const DAILY_USER_LIMIT = 50;
+const DAILY_PREMIUM_LIMIT = 500;
+
+function getTodayKey() {
+  return new Date().toISOString().slice(0, 10);
+}
+
 function isRateLimited(ip) {
   const now = Date.now();
   const entry = rateLimitStore.get(ip);
@@ -28,6 +40,29 @@ function isRateLimited(ip) {
   if (entry.count >= RATE_LIMIT) return true;
   entry.count++;
   return false;
+}
+
+function checkDailyLimit(userId, ip, isPremium) {
+  const today = getTodayKey();
+  const key = userId || `ip:${ip}`;
+  const storeKey = `${today}:${key}`;
+  const limit = isPremium ? DAILY_PREMIUM_LIMIT : (userId ? DAILY_USER_LIMIT : DAILY_FREE_LIMIT);
+
+  const entry = dailyUsageStore.get(storeKey) || { count: 0 };
+  if (entry.count >= limit) return { allowed: false, used: entry.count, limit };
+  entry.count++;
+  dailyUsageStore.set(storeKey, entry);
+  return { allowed: true, used: entry.count, limit };
+}
+
+async function hasActiveSubscription(userId) {
+  try {
+    if (!userId) return false;
+    const sub = await Subscription.findOne({ userId, status: 'active', endDate: { $gt: new Date() } });
+    return !!sub;
+  } catch {
+    return false;
+  }
 }
 
 const MODEL_TIMEOUT = 30000;
@@ -61,11 +96,33 @@ async function callModel(modelId, messages) {
   return data.choices?.[0]?.message?.content || '';
 }
 
+function getUserIdFromReq(req) {
+  try {
+    const token = req.headers.authorization?.startsWith('Bearer') ? req.headers.authorization.split(' ')[1] : null;
+    if (token) {
+      const decoded = jwt.verify(token, process.env.JWT_SECRET);
+      return decoded.id;
+    }
+  } catch {}
+  return null;
+}
+
 export const chat = async (req, res) => {
   try {
     const ip = req.ip || req.connection.remoteAddress || 'unknown';
     if (isRateLimited(ip)) {
       return res.status(429).json({ message: 'Rate limit exceeded. Try again later.' });
+    }
+
+    const userId = getUserIdFromReq(req);
+    const isPremium = userId ? await hasActiveSubscription(userId) : false;
+    const daily = checkDailyLimit(userId, ip, isPremium);
+    if (!daily.allowed) {
+      return res.status(429).json({
+        message: `Daily limit reached (${daily.used}/${daily.limit}). ${!userId ? 'Log in for 50msgs/day or ' : ''}Upgrade to premium for ${DAILY_PREMIUM_LIMIT}msgs/day.`,
+        usage: daily,
+        isPremium,
+      });
     }
 
     const { message, history = [], model: preferredModel } = req.body;
@@ -90,6 +147,8 @@ export const chat = async (req, res) => {
         return res.json({
           reply: content,
           model: { id: model.id, name: model.name, provider: model.provider, color: model.color, icon: model.icon },
+          usage: daily,
+          isPremium,
         });
       } catch (err) {
         errors.push(`${model.name}: ${err.message}`);
@@ -110,6 +169,16 @@ export const chat = async (req, res) => {
 
 export const getModels = async (req, res) => {
   res.json(modelList);
+};
+
+export const getUsage = async (req, res) => {
+  const userId = req.user?._id?.toString();
+  const isPremium = userId ? await hasActiveSubscription(userId) : false;
+  const limit = isPremium ? DAILY_PREMIUM_LIMIT : DAILY_USER_LIMIT;
+  const today = getTodayKey();
+  const key = `${today}:${userId}`;
+  const entry = dailyUsageStore.get(key) || { count: 0 };
+  res.json({ used: entry.count, limit, isPremium });
 };
 
 export const chatStream = async (req, res) => {

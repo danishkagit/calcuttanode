@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import ParticleField from '../components/common/ParticleField';
+import { useAuth } from '../context/AuthContext';
 
 const API_BASE = import.meta.env.PROD ? 'https://calcuttanode-api.onrender.com' : '';
 
@@ -44,8 +45,8 @@ const quickActionGroups = [
 const heroStats = [
   { value: '9+', label: 'Models' },
   { value: '24/7', label: 'Available' },
-  { value: 'Free', label: 'Forever' },
-  { value: 'No Login', label: 'Required' },
+  { value: '10/day', label: 'Free Tier' },
+  { value: '500/day', label: 'Premium' },
 ];
 
 function TypingDots() {
@@ -324,6 +325,7 @@ function SEOToolsPanel() {
 }
 
 export default function AI() {
+  const { user } = useAuth();
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
@@ -332,6 +334,7 @@ export default function AI() {
   const [showModels, setShowModels] = useState(false);
   const [showScrollBtn, setShowScrollBtn] = useState(false);
   const [models, setModels] = useState(defaultModels);
+  const [usage, setUsage] = useState(null);
   const chatRef = useRef(null);
   const inputRef = useRef(null);
   const [streamingContent, setStreamingContent] = useState('');
@@ -342,6 +345,17 @@ export default function AI() {
       .then(data => { if (Array.isArray(data) && data.length) setModels(data); })
       .catch(() => {});
   }, []);
+
+  useEffect(() => {
+    if (!user) { setUsage(null); return; }
+    const token = localStorage.getItem('accessToken');
+    fetch(`${API_BASE}/api/ai/usage`, {
+      headers: { 'Authorization': `Bearer ${token}` },
+    })
+      .then(res => res.json())
+      .then(data => setUsage(data))
+      .catch(() => {});
+  }, [user]);
 
   const scrollToBottom = useCallback((smooth = true) => {
     chatRef.current?.scrollTo({ top: chatRef.current.scrollHeight, behavior: smooth ? 'smooth' : 'auto' });
@@ -384,11 +398,15 @@ export default function AI() {
     setStreamingContent('');
 
     const history = messages.slice(-10).map(m => ({ role: m.role, content: m.content }));
+    const token = localStorage.getItem('accessToken');
 
     try {
       const res = await fetch(`${API_BASE}/api/ai/chat/stream`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          ...(token ? { 'Authorization': `Bearer ${token}` } : {}),
+        },
         body: JSON.stringify({ message: userMsg, history, model: selectedModel || undefined }),
       });
 
@@ -468,6 +486,65 @@ export default function AI() {
         />
 
         <SEOToolsPanel />
+
+        {/* Anonymous Login Prompt */}
+        {!user && (
+          <motion.div
+            initial={{ opacity: 0, y: -5 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mb-2"
+          >
+            <div className="flex items-center justify-between gap-3 bg-amber-500/5 border border-amber-500/15 rounded-xl px-3 py-1.5">
+              <span className="text-[10px] text-amber-400/80">
+                ⚡ Log in for <strong>50 msgs/day</strong> — or go <strong>Premium</strong> for 500/day
+              </span>
+              <div className="flex gap-1.5">
+                <a href="/login" className="text-[9px] font-medium text-amber-400 hover:text-white bg-amber-500/10 hover:bg-amber-500/20 rounded-lg px-2 py-1 transition-colors whitespace-nowrap">
+                  Log In
+                </a>
+                <a href="/register" className="text-[9px] font-medium text-neon-cyan hover:text-white bg-neon-cyan/10 hover:bg-neon-cyan/20 rounded-lg px-2 py-1 transition-colors whitespace-nowrap">
+                  Sign Up
+                </a>
+              </div>
+            </div>
+          </motion.div>
+        )}
+
+        {/* Usage Counter */}
+        {usage && (
+          <motion.div
+            initial={{ opacity: 0, y: -5 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mb-2"
+          >
+            <div className="flex items-center justify-between gap-3 bg-background/50 backdrop-blur-sm border border-neon-cyan/[0.08] rounded-xl px-3 py-1.5">
+              <div className="flex items-center gap-2">
+                <span className="text-[10px] text-text-muted">
+                  {usage.isPremium ? (
+                    <>✨ Premium · {usage.used}/{usage.limit} today</>
+                  ) : (
+                    <>📊 {usage.used}/{usage.limit} messages today</>
+                  )}
+                </span>
+                <div className="w-20 h-1.5 rounded-full bg-background/80 overflow-hidden">
+                  <motion.div
+                    initial={{ width: 0 }}
+                    animate={{ width: `${Math.min((usage.used / usage.limit) * 100, 100)}%` }}
+                    className={`h-full rounded-full ${usage.isPremium ? 'bg-electric-violet' : usage.used > usage.limit * 0.8 ? 'bg-amber-500' : 'bg-neon-cyan'}`}
+                  />
+                </div>
+              </div>
+              {!usage.isPremium && (
+                <a
+                  href="/plans"
+                  className="text-[9px] font-medium text-neon-cyan hover:text-white bg-neon-cyan/10 hover:bg-neon-cyan/20 rounded-lg px-2 py-1 transition-colors whitespace-nowrap"
+                >
+                  Upgrade ↗
+                </a>
+              )}
+            </div>
+          </motion.div>
+        )}
 
         <div className="flex items-center gap-2 mb-2 flex-wrap justify-center">
           <div className="relative">
