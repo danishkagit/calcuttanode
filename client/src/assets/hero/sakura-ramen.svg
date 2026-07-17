@@ -1,13 +1,56 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
-  <defs><linearGradient id="g12" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#881337"/><stop offset="100%" stop-color="#FB7185"/></linearGradient></defs>
-  <rect width="800" height="400" fill="url(#g12)"/>
-  <rect x="0" y="0" width="800" height="400" fill="rgba(0,0,0,0.3)"/>
-  <text x="400" y="170" text-anchor="middle" font-family="Arial,sans-serif" font-size="40" fill="white" font-weight="bold">Sakura Ramen House</text>
-  <text x="400" y="215" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" fill="rgba(255,255,255,0.8)">Tokyo — Authentic Tonkotsu</text>
-  <g transform="translate(400,280)" fill="none" stroke="white" stroke-width="2" opacity="0.5">
-    <ellipse cx="0" cy="0" rx="30" ry="15"/>
-    <path d="M-25 0 L-20 20 L20 20 L25 0"/>
-    <path d="M-10 -5 Q0 -15 10 -5" fill="none"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1A0000"/>
+      <stop offset="40%" stop-color="#4A0000"/>
+      <stop offset="100%" stop-color="#D32F2F"/>
+    </linearGradient>
+    <linearGradient id="ov" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0%" stop-color="#000" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#FFCDD2" stop-opacity="0.08"/>
+    </linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <filter id="shadow"><feDropShadow dx="2" dy="4" stdDeviation="8" flood-color="#000" flood-opacity="0.5"/></filter>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <rect width="800" height="600" fill="url(#ov)"/>
+  <circle cx="100" cy="80" r="120" fill="#FFCDD2" opacity="0.06"/>
+  <circle cx="720" cy="520" r="170" fill="#D32F2F" opacity="0.1"/>
+  <circle cx="700" cy="80" r="80" fill="#4A0000" opacity="0.15"/>
+  <circle cx="80" cy="500" r="130" fill="#B71C1C" opacity="0.08"/>
+  <path d="M0,380 Q200,330 400,400 T800,370 L800,600 L0,600 Z" fill="#B71C1C" opacity="0.08"/>
+  <path d="M-50,430 Q250,370 500,450 T850,420 L850,600 Z" fill="#4A0000" opacity="0.05"/>
+  <g transform="translate(400,140)" opacity="0.12">
+    <circle cx="0" cy="0" r="28" fill="none" stroke="#FFAB91" stroke-width="2.5"/>
+    <circle cx="0" cy="0" r="8" fill="#FFAB91"/>
+    <circle cx="16" cy="-18" r="6" fill="#FFAB91" opacity="0.6"/>
+    <circle cx="-14" cy="-20" r="5" fill="#FFAB91" opacity="0.5"/>
+    <circle cx="22" cy="10" r="5" fill="#FFAB91" opacity="0.5"/>
+    <circle cx="-20" cy="12" r="6" fill="#FFAB91" opacity="0.6"/>
   </g>
-  <rect x="160" y="320" width="480" height="4" rx="2" fill="rgba(255,255,255,0.3)"/>
+  <g filter="url(#shadow)" transform="translate(270,240)">
+    <rect x="0" y="0" width="260" height="200" rx="10" fill="#1A1A1A"/>
+    <rect x="5" y="5" width="250" height="170" rx="6" fill="#FFF8E1"/>
+    <rect x="5" y="5" width="250" height="170" rx="6" fill="url(#bg)" opacity="0.03"/>
+    <rect x="90" y="182" width="80" height="4" rx="2" fill="#444"/>
+    <rect x="0" y="200" width="260" height="14" rx="0 0 10 10" fill="#2C2C2C"/>
+    <rect x="90" y="206" width="80" height="3" rx="1.5" fill="#555"/>
+  </g>
+  <g transform="translate(580,100)" opacity="0.15">
+    <text x="0" y="0" font-family="serif" font-size="20" fill="#FFAB91" font-weight="bold">&#34028;</text>
+    <text x="30" y="0" font-family="serif" font-size="20" fill="#FFAB91" font-weight="bold">&#33775;</text>
+  </g>
+  <g transform="translate(120,510)" opacity="0.12">
+    <path d="M0,0 Q15,-10 30,0" fill="none" stroke="#FFCDD2" stroke-width="1.5"/>
+    <path d="M0,8 Q15,-2 30,8" fill="none" stroke="#FFCDD2" stroke-width="1.5"/>
+  </g>
+  <text x="400" y="70" font-family="Arial Black,sans-serif" font-size="34" font-weight="900" fill="#FFF" text-anchor="middle" filter="url(#glow)" opacity="0.12">SAKURA RAMEN</text>
+  <text x="400" y="555" font-family="Georgia,serif" font-size="22" fill="#FFAB91" text-anchor="middle" opacity="0.35" letter-spacing="6" filter="url(#glow)">R A M E N</text>
+  <text x="400" y="578" font-family="Arial,sans-serif" font-size="11" fill="#FFCDD2" text-anchor="middle" opacity="0.25" letter-spacing="4">AUTHENTIC JAPANESE FLAVORS</text>
+  <circle cx="310" cy="580" r="2.5" fill="#FFAB91" opacity="0.4"/>
+  <circle cx="332" cy="580" r="2.5" fill="#FFAB91" opacity="0.3"/>
+  <circle cx="354" cy="580" r="2.5" fill="#FFAB91" opacity="0.4"/>
+  <circle cx="446" cy="580" r="2.5" fill="#FFAB91" opacity="0.4"/>
+  <circle cx="468" cy="580" r="2.5" fill="#FFAB91" opacity="0.3"/>
+  <circle cx="490" cy="580" r="2.5" fill="#FFAB91" opacity="0.4"/>
 </svg>

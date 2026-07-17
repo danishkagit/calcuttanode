@@ -1,44 +1,88 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" fill="none">
-  <rect width="800" height="500" rx="8" fill="#FDF2F8"/>
-  <rect x="0" y="0" width="800" height="50" fill="#BE185D"/>
-  <text x="30" y="32" fill="#FFF" font-size="18" font-weight="800" font-family="Inter,sans-serif">💄 Glamour Studio</text>
-  <rect x="600" y="12" width="80" height="26" rx="13" fill="#FFF" opacity="0.15"/>
-  <text x="640" y="29" fill="#FFF" font-size="10" text-anchor="middle">Services</text>
-  <rect x="695" y="12" width="80" height="26" rx="13" fill="#FDF2F8"/>
-  <text x="735" y="29" fill="#BE185D" font-size="10" font-weight="600" text-anchor="middle">Book Now</text>
-  <rect x="30" y="75" width="350" height="200" rx="12" fill="url(#bs1)"/>
-  <defs><linearGradient id="bs1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#DB2777"/><stop offset="100%" stop-color="#9D174D"/></linearGradient></defs>
-  <text x="205" y="140" fill="#FFF" font-size="26" font-weight="800" text-anchor="middle" font-family="Inter,sans-serif">Transform Your Look</text>
-  <text x="205" y="168" fill="#FCE7F3" font-size="12" text-anchor="middle" font-family="Inter,sans-serif">Book your appointment today!</text>
-  <rect x="130" y="190" width="150" height="36" rx="18" fill="#FFF"/>
-  <text x="205" y="213" fill="#BE185D" font-size="11" font-weight="700" text-anchor="middle">✨ Book Now</text>
-  <rect x="400" y="75" width="370" height="200" rx="12" fill="#FFF" stroke="#FBCFE8" stroke-width="1"/>
-  <rect x="420" y="90" width="120" height="35" rx="6" fill="#FDF2F8"/>
-  <text x="435" y="111" fill="#BE185D" font-size="12" font-weight="700">Our Services</text>
-  <text x="420" y="140" fill="#1C1917" font-size="12">💇 Haircut & Style — ₹499</text>
-  <text x="420" y="160" fill="#1C1917" font-size="12">💅 Manicure & Pedicure — ₹799</text>
-  <text x="420" y="180" fill="#1C1917" font-size="12">💄 Bridal Makeup — ₹4,999</text>
-  <text x="420" y="200" fill="#1C1917" font-size="12">🧴 Facial & Cleanup — ₹699</text>
-  <text x="420" y="220" fill="#1C1917" font-size="12">✨ Hair Color — ₹1,299</text>
-  <text x="420" y="245" fill="#BE185D" font-size="11">★ 4.7 | 200+ happy customers</text>
-  <rect x="30" y="295" width="230" height="130" rx="10" fill="#FFF" stroke="#FBCFE8" stroke-width="1"/>
-  <text x="145" y="325" fill="#BE185D" font-size="14" font-weight="700" text-anchor="middle">📸 Before & After</text>
-  <rect x="50" y="340" width="90" height="70" rx="6" fill="#FCE7F3"/>
-  <text x="95" y="380" fill="#DB2777" font-size="10" text-anchor="middle">Before</text>
-  <rect x="150" y="340" width="90" height="70" rx="6" fill="#FCE7F3"/>
-  <text x="195" y="380" fill="#DB2777" font-size="10" text-anchor="middle">After</text>
-  <rect x="280" y="295" width="240" height="130" rx="10" fill="#FFF" stroke="#FBCFE8" stroke-width="1"/>
-  <text x="400" y="325" fill="#BE185D" font-size="14" font-weight="700" text-anchor="middle">⭐ Client Reviews</text>
-  <text x="295" y="348" fill="#78716C" font-size="10">"Amazing service! Loved the haircut."</text>
-  <text x="295" y="365" fill="#78716C" font-size="10">"Best bridal makeup in town!"</text>
-  <text x="295" y="382" fill="#78716C" font-size="10">"Very professional and hygienic."</text>
-  <text x="295" y="400" fill="#F59E0B" font-size="10">★★★★★</text>
-  <rect x="540" y="295" width="230" height="130" rx="10" fill="#FFF" stroke="#FBCFE8" stroke-width="1"/>
-  <text x="655" y="325" fill="#BE185D" font-size="14" font-weight="700" text-anchor="middle">📍 Visit Us</text>
-  <text x="560" y="350" fill="#78716C" font-size="11">123 Main Road, Indiranagar</text>
-  <text x="560" y="368" fill="#78716C" font-size="11">Bangalore, 560038</text>
-  <text x="560" y="386" fill="#BE185D" font-size="11">📞 +91-98765-43210</text>
-  <text x="560" y="404" fill="#BE185D" font-size="11">Mon-Sat: 10AM - 8PM</text>
-  <rect x="30" y="445" width="740" height="40" rx="6" fill="#831843"/>
-  <text x="400" y="470" fill="#FBCFE8" font-size="10" text-anchor="middle">© 2026 Glamour Studio. Beauty Redefined.</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <defs>
+    <linearGradient id="bgBeauty" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F472B6"/>
+      <stop offset="30%" stop-color="#EC4899"/>
+      <stop offset="100%" stop-color="#DB2777"/>
+    </linearGradient>
+    <linearGradient id="beautyLight" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FDF2F8"/>
+      <stop offset="100%" stop-color="#FCE7F3"/>
+    </linearGradient>
+    <linearGradient id="roseGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FDF2F8"/>
+      <stop offset="100%" stop-color="#FCE7F3"/>
+    </linearGradient>
+    <linearGradient id="serviceCard" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#FFF1F2"/>
+    </linearGradient>
+    <filter id="shadowBeauty">
+      <feDropShadow dx="0" dy="4" stdDeviation="12" flood-color="#00000025"/>
+    </filter>
+    <filter id="shadowBeautySm">
+      <feDropShadow dx="0" dy="2" stdDeviation="5" flood-color="#00000015"/>
+    </filter>
+  </defs>
+  <rect width="800" height="500" fill="#FFF1F2" rx="12"/>
+  <!-- Browser chrome -->
+  <rect x="0" y="0" width="800" height="40" fill="#1E293B" rx="12"/>
+  <rect x="0" y="24" width="800" height="16" fill="#1E293B"/>
+  <circle cx="20" cy="20" r="6" fill="#EF4444"/>
+  <circle cx="40" cy="20" r="6" fill="#F59E0B"/>
+  <circle cx="60" cy="20" r="6" fill="#22C55E"/>
+
+  <!-- Nav bar -->
+  <rect x="0" y="40" width="800" height="65" fill="#ffffff" filter="url(#shadowBeautySm)"/>
+  <text x="30" y="80" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#DB2777">Glam Studio ✨</text>
+  <text x="420" y="78" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#DB2777">Home</text>
+  <text x="475" y="78" font-family="Arial, sans-serif" font-size="14" fill="#64748B">Services</text>
+  <text x="545" y="78" font-family="Arial, sans-serif" font-size="14" fill="#64748B">Gallery</text>
+  <text x="610" y="78" font-family="Arial, sans-serif" font-size="14" fill="#64748B">About</text>
+  <rect x="660" y="56" width="110" height="32" rx="16" fill="url(#bgBeauty)"/>
+  <text x="690" y="77" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#ffffff">Book Now</text>
+
+  <!-- Hero -->
+  <rect x="0" y="105" width="800" height="110" fill="url(#bgBeauty)"/>
+  <text x="30" y="150" font-family="Arial, sans-serif" font-size="30" font-weight="bold" fill="#ffffff">Where Beauty Meets Elegance 💅</text>
+  <text x="30" y="180" font-family="Arial, sans-serif" font-size="14" fill="#FCE7F3">Premium beauty treatments in a luxurious atmosphere</text>
+  <rect x="580" y="130" width="190" height="44" rx="22" fill="#ffffff" filter="url(#shadowBeautySm)"/>
+  <text x="615" y="158" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#DB2777">Explore Services →</text>
+
+  <!-- Service grid -->
+  <rect x="20" y="230" width="185" height="245" rx="14" fill="url(#serviceCard)" filter="url(#shadowBeauty)"/>
+  <rect x="35" y="248" width="155" height="100" rx="10" fill="#FCE7F3"/>
+  <text x="95" y="308" font-family="Arial, sans-serif" font-size="32" fill="#EC4899">💇‍♀️</text>
+  <text x="35" y="378" font-family="Arial, sans-serif" font-size="15" font-weight="bold" fill="#1E293B">Hair Styling</text>
+  <text x="35" y="396" font-family="Arial, sans-serif" font-size="12" fill="#64748B">Cut, color &amp; styling</text>
+  <text x="35" y="420" font-family="Arial, sans-serif" font-size="13" fill="#64748B">⏱ 45 min • $55+</text>
+  <rect x="35" y="438" width="155" height="28" rx="14" fill="#FCE7F3"/>
+  <text x="85" y="458" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#DB2777">Book →</text>
+
+  <rect x="218" y="230" width="185" height="245" rx="14" fill="url(#serviceCard)" filter="url(#shadowBeauty)"/>
+  <rect x="233" y="248" width="155" height="100" rx="10" fill="#FCE7F3"/>
+  <text x="293" y="308" font-family="Arial, sans-serif" font-size="32" fill="#EC4899">💅</text>
+  <text x="233" y="378" font-family="Arial, sans-serif" font-size="15" font-weight="bold" fill="#1E293B">Nail Art</text>
+  <text x="233" y="396" font-family="Arial, sans-serif" font-size="12" fill="#64748B">Gel, acrylic &amp; design</text>
+  <text x="233" y="420" font-family="Arial, sans-serif" font-size="13" fill="#64748B">⏱ 60 min • $45+</text>
+  <rect x="233" y="438" width="155" height="28" rx="14" fill="#FCE7F3"/>
+  <text x="283" y="458" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#DB2777">Book →</text>
+
+  <rect x="416" y="230" width="185" height="245" rx="14" fill="url(#serviceCard)" filter="url(#shadowBeauty)"/>
+  <rect x="431" y="248" width="155" height="100" rx="10" fill="#FCE7F3"/>
+  <text x="490" y="308" font-family="Arial, sans-serif" font-size="32" fill="#EC4899">💆‍♀️</text>
+  <text x="431" y="378" font-family="Arial, sans-serif" font-size="15" font-weight="bold" fill="#1E293B">Facial &amp; Spa</text>
+  <text x="431" y="396" font-family="Arial, sans-serif" font-size="12" fill="#64748B">Glow &amp; rejuvenation</text>
+  <text x="431" y="420" font-family="Arial, sans-serif" font-size="13" fill="#64748B">⏱ 75 min • $85+</text>
+  <rect x="431" y="438" width="155" height="28" rx="14" fill="#FCE7F3"/>
+  <text x="481" y="458" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#DB2777">Book →</text>
+
+  <rect x="614" y="230" width="165" height="245" rx="14" fill="url(#serviceCard)" filter="url(#shadowBeauty)"/>
+  <rect x="629" y="248" width="135" height="100" rx="10" fill="#FCE7F3"/>
+  <text x="690" y="308" font-family="Arial, sans-serif" font-size="32" fill="#EC4899">💄</text>
+  <text x="629" y="378" font-family="Arial, sans-serif" font-size="15" font-weight="bold" fill="#1E293B">Makeup</text>
+  <text x="629" y="396" font-family="Arial, sans-serif" font-size="12" fill="#64748B">Bridal &amp; occasion</text>
+  <text x="629" y="420" font-family="Arial, sans-serif" font-size="13" fill="#64748B">⏱ 60 min • $75+</text>
+  <rect x="629" y="438" width="135" height="28" rx="14" fill="#FCE7F3"/>
+  <text x="674" y="458" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#DB2777">Book →</text>
 </svg>

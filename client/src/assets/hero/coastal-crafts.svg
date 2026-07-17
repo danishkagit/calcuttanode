@@ -1,12 +1,51 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
-  <defs><linearGradient id="g9" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#92400E"/><stop offset="100%" stop-color="#D97706"/></linearGradient></defs>
-  <rect width="800" height="400" fill="url(#g9)"/>
-  <rect x="0" y="0" width="800" height="400" fill="rgba(0,0,0,0.3)"/>
-  <text x="400" y="170" text-anchor="middle" font-family="Arial,sans-serif" font-size="42" fill="white" font-weight="bold">Coastal Crafts Co.</text>
-  <text x="400" y="215" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" fill="rgba(255,255,255,0.8)">Handmade with Love, from Goa</text>
-  <g transform="translate(400,280)" fill="none" stroke="white" stroke-width="2" opacity="0.5">
-    <circle cx="0" cy="0" r="20"/><circle cx="0" cy="0" r="10"/>
-    <path d="M-25 0 L25 0 M0 -25 L0 25"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#00695C"/>
+      <stop offset="50%" stop-color="#00897B"/>
+      <stop offset="100%" stop-color="#BCAAA4"/>
+    </linearGradient>
+    <linearGradient id="ov" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0%" stop-color="#3E2723" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#FFCC80" stop-opacity="0.12"/>
+    </linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <filter id="shadow"><feDropShadow dx="2" dy="4" stdDeviation="8" flood-color="#3E2723" flood-opacity="0.3"/></filter>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <rect width="800" height="600" fill="url(#ov)"/>
+  <circle cx="100" cy="80" r="130" fill="#FFCC80" opacity="0.08"/>
+  <circle cx="720" cy="520" r="170" fill="#BCAAA4" opacity="0.12"/>
+  <circle cx="700" cy="80" r="90" fill="#00897B" opacity="0.1"/>
+  <circle cx="80" cy="520" r="110" fill="#00695C" opacity="0.12"/>
+  <path d="M0,340 Q200,290 400,370 T800,330 L800,600 L0,600 Z" fill="#BCAAA4" opacity="0.08"/>
+  <path d="M-50,390 Q250,330 500,410 T850,380 L850,600 Z" fill="#00695C" opacity="0.05"/>
+  <g transform="translate(400,160)" opacity="0.12">
+    <path d="M-20,10 L0,-30 L20,10 Z" fill="none" stroke="#FFCC80" stroke-width="2.5"/>
+    <circle cx="0" cy="10" r="6" fill="none" stroke="#FFCC80" stroke-width="2"/>
   </g>
-  <rect x="160" y="320" width="480" height="4" rx="2" fill="rgba(255,255,255,0.3)"/>
+  <g filter="url(#shadow)" transform="translate(260,250)">
+    <rect x="0" y="0" width="280" height="190" rx="8" fill="#2C2C2C"/>
+    <rect x="4" y="4" width="272" height="160" rx="4" fill="#FFF"/>
+    <rect x="4" y="4" width="272" height="160" rx="4" fill="url(#bg)" opacity="0.05"/>
+    <rect x="90" y="174" width="100" height="4" rx="2" fill="#444"/>
+    <rect x="0" y="190" width="280" height="14" rx="0 0 8 8" fill="#3C3C3C"/>
+    <rect x="90" y="196" width="100" height="3" rx="1.5" fill="#555"/>
+  </g>
+  <g transform="translate(580,110)" opacity="0.12">
+    <rect x="-15" y="-10" width="30" height="20" rx="2" fill="none" stroke="#FFCC80" stroke-width="2"/>
+    <path d="M-15,-10 L0,5 L15,-10" fill="none" stroke="#FFCC80" stroke-width="2"/>
+  </g>
+  <g transform="translate(140,120)" opacity="0.1">
+    <path d="M0,0 Q10,10 0,20 M15,0 Q25,10 15,20" fill="none" stroke="#FFF" stroke-width="1.5"/>
+  </g>
+  <text x="400" y="70" font-family="Arial Black,sans-serif" font-size="34" font-weight="900" fill="#FFF" text-anchor="middle" filter="url(#glow)" opacity="0.12">COASTAL CRAFTS</text>
+  <text x="400" y="555" font-family="Georgia,serif" font-size="20" fill="#FFF" text-anchor="middle" opacity="0.3" letter-spacing="5">A R T I S A N</text>
+  <text x="400" y="578" font-family="Arial,sans-serif" font-size="12" fill="#FFF" text-anchor="middle" opacity="0.2" letter-spacing="4">HANDMADE WITH LOVE</text>
+  <circle cx="310" cy="580" r="2.5" fill="#FFCC80" opacity="0.35"/>
+  <circle cx="332" cy="580" r="2.5" fill="#FFCC80" opacity="0.25"/>
+  <circle cx="354" cy="580" r="2.5" fill="#FFCC80" opacity="0.35"/>
+  <circle cx="446" cy="580" r="2.5" fill="#FFCC80" opacity="0.35"/>
+  <circle cx="468" cy="580" r="2.5" fill="#FFCC80" opacity="0.25"/>
+  <circle cx="490" cy="580" r="2.5" fill="#FFCC80" opacity="0.35"/>
 </svg>

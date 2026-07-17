@@ -213,21 +213,21 @@ export default function Dashboard() {
               <h2 className="text-2xl font-bold text-text-primary mb-1">Overview</h2>
               <p className="text-text-muted mb-6">Welcome back, {user.name}!</p>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
-                <div className="bg-background/50 rounded-xl p-5 border border-electric-violet/10 text-center">
+                <div className="bg-background/50 rounded-xl p-5 border border-electric-violet/10 text-center transition-all duration-300 hover:border-neon-cyan/30 hover:shadow-lg hover:shadow-neon-cyan/5">
                   <p className="text-text-muted text-sm mb-1">Active Orders</p>
                   <p className="text-3xl font-bold text-neon-cyan">{data.overview.activeOrders || 0}</p>
                 </div>
-                <div className="bg-background/50 rounded-xl p-5 border border-electric-violet/10 text-center">
+                <div className="bg-background/50 rounded-xl p-5 border border-electric-violet/10 text-center transition-all duration-300 hover:border-neon-cyan/30 hover:shadow-lg hover:shadow-neon-cyan/5">
                   <p className="text-text-muted text-sm mb-1">Wallet Balance</p>
                   <p className="text-3xl font-bold text-neon-cyan">₹{data.overview.walletBalance || 0}</p>
                 </div>
-                <div className="bg-background/50 rounded-xl p-5 border border-electric-violet/10 text-center">
+                <div className="bg-background/50 rounded-xl p-5 border border-electric-violet/10 text-center transition-all duration-300 hover:border-neon-cyan/30 hover:shadow-lg hover:shadow-neon-cyan/5">
                   <p className="text-text-muted text-sm mb-1">Loyalty Points</p>
-                  <p className="text-3xl font-bold text-purple-400">{data.overview.loyaltyPoints || 0}</p>
+                  <p className="text-3xl font-bold text-electric-violet">{data.overview.loyaltyPoints || 0}</p>
                 </div>
-                <div className="bg-background/50 rounded-xl p-5 border border-electric-violet/10 text-center">
+                <div className="bg-background/50 rounded-xl p-5 border border-electric-violet/10 text-center transition-all duration-300 hover:border-neon-cyan/30 hover:shadow-lg hover:shadow-neon-cyan/5">
                   <p className="text-text-muted text-sm mb-1">Referral Earnings</p>
-                  <p className="text-3xl font-bold text-green-400">₹{data.overview.referralEarnings || 0}</p>
+                  <p className="text-3xl font-bold text-neon-cyan">₹{data.overview.referralEarnings || 0}</p>
                 </div>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
@@ -244,13 +244,13 @@ export default function Dashboard() {
                 </div>
               </div>
               <div className="flex gap-3 flex-wrap">
-                <button onClick={() => setSection('book-service')} className="bg-brand-gradient text-white px-6 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 hover:shadow-lg hover:shadow-neon-cyan/20 hover:scale-[1.02] active:scale-[0.98]">
+                <button onClick={() => setSection('book-service')} className="bg-brand-gradient text-white px-6 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 hover:shadow-xl hover:shadow-neon-cyan/30 hover:scale-[1.03] active:scale-[0.97]">
                   Book a Service
                 </button>
-                <button onClick={() => setSection('wallet')} className="border border-neon-cyan text-neon-cyan px-6 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 hover:bg-neon-cyan/10">
+                <button onClick={() => setSection('wallet')} className="border border-neon-cyan text-neon-cyan px-6 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 hover:bg-neon-cyan/10 hover:shadow-lg hover:shadow-neon-cyan/10">
                   Add Funds
                 </button>
-                <button onClick={() => setSection('referral')} className="border border-green-400/50 text-green-400 px-6 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 hover:bg-green-400/10">
+                <button onClick={() => setSection('referral')} className="border border-neon-cyan/50 text-neon-cyan px-6 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 hover:bg-neon-cyan/10 hover:shadow-lg hover:shadow-neon-cyan/10">
                   Refer & Earn
                 </button>
               </div>
@@ -301,7 +301,7 @@ export default function Dashboard() {
                         <p className="text-text-primary">{tx.description || tx.method}</p>
                         <p className="text-text-muted text-xs mt-0.5">{new Date(tx.createdAt).toLocaleDateString()}</p>
                       </div>
-                      <span className={`font-medium ${tx.type === 'credit' ? 'text-green-400' : 'text-red-400'}`}>
+                      <span className={`font-medium ${tx.type === 'credit' ? 'text-neon-cyan' : 'text-red-400'}`}>
                         {tx.type === 'credit' ? '+' : '-'}₹{tx.amount}
                       </span>
                     </div>
@@ -379,7 +379,7 @@ export default function Dashboard() {
                   <p className="text-text-primary text-sm mt-1">
                     {Math.ceil((new Date(mySub.endDate) - new Date()) / (1000 * 60 * 60 * 24))} days remaining
                   </p>
-                  {mySub.autoRenew && <p className="text-green-400 text-xs mt-2">Auto-renew is ON</p>}
+                  {mySub.autoRenew && <p className="text-neon-cyan text-xs mt-2">Auto-renew is ON</p>}
                 </div>
               ) : (
                 <div className="text-center py-12">

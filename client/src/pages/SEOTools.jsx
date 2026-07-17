@@ -331,11 +331,11 @@ export default function SEOTools() {
                         <span className="text-neon-cyan font-mono text-xs">{i + 1}</span>
                         <span className="flex-1 text-text-primary font-medium">{kw.keyword}</span>
                         <span className={`text-xs px-2 py-0.5 rounded-full ${
-                          kw.volume === 'high' ? 'bg-green-500/20 text-green-400' :
+                          kw.volume === 'high' ? 'bg-neon-cyan/20 text-neon-cyan' :
                           kw.volume === 'medium' ? 'bg-yellow-500/20 text-yellow-400' : 'bg-red-500/20 text-red-400'
                         }`}>{kw.volume}</span>
                         <span className={`text-xs px-2 py-0.5 rounded-full ${
-                          kw.difficulty === 'easy' || kw.difficulty === 'low' ? 'bg-green-500/20 text-green-400' :
+                          kw.difficulty === 'easy' || kw.difficulty === 'low' ? 'bg-neon-cyan/20 text-neon-cyan' :
                           kw.difficulty === 'medium' ? 'bg-yellow-500/20 text-yellow-400' : 'bg-red-500/20 text-red-400'
                         }`}>{kw.difficulty}</span>
                         <span className="text-xs text-text-muted hidden md:block max-w-[200px] truncate">{kw.reason}</span>

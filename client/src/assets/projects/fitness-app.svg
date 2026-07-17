@@ -1,33 +1,127 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 600" fill="none">
-  <rect x="20" y="10" width="360" height="580" rx="30" fill="#0F172A"/>
-  <rect x="150" y="25" width="100" height="6" rx="3" fill="#334155"/>
-  <text x="200" y="58" fill="#FFF" font-size="16" font-weight="800" text-anchor="middle">💪 FitTrack</text>
-  <text x="200" y="90" fill="#4ADE80" font-size="12" font-weight="600" text-anchor="middle">Today's Progress</text>
-  <rect x="40" y="110" width="320" height="90" rx="12" fill="#1E293B" stroke="#334155" stroke-width="1"/>
-  <text x="60" y="140" fill="#F1F5F9" font-size="28" font-weight="800">6,842</text>
-  <text x="60" y="158" fill="#94A3B8" font-size="10">Steps</text>
-  <text x="200" y="140" fill="#F1F5F9" font-size="28" font-weight="800">3.2</text>
-  <text x="200" y="158" fill="#94A3B8" font-size="10">KM</text>
-  <text x="300" y="140" fill="#F1F5F9" font-size="28" font-weight="800">420</text>
-  <text x="300" y="158" fill="#94A3B8" font-size="10">Cal</text>
-  <rect x="40" y="215" width="320" height="8" rx="4" fill="#334155"/>
-  <rect x="40" y="215" width="200" height="8" rx="4" fill="#4ADE80"/>
-  <text x="200" y="242" fill="#94A3B8" font-size="10" text-anchor="middle">Goal: 10,000 steps — 68% complete</text>
-  <rect x="40" y="265" width="150" height="100" rx="10" fill="#1E293B" stroke="#334155" stroke-width="1"/>
-  <text x="60" y="292" fill="#38BDF8" font-size="18">🏋️</text>
-  <text x="60" y="312" fill="#F1F5F9" font-size="12" font-weight="600">Workout</text>
-  <text x="60" y="330" fill="#94A3B8" font-size="9">30 min | Upper Body</text>
-  <rect x="210" y="265" width="150" height="100" rx="10" fill="#1E293B" stroke="#334155" stroke-width="1"/>
-  <text x="230" y="292" fill="#F472B6" font-size="18">🧘</text>
-  <text x="230" y="312" fill="#F1F5F9" font-size="12" font-weight="600">Yoga</text>
-  <text x="230" y="330" fill="#94A3B8" font-size="9">15 min | Morning Flow</text>
-  <rect x="40" y="385" width="320" height="100" rx="12" fill="url(#fa1)"/>
-  <defs><linearGradient id="fa1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#4ADE80"/><stop offset="100%" stop-color="#16A34A"/></linearGradient></defs>
-  <text x="200" y="418" fill="#FFF" font-size="16" font-weight="700" text-anchor="middle">🏆 Weekly Challenge</text>
-  <text x="200" y="440" fill="#DCFCE7" font-size="11" text-anchor="middle">Complete 5 workouts this week</text>
-  <rect x="140" y="455" width="120" height="14" rx="7" fill="#FFF" opacity="0.2"/>
-  <rect x="140" y="455" width="60" height="14" rx="7" fill="#FFF" opacity="0.5"/>
-  <rect x="40" y="500" width="320" height="40" rx="20" fill="#4ADE80"/>
-  <text x="200" y="526" fill="#0F172A" font-size="12" font-weight="700" text-anchor="middle">🏃 Start Workout</text>
-  <rect x="150" y="560" width="100" height="5" rx="2.5" fill="#334155"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <defs>
+    <linearGradient id="bgFit" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06B6D4"/>
+      <stop offset="40%" stop-color="#0891B2"/>
+      <stop offset="100%" stop-color="#0E7490"/>
+    </linearGradient>
+    <linearGradient id="fitDark" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#020617"/>
+    </linearGradient>
+    <linearGradient id="fitCard" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06B6D4"/>
+      <stop offset="100%" stop-color="#0891B2"/>
+    </linearGradient>
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#22C55E"/>
+      <stop offset="100%" stop-color="#16A34A"/>
+    </linearGradient>
+    <linearGradient id="orangeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F97316"/>
+      <stop offset="100%" stop-color="#EA580C"/>
+    </linearGradient>
+    <filter id="shadowFit">
+      <feDropShadow dx="0" dy="4" stdDeviation="12" flood-color="#00000050"/>
+    </filter>
+    <filter id="shadowFitSm">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#00000030"/>
+    </filter>
+  </defs>
+  <rect width="800" height="500" fill="#ECFEFF" rx="12"/>
+  <text x="200" y="50" font-family="Arial, sans-serif" font-size="26" font-weight="bold" fill="#0F172A">FitTrack Pro</text>
+  <text x="200" y="72" font-family="Arial, sans-serif" font-size="14" fill="#0891B2">Your personal fitness companion</text>
+
+  <!-- Phone frame -->
+  <rect x="60" y="55" width="280" height="500" rx="36" fill="#1C1C1E" filter="url(#shadowFit)"/>
+  <rect x="68" y="63" width="264" height="484" rx="30" fill="url(#fitDark)"/>
+  <rect x="155" y="71" width="80" height="6" rx="3" fill="#1C1C1E"/>
+  <text x="82" y="98" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#06B6D4">9:41</text>
+  <text x="295" y="98" font-family="Arial, sans-serif" font-size="12" fill="#06B6D4">📶 🔋</text>
+
+  <!-- Profile header -->
+  <text x="82" y="125" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#ffffff">Hi, Alex! 👋</text>
+  <text x="82" y="142" font-family="Arial, sans-serif" font-size="12" fill="#64748B">Let's crush your goals today!</text>
+
+  <!-- Today's stats -->
+  <rect x="78" y="155" width="244" height="80" rx="14" fill="url(#fitCard)" filter="url(#shadowFitSm)"/>
+  <text x="92" y="178" font-family="Arial, sans-serif" font-size="12" fill="#64748B">Steps Today</text>
+  <text x="92" y="210" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#ffffff">8,472</text>
+  <text x="92" y="226" font-family="Arial, sans-serif" font-size="10" fill="#22C55E">Goal: 10,000</text>
+  <!-- Progress ring simulation -->
+  <circle cx="275" cy="195" r="28" fill="none" stroke="#1E293B" stroke-width="6"/>
+  <circle cx="275" cy="195" r="28" fill="none" stroke="#06B6D4" stroke-width="6" stroke-dasharray="130" stroke-dashoffset="30" stroke-linecap="round"/>
+
+  <!-- Workout metrics -->
+  <rect x="78" y="248" width="78" height="70" rx="12" fill="url(#fitCard)"/>
+  <text x="90" y="275" font-family="Arial, sans-serif" font-size="16" fill="#22C55E">🔥</text>
+  <text x="90" y="293" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#ffffff">486</text>
+  <text x="85" y="308" font-family="Arial, sans-serif" font-size="9" fill="#64748B">Calories</text>
+
+  <rect x="164" y="248" width="78" height="70" rx="12" fill="url(#fitCard)"/>
+  <text x="176" y="275" font-family="Arial, sans-serif" font-size="16" fill="#06B6D4">⏱️</text>
+  <text x="176" y="293" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#ffffff">42</text>
+  <text x="172" y="308" font-family="Arial, sans-serif" font-size="9" fill="#64748B">Minutes</text>
+
+  <rect x="250" y="248" width="78" height="70" rx="12" fill="url(#fitCard)"/>
+  <text x="262" y="275" font-family="Arial, sans-serif" font-size="16" fill="#F97316">💪</text>
+  <text x="262" y="293" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#ffffff">3.2</text>
+  <text x="258" y="308" font-family="Arial, sans-serif" font-size="9" fill="#64748B">km walked</text>
+
+  <!-- Quick workout -->
+  <text x="82" y="340" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#ffffff">Today's Workout</text>
+
+  <rect x="78" y="352" width="244" height="55" rx="12" fill="url(#fitCard)" filter="url(#shadowFitSm)"/>
+  <text x="92" y="375" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#ffffff">🏃 Morning Run</text>
+  <text x="92" y="392" font-family="Arial, sans-serif" font-size="10" fill="#64748B">30 min • Moderate</text>
+  <rect x="270" y="365" width="40" height="24" rx="12" fill="url(#cyanGrad)"/>
+  <text x="278" y="382" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#ffffff">Go</text>
+
+  <rect x="78" y="414" width="244" height="55" rx="12" fill="url(#fitCard)" filter="url(#shadowFitSm)"/>
+  <text x="92" y="437" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#ffffff">🧘 Yoga Flow</text>
+  <text x="92" y="454" font-family="Arial, sans-serif" font-size="10" fill="#64748B">20 min • Beginner</text>
+  <rect x="270" y="427" width="40" height="24" rx="12" fill="url(#orangeGrad)"/>
+  <text x="278" y="444" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#ffffff">Go</text>
+
+  <rect x="78" y="476" width="244" height="55" rx="12" fill="url(#fitCard)" filter="url(#shadowFitSm)"/>
+  <text x="92" y="499" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#ffffff">💪 Strength Training</text>
+  <text x="92" y="516" font-family="Arial, sans-serif" font-size="10" fill="#64748B">45 min • Advanced</text>
+  <rect x="270" y="489" width="40" height="24" rx="12" fill="url(#greenGrad)"/>
+  <text x="278" y="506" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#ffffff">Go</text>
+
+  <!-- Feature highlights right side -->
+  <rect x="380" y="80" width="170" height="120" rx="14" fill="#ffffff" filter="url(#shadowFitSm)"/>
+  <rect x="400" y="100" width="40" height="40" rx="10" fill="#ECFEFF"/>
+  <text x="408" y="128" font-family="Arial, sans-serif" font-size="24" fill="#06B6D4">📊</text>
+  <text x="400" y="165" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#0F172A">Detailed Analytics</text>
+  <text x="400" y="182" font-family="Arial, sans-serif" font-size="11" fill="#64748B">Track every metric</text>
+
+  <rect x="570" y="80" width="170" height="120" rx="14" fill="#ffffff" filter="url(#shadowFitSm)"/>
+  <rect x="590" y="100" width="40" height="40" rx="10" fill="#ECFEFF"/>
+  <text x="598" y="128" font-family="Arial, sans-serif" font-size="24" fill="#06B6D4">🎯</text>
+  <text x="590" y="165" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#0F172A">Smart Goals</text>
+  <text x="590" y="182" font-family="Arial, sans-serif" font-size="11" fill="#64748B">AI-powered plans</text>
+
+  <rect x="380" y="220" width="170" height="120" rx="14" fill="#ffffff" filter="url(#shadowFitSm)"/>
+  <rect x="400" y="240" width="40" height="40" rx="10" fill="#ECFEFF"/>
+  <text x="408" y="268" font-family="Arial, sans-serif" font-size="24" fill="#06B6D4">❤️</text>
+  <text x="400" y="305" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#0F172A">Heart Rate Monitor</text>
+  <text x="400" y="322" font-family="Arial, sans-serif" font-size="11" fill="#64748B">Real-time tracking</text>
+
+  <rect x="570" y="220" width="170" height="120" rx="14" fill="#ffffff" filter="url(#shadowFitSm)"/>
+  <rect x="590" y="240" width="40" height="40" rx="10" fill="#ECFEFF"/>
+  <text x="598" y="268" font-family="Arial, sans-serif" font-size="24" fill="#06B6D4">🥗</text>
+  <text x="590" y="305" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#0F172A">Meal Planning</text>
+  <text x="590" y="322" font-family="Arial, sans-serif" font-size="11" fill="#64748B">Nutrition tracker</text>
+
+  <rect x="380" y="365" width="360" height="105" rx="14" fill="url(#bgFit)" filter="url(#shadowFit)"/>
+  <text x="400" y="398" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#ffffff">🏆 Weekly Challenge</text>
+  <text x="400" y="422" font-family="Arial, sans-serif" font-size="13" fill="#CFFAFE">Run 25km this week • 18km completed</text>
+  <rect x="400" y="438" width="260" height="8" rx="4" fill="#155E75"/>
+  <rect x="400" y="438" width="185" height="8" rx="4" fill="#ffffff"/>
+  <text x="670" y="445" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#ffffff">72%</text>
 </svg>

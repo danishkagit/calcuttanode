@@ -88,9 +88,9 @@ export default function MobileApp() {
               {/* Phone Frame */}
               <div className="relative mx-auto w-60 md:w-68 h-[480px] md:h-[520px] rounded-[2.5rem] border-2 border-electric-violet/20 bg-background shadow-2xl shadow-neon-cyan/10 overflow-hidden">
                 {/* Notch */}
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-28 h-6 bg-black rounded-b-2xl z-10 flex items-center justify-center gap-2">
-                  <div className="w-2 h-2 rounded-full bg-gray-800" />
-                  <div className="w-16 h-1.5 rounded-full bg-gray-800" />
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-28 h-6 bg-background rounded-b-2xl z-10 flex items-center justify-center gap-2">
+                  <div className="w-2 h-2 rounded-full bg-text-muted" />
+                  <div className="w-16 h-1.5 rounded-full bg-text-muted" />
                 </div>
                 {/* Status Bar */}
                 <div className="pt-8 px-4 pb-2 flex items-center justify-between text-[10px] text-text-muted/60">

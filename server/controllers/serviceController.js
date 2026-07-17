@@ -4,7 +4,7 @@ export const getServices = async (req, res) => {
   try {
     const { category } = req.query;
     const filter = { isActive: true };
-    if (category) filter.category = category;
+    if (category) filter.category = typeof category === 'string' ? category : String(category);
     const services = await Service.find(filter).sort({ trending: -1, createdAt: -1 });
     res.json(services);
   } catch (error) {

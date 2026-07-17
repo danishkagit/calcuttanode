@@ -108,11 +108,12 @@ export default function About() {
               👨‍💻
             </motion.div>
             <div className="flex-1">
-              <div className="flex items-center gap-3 mb-2 flex-wrap">
+              <div className="flex items-center gap-2 mb-2 flex-wrap">
                 <span className="text-xs font-semibold text-neon-cyan bg-neon-cyan/10 px-3 py-1 rounded-full border border-neon-cyan/20">Founder Story</span>
+                <span className="ai-badge">AI Expert</span>
                 <span className="text-sm font-medium text-text-primary">Danish Shoaib</span>
               </div>
-              <h2 className="text-xl font-bold text-text-primary mb-3">From Pharmacy to AI Agency</h2>
+              <h2 className="text-xl font-bold text-text-primary mb-3">From Pharmacy to <span className="text-ai-gradient">AI Agency</span></h2>
               <div className="space-y-3 text-sm text-text-muted leading-relaxed">
                 <p>
                   Before Calcutta Node., Danish Shoaib ran a pharmacy. Long hours, high pressure, and a growing realization
@@ -167,6 +168,45 @@ export default function About() {
               ))}
             </div>
           </div>
+        </motion.div>
+
+        <motion.div className="mb-12" {...fadeUp}>
+          <h2 className="text-2xl font-bold text-text-primary mb-8 border-l-4 border-ai-cyan pl-4">Our AI Stack</h2>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 mb-4">
+            {[
+              { name: 'GPT-4o', icon: '🧠', desc: 'LLM Integration' },
+              { name: 'Claude 3.5', icon: '🤖', desc: 'Conversational AI' },
+              { name: 'TensorFlow', icon: '🔢', desc: 'ML & Analytics' },
+              { name: 'RAG Pipelines', icon: '🔗', desc: 'Knowledge Retrieval' },
+              { name: 'HuggingFace', icon: '🤗', desc: 'NLP Models' },
+              { name: 'DALL·E 3', icon: '🎨', desc: 'AI Image Gen' },
+              { name: 'LangChain', icon: '⛓️', desc: 'Agent Orchestration' },
+              { name: 'Whisper', icon: '🎙️', desc: 'Speech-to-Text' },
+              { name: 'Stable Diffusion', icon: '🖼️', desc: 'Image Generation' },
+              { name: 'OpenAI TTS', icon: '🔊', desc: 'Voice Synthesis' },
+              { name: 'LangSmith', icon: '📊', desc: 'AI Monitoring' },
+              { name: 'Vector DB (Pinecone)', icon: '📐', desc: 'Semantic Search' },
+            ].map((item, i) => (
+              <motion.div key={i}
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.04 }}
+                whileHover={{ y: -4, scale: 1.02 }}
+                className="p-3 rounded-xl bg-ai-gradient-subtle border border-ai-cyan/10 text-center group card-hover-premium gradient-border"
+              >
+                <motion.span
+                  whileHover={{ scale: 1.2, rotate: 10 }}
+                  className="text-2xl block mb-1"
+                >
+                  {item.icon}
+                </motion.span>
+                <p className="text-xs font-bold text-ai-cyan group-hover:text-ai-cyan transition-colors">{item.name}</p>
+                <p className="text-[10px] text-text-muted">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+          <p className="text-xs text-text-muted text-center mb-8 max-w-xl mx-auto">We leverage cutting-edge AI models and frameworks to deliver smarter, faster, and more affordable digital solutions.</p>
         </motion.div>
 
         <motion.div className="mb-12" {...fadeUp}>
@@ -246,29 +286,33 @@ export default function About() {
 
         <motion.div className="mb-12" {...fadeUp}>
           <h2 className="text-2xl font-bold text-text-primary mb-8 border-l-4 border-neon-cyan pl-4">Meet the Founder</h2>
-          <motion.div className="glass-card p-8 rounded-2xl text-center" whileHover={{ y: -4 }}>
-            <div className="w-24 h-24 rounded-full mx-auto mb-4 bg-gradient-to-br from-neon-cyan to-electric-violet p-0.5">
-              <img src="https://danishkagit.github.io/portfolio/assets/danish-passport.jpg" alt="Danish Shoaib" className="w-full h-full rounded-full object-cover" style={{objectPosition: 'center 25%'}} />
-            </div>
-            <h3 className="text-xl font-bold text-text-primary">Danish Shoaib</h3>
-            <p className="text-neon-cyan text-sm font-medium mb-3">Digital Marketing & AI Prompt Engineer | Founder @ Calcutta Node.</p>
-            <p className="text-text-muted text-sm max-w-lg mx-auto mb-4">
-              4+ years of experience in digital marketing, AI prompt engineering, content creation, web development, and IT support.
-              Certified in Digital Marketing from Tech Mahindra Foundation. Currently pursuing D.Pharm (2026) and Data Analytics.
-            </p>
-            <div className="flex gap-4 justify-center">
-              <a href="https://danishkagit.github.io/portfolio/" target="_blank" rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-brand-gradient text-white px-5 py-2 rounded-xl text-sm font-medium hover:shadow-lg hover:shadow-neon-cyan/20 transition-all duration-200"
-              >
-                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-                View Portfolio
-              </a>
-              <a href="https://www.linkedin.com/in/danishshoaib-in/" target="_blank" rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 border border-neon-cyan text-neon-cyan px-5 py-2 rounded-xl text-sm font-medium hover:bg-neon-cyan/10 transition-all duration-200"
-              >
-                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 6a2 2 0 100-4 2 2 0 000 4z"/></svg>
-                LinkedIn
-              </a>
+          <motion.div className="glass-card-premium p-8 rounded-2xl text-center relative overflow-hidden" whileHover={{ y: -4 }}>
+            <motion.div className="absolute -top-20 -right-20 w-40 h-40 bg-ai-cyan/5 rounded-full blur-3xl animate-ai-glow pointer-events-none" />
+            <div className="relative z-10">
+              <div className="w-24 h-24 rounded-full mx-auto mb-4 bg-ai-gradient p-0.5 shadow-lg shadow-ai-cyan/20 animate-ai-glow gradient-border">
+                <img src="https://danishkagit.github.io/portfolio/assets/danish-passport.jpg" alt="Danish Shoaib" className="w-full h-full rounded-full object-cover" style={{objectPosition: 'center 25%'}} />
+              </div>
+              <h3 className="text-xl font-bold text-text-primary">Danish Shoaib</h3>
+              <p className="text-ai-gradient text-sm font-medium mb-3">AI Prompt Engineer & Digital Marketing | Founder @ Calcutta Node.</p>
+              <p className="text-text-muted text-sm max-w-lg mx-auto mb-4">
+                4+ years of experience in AI prompt engineering, digital marketing, content creation, web development, and IT support.
+                Certified in Digital Marketing from Tech Mahindra Foundation. Specializing in LLM integration, RAG pipelines,
+                and AI-assisted workflow automation. Currently pursuing D.Pharm (2026) and Data Analytics.
+              </p>
+              <div className="flex gap-4 justify-center">
+                <a href="https://danishkagit.github.io/portfolio/" target="_blank" rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 bg-ai-gradient text-white px-5 py-2 rounded-xl text-sm font-medium hover:shadow-lg hover:shadow-ai-cyan/20 transition-all duration-200"
+                >
+                  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                  View Portfolio
+                </a>
+                <a href="https://www.linkedin.com/in/danishshoaib-in/" target="_blank" rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 border border-ai-cyan text-ai-cyan px-5 py-2 rounded-xl text-sm font-medium hover:bg-ai-cyan/10 transition-all duration-200"
+                >
+                  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 6a2 2 0 100-4 2 2 0 000 4z"/></svg>
+                  LinkedIn
+                </a>
+              </div>
             </div>
           </motion.div>
         </motion.div>

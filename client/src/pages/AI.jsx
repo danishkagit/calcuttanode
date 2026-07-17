@@ -2,25 +2,47 @@ import { useState, useRef, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import ParticleField from '../components/common/ParticleField';
 
 const API_BASE = import.meta.env.PROD ? 'https://calcuttanode-api.onrender.com' : '';
 
 const defaultModels = [
-  { id: 'deepseek-v4-flash-free', name: 'DeepSeek V4 Flash', icon: '🔍', color: '#7EBBC5' },
-  { id: 'mimo-v2.5-free', name: 'MiMo V2.5', icon: '🧠', color: '#543A67' },
-  { id: 'north-mini-code-free', name: 'North Mini Code', icon: '⚡', color: '#FFD700' },
-  { id: 'nemotron-3-ultra-free', name: 'Nemotron 3 Ultra', icon: '🚀', color: '#FF6B6B' },
-  { id: 'hy3-free', name: 'Hy3', icon: '🌊', color: '#4FC3F7' },
-  { id: 'big-pickle', name: 'Big Pickle', icon: '🥒', color: '#81C784' },
+  { id: 'deepseek-v4-flash-free', name: 'DeepSeek V4 Flash', icon: '🔍', color: '#7EBBC5', description: 'Advanced reasoning & analysis with lightning-fast responses' },
+  { id: 'mimo-v2.5-free', name: 'MiMo V2.5', icon: '🧠', color: '#543A67', description: 'Multimodal intelligence for complex problem-solving' },
+  { id: 'north-mini-code-free', name: 'North Mini Code', icon: '⚡', color: '#FFD700', description: 'Lightning-fast code generation & debugging' },
+  { id: 'nemotron-3-ultra-free', name: 'Nemotron 3 Ultra', icon: '🚀', color: '#FF6B6B', description: 'Ultra-high performance for demanding tasks' },
+  { id: 'hy3-free', name: 'Hy3', icon: '🌊', color: '#4FC3F7', description: 'Creative writing & content generation expert' },
+  { id: 'big-pickle', name: 'Big Pickle', icon: '🥒', color: '#81C784', description: 'Versatile assistant for everyday queries & tasks' },
 ];
 
-const suggestedQuestions = [
-  'What services does Calcutta Node offer?',
-  'How do I fix a slow computer?',
-  'Help me choose a hosting plan',
-  'How can I secure my home network?',
-  'Tell me about web development packages',
-  'What is the difference between WiFi and Ethernet?',
+const quickActionGroups = [
+  {
+    category: '💻 Tech Support',
+    items: ['What services does Calcutta Node offer?', 'Help me choose a hosting plan', 'Explain web development packages', 'What is cloud infrastructure?'],
+    color: '#7EBBC5',
+  },
+  {
+    category: '📝 Content',
+    items: ['Write a blog post about AI technology', 'Create SEO-optimized meta descriptions', 'Generate social media marketing captions', 'Draft a professional email'],
+    color: '#FFD700',
+  },
+  {
+    category: '🔧 Troubleshooting',
+    items: ['How do I fix a slow computer?', 'Secure my home network step by step', 'WiFi vs Ethernet: which is better?', 'How to resolve DNS issues'],
+    color: '#FF6B6B',
+  },
+  {
+    category: '💰 Business',
+    items: ['Help me set pricing for services', 'Create a business plan outline', 'IT support package options & pricing', 'Cost-benefit analysis template'],
+    color: '#81C784',
+  },
+];
+
+const heroStats = [
+  { value: '10+', label: 'Models' },
+  { value: '24/7', label: 'Available' },
+  { value: 'Free', label: 'Forever' },
+  { value: 'No Login', label: 'Required' },
 ];
 
 function TypingDots() {
@@ -43,72 +65,14 @@ function CopyButton({ text }) {
   return (
     <button
       onClick={() => { navigator.clipboard.writeText(text); setCopied(true); setTimeout(() => setCopied(false), 1500); }}
-      className="opacity-0 group-hover:opacity-100 transition-opacity p-1 rounded hover:bg-white/10"
+      className="opacity-0 group-hover:opacity-100 transition-all p-1.5 rounded-lg hover:bg-white/10"
     >
       {copied ? (
-        <svg className="w-3.5 h-3.5 text-green-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg>
+        <svg className="w-3.5 h-3.5 text-neon-cyan" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg>
       ) : (
         <svg className="w-3.5 h-3.5 text-text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
       )}
     </button>
-  );
-}
-
-function ParticleField() {
-  const canvasRef = useRef(null);
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    let animId;
-    const particles = Array.from({ length: 60 }, () => ({
-      x: Math.random() * canvas.offsetWidth,
-      y: Math.random() * canvas.offsetHeight,
-      vx: (Math.random() - 0.5) * 0.3,
-      vy: (Math.random() - 0.5) * 0.3,
-      r: Math.random() * 2 + 0.5,
-      o: Math.random() * 0.4 + 0.25,
-    }));
-
-    const resize = () => { canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight; };
-    resize();
-    window.addEventListener('resize', resize);
-
-    const draw = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particles.forEach(p => {
-        p.x += p.vx; p.y += p.vy;
-        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
-        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(126, 187, 197, ${p.o})`;
-        ctx.fill();
-      });
-      particles.forEach((a, i) => {
-        particles.slice(i + 1).forEach(b => {
-          const dx = a.x - b.x, dy = a.y - b.y, dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 120) {
-            ctx.beginPath();
-            ctx.moveTo(a.x, a.y);
-            ctx.lineTo(b.x, b.y);
-            ctx.strokeStyle = `rgba(126, 187, 197, ${(1 - dist / 120) * 0.2})`;
-            ctx.stroke();
-          }
-        });
-      });
-      animId = requestAnimationFrame(draw);
-    };
-    draw();
-    return () => { cancelAnimationFrame(animId); window.removeEventListener('resize', resize); };
-  }, []);
-
-  return (
-    <canvas
-      ref={canvasRef}
-      className="absolute inset-0 w-full h-full pointer-events-none"
-      style={{ position: 'fixed', zIndex: 0 }}
-    />
   );
 }
 
@@ -138,6 +102,221 @@ function Timestamp({ date }) {
     <span className="text-[9px] text-text-muted/40 mt-1 block">
       {date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
     </span>
+  );
+}
+
+function HeroSection() {
+  return (
+    <div className="relative overflow-hidden rounded-2xl mb-4 bg-gradient-to-br from-neon-cyan/[0.08] via-electric-violet/[0.08] to-transparent border border-neon-cyan/10">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(126,187,197,0.12),transparent_60%),radial-gradient(ellipse_at_bottom_left,rgba(84,58,103,0.12),transparent_60%)]" />
+      <motion.div
+        className="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-neon-cyan/5 blur-3xl"
+        animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.6, 0.3] }}
+        transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+      />
+      <motion.div
+        className="absolute -bottom-10 -left-10 w-40 h-40 rounded-full bg-electric-violet/5 blur-3xl"
+        animate={{ scale: [1.2, 1, 1.2], opacity: [0.3, 0.6, 0.3] }}
+        transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
+      />
+      <div className="relative z-10 px-5 py-6 md:py-8 text-center">
+        <motion.h1
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-3xl md:text-4xl lg:text-5xl font-bold mb-2"
+        >
+          <span className="bg-gradient-to-r from-neon-cyan via-electric-violet to-neon-cyan bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient-x">
+            AI-Powered Intelligence
+          </span>
+        </motion.h1>
+        <motion.p
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1 }}
+          className="text-text-muted text-xs sm:text-sm max-w-2xl mx-auto mb-4 leading-relaxed"
+        >
+          Powered by 10+ free AI models — chat, code, create, and solve problems instantly.
+        </motion.p>
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          className="flex justify-center gap-5 sm:gap-8 flex-wrap"
+        >
+          {heroStats.map(stat => (
+            <div key={stat.label} className="text-center">
+              <div className="text-lg sm:text-xl font-bold bg-gradient-to-r from-neon-cyan to-electric-violet bg-clip-text text-transparent">{stat.value}</div>
+              <div className="text-[9px] text-text-muted/60 uppercase tracking-wider">{stat.label}</div>
+            </div>
+          ))}
+        </motion.div>
+      </div>
+    </div>
+  );
+}
+
+function ModelShowcase({ models, selectedModel, onSelect }) {
+  return (
+    <div className="mb-3">
+      <div className="grid grid-cols-3 sm:grid-cols-6 gap-1.5">
+        {models.map(model => {
+          const isSelected = selectedModel === model.id;
+          return (
+            <motion.button
+              key={model.id}
+              whileHover={{ scale: 1.04, y: -2 }}
+              whileTap={{ scale: 0.97 }}
+              onClick={() => onSelect(isSelected ? '' : model.id)}
+              className={`relative group rounded-xl p-2.5 text-left transition-all duration-300 border ${
+                isSelected
+                  ? 'border-neon-cyan/50 bg-neon-cyan/10 shadow-lg shadow-neon-cyan/15'
+                  : 'border-neon-cyan/[0.08] bg-background/30 hover:border-neon-cyan/20 hover:bg-background/50 hover:shadow-md hover:shadow-neon-cyan/5'
+              }`}
+            >
+              {isSelected && (
+                <motion.span
+                  layoutId="modelPulse"
+                  className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-neon-cyan shadow-lg shadow-neon-cyan/60"
+                  animate={{ scale: [1, 1.5, 1], opacity: [0.7, 1, 0.7] }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                />
+              )}
+              <div
+                className="w-7 h-7 rounded-lg flex items-center justify-center text-sm mb-1.5 mx-auto"
+                style={{ backgroundColor: `${model.color}18` }}
+              >
+                {model.icon}
+              </div>
+              <div className="text-[9px] font-medium text-text-primary leading-tight text-center truncate">{model.name}</div>
+              <div className="text-[7px] text-text-muted/50 leading-tight text-center truncate mt-0.5">{model.description}</div>
+              {isSelected && (
+                <div className="absolute inset-0 rounded-xl ring-1 ring-neon-cyan/30 ring-offset-[1.5px] ring-offset-background pointer-events-none" />
+              )}
+            </motion.button>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+function WelcomeScreen({ onSelectQuestion }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="text-center py-2"
+    >
+      <motion.div
+        animate={{ scale: [1, 1.08, 1], rotate: [0, 3, -3, 0] }}
+        transition={{ repeat: Infinity, duration: 5, ease: 'easeInOut' }}
+        className="text-6xl mb-3 inline-block relative"
+      >
+        🧠
+        <motion.div
+          className="absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full bg-neon-cyan/30 blur-sm"
+          animate={{ scale: [1, 1.8, 1], opacity: [0.5, 0.1, 0.5] }}
+          transition={{ duration: 2, repeat: Infinity }}
+        />
+      </motion.div>
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: [0.4, 1, 0.4] }}
+        transition={{ duration: 3, repeat: Infinity }}
+        className="text-text-muted text-xs mb-4"
+      >
+        Ready to explore — ask anything or pick a suggestion below
+      </motion.p>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 max-w-2xl mx-auto">
+        {quickActionGroups.map(group => (
+          <motion.div
+            key={group.category}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="bg-background/40 backdrop-blur-sm border border-neon-cyan/[0.08] rounded-xl p-2.5 text-left hover:border-neon-cyan/20 transition-colors"
+          >
+            <div className="text-[11px] font-semibold text-text-primary mb-1.5 flex items-center gap-1.5">
+              <span className="text-xs">{group.category}</span>
+            </div>
+            <div className="space-y-0.5">
+              {group.items.map(q => (
+                <motion.button
+                  key={q}
+                  whileHover={{ x: 2 }}
+                  onClick={() => onSelectQuestion(q)}
+                  className="w-full text-left text-[10px] text-text-muted/70 hover:text-neon-cyan transition-colors py-1 px-1.5 rounded hover:bg-neon-cyan/5 truncate"
+                >
+                  {q}
+                </motion.button>
+              ))}
+            </div>
+          </motion.div>
+        ))}
+      </div>
+    </motion.div>
+  );
+}
+
+function SEOToolsPanel() {
+  const [isOpen, setIsOpen] = useState(false);
+  const seoTips = [
+    { title: 'Meta Title Tips', desc: 'Keep titles under 60 chars with primary keyword first' },
+    { title: 'Meta Descriptions', desc: 'Write compelling 150-160 char descriptions with clear CTA' },
+    { title: 'Header Structure', desc: 'One H1 per page, hierarchical H2/H3 subheadings' },
+    { title: 'Image Alt Text', desc: 'Descriptive alt text improves accessibility & SEO' },
+    { title: 'Internal Linking', desc: 'Link related pages with descriptive anchor text' },
+    { title: 'Page Speed', desc: 'Optimize images, minify assets, enable caching' },
+  ];
+  return (
+    <div className="mb-3">
+      <motion.button
+        whileHover={{ scale: 1.01 }}
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full flex items-center justify-between bg-background/30 backdrop-blur-sm border border-neon-cyan/[0.08] rounded-xl px-3.5 py-2 text-left hover:border-neon-cyan/20 transition-colors"
+      >
+        <span className="text-[11px] font-medium text-text-primary flex items-center gap-2">
+          <span className="text-xs">🔍</span>
+          SEO Tools & Optimization Tips
+          <span className="text-[9px] text-text-muted/50">({seoTips.length} tips)</span>
+        </span>
+        <motion.svg
+          animate={{ rotate: isOpen ? 180 : 0 }}
+          className="w-3 h-3 text-text-muted/60 shrink-0"
+          viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
+        >
+          <polyline points="6 9 12 15 18 9" />
+        </motion.svg>
+      </motion.button>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="overflow-hidden"
+          >
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-1.5 mt-1.5">
+              {seoTips.map(tip => (
+                <div key={tip.title} className="bg-background/30 border border-neon-cyan/[0.06] rounded-lg p-2.5 hover:bg-background/50 hover:border-neon-cyan/15 transition-colors">
+                  <div className="text-[10px] font-medium text-text-primary mb-0.5">{tip.title}</div>
+                  <div className="text-[9px] text-text-muted/60 leading-relaxed">{tip.desc}</div>
+                </div>
+              ))}
+            </div>
+            <div className="mt-2 text-center pb-1">
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                className="text-[9px] text-neon-cyan/60 hover:text-neon-cyan bg-neon-cyan/10 hover:bg-neon-cyan/15 rounded-lg px-3 py-1.5 transition-colors"
+              >
+                🔄 Generate SEO Audit
+              </motion.button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
   );
 }
 
@@ -274,29 +453,26 @@ export default function AI() {
 
   return (
     <div className="relative min-h-[calc(100vh-64px)] flex flex-col">
-      <ParticleField />
+      <ParticleField count={60} speed={0.3} color="#7EBBC5" />
 
-      <div className="relative z-10 flex-1 flex flex-col max-w-4xl mx-auto w-full px-4 py-4">
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-3"
-        >
-          <h1 className="text-3xl md:text-4xl font-bold">
-            <span className="bg-gradient-to-r from-neon-cyan via-electric-violet to-neon-cyan bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient-x">
-Calcutta Node.AI
-            </span>
-          </h1>
-          <p className="text-text-muted text-xs mt-1">{models.length} free models · auto-fallback · unlimited chat</p>
-        </motion.div>
+      <div className="relative z-10 flex-1 flex flex-col max-w-4xl mx-auto w-full px-4 py-3">
+        <HeroSection />
 
-          <div className="flex items-center gap-2 mb-3 flex-wrap justify-center">
+        <ModelShowcase
+          models={models}
+          selectedModel={selectedModel}
+          onSelect={(id) => setSelectedModel(id === selectedModel ? '' : id)}
+        />
+
+        <SEOToolsPanel />
+
+        <div className="flex items-center gap-2 mb-2 flex-wrap justify-center">
           <div className="relative">
             <motion.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               onClick={() => setShowModels(!showModels)}
-              className="flex items-center gap-1.5 bg-background/70 backdrop-blur-sm border border-neon-cyan/30 rounded-xl px-3 py-2 text-xs text-neon-cyan hover:border-neon-cyan/60 transition-colors shadow-lg shadow-neon-cyan/10"
+              className="flex items-center gap-1.5 bg-background/70 backdrop-blur-sm border border-neon-cyan/30 rounded-xl px-2.5 py-1.5 text-[10px] text-neon-cyan hover:border-neon-cyan/60 transition-colors shadow-lg shadow-neon-cyan/10"
             >
               <motion.span
                 key={selectedModel || 'auto'}
@@ -310,7 +486,7 @@ Calcutta Node.AI
               <motion.svg
                 animate={{ rotate: showModels ? 180 : 0 }}
                 transition={{ duration: 0.2 }}
-                className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
+                className="w-2.5 h-2.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
               >
                 <polyline points="6 9 12 15 18 9" />
               </motion.svg>
@@ -322,10 +498,10 @@ Calcutta Node.AI
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: -8, scale: 0.95 }}
                   transition={{ duration: 0.15 }}
-                  className="absolute top-full mt-1 left-1/2 -translate-x-1/2 bg-surface/90 backdrop-blur-xl border border-electric-violet/20 rounded-xl shadow-2xl z-50 w-64 overflow-hidden"
+                  className="absolute top-full mt-1 left-1/2 -translate-x-1/2 bg-surface/90 backdrop-blur-xl border border-electric-violet/20 rounded-xl shadow-2xl z-50 w-56 overflow-hidden"
                 >
                   <button onClick={() => { setSelectedModel(''); setShowModels(false); }}
-                    className={`w-full text-left px-4 py-2.5 text-xs transition-colors flex items-center gap-2 ${!selectedModel ? 'bg-neon-cyan/10 text-neon-cyan' : 'text-text-muted hover:bg-white/5'}`}
+                    className={`w-full text-left px-3.5 py-2 text-[11px] transition-colors flex items-center gap-2 ${!selectedModel ? 'bg-neon-cyan/10 text-neon-cyan' : 'text-text-muted hover:bg-white/5'}`}
                   >
                     <span>🔄</span>
                     <span className="font-medium">Auto Fallback</span>
@@ -333,13 +509,13 @@ Calcutta Node.AI
                   <div className="border-t border-electric-violet/10" />
                   {models.map(m => (
                     <button key={m.id} onClick={() => { setSelectedModel(m.id); setShowModels(false); }}
-                      className={`w-full text-left px-4 py-2.5 text-xs transition-colors flex items-center gap-2 ${selectedModel === m.id ? 'bg-neon-cyan/10 text-neon-cyan' : 'text-text-muted hover:bg-white/5'}`}
+                      className={`w-full text-left px-3.5 py-2 text-[11px] transition-colors flex items-center gap-2 ${selectedModel === m.id ? 'bg-neon-cyan/10 text-neon-cyan' : 'text-text-muted hover:bg-white/5'}`}
                     >
                       <span>{m.icon}</span>
                       <span>{m.name}</span>
                     </button>
                   ))}
-                  <div className="px-4 py-2 text-[9px] text-text-muted/50 border-t border-electric-violet/10 text-center">
+                  <div className="px-3.5 py-1.5 text-[8px] text-text-muted/50 border-t border-electric-violet/10 text-center">
                     Powered by OpenCode Zen
                   </div>
                 </motion.div>
@@ -351,9 +527,9 @@ Calcutta Node.AI
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.95 }}
             onClick={clearChat}
-            className="bg-background/70 backdrop-blur-sm border border-neon-cyan/20 rounded-xl px-3 py-2 text-xs text-text-muted hover:text-neon-cyan hover:border-neon-cyan/40 transition-colors flex items-center gap-1.5"
+            className="bg-background/70 backdrop-blur-sm border border-neon-cyan/20 rounded-xl px-2.5 py-1.5 text-[10px] text-text-muted hover:text-neon-cyan hover:border-neon-cyan/40 transition-colors flex items-center gap-1.5"
           >
-            <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6"/><path d="M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2"/></svg>
+            <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6"/><path d="M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2"/></svg>
             Clear
           </motion.button>
 
@@ -361,8 +537,9 @@ Calcutta Node.AI
             <motion.span
               initial={{ opacity: 0, x: -10 }}
               animate={{ opacity: 1, x: 0 }}
-              className="text-[10px] text-text-muted bg-background/50 backdrop-blur-sm rounded-lg px-2 py-1 border border-electric-violet/10"
+              className="text-[9px] text-text-muted bg-background/50 backdrop-blur-sm rounded-lg px-2 py-1 border border-electric-violet/10 flex items-center gap-1"
             >
+              <span className="w-1.5 h-1.5 rounded-full bg-green-400/70 animate-pulse" />
               {models.find(m => m.id === currentModel.id)?.icon || '🧠'} {currentModel.name || currentModel.id}
             </motion.span>
           )}
@@ -370,60 +547,11 @@ Calcutta Node.AI
 
         <div
           ref={chatRef}
-          className="flex-1 overflow-y-auto space-y-2 mb-3 px-2 py-3 scroll-smooth glass-card"
+          className="flex-1 overflow-y-auto space-y-2 mb-2 px-2 py-3 scroll-smooth glass-card"
           style={{ maxHeight: 'calc(100vh - 280px)' }}
         >
           {messages.length === 0 && !streamingContent ? (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="text-center py-8"
-            >
-              <motion.div
-                animate={{ scale: [1, 1.1, 1], rotate: [0, 5, -5, 0] }}
-                transition={{ repeat: Infinity, duration: 4, ease: 'easeInOut' }}
-                className="text-6xl mb-4"
-              >
-                🧠
-              </motion.div>
-              <p className="text-text-muted text-sm mb-5">Choose a model or let AI decide — ask anything!</p>
-              <div className="flex justify-center gap-3 mb-6 text-xs text-text-muted flex-wrap">
-                {models.map(m => (
-                  <motion.span
-                    key={m.id}
-                    whileHover={{ scale: 1.1 }}
-                    className="bg-background/50 border border-neon-cyan/20 rounded-lg px-3 py-1.5 cursor-pointer hover:border-neon-cyan/60 hover:text-neon-cyan transition-colors"
-                    onClick={() => { setSelectedModel(m.id); setShowModels(true); }}
-                  >
-                    {m.icon} {m.name}
-                  </motion.span>
-                ))}
-              </div>
-              <motion.p
-                animate={{ opacity: [0.5, 1, 0.5] }}
-                transition={{ duration: 2, repeat: Infinity }}
-                className="text-[11px] text-neon-cyan/70 font-medium mb-3"
-              >
-                ⚡ Try asking something:
-              </motion.p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 max-w-lg mx-auto">
-                {suggestedQuestions.map((q, i) => (
-                  <motion.button
-                    key={q}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: i * 0.05 }}
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    onClick={() => { setInput(q); inputRef.current?.focus(); }}
-                    className="text-left text-xs bg-background/40 backdrop-blur-sm border border-neon-cyan/10 rounded-lg p-3 text-text-muted hover:border-neon-cyan/50 hover:text-neon-cyan hover:bg-neon-cyan/10 transition-all shadow-sm hover:shadow-md hover:shadow-neon-cyan/10"
-                  >
-                    {q}
-                  </motion.button>
-                ))}
-              </div>
-            </motion.div>
+            <WelcomeScreen onSelectQuestion={(q) => { setInput(q); inputRef.current?.focus(); }} />
           ) : (
             <>
               {messages.map((msg, i) => {
@@ -458,7 +586,7 @@ Calcutta Node.AI
                                 <span className="text-[10px] text-text-muted font-medium">Calcutta Node AI</span>
                               )}
                               {msg.model && (
-                                <span className="text-[8px] text-text-muted/50 bg-background/50 rounded px-1.5 py-0.5">
+                                <span className="text-[8px] text-text-muted/50 bg-background/50 rounded px-1.5 py-0.5 flex items-center gap-0.5">
                                   {models.find(m => m.id === msg.model?.id)?.icon || '🧠'} {msg.model?.name || msg.model?.id}
                                 </span>
                               )}
@@ -575,7 +703,23 @@ Calcutta Node.AI
                   <div className="bg-surface/60 backdrop-blur-sm border border-electric-violet/10 rounded-2xl rounded-bl-md px-4 py-3 shadow-lg shadow-black/10">
                     <div className="flex items-center gap-2">
                       <div className="w-6 h-6 rounded-lg bg-gradient-to-br from-neon-cyan to-electric-violet flex items-center justify-center text-[10px] font-bold text-white">AI</div>
-                      <TypingDots />
+                      <div className="flex items-center gap-1">
+                        <motion.span
+                          className="w-1.5 h-1.5 rounded-full bg-neon-cyan"
+                          animate={{ scale: [1, 1.5, 1], opacity: [0.5, 1, 0.5] }}
+                          transition={{ duration: 0.6, repeat: Infinity, delay: 0 }}
+                        />
+                        <motion.span
+                          className="w-1.5 h-1.5 rounded-full bg-neon-cyan"
+                          animate={{ scale: [1, 1.5, 1], opacity: [0.5, 1, 0.5] }}
+                          transition={{ duration: 0.6, repeat: Infinity, delay: 0.2 }}
+                        />
+                        <motion.span
+                          className="w-1.5 h-1.5 rounded-full bg-neon-cyan"
+                          animate={{ scale: [1, 1.5, 1], opacity: [0.5, 1, 0.5] }}
+                          transition={{ duration: 0.6, repeat: Infinity, delay: 0.4 }}
+                        />
+                      </div>
                     </div>
                   </div>
                 </motion.div>
@@ -593,7 +737,7 @@ Calcutta Node.AI
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               onClick={scrollToBottom}
-              className="self-center mb-2 bg-neon-cyan/20 backdrop-blur-sm border border-neon-cyan/30 rounded-full p-1.5 text-neon-cyan hover:bg-neon-cyan/30 transition-colors shadow-lg shadow-neon-cyan/10"
+              className="self-center mb-1.5 bg-neon-cyan/20 backdrop-blur-sm border border-neon-cyan/30 rounded-full p-1.5 text-neon-cyan hover:bg-neon-cyan/30 transition-colors shadow-lg shadow-neon-cyan/10"
             >
               <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="6 9 12 15 18 9"/></svg>
             </motion.button>
@@ -646,7 +790,7 @@ Calcutta Node.AI
             transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
             className="absolute -top-6 left-4 text-[10px] text-neon-cyan font-semibold tracking-wider uppercase"
           >
-            ✦ AI Chat — Ask anything!
+            ✦ AI Chat — unlimited, free, intelligent
           </motion.div>
         </motion.div>
 

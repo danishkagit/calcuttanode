@@ -1,12 +1,57 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
-  <defs><linearGradient id="g14" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#78350F"/><stop offset="100%" stop-color="#F59E0B"/></linearGradient></defs>
-  <rect width="800" height="400" fill="url(#g14)"/>
-  <rect x="0" y="0" width="800" height="400" fill="rgba(0,0,0,0.35)"/>
-  <text x="400" y="170" text-anchor="middle" font-family="Arial,sans-serif" font-size="40" fill="white" font-weight="bold">Lion's Pride Pub & Grill</text>
-  <text x="400" y="215" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" fill="rgba(255,255,255,0.8)">Cape Town — Craft Beer & Braai</text>
-  <g transform="translate(400,280)" fill="none" stroke="white" stroke-width="2" opacity="0.5">
-    <path d="M-20 -5 L0 -20 L20 -5 L15 15 L-15 15 Z" fill="rgba(255,255,255,0.2)"/>
-    <circle cx="0" cy="3" r="3" fill="white"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1A0A00"/>
+      <stop offset="40%" stop-color="#3E1A00"/>
+      <stop offset="100%" stop-color="#FF8F00"/>
+    </linearGradient>
+    <linearGradient id="ov" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0%" stop-color="#000" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#FFD54F" stop-opacity="0.08"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#FFD700"/>
+      <stop offset="50%" stop-color="#FFA000"/>
+      <stop offset="100%" stop-color="#FFD700"/>
+    </linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <filter id="shadow"><feDropShadow dx="2" dy="4" stdDeviation="8" flood-color="#000" flood-opacity="0.5"/></filter>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <rect width="800" height="600" fill="url(#ov)"/>
+  <circle cx="100" cy="80" r="130" fill="#FFD54F" opacity="0.06"/>
+  <circle cx="720" cy="520" r="170" fill="#FF8F00" opacity="0.08"/>
+  <circle cx="700" cy="80" r="90" fill="#3E1A00" opacity="0.15"/>
+  <circle cx="80" cy="500" r="120" fill="#FFA000" opacity="0.06"/>
+  <path d="M0,350 Q200,300 400,370 T800,340 L800,600 L0,600 Z" fill="#3E1A00" opacity="0.1"/>
+  <path d="M-50,400 Q250,340 500,420 T850,390 L850,600 Z" fill="#FF8F00" opacity="0.05"/>
+  <g transform="translate(400,140)" opacity="0.1">
+    <polygon points="0,-35 10,-10 35,-10 15,8 22,35 0,18 -22,35 -15,8 -35,-10 -10,-10" fill="none" stroke="url(#gold)" stroke-width="2.5"/>
   </g>
-  <rect x="160" y="320" width="480" height="4" rx="2" fill="rgba(255,255,255,0.3)"/>
+  <g filter="url(#shadow)" transform="translate(270,240)">
+    <rect x="0" y="0" width="260" height="280" rx="16" fill="#1A1A1A"/>
+    <rect x="6" y="6" width="248" height="240" rx="12" fill="#FFF8E1"/>
+    <rect x="100" y="14" width="55" height="6" rx="3" fill="#333"/>
+    <circle cx="130" cy="270" r="4" fill="#555"/>
+    <rect x="30" y="50" width="200" height="50" rx="4" fill="#FFD700" opacity="0.08"/>
+    <rect x="30" y="115" width="200" height="6" rx="2" fill="#333" opacity="0.08"/>
+    <rect x="30" y="128" width="160" height="4" rx="2" fill="#333" opacity="0.05"/>
+    <rect x="30" y="145" width="200" height="6" rx="2" fill="#333" opacity="0.08"/>
+    <rect x="30" y="158" width="140" height="4" rx="2" fill="#333" opacity="0.05"/>
+  </g>
+  <g transform="translate(580,100)" opacity="0.15">
+    <text x="0" y="0" font-family="serif" font-size="24" fill="#FFD700" font-weight="bold">&#9813;</text>
+  </g>
+  <g transform="translate(140,120)" opacity="0.12">
+    <path d="M-10,5 L0,-15 L10,5" fill="none" stroke="#FFD700" stroke-width="2"/>
+  </g>
+  <text x="400" y="70" font-family="Arial Black,sans-serif" font-size="32" font-weight="900" fill="#FFF" text-anchor="middle" filter="url(#glow)" opacity="0.12">LION'S PRIDE</text>
+  <text x="400" y="555" font-family="Georgia,serif" font-size="22" fill="#FFD700" text-anchor="middle" opacity="0.35" letter-spacing="6" filter="url(#glow)">P U B</text>
+  <text x="400" y="578" font-family="Arial,sans-serif" font-size="12" fill="#FFD54F" text-anchor="middle" opacity="0.25" letter-spacing="4">WHERE LEGENDS MEET</text>
+  <circle cx="310" cy="580" r="2.5" fill="#FFD700" opacity="0.4"/>
+  <circle cx="332" cy="580" r="2.5" fill="#FFD700" opacity="0.3"/>
+  <circle cx="354" cy="580" r="2.5" fill="#FFD700" opacity="0.4"/>
+  <circle cx="446" cy="580" r="2.5" fill="#FFD700" opacity="0.4"/>
+  <circle cx="468" cy="580" r="2.5" fill="#FFD700" opacity="0.3"/>
+  <circle cx="490" cy="580" r="2.5" fill="#FFD700" opacity="0.4"/>
 </svg>

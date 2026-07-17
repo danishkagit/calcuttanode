@@ -3,6 +3,32 @@ import { motion } from 'framer-motion';
 import works from '../data/works';
 import ParticleField from '../components/common/ParticleField';
 
+const industryThemes = {
+  'Food & Catering': { primary: '#ef4444', secondary: '#f97316', gradient: 'from-red-500/10 via-orange-500/5 to-transparent', badge: 'industry-badge-food' },
+  'Food & Beverage': { primary: '#ef4444', secondary: '#22c55e', gradient: 'from-red-500/10 via-green-500/5 to-transparent', badge: 'industry-badge-cafe' },
+  'Healthcare': { primary: '#3b82f6', secondary: '#14b8a6', gradient: 'from-blue-500/10 via-teal-500/5 to-transparent', badge: 'industry-badge-health' },
+  'Healthcare / Dental': { primary: '#14b8a6', secondary: '#3b82f6', gradient: 'from-teal-500/10 via-blue-500/5 to-transparent', badge: 'industry-badge-dental' },
+  'Healthcare / Pharmacy': { primary: '#22c55e', secondary: '#3b82f6', gradient: 'from-green-500/10 via-blue-500/5 to-transparent', badge: 'industry-badge-pharmacy' },
+  'Retail & Grocery': { primary: '#f59e0b', secondary: '#22c55e', gradient: 'from-amber-500/10 via-green-500/5 to-transparent', badge: 'industry-badge-retail' },
+  'Education': { primary: '#4f46e5', secondary: '#8b5cf6', gradient: 'from-indigo-500/10 via-purple-500/5 to-transparent', badge: 'industry-badge-edu' },
+  'Beauty & Wellness': { primary: '#f472b6', secondary: '#ec4899', gradient: 'from-pink-500/10 via-rose-500/5 to-transparent', badge: 'industry-badge-beauty' },
+  'IT Services': { primary: '#0ea5e9', secondary: '#06b6d4', gradient: 'from-sky-500/10 via-cyan-500/5 to-transparent', badge: 'industry-badge-tech' },
+  'Organic Products': { primary: '#10b981', secondary: '#059669', gradient: 'from-emerald-500/10 via-green-500/5 to-transparent', badge: 'industry-badge-organic' },
+  'Fitness & Wellness': { primary: '#06b6d4', secondary: '#22c55e', gradient: 'from-cyan-500/10 via-green-500/5 to-transparent', badge: 'industry-badge-fitness' },
+  'Handicrafts & Marketplace': { primary: '#14b8a6', secondary: '#d97706', gradient: 'from-teal-500/10 via-amber-500/5 to-transparent', badge: 'industry-badge-artisan' },
+  'Tourism & Adventure': { primary: '#f97316', secondary: '#22c55e', gradient: 'from-orange-500/10 via-green-500/5 to-transparent', badge: 'industry-badge-tourism' },
+  'Hospitality': { primary: '#eab308', secondary: '#ef4444', gradient: 'from-yellow-500/10 via-red-500/5 to-transparent', badge: 'industry-badge-hospitality' },
+  'Interior Design': { primary: '#f472b6', secondary: '#eab308', gradient: 'from-pink-500/10 via-yellow-500/5 to-transparent', badge: 'industry-badge-interior' },
+  'Home Services': { primary: '#3b82f6', secondary: '#f97316', gradient: 'from-blue-500/10 via-orange-500/5 to-transparent', badge: 'industry-badge-home' },
+};
+
+const industryIcon = {
+  'Food & Catering': '🍽️', 'Food & Beverage': '☕', 'Healthcare': '🏥', 'Healthcare / Dental': '🦷',
+  'Healthcare / Pharmacy': '💊', 'Retail & Grocery': '🛒', 'Education': '📚', 'Beauty & Wellness': '💅',
+  'IT Services': '💻', 'Organic Products': '🌿', 'Fitness & Wellness': '💪', 'Handicrafts & Marketplace': '🎨',
+  'Tourism & Adventure': '🏔️', 'Hospitality': '🍺', 'Interior Design': '🏠', 'Home Services': '🔧',
+};
+
 export default function CaseStudy() {
   const { slug } = useParams();
   const company = works.find(w => w.slug === slug);
@@ -18,15 +44,17 @@ export default function CaseStudy() {
     );
   }
 
+  const theme = industryThemes[company.industry] || { primary: '#7EBBC5', secondary: '#543A67', gradient: 'from-neon-cyan/10 via-electric-violet/5 to-transparent', badge: 'industry-badge-tech' };
   const relatedWorks = works.filter(w => w.id !== company.id).slice(0, 3);
 
   return (
     <div className="relative min-h-screen">
       <ParticleField count={20} speed={0.15} />
 
-      {/* Hero Section */}
-      <section className="relative overflow-hidden py-16 px-4">
-        <div className="absolute inset-0 bg-gradient-to-b from-neon-cyan/5 via-transparent to-transparent pointer-events-none" />
+      <section className={`relative overflow-hidden py-16 px-4`}>
+        <div className={`absolute inset-0 bg-gradient-to-b ${theme.gradient} pointer-events-none`} />
+        <div className="absolute top-10 left-20 w-64 h-64 rounded-full blur-3xl animate-pulse" style={{ backgroundColor: `${theme.primary}15` }} />
+        <div className="absolute bottom-10 right-20 w-80 h-80 rounded-full blur-3xl animate-pulse" style={{ backgroundColor: `${theme.secondary}10`, animationDelay: '1.5s' }} />
         <div className="max-w-5xl mx-auto">
           <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="mb-4">
             <Link to="/work" className="text-neon-cyan hover:text-neon-cyan/80 text-sm flex items-center gap-1 transition-colors">
@@ -36,9 +64,9 @@ export default function CaseStudy() {
           </motion.div>
 
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
-            className="glass-card rounded-2xl p-8 md:p-10 flex flex-col md:flex-row items-center md:items-start gap-6"
+            className="portfolio-card rounded-2xl p-8 md:p-10 flex flex-col md:flex-row items-center md:items-start gap-6"
           >
-            <div className="w-24 h-24 rounded-2xl bg-white p-3 border border-gray-200 flex items-center justify-center shrink-0">
+            <div className="w-24 h-24 rounded-2xl bg-surface/80 p-3 border border-neon-cyan/10 flex items-center justify-center shrink-0">
               <img src={company.logo} alt={company.name} className="w-full h-full object-contain" />
             </div>
             <div className="flex-1 text-center md:text-left">
@@ -46,20 +74,20 @@ export default function CaseStudy() {
               <p className="text-text-muted mb-3">{company.industry} — {company.location}</p>
               <div className="flex flex-wrap gap-3 justify-center md:justify-start">
                 <span className="bg-electric-violet/15 text-electric-violet text-xs px-3 py-1 rounded-full font-medium">Founded {company.founded}</span>
-                <span className="bg-neon-cyan/10 text-neon-cyan text-xs px-3 py-1 rounded-full font-medium">Case Study</span>
+                <span className={theme.badge + ' text-xs px-3 py-1 rounded-full font-medium'}>Case Study</span>
               </div>
             </div>
           </motion.div>
 
-          {/* Stats Bar */}
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
             className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-6"
           >
             {company.results.metrics.map((m, i) => (
               <div key={i}
-                className="glass-card rounded-xl p-4 text-center hover:border-neon-cyan/20 transition-all duration-300"
+                className="portfolio-card rounded-xl p-4 text-center hover:border-neon-cyan/20 transition-all duration-300"
+                style={{ borderColor: `${theme.primary}20` }}
               >
-                <p className="text-2xl md:text-3xl font-bold text-neon-cyan neon-glow-cyan">{m.value}</p>
+                <p className="text-2xl md:text-3xl font-bold neon-glow-cyan" style={{ color: theme.primary }}>{m.value}</p>
                 <p className="text-xs text-text-muted mt-1">{m.label}</p>
               </div>
             ))}
@@ -69,38 +97,35 @@ export default function CaseStudy() {
 
       <div className="max-w-5xl mx-auto px-4 pb-20">
 
-        {/* Challenge */}
         <motion.section initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-80px' }}
           className="mb-12"
         >
-          <div className="glass-card rounded-2xl p-8">
+          <div className="portfolio-card rounded-2xl p-8">
             <div className="flex items-center gap-3 mb-4">
-              <span className="text-2xl">⚠️</span>
+              <span className="text-2xl">{industryIcon[company.industry] || '⚠️'}</span>
               <h2 className="text-2xl font-bold text-text-primary">The Challenge</h2>
             </div>
-            <p className="text-text-secondary leading-relaxed text-[15px]">{company.challenge}</p>
+            <p className="text-text-muted leading-relaxed text-[15px]">{company.challenge}</p>
           </div>
         </motion.section>
 
-        {/* Solution */}
         <motion.section initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-80px' }}
           className="mb-12"
         >
-          <div className="glass-card rounded-2xl p-8">
+          <div className="portfolio-card rounded-2xl p-8">
             <div className="flex items-center gap-3 mb-4">
               <span className="text-2xl">💡</span>
               <h2 className="text-2xl font-bold text-text-primary">Our Solution</h2>
             </div>
             <div className="grid md:grid-cols-2 gap-8 items-start">
-              <p className="text-text-secondary leading-relaxed text-[15px]">{company.solution}</p>
-              <div className="rounded-xl overflow-hidden border border-electric-violet/10 bg-surface/30 p-2">
+              <p className="text-text-muted leading-relaxed text-[15px]">{company.solution}</p>
+              <div className="rounded-xl overflow-hidden border border-neon-cyan/10 bg-surface/30 p-2">
                 <img src={company.image} alt={`${company.name} project`} className="w-full h-auto rounded-lg" />
               </div>
             </div>
           </div>
         </motion.section>
 
-        {/* Results Highlight */}
         <motion.section initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-80px' }}
           className="mb-12"
         >
@@ -111,13 +136,13 @@ export default function CaseStudy() {
               <h2 className="text-2xl font-bold text-text-primary">Results</h2>
             </div>
             <div className="relative">
-              <p className="text-4xl md:text-5xl font-bold text-neon-cyan neon-glow-cyan mb-2">{company.results.metric}</p>
+              <p className="text-4xl md:text-5xl font-bold neon-glow-cyan mb-2" style={{ color: theme.primary }}>{company.results.metric}</p>
               <p className="text-lg text-text-muted mb-6">{company.results.label}</p>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 relative">
               {company.results.metrics.map((m, i) => (
-                <div key={i} className="bg-surface/40 backdrop-blur-sm rounded-xl p-4 text-center border border-electric-violet/5">
-                  <p className="text-xl font-bold text-neon-cyan">{m.value}</p>
+                <div key={i} className="bg-surface/40 backdrop-blur-sm rounded-xl p-4 text-center border border-neon-cyan/5">
+                  <p className="text-xl font-bold" style={{ color: theme.primary }}>{m.value}</p>
                   <p className="text-xs text-text-muted mt-1">{m.label}</p>
                 </div>
               ))}
@@ -125,7 +150,6 @@ export default function CaseStudy() {
           </div>
         </motion.section>
 
-        {/* Projects Delivered */}
         <motion.section initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-80px' }}
           className="mb-12"
         >
@@ -140,14 +164,15 @@ export default function CaseStudy() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="glass-card rounded-xl p-5 hover:border-neon-cyan/20 transition-all duration-300 group"
+                className="portfolio-card rounded-xl p-5 hover:border-neon-cyan/20 transition-all duration-300 group"
+                style={{ borderColor: `${theme.primary}15` }}
               >
-                <div className="rounded-lg overflow-hidden mb-4 bg-surface/30 border border-electric-violet/5">
+                <div className="rounded-lg overflow-hidden mb-4 bg-surface/30 border border-neon-cyan/5">
                   <img src={project.image} alt={project.service} className="w-full h-36 object-cover group-hover:scale-105 transition-transform duration-500" />
                 </div>
-                <span className="inline-block text-xs font-semibold bg-electric-violet/15 text-electric-violet px-3 py-1 rounded-full mb-3">{project.service}</span>
+                <span className={`inline-block text-xs font-semibold px-3 py-1 rounded-full mb-3 ${theme.badge}`}>{project.service}</span>
                 <p className="text-text-primary text-sm mb-3 leading-relaxed">{project.description}</p>
-                <div className="flex items-start gap-2 pt-3 border-t border-electric-violet/10">
+                <div className="flex items-start gap-2 pt-3 border-t border-neon-cyan/10">
                   <svg className="w-4 h-4 mt-0.5 shrink-0 text-neon-cyan" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
                   <p className="text-xs text-neon-cyan leading-relaxed">{project.outcome}</p>
                 </div>
@@ -156,11 +181,10 @@ export default function CaseStudy() {
           </div>
         </motion.section>
 
-        {/* Tech Stack */}
         <motion.section initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-80px' }}
           className="mb-12"
         >
-          <div className="glass-card rounded-2xl p-8">
+          <div className="portfolio-card rounded-2xl p-8">
             <div className="flex items-center gap-3 mb-5">
               <span className="text-2xl">⚡</span>
               <h2 className="text-xl font-bold text-text-primary">Technology Stack Used</h2>
@@ -177,7 +201,6 @@ export default function CaseStudy() {
           </div>
         </motion.section>
 
-        {/* Testimonial */}
         <motion.section initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-80px' }}
           className="mb-12"
         >
@@ -199,7 +222,6 @@ export default function CaseStudy() {
           </div>
         </motion.section>
 
-        {/* Related Case Studies */}
         <motion.section initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-80px' }}
           className="mb-12"
         >
@@ -207,10 +229,10 @@ export default function CaseStudy() {
           <div className="grid md:grid-cols-3 gap-4">
             {relatedWorks.map(related => (
               <Link key={related.id} to={`/work/${related.slug}`}
-                className="glass-card rounded-xl p-5 hover:border-neon-cyan/20 transition-all duration-300 group"
+                className="portfolio-card rounded-xl p-5 hover:border-neon-cyan/20 transition-all duration-300 group"
               >
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="w-10 h-10 rounded-lg bg-white p-1.5 border border-gray-200 flex items-center justify-center">
+                  <div className="w-10 h-10 rounded-lg bg-surface/80 p-1.5 border border-neon-cyan/10 flex items-center justify-center">
                     <img src={related.logo} alt={related.name} className="w-full h-full object-contain" />
                   </div>
                   <div className="flex-1 min-w-0">
@@ -225,7 +247,6 @@ export default function CaseStudy() {
           </div>
         </motion.section>
 
-        {/* CTA */}
         <motion.section initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
           <div className="rounded-2xl p-8 glass-section max-w-2xl mx-auto text-center">
             <span className="text-3xl block mb-3">🚀</span>

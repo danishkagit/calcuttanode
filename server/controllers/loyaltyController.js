@@ -31,17 +31,18 @@ export const getLoyaltyInfo = async (req, res) => {
 export const redeemPoints = async (req, res) => {
   try {
     const { points } = req.body;
-    const user = await User.findById(req.user._id);
     if (!points || points < 100) {
       return res.status(400).json({ message: 'Minimum 100 points required for redemption' });
     }
-    if (points > user.loyaltyPoints) {
+    const cashValue = Math.floor(points * POINTS_REDEMPTION_RATE);
+    const user = await User.findOneAndUpdate(
+      { _id: req.user._id, loyaltyPoints: { $gte: points } },
+      { $inc: { walletBalance: cashValue, loyaltyPoints: -points } },
+      { new: true }
+    );
+    if (!user) {
       return res.status(400).json({ message: 'Insufficient loyalty points' });
     }
-    const cashValue = Math.floor(points * POINTS_REDEMPTION_RATE);
-    user.walletBalance += cashValue;
-    user.loyaltyPoints -= points;
-    await user.save();
     await Transaction.create({
       userId: user._id,
       amount: cashValue,

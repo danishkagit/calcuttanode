@@ -93,21 +93,6 @@ export default function AdminDashboard() {
     </div>
   );
 
-  const FormInput = ({ label, value, onChange, type = 'text', required, placeholder, multiline, rows = 3 }) => (
-    <div>
-      <label className="text-xs text-text-muted block mb-1">{label}</label>
-      {multiline ? (
-        <textarea value={value} onChange={onChange} rows={rows} placeholder={placeholder}
-          className="w-full bg-background border border-electric-violet/20 rounded-lg px-3 py-2 text-text-primary text-sm placeholder-text-muted focus:outline-none focus:border-neon-cyan resize-none"
-        />
-      ) : (
-        <input type={type} value={value} onChange={onChange} required={required} placeholder={placeholder}
-          className="w-full bg-background border border-electric-violet/20 rounded-lg px-3 py-2 text-text-primary text-sm placeholder-text-muted focus:outline-none focus:border-neon-cyan"
-        />
-      )}
-    </div>
-  );
-
   return (
     <div>
       <div className="flex justify-between items-center mb-4">
@@ -137,17 +122,17 @@ export default function AdminDashboard() {
           <RevenueGoal revenue={revenue} overview={overview} />
           <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-3 mb-6">
             <StatCard label="Total Users" value={overview.totalUsers} color="text-neon-cyan" />
-            <StatCard label="Total Orders" value={overview.totalOrders} color="text-blue-400" />
-            <StatCard label="Total Revenue" value={`₹${(overview.totalRevenue || 0).toLocaleString()}`} color="text-green-400" />
-            <StatCard label="Pending Orders" value={overview.pendingOrders} color="text-yellow-400" />
-            <StatCard label="Pending Transfers" value={overview.pendingTransfers} color="text-red-400" />
-            <StatCard label="Active Products" value={overview.totalProducts} color="text-purple-400" />
-            <StatCard label="Active Subs" value={overview.activeSubs} color="text-pink-400" />
-            <StatCard label="Pending Reviews" value={overview.pendingReviews} color="text-orange-400" />
-            <StatCard label="New Users (7d)" value={overview.recentUsers} color="text-teal-400" />
-            <StatCard label="Unread Messages" value={overview.unreadMessages} color="text-rose-400" />
-            <StatCard label="Total Blogs" value={overview.totalBlogs} color="text-indigo-400" />
-            <StatCard label="Active Plans" value={overview.totalPlans} color="text-amber-400" />
+            <StatCard label="Total Orders" value={overview.totalOrders} color="text-neon-cyan" />
+            <StatCard label="Total Revenue" value={`₹${(overview.totalRevenue || 0).toLocaleString()}`} color="text-neon-cyan" />
+            <StatCard label="Pending Orders" value={overview.pendingOrders} color="text-neon-cyan" />
+            <StatCard label="Pending Transfers" value={overview.pendingTransfers} color="text-neon-cyan" />
+            <StatCard label="Active Products" value={overview.totalProducts} color="text-neon-cyan" />
+            <StatCard label="Active Subs" value={overview.activeSubs} color="text-neon-cyan" />
+            <StatCard label="Pending Reviews" value={overview.pendingReviews} color="text-neon-cyan" />
+            <StatCard label="New Users (7d)" value={overview.recentUsers} color="text-neon-cyan" />
+            <StatCard label="Unread Messages" value={overview.unreadMessages} color="text-neon-cyan" />
+            <StatCard label="Total Blogs" value={overview.totalBlogs} color="text-neon-cyan" />
+            <StatCard label="Active Plans" value={overview.totalPlans} color="text-neon-cyan" />
           </div>
         </div>
       )}
@@ -190,8 +175,8 @@ export default function AdminDashboard() {
                           className="text-[10px] text-neon-cyan hover:underline">edit</button>
                       </div>
                     </td>
-                    <td className="py-2 px-2 text-right text-green-400">₹{u.referralEarnings || 0}</td>
-                    <td className="py-2 px-2 text-right text-purple-400">{u.loyaltyPoints || 0}</td>
+                    <td className="py-2 px-2 text-right text-neon-cyan">₹{u.referralEarnings || 0}</td>
+                    <td className="py-2 px-2 text-right text-neon-cyan">{u.loyaltyPoints || 0}</td>
                     <td className="py-2 px-2 text-center">
                       <button onClick={() => { if (confirm('Delete this user and all their data?')) apiCall('delete', `/admin/users/${u._id}`); }}
                         className="text-[10px] text-red-400 hover:underline">delete</button>
@@ -453,40 +438,40 @@ export default function AdminDashboard() {
       {section === 'revenue' && revenue && (
         <div>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
-            <div className="bg-background/50 rounded-xl p-4 border border-electric-violet/10">
+            <div className="revenue-card bg-background/50 rounded-xl p-4 border">
               <p className="text-text-muted text-xs mb-2">Total Revenue</p>
-              <p className="text-2xl font-bold text-green-400">₹{(revenue.totalRevenue || 0).toLocaleString()}</p>
+              <p className="text-2xl font-bold revenue-value">₹{(revenue.totalRevenue || 0).toLocaleString()}</p>
               <p className="text-text-muted text-[10px] mt-1">Total Spent: ₹{(revenue.totalRefunds || 0).toLocaleString()}</p>
             </div>
-            <div className="bg-background/50 rounded-xl p-4 border border-electric-violet/10">
+            <div className="revenue-card bg-background/50 rounded-xl p-4 border">
               <p className="text-text-muted text-xs mb-2">Revenue by Method</p>
               {revenue.byMethod.map(m => (
                 <div key={m._id} className="flex justify-between text-[10px] py-0.5">
-                  <span className="text-text-primary">{m._id || 'unknown'}</span>
-                  <span className="text-neon-cyan">₹{m.total.toLocaleString()}</span>
+                  <span className={`revenue-method-${m._id || 'unknown'}`}>{m._id || 'unknown'}</span>
+                  <span className="revenue-value">₹{m.total.toLocaleString()}</span>
                 </div>
               ))}
             </div>
-            <div className="bg-background/50 rounded-xl p-4 border border-electric-violet/10">
+            <div className="revenue-card bg-background/50 rounded-xl p-4 border">
               <p className="text-text-muted text-xs mb-2">Top Services</p>
               {revenue.topServices.slice(0, 5).map(s => (
                 <div key={s._id} className="flex justify-between text-[10px] py-0.5">
                   <span className="text-text-primary truncate mr-2">{s._id}</span>
-                  <span className="text-purple-400 shrink-0">₹{s.revenue.toLocaleString()}</span>
+                  <span className="revenue-value shrink-0">₹{s.revenue.toLocaleString()}</span>
                 </div>
               ))}
             </div>
           </div>
-          <div className="bg-background/50 rounded-xl p-4 border border-electric-violet/10">
-            <p className="text-text-muted text-xs mb-2">Monthly Revenue (Last 12 months)</p>
+          <div className="revenue-card bg-background/50 rounded-xl p-4 border">
+            <p className="text-text-muted text-xs mb-2">Monthly Revenue &mdash; Last 12 Months</p>
             <div className="space-y-1">
               {revenue.monthly.map(m => (
                 <div key={m._id} className="flex items-center gap-2 text-[10px]">
-                  <span className="text-text-primary w-16">{m._id}</span>
-                  <div className="flex-1 bg-electric-violet/10 rounded-full h-3 overflow-hidden">
-                    <div className="bg-brand-gradient h-full rounded-full" style={{ width: `${Math.min(100, (m.total / Math.max(...revenue.monthly.map(x => x.total))) * 100)}%` }} />
+                  <span className="text-text-muted w-16">{m._id}</span>
+                  <div className="flex-1 revenue-bar-bg rounded-full h-4 overflow-hidden">
+                    <div className="revenue-bar h-full rounded-full chart-bar" style={{ width: `${Math.min(100, (m.total / Math.max(...revenue.monthly.map(x => x.total))) * 100)}%` }} />
                   </div>
-                  <span className="text-green-400 w-20 text-right">₹{m.total.toLocaleString()}</span>
+                  <span className="revenue-value w-20 text-right">₹{m.total.toLocaleString()}</span>
                 </div>
               ))}
             </div>
@@ -536,12 +521,42 @@ export default function AdminDashboard() {
             >
               {sending ? 'Seeding...' : '🌱 Seed Services'}
             </button>
+            <button onClick={async () => {
+              if (!confirm('This will DELETE all existing transactions & orders and replace with demo data. Continue?')) return;
+              setSending(true);
+              try {
+                await api.post('/admin/seed/demo');
+                setRefresh(r => r + 1);
+                alert('Demo data seeded! Dashboard will now show realistic revenue data.');
+              } catch (err) {
+                alert(err.response?.data?.message || 'Failed');
+              } finally { setSending(false); }
+            }} disabled={sending}
+              className="border border-neon-cyan text-neon-cyan px-4 py-2 rounded-lg text-sm font-medium disabled:opacity-50 hover:bg-neon-cyan/10 transition-colors"
+            >
+              {sending ? 'Seeding...' : '💰 Seed Demo Revenue Data'}
+            </button>
           </div>
         </div>
       )}
     </div>
   );
 }
+
+const FormInput = ({ label, value, onChange, type = 'text', required, placeholder, multiline, rows = 3 }) => (
+  <div>
+    <label className="text-xs text-text-muted block mb-1">{label}</label>
+    {multiline ? (
+      <textarea value={value} onChange={onChange} rows={rows} placeholder={placeholder}
+        className="w-full bg-background border border-electric-violet/20 rounded-lg px-3 py-2 text-text-primary text-sm placeholder-text-muted focus:outline-none focus:border-neon-cyan resize-none"
+      />
+    ) : (
+      <input type={type} value={value} onChange={onChange} required={required} placeholder={placeholder}
+        className="w-full bg-background border border-electric-violet/20 rounded-lg px-3 py-2 text-text-primary text-sm placeholder-text-muted focus:outline-none focus:border-neon-cyan"
+      />
+    )}
+  </div>
+);
 
 function ProductForm({ product, onSave, onCancel }) {
   const [form, setForm] = useState(product || {

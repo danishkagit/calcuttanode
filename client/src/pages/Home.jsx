@@ -68,8 +68,8 @@ export default function Home() {
       <section className="relative overflow-hidden py-24 px-4 text-center">
         <div className="absolute inset-0 bg-gradient-to-b from-neon-cyan/5 via-transparent to-transparent pointer-events-none" />
         <div className="absolute inset-0 opacity-30">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-neon-cyan/5 rounded-full blur-3xl animate-pulse" />
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-electric-violet/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+          <div className="absolute top-20 left-10 w-72 h-72 bg-neon-cyan/5 rounded-full blur-3xl ai-pulse-ring" />
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-electric-violet/5 rounded-full blur-3xl ai-pulse-ring" style={{ animationDelay: '1.5s' }} />
         </div>
         <motion.div className="max-w-4xl mx-auto relative" initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
           <motion.div
@@ -85,7 +85,7 @@ export default function Home() {
             transition={{ repeat: Infinity, duration: 2.5 }}
             className="inline-block text-xs font-semibold text-electric-violet bg-electric-violet/15 px-4 py-1.5 rounded-full mb-5 border border-electric-violet/30 shadow-lg shadow-electric-violet/10"
           >
-            ⚡ Global Remote IT & Digital Partner Since 2023
+            🤖 AI-Powered Digital Growth Partner Since 2023
           </motion.span>
           <motion.div
             animate={{ y: [0, -8, 0] }}
@@ -102,7 +102,7 @@ export default function Home() {
             transition={{ delay: 0.2 }}
             className="text-lg md:text-xl text-transparent bg-clip-text bg-gradient-to-r from-text-primary to-neon-cyan font-medium mb-3"
           >
-            AI-Powered Digital Services. Delivered Instantly. Anywhere.
+            AI-First Digital Growth. Delivered Instantly. Anywhere.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 10 }}
@@ -141,23 +141,68 @@ export default function Home() {
           </motion.p>
           <div className="flex gap-4 justify-center flex-wrap">
             <motion.a href="/pricing" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
-              className="bg-brand-gradient text-white px-8 py-3 rounded-xl font-medium transition-all duration-200 hover:shadow-lg hover:shadow-neon-cyan/20"
+              className="bg-brand-gradient text-white px-8 py-3 rounded-xl font-medium transition-all duration-200 hover:shadow-xl hover:shadow-neon-cyan/30"
             >
               View Pricing
             </motion.a>
             <motion.a href="/contact" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
-              className="border border-neon-cyan text-neon-cyan px-8 py-3 rounded-xl font-medium transition-all duration-200 hover:bg-neon-cyan/10 hover:shadow-lg hover:shadow-neon-cyan/10"
+              className="border border-neon-cyan text-neon-cyan px-8 py-3 rounded-xl font-medium transition-all duration-200 hover:bg-neon-cyan/10 hover:shadow-xl hover:shadow-neon-cyan/20"
             >
               Contact Us
             </motion.a>
             <motion.a href="/ai" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
-              className="border border-electric-violet/40 text-electric-violet px-8 py-3 rounded-xl font-medium transition-all duration-200 hover:bg-electric-violet/10"
+              className="border border-electric-violet/40 text-electric-violet px-8 py-3 rounded-xl font-medium transition-all duration-200 hover:bg-electric-violet/10 hover:shadow-lg hover:shadow-electric-violet/10"
             >
               🤖 Try AI Support
             </motion.a>
           </div>
         </motion.div>
       </section>
+
+      <motion.section className="py-16 px-4 relative" {...fadeUp}>
+        <div className="max-w-5xl mx-auto">
+          <motion.div className="text-center mb-10" {...fadeUp}>
+            <span className="text-sm font-medium text-neon-cyan bg-neon-cyan/10 px-4 py-1.5 rounded-full border border-neon-cyan/20">AI-Powered Showcase</span>
+            <h2 className="text-3xl font-bold text-text-primary mt-4">4 Free AI Models — One Chat</h2>
+            <p className="text-text-muted max-w-xl mx-auto mt-2">Pick a model or let auto-fallback choose the best one for your question. All free, all in one place.</p>
+          </motion.div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[
+              { name: 'DeepSeek', desc: 'V4 Flash — fast reasoning & code', icon: '🧠', color: 'neon-cyan' },
+              { name: 'MiMo', desc: 'V2.5 — creative & contextual', icon: '✨', color: 'electric-violet' },
+              { name: 'North', desc: 'Mini Code — lightweight & fast', icon: '⚡', color: 'neon-cyan' },
+              { name: 'Nemotron', desc: '3 Ultra — deep analysis', icon: '🔬', color: 'electric-violet' },
+            ].map((model, i) => (
+              <motion.div key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08 }}
+                whileHover={{ y: -4, scale: 1.02 }}
+                className={`p-4 rounded-2xl glass-card card-hover-premium text-center group`}
+              >
+                <motion.div
+                  animate={{ scale: [1, 1.1, 1], rotate: [0, 5, -5, 0] }}
+                  transition={{ repeat: Infinity, duration: 3, delay: i * 0.3 }}
+                  className="text-3xl mb-2"
+                >
+                  {model.icon}
+                </motion.div>
+                <h3 className={`text-text-primary font-semibold text-sm group-hover:text-${model.color === 'neon-cyan' ? 'neon-cyan' : 'electric-violet'} transition-colors`}>{model.name}</h3>
+                <p className="text-text-muted text-xs mt-1">{model.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+          <div className="text-center mt-8">
+            <motion.a href="/ai" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
+              className="inline-flex items-center gap-2 bg-brand-gradient text-white px-6 py-2.5 rounded-xl font-medium text-sm transition-all duration-200 hover:shadow-xl hover:shadow-neon-cyan/30"
+            >
+              Try AI Chat Free
+              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </motion.a>
+          </div>
+        </div>
+      </motion.section>
 
       <motion.section className="py-12 px-4 relative" {...fadeUp}>
         <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6">
@@ -170,7 +215,7 @@ export default function Home() {
               onMouseEnter={() => setHoveredStat(i)}
               onMouseLeave={() => setHoveredStat(null)}
               whileHover={{ y: -4, scale: 1.02 }}
-              className="text-center p-6 rounded-2xl glass-card cursor-default relative overflow-hidden group"
+              className="text-center p-6 rounded-2xl glass-card card-hover-premium cursor-default relative overflow-hidden group"
             >
               <motion.div className="absolute inset-0 bg-gradient-to-b from-neon-cyan/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <motion.div
@@ -199,7 +244,7 @@ export default function Home() {
       <motion.section className="py-16 px-4 relative" {...fadeUp}>
         <div className="max-w-4xl mx-auto">
           <motion.div className="text-center mb-10" {...fadeUp}>
-            <span className="text-sm font-medium text-neon-cyan bg-neon-cyan/10 px-4 py-1.5 rounded-full border border-neon-cyan/20">Our Speed Promise</span>
+            <span className="text-sm font-medium text-neon-cyan bg-neon-cyan/10 px-4 py-1.5 rounded-full border border-neon-cyan/20">AI-Powered Speed Promise</span>
             <h2 className="text-3xl font-bold text-text-primary mt-4">From Request to Delivery</h2>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
@@ -229,7 +274,7 @@ export default function Home() {
       <motion.section className="py-16 px-4 relative" {...fadeUp}>
         <div className="max-w-6xl mx-auto">
           <motion.div className="text-center mb-10" {...fadeUp}>
-            <span className="text-sm font-medium text-electric-violet bg-electric-violet/10 px-4 py-1.5 rounded-full border border-electric-violet/20">What's New in 2026</span>
+            <span className="text-sm font-medium text-electric-violet bg-electric-violet/10 px-4 py-1.5 rounded-full border border-electric-violet/20">AI-Powered — What's New in 2026</span>
             <h2 className="text-3xl md:text-4xl font-bold text-text-primary mt-4 mb-3">Your Digital Growth Partner for 2026</h2>
             <p className="text-text-muted max-w-2xl mx-auto">This year, we're expanding our services with AI-powered tools, enhanced remote support, and tailored packages for businesses of all sizes.</p>
           </motion.div>
@@ -260,52 +305,7 @@ export default function Home() {
       <motion.section className="py-16 px-4 relative" {...fadeUp}>
         <div className="max-w-5xl mx-auto">
           <motion.div className="text-center mb-10" {...fadeUp}>
-            <span className="text-sm font-medium text-electric-violet bg-electric-violet/10 px-4 py-1.5 rounded-full border border-electric-violet/20">AI Showcase</span>
-            <h2 className="text-3xl font-bold text-text-primary mt-4">4 Free AI Models — One Chat</h2>
-            <p className="text-text-muted max-w-xl mx-auto mt-2">Pick a model or let auto-fallback choose the best one for your question. All free, all in one place.</p>
-          </motion.div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {[
-              { name: 'DeepSeek', desc: 'V4 Flash — fast reasoning & code', icon: '🧠', color: 'neon-cyan' },
-              { name: 'MiMo', desc: 'V2.5 — creative & contextual', icon: '✨', color: 'electric-violet' },
-              { name: 'North', desc: 'Mini Code — lightweight & fast', icon: '⚡', color: 'neon-cyan' },
-              { name: 'Nemotron', desc: '3 Ultra — deep analysis', icon: '🔬', color: 'electric-violet' },
-            ].map((model, i) => (
-              <motion.div key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.08 }}
-                whileHover={{ y: -4, scale: 1.02 }}
-                className={`p-4 rounded-2xl glass-card text-center group`}
-              >
-                <motion.div
-                  animate={{ scale: [1, 1.1, 1], rotate: [0, 5, -5, 0] }}
-                  transition={{ repeat: Infinity, duration: 3, delay: i * 0.3 }}
-                  className="text-3xl mb-2"
-                >
-                  {model.icon}
-                </motion.div>
-                <h3 className={`text-text-primary font-semibold text-sm group-hover:text-${model.color === 'neon-cyan' ? 'neon-cyan' : 'electric-violet'} transition-colors`}>{model.name}</h3>
-                <p className="text-text-muted text-xs mt-1">{model.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-          <div className="text-center mt-8">
-            <motion.a href="/ai" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center gap-2 bg-brand-gradient text-white px-6 py-2.5 rounded-xl font-medium text-sm transition-all duration-200 hover:shadow-lg hover:shadow-neon-cyan/20"
-            >
-              Try AI Chat Free
-              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </motion.a>
-          </div>
-        </div>
-      </motion.section>
-
-      <motion.section className="py-16 px-4 relative" {...fadeUp}>
-        <div className="max-w-5xl mx-auto">
-          <motion.div className="text-center mb-10" {...fadeUp}>
-            <span className="text-sm font-medium text-neon-cyan bg-neon-cyan/10 px-4 py-1.5 rounded-full border border-neon-cyan/20">How It Works</span>
+            <span className="text-sm font-medium text-neon-cyan bg-neon-cyan/10 px-4 py-1.5 rounded-full border border-neon-cyan/20">AI-Powered — How It Works</span>
             <h2 className="text-3xl font-bold text-text-primary mt-4">Getting Help is Easy</h2>
           </motion.div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -319,12 +319,72 @@ export default function Home() {
               >
                 <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-neon-cyan/20 to-electric-violet/20 border border-neon-cyan/30 flex items-center justify-center mx-auto mb-4 text-2xl relative">
                   {item.icon}
-                  <span className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-neon-cyan text-black text-xs font-bold flex items-center justify-center">{item.step}</span>
+                  <span className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-neon-cyan text-white text-xs font-bold flex items-center justify-center">{item.step}</span>
                 </div>
                 <h3 className="text-text-primary font-semibold mb-1 text-sm">{item.title}</h3>
                 <p className="text-text-muted text-xs">{item.desc}</p>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </motion.section>
+
+      <motion.section className="py-16 px-4 relative" {...fadeUp}>
+        <div className="max-w-4xl mx-auto">
+          <motion.div className="text-center mb-10" {...fadeUp}>
+            <span className="text-sm font-medium text-electric-violet bg-electric-violet/10 px-4 py-1.5 rounded-full border border-electric-violet/20">Live AI Preview</span>
+            <h2 className="text-3xl font-bold text-text-primary mt-4">Try AI Chat — Live Demo</h2>
+            <p className="text-text-muted max-w-xl mx-auto mt-2">Experience our AI assistant in action. Ask anything — tech support, content writing, code generation, or research.</p>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="glass-card rounded-2xl overflow-hidden border border-neon-cyan/20 max-w-lg mx-auto"
+          >
+            <div className="bg-gradient-to-r from-neon-cyan/10 to-electric-violet/10 px-4 py-3 flex items-center gap-3 border-b border-neon-cyan/10">
+              <div className="w-8 h-8 rounded-full bg-brand-gradient flex items-center justify-center text-white text-sm font-bold">CN</div>
+              <div>
+                <p className="text-text-primary text-sm font-semibold">Calcutta Node AI</p>
+                <p className="text-text-muted text-xs">AI-Powered · 4 Free Models</p>
+              </div>
+              <span className="ml-auto flex items-center gap-1.5 text-xs text-neon-cyan">
+                <span className="w-2 h-2 rounded-full bg-neon-cyan animate-pulse" />
+                Online
+              </span>
+            </div>
+            <div className="p-4 space-y-3 min-h-[240px] flex flex-col justify-end">
+              <div className="flex gap-2 items-start">
+                <div className="w-6 h-6 rounded-full bg-electric-violet/20 flex items-center justify-center text-xs shrink-0 mt-0.5">🤖</div>
+                <div className="bg-electric-violet/10 rounded-2xl rounded-tl-sm px-3 py-2 text-sm text-text-primary max-w-[80%]">
+                  Hi! I'm Calcutta Node AI. Ask me about our services, pricing, tech support, or anything else. I'm powered by 4 free AI models!
+                </div>
+              </div>
+              <div className="flex gap-2 items-start justify-end">
+                <div className="bg-neon-cyan/10 rounded-2xl rounded-tr-sm px-3 py-2 text-sm text-text-primary max-w-[70%]">
+                  What services do you offer?
+                </div>
+                <div className="w-6 h-6 rounded-full bg-neon-cyan/20 flex items-center justify-center text-xs shrink-0 mt-0.5">👤</div>
+              </div>
+              <div className="flex gap-2 items-start">
+                <div className="w-6 h-6 rounded-full bg-electric-violet/20 flex items-center justify-center text-xs shrink-0 mt-0.5">🤖</div>
+                <div className="bg-electric-violet/10 rounded-2xl rounded-tl-sm px-3 py-2 text-sm text-text-primary max-w-[80%]">
+                  We offer AI-enhanced web development, mobile apps, remote IT support, SEO, digital marketing, UI/UX design, and more. All powered by AI for faster delivery! 🚀
+                </div>
+              </div>
+            </div>
+            <div className="border-t border-neon-cyan/10 p-3 flex gap-2">
+              <input type="text" placeholder="Ask AI anything..." readOnly className="flex-1 px-3 py-2 rounded-xl bg-white/5 border border-neon-cyan/20 text-text-primary text-sm focus:outline-none opacity-60" />
+              <button className="bg-brand-gradient text-white px-4 py-2 rounded-xl text-sm font-medium shrink-0 opacity-60">Send</button>
+            </div>
+          </motion.div>
+          <div className="text-center mt-6">
+            <motion.a href="/ai" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
+              className="inline-flex items-center gap-2 bg-brand-gradient text-white px-6 py-2.5 rounded-xl font-medium text-sm transition-all duration-200 hover:shadow-xl hover:shadow-neon-cyan/30"
+            >
+              Open Full AI Chat
+              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </motion.a>
           </div>
         </div>
       </motion.section>
@@ -350,7 +410,7 @@ export default function Home() {
                   onMouseEnter={() => setHoveredService(service._id)}
                   onMouseLeave={() => setHoveredService(null)}
                   whileHover={{ y: -6, scale: 1.02 }}
-                  className="group relative rounded-2xl p-6 glass-card overflow-hidden"
+                  className="group relative rounded-2xl p-6 glass-card card-hover-premium overflow-hidden"
                 >
                   <motion.div className="absolute inset-0 bg-gradient-to-br from-neon-cyan/5 via-transparent to-electric-violet/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   <div className="relative">
@@ -427,7 +487,7 @@ export default function Home() {
             </p>
             <div className="flex gap-4 justify-center">
               <a href="https://danishkagit.github.io/portfolio/" target="_blank" rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-brand-gradient text-white px-5 py-2 rounded-xl text-sm font-medium hover:shadow-lg hover:shadow-neon-cyan/20 transition-all duration-200"
+                className="inline-flex items-center gap-2 bg-brand-gradient text-white px-5 py-2 rounded-xl text-sm font-medium hover:shadow-xl hover:shadow-neon-cyan/30 transition-all duration-200"
               >
                 <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
                 View Portfolio
@@ -482,7 +542,7 @@ export default function Home() {
               <p className="text-text-muted text-sm mb-4">Be the first to know — subscribe for product launches, tips, and tech updates.</p>
               <div className="flex gap-2 max-w-xs mx-auto">
                 <input type="email" placeholder="Enter your email" className="flex-1 px-3 py-2 rounded-lg bg-white/5 border border-electric-violet/20 text-text-primary text-xs focus:outline-none focus:border-neon-cyan transition-colors" />
-                <button className="bg-brand-gradient text-white px-4 py-2 rounded-lg text-xs font-medium hover:shadow-lg hover:shadow-neon-cyan/20 transition-all duration-200 shrink-0">Subscribe</button>
+                <button className="bg-brand-gradient text-white px-4 py-2 rounded-lg text-xs font-medium hover:shadow-xl hover:shadow-neon-cyan/30 transition-all duration-200 shrink-0">Subscribe</button>
               </div>
             </div>
           )}
@@ -536,7 +596,7 @@ export default function Home() {
           <h2 className="text-2xl font-bold text-text-primary mb-3 relative">Need quick help? Ask AI</h2>
           <p className="text-text-muted mb-6 max-w-lg mx-auto relative">Get instant answers, troubleshooting, or recommendations from our AI assistant — powered by 4 free models. Available 24/7.</p>
           <motion.a href="/ai" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
-            className="inline-block bg-brand-gradient text-white px-8 py-3 rounded-xl font-medium transition-all duration-200 hover:shadow-lg hover:shadow-neon-cyan/20 relative"
+            className="inline-block bg-brand-gradient text-white px-8 py-3 rounded-xl font-medium transition-all duration-200 hover:shadow-xl hover:shadow-neon-cyan/30 relative"
           >
             Try AI Chat Now
           </motion.a>
@@ -548,7 +608,7 @@ export default function Home() {
         <p className="text-text-muted mb-8 max-w-xl mx-auto">Whether you need a website, IT support, or digital marketing — we're here to help your business succeed in 2026.</p>
         <div className="flex gap-4 justify-center flex-wrap">
           <motion.a href="/work" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
-            className="bg-brand-gradient text-white px-8 py-3 rounded-xl font-medium transition-all duration-200 hover:shadow-lg hover:shadow-neon-cyan/20"
+            className="bg-brand-gradient text-white px-8 py-3 rounded-xl font-medium transition-all duration-200 hover:shadow-xl hover:shadow-neon-cyan/30"
           >
             Our Work
           </motion.a>
@@ -558,7 +618,7 @@ export default function Home() {
             View Services
           </motion.a>
           <motion.a href="/contact" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
-            className="border border-electric-violet/40 text-electric-violet px-8 py-3 rounded-xl font-medium transition-all duration-200 hover:bg-electric-violet/10"
+            className="border border-electric-violet/40 text-electric-violet px-8 py-3 rounded-xl font-medium transition-all duration-200 hover:bg-electric-violet/10 hover:shadow-lg hover:shadow-electric-violet/10"
           >
             📞 Book a Call
           </motion.a>

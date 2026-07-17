@@ -288,10 +288,12 @@ export default function Navbar() {
             </div>
 
             <Link to="/ai"
-              className="ml-3 flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-semibold bg-gradient-to-r from-neon-cyan/15 to-electric-violet/15 border border-neon-cyan/30 text-neon-cyan hover:from-neon-cyan/25 hover:to-electric-violet/25 hover:border-neon-cyan/50 hover:shadow-lg hover:shadow-neon-cyan/10 transition-all duration-200"
+              className="ml-3 flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-semibold bg-gradient-to-r from-neon-cyan/15 to-electric-violet/15 border border-neon-cyan/30 text-neon-cyan hover:from-neon-cyan/25 hover:to-electric-violet/25 hover:border-neon-cyan/50 hover:shadow-lg hover:shadow-neon-cyan/10 transition-all duration-200 relative overflow-hidden group"
             >
-              <span>🧠</span>
-              <span>AI Chat</span>
+              <span className="absolute inset-0 bg-gradient-to-r from-neon-cyan/10 to-electric-violet/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <span className="relative">🧠</span>
+              <span className="relative">AI Chat</span>
+              <span className="relative text-[10px] font-bold text-electric-violet bg-electric-violet/15 px-1.5 py-0.5 rounded animate-pulse">AI</span>
             </Link>
             <Link to="/login"
               className="ml-1 bg-brand-gradient text-white px-5 py-2 rounded-xl text-sm font-semibold transition-all duration-200 hover:shadow-lg hover:shadow-neon-cyan/25 hover:scale-105 active:scale-95"
@@ -429,9 +431,12 @@ export default function Navbar() {
                 </button>
                 <div className="border-t border-electric-violet/10 my-2" />
                 <Link to="/ai" onClick={() => setMobileOpen(false)}
-                  className="flex items-center justify-center gap-2 mx-2 mt-3 bg-gradient-to-r from-neon-cyan/15 to-electric-violet/15 border border-neon-cyan/30 text-neon-cyan px-4 py-3 rounded-xl text-sm font-semibold"
+                  className="flex items-center justify-center gap-2 mx-2 mt-3 bg-gradient-to-r from-neon-cyan/15 to-electric-violet/15 border border-neon-cyan/30 text-neon-cyan px-4 py-3 rounded-xl text-sm font-semibold relative overflow-hidden group"
                 >
-                  🧠 AI Chat
+                  <span className="absolute inset-0 bg-gradient-to-r from-neon-cyan/10 to-electric-violet/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <span className="relative">🧠</span>
+                  <span className="relative">AI Chat</span>
+                  <span className="relative text-[10px] font-bold text-electric-violet bg-electric-violet/15 px-1.5 py-0.5 rounded animate-pulse">AI</span>
                 </Link>
                 <Link to="/login" onClick={() => setMobileOpen(false)}
                   className="block mx-2 mt-2 bg-brand-gradient text-white px-4 py-3 rounded-xl text-sm font-semibold text-center"
@@ -474,7 +479,7 @@ export default function Navbar() {
               <Link key={tab.label} to={tab.path} onClick={() => setMobileOpen(false)}
                 className={`relative flex flex-col items-center gap-0.5 px-4 py-1.5 rounded-xl text-[11px] font-medium transition-all ${
                   tab.highlight
-                    ? 'bg-gradient-to-b from-neon-cyan/15 to-electric-violet/15 border border-neon-cyan/30 text-neon-cyan -mt-1.5 px-5 py-2 shadow-lg shadow-neon-cyan/10'
+                    ? 'bg-gradient-to-b from-neon-cyan/20 to-electric-violet/20 border border-neon-cyan/40 text-neon-cyan -mt-1.5 px-5 py-2 shadow-lg shadow-neon-cyan/20 animate-pulse-glow'
                     : isActive
                       ? 'text-neon-cyan bg-neon-cyan/10'
                       : 'text-text-muted/70 hover:text-text-primary hover:bg-white/5'

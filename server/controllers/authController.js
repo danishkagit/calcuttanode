@@ -1,3 +1,4 @@
+import crypto from 'crypto';
 import { validationResult } from 'express-validator';
 import User from '../models/User.js';
 import { generateAccessToken, generateRefreshToken, verifyRefreshToken } from '../utils/generateToken.js';
@@ -5,7 +6,7 @@ import Notification from '../models/Notification.js';
 
 function generateReferralCode(name) {
   const prefix = name.replace(/[^a-zA-Z0-9]/g, '').slice(0, 4).toUpperCase();
-  const suffix = Math.random().toString(36).slice(2, 6).toUpperCase();
+  const suffix = crypto.randomBytes(3).toString('hex').toUpperCase();
   return `${prefix}${suffix}`;
 }
 
@@ -16,7 +17,7 @@ export const register = async (req, res) => {
       return res.status(400).json({ errors: errors.array() });
     }
     const { name, email, phone, password, referralCode } = req.body;
-    const existingUser = await User.findOne({ email });
+    const existingUser = await User.findOne({ email: typeof email === 'string' ? email : String(email) });
     if (existingUser) {
       return res.status(400).json({ message: 'User already exists' });
     }
@@ -39,7 +40,7 @@ export const register = async (req, res) => {
     }
     const accessToken = generateAccessToken(user._id);
     const refreshToken = generateRefreshToken(user._id);
-    res.cookie('refreshToken', refreshToken, { httpOnly: true, secure: false, sameSite: 'strict', maxAge: 7 * 24 * 60 * 60 * 1000 });
+    res.cookie('refreshToken', refreshToken, { httpOnly: true, secure: process.env.NODE_ENV === 'production', sameSite: 'strict', maxAge: 7 * 24 * 60 * 60 * 1000 });
     res.status(201).json({ user, accessToken });
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -53,13 +54,13 @@ export const login = async (req, res) => {
       return res.status(400).json({ errors: errors.array() });
     }
     const { email, password } = req.body;
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ email: typeof email === 'string' ? email : String(email) });
     if (!user || !(await user.comparePassword(password))) {
       return res.status(401).json({ message: 'Invalid credentials' });
     }
     const accessToken = generateAccessToken(user._id);
     const refreshToken = generateRefreshToken(user._id);
-    res.cookie('refreshToken', refreshToken, { httpOnly: true, secure: false, sameSite: 'strict', maxAge: 7 * 24 * 60 * 60 * 1000 });
+    res.cookie('refreshToken', refreshToken, { httpOnly: true, secure: process.env.NODE_ENV === 'production', sameSite: 'strict', maxAge: 7 * 24 * 60 * 60 * 1000 });
     res.json({ user, accessToken });
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -116,13 +117,13 @@ export const googleLogin = async (req, res) => {
     if (!user) {
       const name = payload.name || payload.email.split('@')[0];
       const phone = '';
-      const password = Math.random().toString(36).slice(-12);
+      const password = crypto.randomBytes(12).toString('hex');
       const referralCode = generateReferralCode(name);
       user = await User.create({ name, email: payload.email, phone, password, referralCode });
     }
     const accessToken = generateAccessToken(user._id);
     const refreshToken = generateRefreshToken(user._id);
-    res.cookie('refreshToken', refreshToken, { httpOnly: true, secure: false, sameSite: 'strict', maxAge: 7 * 24 * 60 * 60 * 1000 });
+    res.cookie('refreshToken', refreshToken, { httpOnly: true, secure: process.env.NODE_ENV === 'production', sameSite: 'strict', maxAge: 7 * 24 * 60 * 60 * 1000 });
     res.json({ user, accessToken });
   } catch (error) {
     res.status(500).json({ message: error.message });

@@ -69,7 +69,7 @@ export default function Plans() {
           {message && (
             <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}
               className={`mb-8 p-4 rounded-xl text-sm font-medium flex items-center gap-2 max-w-2xl mx-auto ${
-                message.type === 'success' ? 'bg-green-500/20 text-green-400 border border-green-500/30' : 'bg-red-500/20 text-red-400 border border-red-500/30'
+                message.type === 'success' ? 'bg-neon-cyan/20 text-neon-cyan border border-neon-cyan/30' : 'bg-red-500/20 text-red-400 border border-red-500/30'
               }`}
             >
               <span>{message.type === 'success' ? '✅' : '⚠️'}</span>
@@ -95,7 +95,7 @@ export default function Plans() {
             </motion.p>
             <p className="text-text-muted text-xs mb-4">Expires {new Date(mySub.endDate).toLocaleDateString()}</p>
             {mySub.autoRenew && (
-              <p className="text-green-400 text-sm mb-4">Auto-renew is ON</p>
+              <p className="text-neon-cyan text-sm mb-4">Auto-renew is ON</p>
             )}
             <motion.button onClick={handleCancel}
               whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}
@@ -125,7 +125,7 @@ export default function Plans() {
                       animate={{ y: [0, -2, 0] }}
                       transition={{ repeat: Infinity, duration: 2 }}
                       className={`absolute -top-3 left-1/2 -translate-x-1/2 text-xs font-bold px-4 py-1 rounded-full shadow-lg ${
-                        plan.badge === 'Most Popular' ? 'bg-neon-cyan text-black shadow-neon-cyan/30' : 'bg-electric-violet text-white shadow-electric-violet/30'
+                        plan.badge === 'Most Popular' ? 'bg-neon-cyan text-white shadow-neon-cyan/30' : 'bg-electric-violet text-white shadow-electric-violet/30'
                       }`}
                     >
                       {plan.badge}

@@ -85,7 +85,7 @@ export default function Courses() {
                       <h3 className="text-text-primary font-semibold group-hover:text-neon-cyan transition-colors">{course.title}</h3>
                       <motion.span
                         whileHover={{ scale: 1.1 }}
-                        className={`font-bold text-sm shrink-0 ml-2 px-2 py-0.5 rounded ${course.isFree ? 'bg-green-500/20 text-green-400' : 'text-neon-cyan'}`}
+                        className={`font-bold text-sm shrink-0 ml-2 px-2 py-0.5 rounded ${course.isFree ? 'bg-neon-cyan/20 text-neon-cyan' : 'text-neon-cyan'}`}
                       >
                         {course.isFree ? 'Free' : `₹${course.price}`}
                       </motion.span>

@@ -25,7 +25,7 @@ export const getProductBySlug = async (req, res) => {
 
 export const purchaseProduct = async (req, res) => {
   try {
-    const { slug } = req.body;
+    const slug = typeof req.body.slug === 'string' ? req.body.slug : String(req.body.slug);
     let product = await Product.findOne({ slug });
     if (!product) {
       return res.status(400).json({ message: 'Product not found. Please sync products first.' });

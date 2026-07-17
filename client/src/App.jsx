@@ -1,28 +1,31 @@
+import { lazy, Suspense } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import Navbar from './components/common/Navbar';
 import Footer from './components/common/Footer';
 import SEOHead from './components/common/SEOHead';
 import FloatingActions from './components/common/FloatingActions';
-import Home from './pages/Home';
-import Blogs from './pages/Blogs';
-import BlogDetail from './pages/BlogDetail';
-import Tools from './pages/Tools';
-import Courses from './pages/Courses';
-import Pricing from './pages/Pricing';
-import About from './pages/About';
-import Contact from './pages/Contact';
-import Work from './pages/Work';
-import CaseStudy from './pages/CaseStudy';
-import Login from './pages/Login';
-import Register from './pages/Register';
-import Dashboard from './pages/Dashboard';
-import Products from './pages/Products';
-import Plans from './pages/Plans';
-import AI from './pages/AI';
-import MobileApp from './pages/MobileApp';
-import SEOTools from './pages/SEOTools';
-import NotFound from './pages/NotFound';
+import Loader from './components/common/Loader';
+
+const Home = lazy(() => import('./pages/Home'));
+const Blogs = lazy(() => import('./pages/Blogs'));
+const BlogDetail = lazy(() => import('./pages/BlogDetail'));
+const Tools = lazy(() => import('./pages/Tools'));
+const Courses = lazy(() => import('./pages/Courses'));
+const Pricing = lazy(() => import('./pages/Pricing'));
+const About = lazy(() => import('./pages/About'));
+const Contact = lazy(() => import('./pages/Contact'));
+const Work = lazy(() => import('./pages/Work'));
+const CaseStudy = lazy(() => import('./pages/CaseStudy'));
+const Login = lazy(() => import('./pages/Login'));
+const Register = lazy(() => import('./pages/Register'));
+const Dashboard = lazy(() => import('./pages/Dashboard'));
+const Products = lazy(() => import('./pages/Products'));
+const Plans = lazy(() => import('./pages/Plans'));
+const AI = lazy(() => import('./pages/AI'));
+const MobileApp = lazy(() => import('./pages/MobileApp'));
+const SEOTools = lazy(() => import('./pages/SEOTools'));
+const NotFound = lazy(() => import('./pages/NotFound'));
 
 const pageVariants = {
   initial: { opacity: 0, y: 8 },
@@ -41,6 +44,7 @@ export default function App() {
       <SEOHead />
       <Navbar />
       <main className="flex-1">
+        <Suspense fallback={<Loader />}>
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<AnimatedPage><Home /></AnimatedPage>} />
@@ -65,6 +69,7 @@ export default function App() {
             <Route path="*" element={<AnimatedPage><NotFound /></AnimatedPage>} />
           </Routes>
         </AnimatePresence>
+        </Suspense>
       </main>
       <Footer />
       <FloatingActions />

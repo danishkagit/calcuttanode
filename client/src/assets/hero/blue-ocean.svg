@@ -1,13 +1,56 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
-  <defs><linearGradient id="g13" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#075985"/><stop offset="100%" stop-color="#0EA5E9"/></linearGradient></defs>
-  <rect width="800" height="400" fill="url(#g13)"/>
-  <rect x="0" y="0" width="800" height="400" fill="rgba(0,0,0,0.3)"/>
-  <text x="400" y="170" text-anchor="middle" font-family="Arial,sans-serif" font-size="40" fill="white" font-weight="bold">Blue Ocean Dive Center</text>
-  <text x="400" y="215" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" fill="rgba(255,255,255,0.8)">Phuket — Explore the Deep</text>
-  <g transform="translate(400,280)" fill="none" stroke="white" stroke-width="2" opacity="0.5">
-    <ellipse cx="0" cy="0" rx="30" ry="12"/>
-    <path d="M-10 -20 Q0 10 10 -20"/>
-    <circle cx="-15" cy="-5" r="4"/><circle cx="15" cy="-5" r="4"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#001F3F"/>
+      <stop offset="40%" stop-color="#003366"/>
+      <stop offset="100%" stop-color="#0077BE"/>
+    </linearGradient>
+    <linearGradient id="ov" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0%" stop-color="#000B18" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#87CEEB" stop-opacity="0.08"/>
+    </linearGradient>
+    <linearGradient id="bubble" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFF" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#87CEEB" stop-opacity="0.05"/>
+    </linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <filter id="shadow"><feDropShadow dx="2" dy="4" stdDeviation="8" flood-color="#000B18" flood-opacity="0.4"/></filter>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <rect width="800" height="600" fill="url(#ov)"/>
+  <circle cx="100" cy="80" r="140" fill="#87CEEB" opacity="0.05"/>
+  <circle cx="720" cy="520" r="180" fill="#0077BE" opacity="0.08"/>
+  <circle cx="700" cy="80" r="100" fill="#003366" opacity="0.1"/>
+  <circle cx="80" cy="520" r="130" fill="#001F3F" opacity="0.1"/>
+  <path d="M0,300 Q200,260 400,330 T800,290 L800,0 L0,0 Z" fill="#87CEEB" opacity="0.03"/>
+  <path d="M0,370 Q200,330 400,390 T800,360 L800,600 L0,600 Z" fill="#0077BE" opacity="0.06"/>
+  <path d="M-50,420 Q250,360 500,440 T850,410 L850,600 Z" fill="#003366" opacity="0.04"/>
+  <g opacity="0.1">
+    <circle cx="150" cy="200" r="15" fill="url(#bubble)"/>
+    <circle cx="180" cy="180" r="8" fill="url(#bubble)"/>
+    <circle cx="650" cy="220" r="12" fill="url(#bubble)"/>
+    <circle cx="670" cy="190" r="6" fill="url(#bubble)"/>
+    <circle cx="300" cy="130" r="10" fill="url(#bubble)"/>
+    <circle cx="500" cy="160" r="7" fill="url(#bubble)"/>
   </g>
-  <rect x="160" y="320" width="480" height="4" rx="2" fill="rgba(255,255,255,0.3)"/>
+  <g transform="translate(400,160)" opacity="0.1">
+    <path d="M-30,0 Q-15,-20 0,0 Q15,-20 30,0" fill="none" stroke="#87CEEB" stroke-width="2.5"/>
+  </g>
+  <g filter="url(#shadow)" transform="translate(260,250)">
+    <rect x="0" y="0" width="280" height="180" rx="8" fill="#1A1A2E"/>
+    <rect x="4" y="4" width="272" height="150" rx="4" fill="#FFF"/>
+    <rect x="4" y="4" width="272" height="150" rx="4" fill="url(#bg)" opacity="0.04"/>
+    <rect x="90" y="166" width="100" height="4" rx="2" fill="#444"/>
+    <rect x="0" y="180" width="280" height="14" rx="0 0 8 8" fill="#2C2C3E"/>
+    <rect x="90" y="186" width="100" height="3" rx="1.5" fill="#555"/>
+  </g>
+  <text x="400" y="70" font-family="Arial Black,sans-serif" font-size="34" font-weight="900" fill="#FFF" text-anchor="middle" filter="url(#glow)" opacity="0.12">BLUE OCEAN</text>
+  <text x="400" y="555" font-family="Georgia,serif" font-size="22" fill="#87CEEB" text-anchor="middle" opacity="0.35" letter-spacing="6" filter="url(#glow)">A Q U A</text>
+  <text x="400" y="578" font-family="Arial,sans-serif" font-size="12" fill="#87CEEB" text-anchor="middle" opacity="0.2" letter-spacing="4">PURE WATER SOLUTIONS</text>
+  <circle cx="310" cy="580" r="2.5" fill="#87CEEB" opacity="0.35"/>
+  <circle cx="332" cy="580" r="2.5" fill="#87CEEB" opacity="0.25"/>
+  <circle cx="354" cy="580" r="2.5" fill="#87CEEB" opacity="0.35"/>
+  <circle cx="446" cy="580" r="2.5" fill="#87CEEB" opacity="0.35"/>
+  <circle cx="468" cy="580" r="2.5" fill="#87CEEB" opacity="0.25"/>
+  <circle cx="490" cy="580" r="2.5" fill="#87CEEB" opacity="0.35"/>
 </svg>

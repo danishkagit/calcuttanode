@@ -1,13 +1,52 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
-  <defs><linearGradient id="g22" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4C1D95"/><stop offset="100%" stop-color="#A78BFA"/></linearGradient></defs>
-  <rect width="800" height="400" fill="url(#g22)"/>
-  <rect x="0" y="0" width="800" height="400" fill="rgba(0,0,0,0.3)"/>
-  <text x="400" y="170" text-anchor="middle" font-family="Arial,sans-serif" font-size="42" fill="white" font-weight="bold">MediCare Pharmacy</text>
-  <text x="400" y="215" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" fill="rgba(255,255,255,0.8)">Hyderabad — Your Health, Our Priority</text>
-  <g transform="translate(400,280)" fill="none" stroke="white" stroke-width="2" opacity="0.5">
-    <rect x="-30" y="-25" width="60" height="50" rx="8"/>
-    <line x1="-15" y1="0" x2="15" y2="0"/>
-    <line x1="0" y1="-15" x2="0" y2="15"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#004D40"/>
+      <stop offset="40%" stop-color="#00897B"/>
+      <stop offset="100%" stop-color="#1565C0"/>
+    </linearGradient>
+    <linearGradient id="ov" x1="1" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#00332D" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#B3E5FC" stop-opacity="0.1"/>
+    </linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <filter id="shadow"><feDropShadow dx="2" dy="4" stdDeviation="8" flood-color="#00332D" flood-opacity="0.3"/></filter>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <rect width="800" height="600" fill="url(#ov)"/>
+  <circle cx="100" cy="80" r="130" fill="#B3E5FC" opacity="0.08"/>
+  <circle cx="720" cy="520" r="170" fill="#1565C0" opacity="0.1"/>
+  <circle cx="700" cy="80" r="90" fill="#00897B" opacity="0.12"/>
+  <circle cx="80" cy="500" r="120" fill="#004D40" opacity="0.1"/>
+  <path d="M0,360 Q200,310 400,380 T800,350 L800,600 L0,600 Z" fill="#00897B" opacity="0.08"/>
+  <path d="M-50,410 Q250,350 500,430 T850,400 L850,600 Z" fill="#004D40" opacity="0.05"/>
+  <g transform="translate(400,160)" opacity="0.12">
+    <rect x="-30" y="-10" width="60" height="20" rx="4" fill="#B3E5FC"/>
+    <rect x="-10" y="-30" width="20" height="60" rx="4" fill="#B3E5FC"/>
+    <circle cx="0" cy="0" r="5" fill="#004D40"/>
   </g>
-  <rect x="160" y="320" width="480" height="4" rx="2" fill="rgba(255,255,255,0.3)"/>
+  <g filter="url(#shadow)" transform="translate(260,250)">
+    <rect x="0" y="0" width="280" height="180" rx="8" fill="#2C2C2C"/>
+    <rect x="4" y="4" width="272" height="150" rx="4" fill="#FFF"/>
+    <rect x="4" y="4" width="272" height="150" rx="4" fill="url(#bg)" opacity="0.04"/>
+    <rect x="90" y="166" width="100" height="4" rx="2" fill="#444"/>
+    <rect x="0" y="180" width="280" height="14" rx="0 0 8 8" fill="#3C3C3C"/>
+    <rect x="90" y="186" width="100" height="3" rx="1.5" fill="#555"/>
+  </g>
+  <g transform="translate(580,110)" opacity="0.15">
+    <rect x="-18" y="-8" width="36" height="16" rx="4" fill="#FFF"/>
+    <rect x="-6" y="-20" width="12" height="40" rx="4" fill="#FFF"/>
+  </g>
+  <g transform="translate(140,120)" opacity="0.1">
+    <path d="M-10,0 L10,0 M0,-10 L0,10" stroke="#B3E5FC" stroke-width="2"/>
+  </g>
+  <text x="400" y="70" font-family="Arial Black,sans-serif" font-size="32" font-weight="900" fill="#FFF" text-anchor="middle" filter="url(#glow)" opacity="0.12">MEDICARE</text>
+  <text x="400" y="550" font-family="Georgia,serif" font-size="22" fill="#FFF" text-anchor="middle" opacity="0.3" letter-spacing="5">P H A R M A C Y</text>
+  <text x="400" y="578" font-family="Arial,sans-serif" font-size="12" fill="#FFF" text-anchor="middle" opacity="0.2" letter-spacing="4">YOUR HEALTH PARTNER</text>
+  <circle cx="310" cy="580" r="2.5" fill="#B3E5FC" opacity="0.35"/>
+  <circle cx="332" cy="580" r="2.5" fill="#B3E5FC" opacity="0.25"/>
+  <circle cx="354" cy="580" r="2.5" fill="#B3E5FC" opacity="0.35"/>
+  <circle cx="446" cy="580" r="2.5" fill="#B3E5FC" opacity="0.35"/>
+  <circle cx="468" cy="580" r="2.5" fill="#B3E5FC" opacity="0.25"/>
+  <circle cx="490" cy="580" r="2.5" fill="#B3E5FC" opacity="0.35"/>
 </svg>

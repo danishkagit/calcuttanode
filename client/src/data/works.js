@@ -58,6 +58,7 @@ import mockupEdu from '../assets/projects/educational.svg';
 
 const works = [
   {
+    aiEnhanced: true,
     id: 1,
     name: "Moubani's Kitchen",
     industry: 'Food & Catering',
@@ -67,7 +68,7 @@ const works = [
     logo: logo1,
     image: hero1,
     challenge: "Moubani's Kitchen started as a small home-based catering service run by Moubani Das in North Kolkata. Despite exceptional home-style Bengali food, they had zero online presence — no website, no social media, no way for customers to discover them beyond word-of-mouth. Orders were managed manually over phone calls, leading to missed calls, lost orders, and an inability to scale beyond their immediate neighbourhood.",
-    solution: "We built a complete digital ecosystem for Moubani's Kitchen: a responsive website with an online ordering system, an Instagram-first social media strategy showcasing their daily menu with high-quality food photography, and a Google My Business profile optimized for local search. The website featured a real-time order management dashboard so Moubani could track orders without juggling phone calls.",
+    solution: "Using AI-powered tools and automation, we built a complete digital ecosystem for Moubani's Kitchen: a responsive website with an online ordering system, an Instagram-first social media strategy showcasing their daily menu with high-quality food photography, and a Google My Business profile optimized for local search. The website featured a real-time order management dashboard so Moubani could track orders without juggling phone calls.",
     results: {
       metric: '200%',
       label: 'Increase in monthly orders',
@@ -78,7 +79,7 @@ const works = [
         { value: '60%', label: 'Reduction in missed orders' },
       ],
     },
-    techStack: ['React', 'Node.js', 'MongoDB', 'Tailwind CSS', 'Cloudinary'],
+    techStack: ['React', 'Node.js', 'MongoDB', 'Tailwind CSS', 'Cloudinary', 'AI/LLM Integration'],
     testimonial: {
       text: "Calcutta Node completely transformed how we do business. What used to be chaos over phone calls is now a smooth online system. I can't believe we waited this long to go digital!",
       person: 'Moubani Das',
@@ -107,6 +108,7 @@ const works = [
     ],
   },
   {
+    aiEnhanced: true,
     id: 2,
     name: 'Dr. Das Physiotherapy Clinic',
     industry: 'Healthcare',
@@ -115,7 +117,7 @@ const works = [
     logo: logo2,
     image: hero2,
     challenge: "Dr. Sanjib Das ran a well-regarded physiotherapy clinic in Hooghly for years, relying entirely on patient word-of-mouth. New patients came only through referrals, and the clinic was invisible on Google Maps and search results. A competing clinic opened nearby with a modern website and online booking — and Dr. Das started losing patients. He needed to establish an online presence urgently.",
-    solution: "We built a professional website for the clinic with online appointment booking, doctor profiles, treatment information, and patient testimonials. We implemented a comprehensive local SEO strategy including Google My Business optimization with 50+ patient reviews collected over 3 months, location-specific landing pages, and a blog answering common physiotherapy questions.",
+    solution: "Using AI-powered tools and automation, we built a professional website for the clinic with online appointment booking, doctor profiles, treatment information, and patient testimonials. We implemented a comprehensive local SEO strategy including Google My Business optimization with 50+ patient reviews collected over 3 months, location-specific landing pages, and a blog answering common physiotherapy questions.",
     results: {
       metric: '300%',
       label: 'Increase in new patient inquiries',
@@ -126,7 +128,7 @@ const works = [
         { value: '40%', label: 'Reduction in no-shows via automated reminders' },
       ],
     },
-    techStack: ['React', 'Node.js', 'PostgreSQL', 'Google Maps API', 'Twilio'],
+    techStack: ['React', 'Node.js', 'PostgreSQL', 'Google Maps API', 'Twilio', 'AI/LLM Integration'],
     testimonial: {
       text: "Going digital was the best decision for my clinic. The online booking system alone saves us hours every week. Patients love being able to book from their phones. I wish I'd done this years ago.",
       person: 'Dr. Sanjib Das',
@@ -155,6 +157,7 @@ const works = [
     ],
   },
   {
+    aiEnhanced: true,
     id: 3,
     name: 'Sree Ram General Store',
     industry: 'Retail & Grocery',
@@ -163,7 +166,7 @@ const works = [
     logo: logo3,
     image: hero3,
     challenge: "Sree Ram General Store had been serving their local community for over 15 years, but with the rise of quick-commerce apps like Blinkit and Zepto, foot traffic was declining steadily. The owner, Mr. Sharma, saw his regular customers — especially younger ones — ordering from apps instead. He needed a way to offer the convenience of online ordering while keeping the personal touch of a local store.",
-    solution: "We built a WhatsApp-based ordering system integrated with a lightweight product catalog website. Customers could browse products on the website and order directly via WhatsApp with automatic order confirmation. We also set up a simple loyalty program (digital stamp cards) and a weekly promotional newsletter via WhatsApp Broadcast. The system was designed to be manageable by Mr. Sharma himself with minimal tech skills.",
+    solution: "Using AI-powered tools and automation, we built a WhatsApp-based ordering system integrated with a lightweight product catalog website. Customers could browse products on the website and order directly via WhatsApp with automatic order confirmation. We also set up a simple loyalty program (digital stamp cards) and a weekly promotional newsletter via WhatsApp Broadcast. The system was designed to be manageable by Mr. Sharma himself with minimal tech skills.",
     results: {
       metric: '80+',
       label: 'Weekly digital orders',
@@ -174,7 +177,7 @@ const works = [
         { value: '50+', label: 'WhatsApp broadcast subscribers' },
       ],
     },
-    techStack: ['HTML/CSS', 'Node.js', 'WhatsApp Business API', 'MongoDB', 'Twilio'],
+    techStack: ['HTML/CSS', 'Node.js', 'WhatsApp Business API', 'MongoDB', 'Twilio', 'AI/LLM Integration'],
     testimonial: {
       text: "I was losing customers to those big apps every day. Calcutta Node built me a simple system that lets my regulars order from me directly. No commission cuts, no algorithms — just good old service with modern convenience. My son helps me manage it, and business is better than ever.",
       person: 'Rajesh Sharma',
@@ -203,6 +206,7 @@ const works = [
     ],
   },
   {
+    aiEnhanced: true,
     id: 4,
     name: 'Srijan Coaching Centre',
     industry: 'Education',
@@ -211,7 +215,7 @@ const works = [
     logo: logo4,
     image: hero4,
     challenge: "Srijan Coaching Centre was a small but effective coaching institute run by Mrs. Banerjee, focusing on science and mathematics for classes 8-12. Despite consistently good board results and dedicated teachers, enrollment was stagnant. Parents often said they 'couldn't find any information online' and opted for bigger, more well-known coaching brands. Srijan needed digital credibility.",
-    solution: "We built a comprehensive website showcasing student results, teacher profiles, course details, and a blog with study tips. We created a social media presence on Instagram and Facebook with daily study content, student success stories, and live Q&A sessions. A Google Ads campaign targeting local parents searching for 'tuition near me' drove qualified leads.",
+    solution: "Using AI-powered tools and automation, we built a comprehensive website showcasing student results, teacher profiles, course details, and a blog with study tips. We created a social media presence on Instagram and Facebook with daily study content, student success stories, and live Q&A sessions. A Google Ads campaign targeting local parents searching for 'tuition near me' drove qualified leads.",
     results: {
       metric: '40%',
       label: 'Increase in annual enrollment',
@@ -222,7 +226,7 @@ const works = [
         { value: '85%', label: 'Admission rate from website visitors' },
       ],
     },
-    techStack: ['Next.js', 'Tailwind CSS', 'MongoDB', 'Google Ads', 'Mailchimp'],
+    techStack: ['Next.js', 'Tailwind CSS', 'MongoDB', 'Google Ads', 'Mailchimp', 'AI/LLM Integration'],
     testimonial: {
       text: "Parents now tell me they found us on Google or Instagram and were impressed by our website. The online presence has completely changed how people perceive our coaching centre. We've had inquiries from areas I never imagined reaching.",
       person: 'Ananya Banerjee',
@@ -251,6 +255,7 @@ const works = [
     ],
   },
   {
+    aiEnhanced: true,
     id: 5,
     name: 'Roshni Beauty Salon',
     industry: 'Beauty & Wellness',
@@ -259,7 +264,7 @@ const works = [
     logo: logo5,
     image: hero5,
     challenge: "Roshni Beauty Salon started in 2020 by Roshni Devi, a talented makeup artist who built a loyal walk-in clientele in South Kolkata. However, the salon struggled with the classic small beauty business problems: appointment no-shows, inability to showcase work digitally, and relying entirely on walk-ins. During wedding season, she'd be overwhelmed with phone calls. In lean months, she'd have empty slots with no way to fill them.",
-    solution: "We created an Instagram-forward brand for Roshni with a consistent visual style, reels showing transformations, and a booking link in bio. We built a simple booking website integrated with Instagram, allowing clients to book appointments, see service menus and prices, and browse a portfolio of work. We also designed a complete brand identity — logo, colour scheme, business cards, and signage — giving the salon a premium feel.",
+    solution: "Using AI-powered tools and automation, We created an Instagram-forward brand for Roshni with a consistent visual style, reels showing transformations, and a booking link in bio. We built a simple booking website integrated with Instagram, allowing clients to book appointments, see service menus and prices, and browse a portfolio of work. We also designed a complete brand identity — logo, colour scheme, business cards, and signage — giving the salon a premium feel.",
     results: {
       metric: '60%',
       label: 'Increase in monthly bookings',
@@ -270,7 +275,7 @@ const works = [
         { value: '40+', label: 'Five-star Google reviews' },
       ],
     },
-    techStack: ['React', 'Node.js', 'MongoDB', 'Instagram API', 'Twilio SMS'],
+    techStack: ['React', 'Node.js', 'MongoDB', 'Instagram API', 'Twilio SMS', 'AI/LLM Integration'],
     testimonial: {
       text: "The booking website changed everything. My clients book themselves, I get reminders, and my Instagram looks professional now. Wedding season used to be chaos — now it's organized. I've literally doubled my income since working with Calcutta Node.",
       person: 'Roshni Devi',
@@ -299,6 +304,7 @@ const works = [
     ],
   },
   {
+    aiEnhanced: true,
     id: 6,
     name: 'NexaTech Solutions',
     industry: 'IT Services',
@@ -307,7 +313,7 @@ const works = [
     logo: logo6,
     image: hero6,
     challenge: "NexaTech Solutions was a boutique IT consultancy based in Dubai, founded by two ex-FAANG engineers. Despite having deep technical expertise in cloud architecture and DevOps, they struggled to attract high-value clients. Their existing website was a basic one-pager with no case studies, no blog, no way to demonstrate their technical depth. Prospects would visit, see nothing compelling, and move on.",
-    solution: "We built a full-stack portal with three key sections: a case study library showcasing their client work with technical architecture diagrams, a tech blog platform where they published in-depth articles about cloud and DevOps, and a client portal where existing clients could submit tickets and track project progress. The site was built with Next.js for SEO performance and had a dark, developer-friendly aesthetic that appealed to their target audience.",
+    solution: "Using AI-powered tools and automation, we built a full-stack portal with three key sections: a case study library showcasing their client work with technical architecture diagrams, a tech blog platform where they published in-depth articles about cloud and DevOps, and a client portal where existing clients could submit tickets and track project progress. The site was built with Next.js for SEO performance and had a dark, developer-friendly aesthetic that appealed to their target audience.",
     results: {
       metric: '300+',
       label: 'Qualified leads in 6 months',
@@ -318,7 +324,7 @@ const works = [
         { value: '92%', label: 'Client retention rate' },
       ],
     },
-    techStack: ['Next.js', 'TypeScript', 'PostgreSQL', 'AWS', 'Terraform'],
+    techStack: ['Next.js', 'TypeScript', 'PostgreSQL', 'AWS', 'Terraform', 'AI/LLM Integration'],
     testimonial: {
       text: "Calcutta Node didn't just build us a website — they built us a lead generation engine. The case study library and blog have become our primary sales tools. Clients come to us already impressed by what they've read. The ROI has been exceptional.",
       person: 'Arjun Mehta',
@@ -347,6 +353,7 @@ const works = [
     ],
   },
   {
+    aiEnhanced: true,
     id: 7,
     name: 'GreenLeaf Organics',
     industry: 'Organic Products',
@@ -355,7 +362,7 @@ const works = [
     logo: logo7,
     image: hero7,
     challenge: "GreenLeaf Organics was a collective of small organic farmers in Kerala producing high-quality spices, coconut products, and natural supplements. They had an excellent product but no way to reach customers beyond local farmers' markets. Middlemen were taking most of the profit, and the farmers were struggling to make sustainable income despite having premium products.",
-    solution: "We built a full-fledged e-commerce platform with a farm-to-table story at its heart. Every product page featured the farmer's story, location, and farming practices. We integrated Razorpay for payments, Shiprocket for pan-India delivery, and set up an SEO strategy targeting health-conscious consumers searching for organic products. A subscription model for recurring orders (monthly spice boxes, coconut oil, etc.) provided predictable revenue.",
+    solution: "Using AI-powered tools and automation, we built a full-fledged e-commerce platform with a farm-to-table story at its heart. Every product page featured the farmer's story, location, and farming practices. We integrated Razorpay for payments, Shiprocket for pan-India delivery, and set up an SEO strategy targeting health-conscious consumers searching for organic products. A subscription model for recurring orders (monthly spice boxes, coconut oil, etc.) provided predictable revenue.",
     results: {
       metric: '500+',
       label: 'Orders per month',
@@ -366,7 +373,7 @@ const works = [
         { value: '4.8★', label: 'Average product rating' },
       ],
     },
-    techStack: ['Next.js', 'Node.js', 'MongoDB', 'Razorpay', 'Shiprocket API'],
+    techStack: ['Next.js', 'Node.js', 'MongoDB', 'Razorpay', 'Shiprocket API', 'AI/LLM Integration'],
     testimonial: {
       text: "Calcutta Node helped us take our farmers' market stall to a nationwide online store. The farmer stories on each product page connect customers to the real people behind their food. Our sales have grown 10x, and the farmers are finally getting the income they deserve.",
       person: 'Lakshmi Nair',
@@ -395,6 +402,7 @@ const works = [
     ],
   },
   {
+    aiEnhanced: true,
     id: 8,
     name: 'UrbanStride Fitness',
     industry: 'Fitness & Wellness',
@@ -403,7 +411,7 @@ const works = [
     logo: logo8,
     image: hero8,
     challenge: "UrbanStride Fitness launched as a premium boutique fitness studio in Bangalore's HSR Layout. They offered HIIT, yoga, and strength training — but the market was saturated. Competing studios had apps with booking, workout tracking, and loyalty programs. UrbanStride was taking bookings manually via WhatsApp and Instagram DMs, leading to double-bookings, confusion, and lost potential members.",
-    solution: "We built a complete digital ecosystem: a cross-platform mobile app (React Native) with class booking, workout tracking, and a loyalty points system; a website with class schedules, trainer profiles, and membership plans; and an integrated marketing system with automated email campaigns, push notifications for class reminders, and Instagram ads targeting fitness enthusiasts within a 5km radius. The app featured a progress tracker with before/after photo uploads and achievement badges.",
+    solution: "Using AI-powered tools and automation, we built a complete digital ecosystem: a cross-platform mobile app (React Native) with class booking, workout tracking, and a loyalty points system; a website with class schedules, trainer profiles, and membership plans; and an integrated marketing system with automated email campaigns, push notifications for class reminders, and Instagram ads targeting fitness enthusiasts within a 5km radius. The app featured a progress tracker with before/after photo uploads and achievement badges.",
     results: {
       metric: '2,000+',
       label: 'App downloads in first 2 months',
@@ -414,7 +422,7 @@ const works = [
         { value: '500+', label: 'Active monthly members' },
       ],
     },
-    techStack: ['React Native', 'Node.js', 'MongoDB', 'Firebase', 'Razorpay'],
+    techStack: ['React Native', 'Node.js', 'MongoDB', 'Firebase', 'Razorpay', 'AI/LLM Integration'],
     testimonial: {
       text: "The app transformed our business. Members love tracking their progress and earning badges. Bookings are seamless, no-shows dropped to almost zero, and our retention rate is the best in the area. We're already planning our second location.",
       person: 'Vikram Rajan',
@@ -443,6 +451,7 @@ const works = [
     ],
   },
   {
+    aiEnhanced: true,
     id: 9,
     name: 'Coastal Crafts Co.',
     industry: 'Handicrafts & Marketplace',
@@ -451,7 +460,7 @@ const works = [
     logo: logo9,
     image: hero9,
     challenge: "Goa is home to thousands of skilled artisans creating beautiful handmade products — pottery, jewellery, textiles, woodwork — but most had no way to sell beyond local flea markets and tourist seasons. Coastal Crafts Co. was founded to connect these artisans to a global audience, but their initial WooCommerce site was slow, had poor mobile experience, and couldn't handle the complexity of multi-seller listings, commission tracking, and artisan profiles.",
-    solution: "We rebuilt the entire platform as a custom multi-vendor marketplace. Each artisan gets their own profile page with their story, location, and product catalog. Features include: seller dashboard for inventory management, commission auto-calculation, review system with verified purchase badges, a 'Meet the Artisan' blog series, and Instagram shopping integration. The design emphasizes the handmade, authentic feel with warm earth tones and rich product photography.",
+    solution: "Using AI-powered tools and automation, We rebuilt the entire platform as a custom multi-vendor marketplace. Each artisan gets their own profile page with their story, location, and product catalog. Features include: seller dashboard for inventory management, commission auto-calculation, review system with verified purchase badges, a 'Meet the Artisan' blog series, and Instagram shopping integration. The design emphasizes the handmade, authentic feel with warm earth tones and rich product photography.",
     results: {
       metric: '1,000+',
       label: 'Products listed on the platform',
@@ -462,7 +471,7 @@ const works = [
         { value: '5X', label: 'Average artisan income increase' },
       ],
     },
-    techStack: ['Next.js', 'Node.js', 'MongoDB', 'Cloudinary', 'Razorpay'],
+    techStack: ['Next.js', 'Node.js', 'MongoDB', 'Cloudinary', 'Razorpay', 'AI/LLM Integration'],
     testimonial: {
       text: "Before Coastal Crafts partnered with Calcutta Node, I could only sell at Anjuna market during tourist season. Now I have customers from Mumbai, Delhi, and even abroad ordering my terracotta jewellery year-round. My income has tripled, and I can focus on creating instead of worrying about sales.",
       person: 'Maria Fernandes',
@@ -491,6 +500,7 @@ const works = [
     ],
   },
   {
+    aiEnhanced: true,
     id: 10,
     name: 'Pristine Dental Care',
     industry: 'Healthcare / Dental',
@@ -499,7 +509,7 @@ const works = [
     logo: logo10,
     image: hero10,
     challenge: "Pristine Dental Care started as a single clinic in Andheri and expanded to 3 locations across Mumbai. However, patient acquisition was inconsistent — heavily dependent on the season and local word-of-mouth. Each clinic operated independently with its own phone line and appointment book. There was no unified brand presence, no central booking system, and no way to measure which marketing efforts were working. The dental market in Mumbai is fiercely competitive, and Pristine was losing potential patients to chains with smoother online experiences.",
-    solution: "We created a unified multi-location dental brand with a central website featuring: individual landing pages for each clinic with local SEO, a unified online booking system that routes patients to the nearest clinic, Google Ads campaigns per location with smart bidding, and a reputation management system automating review collection. We also designed a patient education blog and YouTube channel with Dr. Pristine explaining common procedures — building trust before the first appointment.",
+    solution: "Using AI-powered tools and automation, We created a unified multi-location dental brand with a central website featuring: individual landing pages for each clinic with local SEO, a unified online booking system that routes patients to the nearest clinic, Google Ads campaigns per location with smart bidding, and a reputation management system automating review collection. We also designed a patient education blog and YouTube channel with Dr. Pristine explaining common procedures — building trust before the first appointment.",
     results: {
       metric: '300+',
       label: 'New patients per month across all locations',
@@ -510,7 +520,7 @@ const works = [
         { value: '3X', label: 'Patient inquiries via website vs phone' },
       ],
     },
-    techStack: ['React', 'Node.js', 'MongoDB', 'Google Ads API', 'Twilio'],
+    techStack: ['React', 'Node.js', 'MongoDB', 'Google Ads API', 'Twilio', 'AI/LLM Integration'],
     testimonial: {
       text: "Centralizing our online presence was a game-changer. Patients can now book at any of our 3 locations through one website. Our Google Ads now actually work because they're targeted per clinic. The patient education content has built so much trust that people come in already knowing what treatment they need.",
       person: 'Dr. Priya Sharma',
@@ -539,6 +549,7 @@ const works = [
     ],
   },
   {
+    aiEnhanced: true,
     id: 11,
     name: 'Casa Verde Café',
     industry: 'Food & Beverage',
@@ -547,7 +558,7 @@ const works = [
     logo: logo11,
     image: hero11,
     challenge: "Casa Verde Café was a charming farm-to-table café in São Paulo's Vila Madalena neighborhood, known for its organic Brazilian coffee and seasonal menu. Despite rave reviews from locals, they had zero digital footprint — no website, no delivery platform, no social media presence. Tourists and new visitors couldn't find them, and during São Paulo's off-peak seasons, foot traffic dropped dangerously low. They needed a digital presence that matched the quality of their food.",
-    solution: "We built a stunning bilingual (Portuguese/English) website showcasing their menu with high-resolution food photography, an integrated ordering system for pickup and delivery, and a blog sharing stories about their local farmer partnerships. We created an Instagram strategy focused on visual storytelling — behind-the-scenes coffee roasting, farmer spotlights, and seasonal menu launches. A Google My Business optimization ensured they appeared in local searches.",
+    solution: "Using AI-powered tools and automation, we built a stunning bilingual (Portuguese/English) website showcasing their menu with high-resolution food photography, an integrated ordering system for pickup and delivery, and a blog sharing stories about their local farmer partnerships. We created an Instagram strategy focused on visual storytelling — behind-the-scenes coffee roasting, farmer spotlights, and seasonal menu launches. A Google My Business optimization ensured they appeared in local searches.",
     results: {
       metric: '180%',
       label: 'Increase in monthly revenue',
@@ -558,7 +569,7 @@ const works = [
         { value: '65%', label: 'Tourist discovery via Google' },
       ],
     },
-    techStack: ['Next.js', 'Tailwind CSS', 'MongoDB', 'Mercado Pago', 'Cloudinary'],
+    techStack: ['Next.js', 'Tailwind CSS', 'MongoDB', 'Mercado Pago', 'Cloudinary', 'AI/LLM Integration'],
     testimonial: {
       text: "Calcutta Node brought our café into the digital world without losing our soul. Our website feels as warm and authentic as our space, and Instagram has become our biggest source of new customers. The bilingual site was a game-changer for reaching tourists.",
       person: 'Isabella Costa',
@@ -587,6 +598,7 @@ const works = [
     ],
   },
   {
+    aiEnhanced: true,
     id: 12,
     name: 'Sakura Ramen House',
     industry: 'Food & Beverage',
@@ -595,7 +607,7 @@ const works = [
     logo: logo12,
     image: hero12,
     challenge: "Sakura Ramen House was a beloved ramen shop in Tokyo's Shibuya district, run by Chef Tanaka and his family. Their tonkotsu ramen had a cult local following, but they were invisible to the millions of tourists visiting Shibuya each year. Competitor ramen shops had English websites, mobile apps for loyalty programs, and Instagram presences — Sakura had none. Language barriers with international visitors meant lost sales and missed opportunities.",
-    solution: "We built a multilingual website (Japanese, English, Chinese, Korean) with menu translations, allergen info, and location maps. We developed a React Native mobile app with a digital loyalty card (stamp system), waitlist management, and push notifications for daily specials. An Instagram strategy focused on ramen ASMR videos, Chef Tanaka's craftsmanship stories, and tourist-friendly Shibuya guides drove massive engagement.",
+    solution: "Using AI-powered tools and automation, we built a multilingual website (Japanese, English, Chinese, Korean) with menu translations, allergen info, and location maps. We developed a React Native mobile app with a digital loyalty card (stamp system), waitlist management, and push notifications for daily specials. An Instagram strategy focused on ramen ASMR videos, Chef Tanaka's craftsmanship stories, and tourist-friendly Shibuya guides drove massive engagement.",
     results: {
       metric: '250%',
       label: 'Increase in international customers',
@@ -606,7 +618,7 @@ const works = [
         { value: '2,000+', label: 'Digital loyalty cards activated' },
       ],
     },
-    techStack: ['React Native', 'Node.js', 'MongoDB', 'Firebase', 'Razorpay'],
+    techStack: ['React Native', 'Node.js', 'MongoDB', 'Firebase', 'Razorpay', 'AI/LLM Integration'],
     testimonial: {
       text: "The app transformed how we serve our customers. Tourists love being able to check the menu in their language and join the waitlist from their phone. Our regular customers compete for loyalty stamps. I never imagined a ramen shop would need an app — now I can't imagine running without it.",
       person: 'Kenji Tanaka',
@@ -635,6 +647,7 @@ const works = [
     ],
   },
   {
+    aiEnhanced: true,
     id: 13,
     name: 'Blue Ocean Dive Center',
     industry: 'Tourism & Adventure',
@@ -643,7 +656,7 @@ const works = [
     logo: logo13,
     image: hero13,
     challenge: "Blue Ocean Dive Center was a well-established PADI-certified dive shop on Phuket's Kata Beach. They offered excellent diving experiences — from beginner courses to advanced wreck dives — but their booking process was stuck in 2015: phone calls, WhatsApp messages, and a paper calendar. Double-bookings were common, cancellations went unmanaged, and they had no way to showcase their equipment, safety standards, or customer reviews to potential divers researching online.",
-    solution: "We built a complete dive center management system: a website with course catalogs, equipment gallery, and live availability calendar; an online booking system with integrated payment (credit card, PromptPay); a customer portal for waivers and medical forms; and automated email/SMS reminders for dive trips. An Instagram strategy focused on underwater photography, customer dive stories, and Phuket travel guides built a strong social presence.",
+    solution: "Using AI-powered tools and automation, we built a complete dive center management system: a website with course catalogs, equipment gallery, and live availability calendar; an online booking system with integrated payment (credit card, PromptPay); a customer portal for waivers and medical forms; and automated email/SMS reminders for dive trips. An Instagram strategy focused on underwater photography, customer dive stories, and Phuket travel guides built a strong social presence.",
     results: {
       metric: '120%',
       label: 'Increase in advance bookings',
@@ -654,7 +667,7 @@ const works = [
         { value: '60%', label: 'Of bookings come from website' },
       ],
     },
-    techStack: ['React', 'Node.js', 'MongoDB', 'Stripe', 'Twilio SMS'],
+    techStack: ['React', 'Node.js', 'MongoDB', 'Stripe', 'Twilio SMS', 'AI/LLM Integration'],
     testimonial: {
       text: "The online booking system was a lifesaver. No more missed calls at 2 AM, no more double-bookings ruining customer experience. Divers book themselves, sign waivers online, and show up ready. I've reclaimed 15 hours a week that I now spend on improving our dive experiences.",
       person: 'Marcus Williams',
@@ -683,6 +696,7 @@ const works = [
     ],
   },
   {
+    aiEnhanced: true,
     id: 14,
     name: "Lion's Pride Pub & Grill",
     industry: 'Hospitality',
@@ -691,7 +705,7 @@ const works = [
     logo: logo14,
     image: hero14,
     challenge: "Lion's Pride was a popular pub in Cape Town's Green Point neighborhood, known for its craft beer selection, South African braai (BBQ), and live rugby screenings. Despite a loyal local crowd, they struggled with slow periods between major sports events, had no way to promote daily specials or events, and relied on a paper loyalty card system that customers kept losing. During COVID, their takeaway operation was managed through chaotic WhatsApp groups.",
-    solution: "We built a vibrant website with event calendar, digital menu with food photography, online ordering for pickup/delivery, and table reservations. We created a social media strategy focused on daily specials, live match screenings, and community events. A WhatsApp Business integration automated order confirmations and loyalty program updates. We also designed a complete brand refresh — logo, signage, menu boards, and merchandise — giving the pub a modern feel while keeping its classic character.",
+    solution: "Using AI-powered tools and automation, we built a vibrant website with event calendar, digital menu with food photography, online ordering for pickup/delivery, and table reservations. We created a social media strategy focused on daily specials, live match screenings, and community events. A WhatsApp Business integration automated order confirmations and loyalty program updates. We also designed a complete brand refresh — logo, signage, menu boards, and merchandise — giving the pub a modern feel while keeping its classic character.",
     results: {
       metric: '90%',
       label: 'Increase in weekday revenue',
@@ -702,7 +716,7 @@ const works = [
         { value: '40%', label: 'Of orders via digital channels' },
       ],
     },
-    techStack: ['Next.js', 'Node.js', 'PostgreSQL', 'WhatsApp API', 'PayFast'],
+    techStack: ['Next.js', 'Node.js', 'PostgreSQL', 'WhatsApp API', 'PayFast', 'AI/LLM Integration'],
     testimonial: {
       text: "Calcutta Node gave us a glow-up without losing our soul. The website and social media brought in a whole new crowd — young professionals, tourists, people who'd never stepped into a pub before. Our digital ordering alone now covers our rent. The brand refresh made us look as good as our beer tastes.",
       person: 'Thabo Molefe',
@@ -731,6 +745,7 @@ const works = [
     ],
   },
   {
+    aiEnhanced: true,
     id: 15,
     name: 'Bella Vita Interiors',
     industry: 'Interior Design',
@@ -739,7 +754,7 @@ const works = [
     logo: logo15,
     image: hero15,
     challenge: "Bella Vita Interiors was a boutique interior design studio in Milan's Brera district, run by Elena Rossi. Despite having a stunning portfolio of high-end residential and commercial projects, their online presence was limited to a basic one-page site. Potential clients couldn't browse their portfolio properly, there was no e-commerce for their curated home decor products, and their blog — which could have showcased their design philosophy — was untouched for two years. Milan's competitive design scene demanded more.",
-    solution: "We built a sophisticated portfolio website with a masonry gallery, project case studies, and before/after sliders. We added an e-commerce section for their curated home decor collection — sourced from Italian artisans — with integrated payments and international shipping. A blog strategy covered Italian design trends, DIY styling tips, and project stories. We optimized for SEO targeting keywords like 'Milan interior designer' and 'Italian home decor online.' A Pinterest strategy drove significant traffic.",
+    solution: "Using AI-powered tools and automation, we built a sophisticated portfolio website with a masonry gallery, project case studies, and before/after sliders. We added an e-commerce section for their curated home decor collection — sourced from Italian artisans — with integrated payments and international shipping. A blog strategy covered Italian design trends, DIY styling tips, and project stories. We optimized for SEO targeting keywords like 'Milan interior designer' and 'Italian home decor online.' A Pinterest strategy drove significant traffic.",
     results: {
       metric: '150%',
       label: 'Increase in qualified leads',
@@ -750,7 +765,7 @@ const works = [
         { value: '30%', label: 'Of leads from blog content' },
       ],
     },
-    techStack: ['Next.js', 'Sanity CMS', 'MongoDB', 'Stripe', 'Cloudinary'],
+    techStack: ['Next.js', 'Sanity CMS', 'MongoDB', 'Stripe', 'Cloudinary', 'AI/LLM Integration'],
     testimonial: {
       text: "Our new website feels like a gallery — it shows our work in the best possible light. The e-commerce was a brilliant addition we hadn't considered; now clients can buy the exact pieces they see in our projects. The blog has positioned us as Milan design experts. Calcutta Node understood our aesthetic perfectly.",
       person: 'Elena Rossi',
@@ -779,6 +794,7 @@ const works = [
     ],
   },
   {
+    aiEnhanced: true,
     id: 16,
     name: 'Outback Adventure Co.',
     industry: 'Adventure Tourism',
@@ -787,7 +803,7 @@ const works = [
     logo: logo16,
     image: hero16,
     challenge: "Outback Adventure Co. ran premium small-group tours from Sydney to the Blue Mountains, outback NSW, and along the Great Ocean Road. They offered exceptional experiences — guided hikes, wildlife encounters, Aboriginal cultural tours — but their booking process was manual and outdated. Customers had to email inquiries, receive PDF itineraries, and pay via bank transfer. Their website looked like it hadn't been updated since 2016. In a competitive tourism market, they were losing customers to slicker competitors with instant booking and mobile apps.",
-    solution: "We built a comprehensive adventure tourism platform: a website with stunning hero imagery, detailed tour itineraries, and live availability calendars; an online booking engine with multiple payment options (credit card, PayPal, Afterpay); a mobile-optimized experience for travelers booking on-the-go; automated pre-tour email sequences with packing lists and waivers; and a review collection system that fed into Google and TripAdvisor. An Instagram and TikTok strategy showcased breathtaking tour footage and traveller testimonials.",
+    solution: "Using AI-powered tools and automation, we built a comprehensive adventure tourism platform: a website with stunning hero imagery, detailed tour itineraries, and live availability calendars; an online booking engine with multiple payment options (credit card, PayPal, Afterpay); a mobile-optimized experience for travelers booking on-the-go; automated pre-tour email sequences with packing lists and waivers; and a review collection system that fed into Google and TripAdvisor. An Instagram and TikTok strategy showcased breathtaking tour footage and traveller testimonials.",
     results: {
       metric: '200%',
       label: 'Growth in online bookings',
@@ -798,7 +814,7 @@ const works = [
         { value: '95%', label: 'Customer satisfaction rate' },
       ],
     },
-    techStack: ['React', 'Node.js', 'MongoDB', 'Stripe', 'Google Maps API'],
+    techStack: ['React', 'Node.js', 'MongoDB', 'Stripe', 'Google Maps API', 'AI/LLM Integration'],
     testimonial: {
       text: "Our old booking process was an embarrassment — emails back and forth, PDFs, bank transfers. Now customers book in minutes, pay online, and get everything automatically. The website finally does justice to the incredible experiences we offer. Our revenue has doubled, and I can finally focus on running tours instead of admin.",
       person: 'Jack O\'Brien',
@@ -827,6 +843,7 @@ const works = [
     ],
   },
   {
+    aiEnhanced: true,
     id: 17,
     name: 'SmileCraft Dental Clinic',
     industry: 'Healthcare / Dental',
@@ -835,7 +852,7 @@ const works = [
     logo: logo17,
     image: hero17,
     challenge: "SmileCraft Dental Clinic in South Kolkata had been operating for 5 years with a loyal patient base but zero online presence. Despite having excellent Google reviews (4.8★) from existing patients, new patients couldn't find them online. They relied entirely on word-of-mouth and walk-ins. Competitor clinics with modern websites and online booking were capturing the growing segment of young professionals and families searching for 'dentist near me' on Google. Appointments were managed through a paper register, leading to scheduling conflicts and forgotten appointments.",
-    solution: "We built a comprehensive dental website with online appointment booking, detailed doctor profiles, treatment information pages (root canal, braces, implants, teeth whitening), and a blog answering common dental questions. We optimized their Google My Business profile with accurate information, service categories, and a review collection strategy. Google Ads campaigns targeting local dental keywords drove targeted traffic. Automated SMS reminders reduced no-shows by 85%.",
+    solution: "Using AI-powered tools and automation, we built a comprehensive dental website with online appointment booking, detailed doctor profiles, treatment information pages (root canal, braces, implants, teeth whitening), and a blog answering common dental questions. We optimized their Google My Business profile with accurate information, service categories, and a review collection strategy. Google Ads campaigns targeting local dental keywords drove targeted traffic. Automated SMS reminders reduced no-shows by 85%.",
     results: {
       metric: '250%',
       label: 'Increase in new patient inquiries',
@@ -846,7 +863,7 @@ const works = [
         { value: '₹12L+', label: 'Additional annual revenue' },
       ],
     },
-    techStack: ['React', 'Node.js', 'MongoDB', 'Google Ads API', 'Twilio'],
+    techStack: ['React', 'Node.js', 'MongoDB', 'Google Ads API', 'Twilio', 'AI/LLM Integration'],
     testimonial: {
       text: "Going online was the best investment for our clinic. Patients book their own appointments now, our phone doesn't stop ringing, and the automated reminders have saved us thousands in lost time. The website makes us look as professional as we actually are.",
       person: 'Dr. Amit Roy',
@@ -875,6 +892,7 @@ const works = [
     ],
   },
   {
+    aiEnhanced: true,
     id: 18,
     name: 'Glam & Grace Salon',
     industry: 'Beauty & Wellness',
@@ -883,7 +901,7 @@ const works = [
     logo: logo18,
     image: hero18,
     challenge: "Glam & Grace Salon in Indiranagar, Bangalore, was a well-regarded unisex salon with skilled stylists and a loyal walk-in clientele. But in Bangalore's competitive beauty market, they were invisible online. No website, no Instagram presence, no online booking. Customers couldn't browse services or prices before visiting. During wedding seasons, the phone rang constantly with booking inquiries. During lean months, empty slots went unfilled. No-shows were a recurring problem with no automated solution.",
-    solution: "We created a complete digital presence: a beautiful website with service menu, stylist portfolios, and real-time booking; an Instagram strategy with before/after transformations, styling tips, and client testimonials; and a WhatsApp Business integration for quick inquiries. We implemented automated appointment reminders via SMS and Instagram DMs. A Google My Business optimization with 50+ review collection improved local visibility dramatically.",
+    solution: "Using AI-powered tools and automation, We created a complete digital presence: a beautiful website with service menu, stylist portfolios, and real-time booking; an Instagram strategy with before/after transformations, styling tips, and client testimonials; and a WhatsApp Business integration for quick inquiries. We implemented automated appointment reminders via SMS and Instagram DMs. A Google My Business optimization with 50+ review collection improved local visibility dramatically.",
     results: {
       metric: '80%',
       label: 'Increase in monthly bookings',
@@ -894,7 +912,7 @@ const works = [
         { value: '40%', label: 'Increase in average ticket size' },
       ],
     },
-    techStack: ['React', 'Node.js', 'MongoDB', 'WhatsApp API', 'Instagram API'],
+    techStack: ['React', 'Node.js', 'MongoDB', 'WhatsApp API', 'Instagram API', 'AI/LLM Integration'],
     testimonial: {
       text: "Calcutta Node understood exactly what we needed. The online booking system alone has transformed our operations — no more phone tag, no more missed appointments. Instagram brought in a whole new crowd of young professionals. We've had our best year yet.",
       person: 'Priya Kapoor',
@@ -923,6 +941,7 @@ const works = [
     ],
   },
   {
+    aiEnhanced: true,
     id: 19,
     name: 'PowerHouse Fitness Studio',
     industry: 'Fitness & Wellness',
@@ -931,7 +950,7 @@ const works = [
     logo: logo19,
     image: hero19,
     challenge: "PowerHouse Fitness Studio in Pune's Kharadi area had state-of-the-art equipment and certified trainers but lacked any digital footprint. They relied on walk-ins and paper membership forms. In a neighbourhood with 3 competing gyms — all with websites, apps, and Instagram presences — PowerHouse was losing potential members who couldn't find class schedules, pricing, or trainer credentials online. Trial class bookings were managed manually, causing constant scheduling confusion.",
-    solution: "We built a fitness studio website with class schedules, trainer profiles, membership plans, and online trial booking. We developed a gym management dashboard for class capacity tracking and member management. An Instagram and YouTube strategy showcased workout videos, transformation stories, and nutrition tips. Google Ads targeting fitness keywords in the Kharadi locality drove qualified leads. A referral program with digital tracking turned existing members into brand ambassadors.",
+    solution: "Using AI-powered tools and automation, we built a fitness studio website with class schedules, trainer profiles, membership plans, and online trial booking. We developed a gym management dashboard for class capacity tracking and member management. An Instagram and YouTube strategy showcased workout videos, transformation stories, and nutrition tips. Google Ads targeting fitness keywords in the Kharadi locality drove qualified leads. A referral program with digital tracking turned existing members into brand ambassadors.",
     results: {
       metric: '200+',
       label: 'Active members in first 6 months',
@@ -942,7 +961,7 @@ const works = [
         { value: '60%', label: 'Of new members from digital channels' },
       ],
     },
-    techStack: ['React', 'Node.js', 'PostgreSQL', 'Firebase', 'Razorpay'],
+    techStack: ['React', 'Node.js', 'PostgreSQL', 'Firebase', 'Razorpay', 'AI/LLM Integration'],
     testimonial: {
       text: "We went from zero online presence to being the most searched gym in our area. The website and social media made us look credible and professional. Our trial bookings doubled overnight. Every new member tells us they found us on Google or Instagram.",
       person: 'Rahul Deshmukh',
@@ -971,6 +990,7 @@ const works = [
     ],
   },
   {
+    aiEnhanced: true,
     id: 20,
     name: 'Tandoori Nights Express',
     industry: 'Food & Beverage',
@@ -979,7 +999,7 @@ const works = [
     logo: logo20,
     image: hero20,
     challenge: "Tandoori Nights Express was a popular North Indian restaurant in Delhi's Dwarka area, known for its authentic tandoori dishes and warm hospitality. Despite a loyal local customer base and 4.5★ Google rating, they had no online ordering system, no website, no delivery platform beyond Zomato (which took 30% commission). During weekends, the restaurant was overwhelmed with phone orders, leading to long wait times and order errors. They were losing money to delivery aggregators and control over their customer relationships.",
-    solution: "We built a branded online ordering website with a full digital menu, food photography, and a custom ordering system with real-time order tracking. Integrated Razorpay for payments and automated order confirmations via SMS and WhatsApp. We set up a customer loyalty program (points-based) and a weekly promotional SMS campaign. The website was optimized for mobile — where 80% of orders originated. Google My Business was optimized with menu, photos, and Q&A.",
+    solution: "Using AI-powered tools and automation, we built a branded online ordering website with a full digital menu, food photography, and a custom ordering system with real-time order tracking. Integrated Razorpay for payments and automated order confirmations via SMS and WhatsApp. We set up a customer loyalty program (points-based) and a weekly promotional SMS campaign. The website was optimized for mobile — where 80% of orders originated. Google My Business was optimized with menu, photos, and Q&A.",
     results: {
       metric: '35%',
       label: 'Reduction in Zomato dependency',
@@ -990,7 +1010,7 @@ const works = [
         { value: '92%', label: 'Order accuracy rate' },
       ],
     },
-    techStack: ['Next.js', 'Node.js', 'MongoDB', 'Razorpay', 'WhatsApp API'],
+    techStack: ['Next.js', 'Node.js', 'MongoDB', 'Razorpay', 'WhatsApp API', 'AI/LLM Integration'],
     testimonial: {
       text: "We were giving away 30% of our revenue to Zomato and Swiggy. Now our customers order directly from our website — we pay just 2% in payment gateway fees. The savings alone paid for the website in the first month. And we finally own our customer data.",
       person: 'Vikram Singh',
@@ -1019,6 +1039,7 @@ const works = [
     ],
   },
   {
+    aiEnhanced: true,
     id: 21,
     name: 'QuickFix Home Services',
     industry: 'Home Services',
@@ -1027,7 +1048,7 @@ const works = [
     logo: logo21,
     image: hero21,
     challenge: "QuickFix Home Services was a small but skilled team of electricians, plumbers, and carpenters serving Mumbai's western suburbs. Despite high-quality work and excellent customer satisfaction, they had no online presence — customers found them only through referrals or local classifieds. They were invisible to the millions of Mumbai residents searching Google for 'plumber near me' or 'electrician in Andheri.' Competitors listed on Urban Company were capturing the digital-savvy customer base. Job scheduling was managed through a chaotic notebook.",
-    solution: "We built a service booking website with categorized services, pricing transparency, and instant booking with same-day service option. We created individual service landing pages optimized for local SEO (plumber in Andheri, electrician in Bandra, carpenter in Juhu). Google My Business was set up with service areas, photos of completed work, and a review collection system. Google Local Services ads targeted hyperlocal keywords. A WhatsApp Business API automated booking confirmations and reminders.",
+    solution: "Using AI-powered tools and automation, we built a service booking website with categorized services, pricing transparency, and instant booking with same-day service option. We created individual service landing pages optimized for local SEO (plumber in Andheri, electrician in Bandra, carpenter in Juhu). Google My Business was set up with service areas, photos of completed work, and a review collection system. Google Local Services ads targeted hyperlocal keywords. A WhatsApp Business API automated booking confirmations and reminders.",
     results: {
       metric: '300%',
       label: 'Increase in service inquiries',
@@ -1038,7 +1059,7 @@ const works = [
         { value: '95%', label: 'Customer satisfaction rate' },
       ],
     },
-    techStack: ['React', 'Node.js', 'MongoDB', 'Google Maps API', 'WhatsApp API'],
+    techStack: ['React', 'Node.js', 'MongoDB', 'Google Maps API', 'WhatsApp API', 'AI/LLM Integration'],
     testimonial: {
       text: "I used to rely on repeat customers and word-of-mouth. Now people find me on Google and book online. The website made us look like a big company overnight. Our phone hasn't stopped ringing since the website launched. Best decision I ever made.",
       person: 'Suresh Patel',
@@ -1067,6 +1088,7 @@ const works = [
     ],
   },
   {
+    aiEnhanced: true,
     id: 22,
     name: 'MediCare Pharmacy',
     industry: 'Healthcare / Pharmacy',
@@ -1075,7 +1097,7 @@ const works = [
     logo: logo22,
     image: hero22,
     challenge: "MediCare Pharmacy in Hyderabad's Gachibowli area was a trusted neighbourhood pharmacy with a 4.8★ Google rating. But in an era of quick medicine delivery apps like PharmEasy and NetMeds, they were losing customers — especially younger residents and IT professionals working in nearby tech parks. Customers wanted home delivery, prescription uploads, and medicine reminders — services MediCare couldn't offer with their phone-and-notebook system. The pharmacy had an excellent reputation but was invisible to anyone searching online for medicine delivery.",
-    solution: "We built an online pharmacy platform with medicine catalog, prescription upload, home delivery ordering, and automated refill reminders. The website featured OTC medicine browsing by category, health blog content, and a 'consult a pharmacist' chat feature. We integrated with a local delivery partner for same-day delivery within a 5km radius. Google My Business was optimized with product categories and service attributes. A WhatsApp broadcast service sent daily health tips and promotional offers to subscribed customers.",
+    solution: "Using AI-powered tools and automation, we built an online pharmacy platform with medicine catalog, prescription upload, home delivery ordering, and automated refill reminders. The website featured OTC medicine browsing by category, health blog content, and a 'consult a pharmacist' chat feature. We integrated with a local delivery partner for same-day delivery within a 5km radius. Google My Business was optimized with product categories and service attributes. A WhatsApp broadcast service sent daily health tips and promotional offers to subscribed customers.",
     results: {
       metric: '400%',
       label: 'Increase in monthly orders',
@@ -1086,7 +1108,7 @@ const works = [
         { value: '60%', label: 'Of customers from online channel' },
       ],
     },
-    techStack: ['Next.js', 'Node.js', 'MongoDB', 'Razorpay', 'Twilio'],
+    techStack: ['Next.js', 'Node.js', 'MongoDB', 'Razorpay', 'Twilio', 'AI/LLM Integration'],
     testimonial: {
       text: "We were losing younger customers to the big app-based pharmacies. Now we have our own online platform with lower prices and faster delivery because we're local. Our online business has grown bigger than our walk-in business. Calcutta Node helped us compete with the giants and win.",
       person: 'Dr. Sanjay Reddy',

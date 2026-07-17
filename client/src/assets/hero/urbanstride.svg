@@ -1,13 +1,53 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
-  <defs><linearGradient id="g8" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0F172A"/><stop offset="100%" stop-color="#3B82F6"/></linearGradient></defs>
-  <rect width="800" height="400" fill="url(#g8)"/>
-  <rect x="0" y="0" width="800" height="400" fill="rgba(0,0,0,0.25)"/>
-  <text x="400" y="170" text-anchor="middle" font-family="Arial,sans-serif" font-size="42" fill="white" font-weight="bold">UrbanStride Fitness</text>
-  <text x="400" y="215" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" fill="rgba(255,255,255,0.8)">Stronger Every Day</text>
-  <g transform="translate(400,280)" fill="none" stroke="white" stroke-width="3" opacity="0.5">
-    <circle cx="0" cy="0" r="25"/>
-    <path d="M-15 -5 Q0 -25 15 -5" fill="none"/>
-    <circle cx="0" cy="5" r="5" fill="white"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#006064"/>
+      <stop offset="50%" stop-color="#00BCD4"/>
+      <stop offset="100%" stop-color="#4DD0E1"/>
+    </linearGradient>
+    <linearGradient id="ov" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0%" stop-color="#004D40" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#B2EBF2" stop-opacity="0.12"/>
+    </linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <filter id="shadow"><feDropShadow dx="2" dy="4" stdDeviation="8" flood-color="#003333" flood-opacity="0.3"/></filter>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <rect width="800" height="600" fill="url(#ov)"/>
+  <circle cx="100" cy="80" r="140" fill="#B2EBF2" opacity="0.08"/>
+  <circle cx="720" cy="520" r="160" fill="#00BCD4" opacity="0.1"/>
+  <circle cx="700" cy="80" r="100" fill="#006064" opacity="0.12"/>
+  <circle cx="80" cy="500" r="120" fill="#4DD0E1" opacity="0.08"/>
+  <path d="M0,320 Q200,280 400,350 T800,310 L800,600 L0,600 Z" fill="#00BCD4" opacity="0.08"/>
+  <path d="M-50,380 Q250,320 500,400 T850,370 L850,600 Z" fill="#006064" opacity="0.05"/>
+  <g transform="translate(400,160)" opacity="0.12">
+    <circle cx="0" cy="0" r="30" fill="none" stroke="#FFF" stroke-width="3"/>
+    <path d="M-10,0 L10,0 M0,-10 L0,10" stroke="#FFF" stroke-width="3"/>
   </g>
-  <rect x="160" y="320" width="480" height="4" rx="2" fill="rgba(255,255,255,0.3)"/>
+  <g transform="translate(560,120)" opacity="0.1">
+    <path d="M-15,15 L0,-20 L15,15" fill="none" stroke="#FFF" stroke-width="2.5"/>
+    <circle cx="0" cy="-20" r="4" fill="#FFF"/>
+  </g>
+  <g filter="url(#shadow)" transform="translate(230,240)">
+    <rect x="0" y="0" width="340" height="220" rx="8" fill="#2C2C2C"/>
+    <rect x="4" y="4" width="332" height="192" rx="4" fill="#FFF"/>
+    <rect x="4" y="4" width="332" height="192" rx="4" fill="url(#bg)" opacity="0.04"/>
+    <rect x="120" y="202" width="100" height="4" rx="2" fill="#444"/>
+    <rect x="0" y="220" width="340" height="14" rx="0 0 8 8" fill="#3C3C3C"/>
+    <rect x="120" y="228" width="100" height="3" rx="1.5" fill="#555"/>
+  </g>
+  <g transform="translate(140,500)" opacity="0.15">
+    <path d="M0,0 L30,-15 L60,0" fill="none" stroke="#FFF" stroke-width="2"/>
+    <circle cx="0" cy="0" r="3" fill="#FFF"/>
+    <circle cx="60" cy="0" r="3" fill="#FFF"/>
+  </g>
+  <text x="400" y="70" font-family="Arial Black,sans-serif" font-size="34" font-weight="900" fill="#FFF" text-anchor="middle" filter="url(#glow)" opacity="0.12">URBANSTRIDE</text>
+  <text x="400" y="555" font-family="Georgia,serif" font-size="22" fill="#FFF" text-anchor="middle" opacity="0.3" letter-spacing="6">F I T N E S S</text>
+  <text x="400" y="578" font-family="Arial,sans-serif" font-size="12" fill="#FFF" text-anchor="middle" opacity="0.2" letter-spacing="4">MOVE WITH CONFIDENCE</text>
+  <circle cx="310" cy="580" r="2.5" fill="#B2EBF2" opacity="0.35"/>
+  <circle cx="332" cy="580" r="2.5" fill="#B2EBF2" opacity="0.25"/>
+  <circle cx="354" cy="580" r="2.5" fill="#B2EBF2" opacity="0.35"/>
+  <circle cx="446" cy="580" r="2.5" fill="#B2EBF2" opacity="0.35"/>
+  <circle cx="468" cy="580" r="2.5" fill="#B2EBF2" opacity="0.25"/>
+  <circle cx="490" cy="580" r="2.5" fill="#B2EBF2" opacity="0.35"/>
 </svg>

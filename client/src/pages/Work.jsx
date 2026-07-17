@@ -4,11 +4,30 @@ import { Link } from 'react-router-dom';
 import works from '../data/works';
 import ParticleField from '../components/common/ParticleField';
 
+const industryGradients = {
+  'Food & Catering': 'industry-gradient-food',
+  'Food & Beverage': 'industry-gradient-cafe',
+  'Healthcare': 'industry-gradient-health',
+  'Healthcare / Dental': 'industry-gradient-dental',
+  'Healthcare / Pharmacy': 'industry-gradient-pharmacy',
+  'Retail & Grocery': 'industry-gradient-retail',
+  'Education': 'industry-gradient-edu',
+  'Beauty & Wellness': 'industry-gradient-beauty',
+  'IT Services': 'industry-gradient-tech',
+  'Organic Products': 'industry-gradient-organic',
+  'Fitness & Wellness': 'industry-gradient-fitness',
+  'Handicrafts & Marketplace': 'industry-gradient-artisan',
+  'Tourism & Adventure': 'industry-gradient-tourism',
+  'Hospitality': 'industry-gradient-hospitality',
+  'Interior Design': 'industry-gradient-interior',
+  'Home Services': 'industry-gradient-home',
+};
+
 function CompanyLogo({ logo, name, slug }) {
   return (
     <Link to={`/work/${slug}`} className="flex flex-col items-center gap-3 shrink-0 mx-10 group">
-      <div className="w-24 h-24 rounded-2xl flex items-center justify-center bg-white p-2.5 border border-gray-200 group-hover:border-neon-cyan/40 group-hover:shadow-lg group-hover:shadow-neon-cyan/10 transition-all duration-300">
-        <img src={logo} alt={name} className="w-full h-full object-contain opacity-90 group-hover:opacity-100 transition-opacity duration-300" />
+      <div className="w-24 h-24 rounded-2xl flex items-center justify-center bg-surface/80 p-2.5 border border-neon-cyan/10 group-hover:border-neon-cyan/30 group-hover:shadow-lg group-hover:shadow-neon-cyan/10 transition-all duration-300">
+        <img src={logo} alt={name} className="w-full h-full object-contain opacity-95 group-hover:opacity-100 transition-opacity duration-300" />
       </div>
       <span className="text-sm font-medium text-text-muted group-hover:text-neon-cyan transition-colors duration-300 whitespace-nowrap">{name}</span>
     </Link>
@@ -26,12 +45,34 @@ export default function Work() {
     ? works
     : works.filter(w => w.industry === selectedIndustry);
 
+  const getIndustryBadge = (industry) => {
+    const map = {
+      'Food & Catering': 'industry-badge-food',
+      'Food & Beverage': 'industry-badge-cafe',
+      'Healthcare': 'industry-badge-health',
+      'Healthcare / Dental': 'industry-badge-dental',
+      'Healthcare / Pharmacy': 'industry-badge-pharmacy',
+      'Retail & Grocery': 'industry-badge-retail',
+      'Education': 'industry-badge-edu',
+      'Beauty & Wellness': 'industry-badge-beauty',
+      'IT Services': 'industry-badge-tech',
+      'Organic Products': 'industry-badge-organic',
+      'Fitness & Wellness': 'industry-badge-fitness',
+      'Handicrafts & Marketplace': 'industry-badge-artisan',
+      'Tourism & Adventure': 'industry-badge-tourism',
+      'Hospitality': 'industry-badge-hospitality',
+      'Interior Design': 'industry-badge-interior',
+      'Home Services': 'industry-badge-home',
+    };
+    return map[industry] || 'industry-badge-tech';
+  };
+
   return (
     <div className="relative min-h-screen">
       <ParticleField count={25} speed={0.2} />
 
       <section className="relative overflow-hidden py-20 px-4 text-center">
-        <div className="absolute inset-0 bg-gradient-to-b from-neon-cyan/5 to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-b from-neon-cyan/5 via-electric-violet/3 to-transparent pointer-events-none" />
         <div className="absolute top-10 left-20 w-64 h-64 bg-neon-cyan/5 rounded-full blur-3xl animate-pulse" />
         <div className="absolute bottom-10 right-20 w-80 h-80 bg-electric-violet/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1.5s' }} />
         <motion.div className="max-w-4xl mx-auto relative" initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
@@ -67,7 +108,7 @@ export default function Work() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.3 }}
-        className="overflow-hidden py-12 border-y border-electric-violet/10 mb-12 bg-gradient-to-r from-transparent via-neon-cyan/3 to-transparent"
+        className="overflow-hidden py-12 border-y border-neon-cyan/10 mb-12 bg-gradient-to-r from-transparent via-neon-cyan/3 to-transparent"
       >
         <motion.div className="flex items-center" animate={{ x: ['0%', '-50%'] }} transition={{ duration: 40, repeat: Infinity, ease: 'linear' }}>
           {[...works, ...works].map((company, i) => (
@@ -89,10 +130,10 @@ export default function Work() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setSelectedIndustry(ind)}
-              className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+              className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
                 selectedIndustry === ind
-                  ? 'bg-neon-cyan text-black shadow-lg shadow-neon-cyan/30 scale-105'
-                  : 'bg-surface/50 text-text-muted border border-electric-violet/20 hover:border-neon-cyan/40'
+                  ? 'filter-tab-active scale-105 text-glow'
+                  : 'bg-surface/50 text-text-muted border border-neon-cyan/10 hover:border-neon-cyan/30 hover:bg-neon-cyan/5'
               }`}
             >
               {ind}
@@ -107,56 +148,66 @@ export default function Work() {
                 <Link to={`/work/${company.slug}`} className="block group">
                   <motion.div
                     whileHover={{ y: -2 }}
-                    className="flex items-center gap-5 mb-4 p-4 rounded-2xl glass-card"
+                    className="flex items-center gap-5 mb-4 p-4 rounded-2xl portfolio-card"
                   >
                     <motion.div
                       whileHover={{ rotate: 5, scale: 1.05 }}
-                      className="w-16 h-16 rounded-xl bg-white p-2 border border-gray-200 flex items-center justify-center shrink-0 group-hover:border-neon-cyan/40 transition-all duration-300"
+                      className={`w-16 h-16 rounded-xl bg-surface/80 p-2 border border-neon-cyan/10 flex items-center justify-center shrink-0 group-hover:border-neon-cyan/30 transition-all duration-300`}
                     >
                       <img src={company.logo} alt={company.name} className="w-12 h-12 object-contain" />
                     </motion.div>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-3 flex-wrap">
                         <h2 className="text-2xl font-bold text-text-primary group-hover:text-neon-cyan transition-colors">{company.name}</h2>
+                        <span className={`inline-block text-[10px] font-semibold px-2.5 py-0.5 rounded-full ${getIndustryBadge(company.industry)}`}>{company.industry}</span>
                         <svg className="w-5 h-5 text-neon-cyan opacity-0 group-hover:opacity-100 transition-all group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                       </div>
-                      <p className="text-sm text-electric-violet">{company.industry} — {company.location}</p>
+                      <p className="text-sm text-text-muted">{company.location}</p>
                     </div>
                     <div className="hidden sm:flex items-center gap-3">
                       <span className="text-neon-cyan font-bold text-lg">{company.results.metric}</span>
-                      <span className="text-xs text-text-muted bg-surface/50 px-3 py-1 rounded-full border border-electric-violet/10 whitespace-nowrap">
+                      <span className="text-xs text-text-muted bg-surface/50 px-3 py-1 rounded-full border border-neon-cyan/10 whitespace-nowrap">
                         {company.projects.length} projects
                       </span>
                     </div>
                   </motion.div>
                 </Link>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-8">
                   {company.projects.slice(0, 3).map((project, i) => (
                     <motion.div key={i}
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.4, delay: i * 0.08 }}
-                      whileHover={{ y: -6, scale: 1.02 }}
-                      className="group relative rounded-2xl p-5 glass-card overflow-hidden"
+                      whileHover={{ y: -8, scale: 1.03 }}
+                      className="group relative rounded-2xl p-5 portfolio-card card-hover-premium overflow-hidden cursor-pointer"
                     >
-                      <motion.div className="absolute inset-0 bg-gradient-to-br from-neon-cyan/5 via-transparent to-electric-violet/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                      <div className="relative">
-                        <div className="rounded-lg overflow-hidden mb-3 bg-surface/30 border border-electric-violet/5">
-                          <img src={project.image} alt={project.service} className="w-full h-28 object-cover group-hover:scale-105 transition-transform duration-500" />
+                      <motion.div
+                        className="absolute inset-0 bg-gradient-to-br from-neon-cyan/8 via-transparent to-electric-violet/8 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                        style={{ background: 'linear-gradient(135deg, rgba(69,229,192,0.08) 0%, transparent 40%, rgba(167,139,250,0.08) 100%)' }}
+                      />
+                      <motion.div
+                        className="absolute -top-12 -right-12 w-24 h-24 bg-ai-cyan/5 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+                      />
+                      <div className="relative z-10">
+                        <div className="rounded-lg overflow-hidden mb-3 bg-surface/30 border border-neon-cyan/5 group-hover:border-ai-cyan/15 transition-all duration-500">
+                          <img src={project.image} alt={project.service} className="w-full h-28 object-cover group-hover:scale-110 transition-transform duration-700" />
                         </div>
-                        <motion.span
-                          whileHover={{ scale: 1.05 }}
-                          className="inline-block text-xs font-semibold bg-electric-violet/20 text-electric-violet px-3 py-1 rounded-full mb-3"
-                        >
-                          {project.service}
-                        </motion.span>
+                        <div className="flex items-center gap-2 flex-wrap mb-3">
+                          <motion.span
+                            whileHover={{ scale: 1.05 }}
+                            className={`inline-block text-xs font-semibold px-3 py-1 rounded-full ${getIndustryBadge(project.service)}`}
+                          >
+                            {project.service}
+                          </motion.span>
+                          <span className="ai-badge">AI Enhanced</span>
+                        </div>
                         <p className="text-text-primary text-sm mb-3 leading-relaxed line-clamp-2 group-hover:text-neon-cyan transition-colors">{project.description}</p>
-                        <div className="flex items-start gap-2 pt-3 border-t border-electric-violet/10">
-                          <svg className="w-4 h-4 mt-0.5 shrink-0 text-neon-cyan" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <div className="flex items-start gap-2 pt-3 border-t border-neon-cyan/10 group-hover:border-ai-cyan/15 transition-all duration-300">
+                          <svg className="w-4 h-4 mt-0.5 shrink-0 text-neon-cyan group-hover:text-ai-cyan transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                             <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/>
                           </svg>
-                          <p className="text-xs text-neon-cyan leading-relaxed line-clamp-2">{project.outcome}</p>
+                          <p className="text-xs text-neon-cyan group-hover:text-ai-cyan leading-relaxed line-clamp-2 transition-colors">{project.outcome}</p>
                         </div>
                       </div>
                     </motion.div>

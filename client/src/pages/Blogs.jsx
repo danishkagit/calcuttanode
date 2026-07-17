@@ -50,7 +50,7 @@ export default function Blogs() {
                 onClick={() => setCategory(cat)}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
                   category === cat
-                    ? 'bg-neon-cyan text-black shadow-lg shadow-neon-cyan/30 scale-105'
+                    ? 'bg-neon-cyan text-white shadow-lg shadow-neon-cyan/30 scale-105'
                     : 'bg-surface/50 text-text-muted border border-electric-violet/20 hover:border-neon-cyan/40'
                 }`}
               >

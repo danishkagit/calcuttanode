@@ -7,15 +7,17 @@ import cors from 'cors';
 import helmet from 'helmet';
 import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
-import rateLimit from 'express-rate-limit';
+import { authLimiter, apiLimiter } from './middleware/rateLimiter.js';
 
 dotenv.config();
 
 if (!process.env.JWT_SECRET) {
-  process.env.JWT_SECRET = 'uXKNLJoa1nQW9zVsItBbOdAHZmrE4p8MG32cYyU70f6qR5TjkiSxvCwhDgePlF';
+  console.error('FATAL: JWT_SECRET environment variable is not set.');
+  process.exit(1);
 }
 if (!process.env.JWT_REFRESH_SECRET) {
-  process.env.JWT_REFRESH_SECRET = 'SFcQHAUJi1rj4NMB0XLG2mso7Ohbvqx85EZtTp9wdlfayuDIRnC36WkVzKPegY';
+  console.error('FATAL: JWT_REFRESH_SECRET environment variable is not set.');
+  process.exit(1);
 }
 if (!process.env.OPENCODE_ZEN_KEY) {
   console.warn('WARNING: OPENCODE_ZEN_KEY not set. AI chat will not work. Set it in Render dashboard.');
@@ -33,11 +35,10 @@ const allowedOrigins = [
 ].filter(Boolean);
 app.use(cors({ origin: allowedOrigins, credentials: true }));
 app.use(express.json());
-app.use(cookieParser());
+app.use(cookieParser(process.env.COOKIE_SECRET));
 
-const limiter = rateLimit({ windowMs: 15 * 60 * 1000, max: 100 });
-app.use('/api/auth', limiter);
-app.use('/api/payments', limiter);
+app.use('/api/', apiLimiter);
+app.use('/api/auth/login', authLimiter);
 
 import authRoutes from './routes/authRoutes.js';
 import blogRoutes from './routes/blogRoutes.js';

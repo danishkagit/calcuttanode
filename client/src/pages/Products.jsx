@@ -51,7 +51,7 @@ export default function Products() {
           {message && (
             <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}
               className={`mb-8 p-4 rounded-xl text-sm font-medium flex items-center gap-2 ${
-                message.type === 'success' ? 'bg-green-500/20 text-green-400 border border-green-500/30' : 'bg-red-500/20 text-red-400 border border-red-500/30'
+                message.type === 'success' ? 'bg-neon-cyan/20 text-neon-cyan border border-neon-cyan/30' : 'bg-red-500/20 text-red-400 border border-red-500/30'
               }`}
             >
               <span>{message.type === 'success' ? '✅' : '⚠️'}</span>
@@ -70,7 +70,7 @@ export default function Products() {
               onClick={() => setFilter(cat)}
               className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-200 flex items-center gap-1.5 ${
                 filter === cat
-                  ? 'bg-neon-cyan text-black shadow-lg shadow-neon-cyan/30 scale-105'
+                  ? 'bg-neon-cyan text-white shadow-lg shadow-neon-cyan/30 scale-105'
                   : 'bg-surface/50 text-text-muted border border-electric-violet/20 hover:border-neon-cyan/40'
               }`}
             >
