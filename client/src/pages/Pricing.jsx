@@ -1,16 +1,27 @@
 import { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import ParticleField from '../components/common/ParticleField';
 import api from '../utils/api';
 
-const icons = {
-  'Remote Support': '💻',
-  'Data Recovery': '💾',
+const categoryIcons = {
   'Website Development': '🌐',
   'App Development': '📱',
+  'Marketing': '📈',
   'Design': '🎨',
-  'Marketing': '📢',
+  'Remote Support': '💻',
   'Troubleshooting': '🔧',
+  'Data Recovery': '💾',
+};
+
+const categoryDesc = {
+  'Website Development': 'Responsive sites, e-commerce stores, and full-stack web applications',
+  'App Development': 'Cross-platform mobile apps for Android & iOS',
+  'Marketing': 'SEO, performance marketing, and digital growth strategies',
+  'Design': 'UI/UX, brand identity, and graphic design',
+  'Remote Support': 'On-demand IT support for PC, network, and system issues',
+  'Troubleshooting': 'OS, gaming, and network diagnostics',
+  'Data Recovery': 'File recovery from HDD, SSD, and NVMe drives',
 };
 
 const aiAddonCategories = ['Website Development', 'App Development', 'Design', 'Marketing'];
@@ -18,7 +29,7 @@ const aiAddonCategories = ['Website Development', 'App Development', 'Design', '
 const aiFeatures = {
   'Website Development': ['AI content generation', 'Smart SEO suggestions', 'Automated accessibility audit', 'AI chatbot integration'],
   'App Development': ['AI-powered analytics', 'Smart push notifications', 'Automated testing pipeline', 'ML-based user insights'],
-  'Design': ['AI-generated design variants', 'Auto color palette extraction', 'Smart layout optimization', 'Image upscaling & enhancement'],
+  'Design': ['AI-generated design variants', 'Auto color palette extraction', 'Smart layout optimization', 'Image upscaling'],
   'Marketing': ['AI ad copy generation', 'Predictive campaign analytics', 'Automated audience segmentation', 'Smart bid optimization'],
 };
 
@@ -47,26 +58,53 @@ export default function Pricing() {
           <p className="text-text-muted text-lg">Fixed rates, no surprises. Pick a plan that fits your needs.</p>
         </motion.div>
 
+        {/* Category Overview Grid */}
         <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
-          className="flex flex-wrap justify-center gap-2 mb-12"
+          className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-10"
+        >
+          {Object.entries(categoryIcons).map(([cat, icon], i) => {
+            const count = servicesList.filter((s) => s.category === cat).length;
+            return (
+              <motion.button key={cat} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.15 + i * 0.04 }}
+                whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
+                onClick={() => setFilter(cat)}
+                className={`p-3 rounded-xl text-left border transition-all duration-200 ${
+                  filter === cat
+                    ? 'bg-neon-cyan/10 border-neon-cyan/40 shadow-lg shadow-neon-cyan/10'
+                    : 'bg-surface/30 border-electric-violet/10 hover:border-neon-cyan/20 hover:bg-surface/50'
+                }`}
+              >
+                <div className="flex items-center gap-2">
+                  <span className="text-xl">{icon}</span>
+                  <div className="min-w-0">
+                    <span className="text-sm font-medium text-text-primary block truncate">{cat}</span>
+                    <span className="text-xs text-text-muted">{count} service{count !== 1 ? 's' : ''}</span>
+                  </div>
+                </div>
+              </motion.button>
+            );
+          })}
+        </motion.div>
+
+        {/* Category Filter Pills */}
+        <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
+          className="flex flex-wrap justify-center gap-2 mb-10"
         >
           {categories.map((cat) => (
-            <motion.button key={cat}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => setFilter(cat)}
-              className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-200 flex items-center gap-1.5 ${
+            <motion.button key={cat} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} onClick={() => setFilter(cat)}
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 flex items-center gap-1.5 ${
                 filter === cat
                   ? 'bg-neon-cyan text-white shadow-lg shadow-neon-cyan/30 scale-105'
                   : 'bg-surface/50 text-text-muted border border-electric-violet/20 hover:border-neon-cyan/40'
               }`}
             >
-              {cat !== 'All' && <span>{icons[cat] || '📋'}</span>}
+              {cat !== 'All' && <span>{categoryIcons[cat] || '📋'}</span>}
               {cat}
             </motion.button>
           ))}
         </motion.div>
 
+        {/* Services Grid */}
         <AnimatePresence mode="wait">
           <motion.div key={filter} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.3 }}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
@@ -77,53 +115,36 @@ export default function Pricing() {
               const aiFeatureList = aiFeatures[service.category] || [];
               return (
                 <motion.div key={service._id} layout initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: i * 0.06 }}
-                  onMouseEnter={() => setHoveredId(service._id)}
-                  onMouseLeave={() => setHoveredId(null)}
+                  onMouseEnter={() => setHoveredId(service._id)} onMouseLeave={() => setHoveredId(null)}
                   whileHover={{ y: -8 }}
-                  className={`relative group rounded-2xl p-6 glass-card-premium card-hover-premium overflow-hidden ${
-                    isTrending
-                      ? 'border-neon-cyan/40 shadow-lg shadow-neon-cyan/10'
-                      : ''
+                  className={`relative group rounded-2xl p-6 glass-card-premium overflow-hidden ${
+                    isTrending ? 'border-neon-cyan/40 shadow-lg shadow-neon-cyan/10' : ''
                   } ${hasAiAddon ? 'ring-1 ring-ai-cyan/10' : ''}`}
                 >
-                  <motion.div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                     style={{ background: 'linear-gradient(135deg, rgba(69,229,192,0.06) 0%, transparent 40%, rgba(167,139,250,0.06) 100%)' }}
-                  />
-                  <motion.div
-                    className="absolute -top-16 -right-16 w-32 h-32 bg-ai-cyan/5 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
                   />
                   <div className="relative z-10">
                     {isTrending && (
-                      <motion.span
-                        animate={{ y: [0, -2, 0] }}
-                        transition={{ repeat: Infinity, duration: 2 }}
+                      <motion.span animate={{ y: [0, -2, 0] }} transition={{ repeat: Infinity, duration: 2 }}
                         className="absolute -top-3 left-1/2 -translate-x-1/2 bg-neon-cyan text-white text-xs font-bold px-4 py-1 rounded-full shadow-lg shadow-neon-cyan/30 z-10"
-                      >
-                        🔥 Trending
-                      </motion.span>
+                      >🔥 Trending</motion.span>
                     )}
                     <div className="flex items-center gap-3 mb-4">
-                      <motion.span
-                        animate={hoveredId === service._id ? { rotate: [0, -15, 15, 0] } : {}}
-                        transition={{ duration: 0.4 }}
-                        className="text-2xl"
-                      >
-                        {icons[service.category] || '📋'}
+                      <motion.span animate={hoveredId === service._id ? { rotate: [0, -15, 15, 0] } : {}} transition={{ duration: 0.4 }} className="text-2xl">
+                        {categoryIcons[service.category] || '📋'}
                       </motion.span>
                       <span className="text-xs uppercase tracking-wider text-text-muted">{service.category}</span>
                     </div>
                     <h3 className="text-text-primary font-semibold mb-1 group-hover:text-neon-cyan transition-colors">{service.name}</h3>
+                    <p className="text-xs text-text-muted/60 mb-4">{categoryDesc[service.category] || ''}</p>
                     <div className="flex items-baseline gap-1 mb-4">
                       <span className={`text-3xl font-bold ${isTrending ? 'text-neon-cyan' : 'text-text-primary'}`}>₹{service.price}</span>
                       <span className="text-text-muted text-sm">one-time</span>
                     </div>
                     <ul className="space-y-2.5 mb-4">
                       {service.features.map((f, j) => (
-                        <motion.li key={j}
-                          initial={{ opacity: 0, x: -10 }}
-                          whileInView={{ opacity: 1, x: 0 }}
-                          viewport={{ once: true }}
-                          transition={{ delay: j * 0.05 }}
+                        <motion.li key={j} initial={{ opacity: 0, x: -10 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: j * 0.05 }}
                           className="text-text-muted text-sm flex items-start gap-2"
                         >
                           <svg className="w-4 h-4 mt-0.5 shrink-0 text-electric-violet" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -134,11 +155,8 @@ export default function Pricing() {
                       ))}
                     </ul>
                     {hasAiAddon && (
-                      <motion.div
-                        initial={{ opacity: 0, y: 8 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="mb-4 p-3 rounded-xl bg-ai-gradient-subtle border border-ai-cyan/15 animate-ai-glow"
+                      <motion.div initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+                        className="mb-4 p-3 rounded-xl bg-ai-gradient-subtle border border-ai-cyan/15"
                       >
                         <div className="flex items-center gap-1.5 mb-2">
                           <span className="text-xs">🤖</span>
@@ -148,27 +166,28 @@ export default function Pricing() {
                         <ul className="space-y-1">
                           {aiFeatureList.map((af, k) => (
                             <li key={k} className="text-xs text-text-muted flex items-start gap-1.5">
-                              <svg className="w-3 h-3 mt-0.5 shrink-0 text-ai-cyan" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                                <polyline points="20 6 9 17 4 12"/>
-                              </svg>
+                              <svg className="w-3 h-3 mt-0.5 shrink-0 text-ai-cyan" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="20 6 9 17 4 12"/></svg>
                               {af}
                             </li>
                           ))}
                         </ul>
                       </motion.div>
                     )}
-                    <motion.a href="/contact"
-                      whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}
+                    <motion.a href="/contact" whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}
                       className="block text-center w-full py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 bg-brand-gradient text-white hover:opacity-90 shadow-md hover:shadow-lg"
-                    >
-                      Book Now
-                    </motion.a>
+                    >Book Now</motion.a>
                   </div>
                 </motion.div>
               );
             })}
           </motion.div>
         </AnimatePresence>
+
+        {servicesList.length === 0 && (
+          <div className="text-center py-16">
+            <div className="w-8 h-8 border-2 border-neon-cyan border-t-transparent rounded-full animate-spin mx-auto" />
+          </div>
+        )}
       </div>
     </div>
   );
