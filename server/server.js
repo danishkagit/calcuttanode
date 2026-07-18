@@ -22,8 +22,7 @@ if (!process.env.JWT_REFRESH_SECRET) {
   process.exit(1);
 }
 if (!process.env.COOKIE_SECRET) {
-  console.error('FATAL: COOKIE_SECRET environment variable is not set.');
-  process.exit(1);
+  console.warn('WARNING: COOKIE_SECRET not set. Cookie signing disabled. Set it in Render dashboard for production.');
 }
 if (!process.env.OPENCODE_ZEN_KEY) {
   console.warn('WARNING: OPENCODE_ZEN_KEY not set. AI chat will not work. Set it in Render dashboard.');
