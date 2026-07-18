@@ -7,7 +7,7 @@ const fadeUp = { initial: { opacity: 0, y: 30 }, whileInView: { opacity: 1, y: 0
 
 const features = [
   { icon: '📱', title: 'Browse Services', desc: 'Explore all IT services, website packages, and digital products with real-time pricing.' },
-  { icon: '🤖', title: 'AI Chat Assistant', desc: 'Get instant answers from 7+ free AI models — ChatGPT, Claude, Gemini, DeepSeek, MiMo, North, Nemotron, and more.' },
+  { icon: '🤖', title: 'AI Chat Assistant', desc: 'Get instant answers from 6 free AI models — DeepSeek, MiMo, North, Nemotron, Hy3, Big Pickle & auto-fallback.' },
   { icon: '📦', title: 'Digital Products', desc: 'Purchase templates, scripts, and tools directly from your phone.' },
   { icon: '📋', title: 'Track Orders', desc: 'Monitor your service requests and order status in real time.' },
   { icon: '💳', title: 'Secure Payments', desc: 'Pay via Razorpay, UPI, or bank transfer — all within the app.' },
@@ -154,9 +154,9 @@ export default function MobileApp() {
       <motion.div {...fadeUp} className="max-w-4xl mx-auto px-4 mb-8">
         <div className="grid grid-cols-3 gap-4 p-4 rounded-2xl glass-card">
           {[
-            { value: '4', label: 'Free AI Models' },
-            { value: '6', label: 'Service Categories' },
-            { value: '99%', label: 'Uptime' },
+            { value: 'AI', label: 'Chat Support' },
+            { value: '📦', label: 'Service Categories' },
+            { value: '⚡', label: 'Fast Delivery' },
           ].map((s) => (
             <div key={s.label} className="text-center">
               <div className="text-xl md:text-2xl font-bold bg-gradient-to-r from-neon-cyan to-electric-violet bg-clip-text text-transparent">{s.value}</div>

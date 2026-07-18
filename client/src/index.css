@@ -434,13 +434,25 @@ body {
   section:first-of-type { border-top: none; }
 }
 @media (hover: none) and (pointer: coarse) {
-  .hover\:scale-105:hover { transform: none; }
-  .hover\:-translate-y-1:hover { transform: none; }
-  .group-hover\:text-neon-cyan:hover { color: inherit; }
+  .hover\:scale-105:hover, .hover\:scale-102:hover, .card-hover-premium:hover { transform: none !important; }
+  .hover\:-translate-y-1:hover, .hover\:-translate-y-2:hover, .hover\:-translate-y-3:hover,
+  .hover\:-translate-y-4:hover, .hover\:-translate-y-6:hover, .hover\:-translate-y-8:hover { transform: none !important; }
+  .group-hover\:text-neon-cyan:hover, .group-hover\:opacity-100:hover { color: inherit; }
   button, a, [role="button"] { min-height: 44px; display: inline-flex; align-items: center; justify-content: center; }
 }
 @media (max-width: 640px) {
   button, a, [role="button"] { min-height: 44px; }
+  /* Ensure no horizontal overflow on small screens */
+  .grid { margin-left: 0; margin-right: 0; }
+  img { max-width: 100%; height: auto; }
+  /* Fix scrollable chat containers to account for fixed bottom nav */
+  [class*="overflow-y-auto"] { -webkit-overflow-scrolling: touch; }
+  /* Prevent images from causing overflow on small screens */
+  img { max-width: 100%; height: auto; }
+  /* Fix scrollable containers for mobile */
+  [class*="overflow-y-auto"] { -webkit-overflow-scrolling: touch; }
+  /* Ensure grid items don't overflow container */
+  .grid > * { min-width: 0; }
 }
 
 /* Safe area for modern mobile browsers */

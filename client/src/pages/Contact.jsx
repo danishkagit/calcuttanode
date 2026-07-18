@@ -104,9 +104,9 @@ export default function Contact() {
             </motion.div>
             <div className="flex-1 text-center sm:text-left">
               <h3 className="text-text-primary font-bold text-base">Try AI Chat First — Get Instant Answers</h3>
-              <p className="text-text-muted text-xs mt-0.5">Our AI assistant handles 80% of inquiries instantly. For complex issues, human experts are just a message away.</p>
+              <p className="text-text-muted text-xs mt-0.5">Our AI assistant can help answer your questions instantly. For complex issues, human experts are just a message away.</p>
             </div>
-            <a href="/chat"
+            <a href="/ai"
               className="inline-flex items-center gap-2 bg-ai-gradient text-white px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 hover:shadow-lg hover:shadow-ai-cyan/20 shrink-0"
             >
               <span>⚡</span>

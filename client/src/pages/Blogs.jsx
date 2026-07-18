@@ -4,6 +4,11 @@ import { motion, AnimatePresence } from 'framer-motion';
 import api from '../utils/api';
 import ParticleField from '../components/common/ParticleField';
 
+function readingTime(content) {
+  const minutes = Math.ceil(content.trim().split(/\s+/).length / 200);
+  return `${minutes} min read`;
+}
+
 export default function Blogs() {
   const [blogs, setBlogs] = useState([]);
   const [query, setQuery] = useState('');
@@ -86,23 +91,43 @@ export default function Blogs() {
               {filtered.map((blog, i) => (
                 <motion.div key={blog._id} layout initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: i * 0.06 }}>
                   <Link to={`/blogs/${blog.slug}`}
-                    className="block glass-card rounded-xl p-6 group h-full relative overflow-hidden"
+                    className="block glass-card rounded-xl overflow-hidden group h-full relative"
                   >
-                    <motion.div className="absolute inset-0 bg-gradient-to-br from-neon-cyan/5 via-transparent to-electric-violet/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    <div className="relative">
-                      <div className="flex items-center gap-2 mb-3">
-                        <span className="text-xs bg-electric-violet/20 text-electric-violet px-2 py-1 rounded">{blog.category}</span>
-                        <span className="text-xs text-text-muted flex items-center gap-1">
-                          <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-                          {blog.views}
-                        </span>
+                    {blog.coverImage && (
+                      <div className="h-48 overflow-hidden">
+                        <img
+                          src={blog.coverImage}
+                          alt={blog.title}
+                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                          loading="lazy"
+                        />
                       </div>
-                      <h2 className="text-text-primary font-semibold mb-2 group-hover:text-neon-cyan transition-colors">{blog.title}</h2>
-                      <p className="text-text-muted text-sm leading-relaxed">{excerpt(blog.content)}</p>
-                      <div className="flex flex-wrap gap-1 mt-3">
-                        {blog.tags?.slice(0, 3).map((tag) => (
-                          <span key={tag} className="text-xs text-text-muted bg-white/5 px-1.5 py-0.5 rounded">#{tag}</span>
-                        ))}
+                    )}
+                    <div className="p-6 relative">
+                      <motion.div className="absolute inset-0 bg-gradient-to-br from-neon-cyan/5 via-transparent to-electric-violet/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      <div className="relative">
+                        <div className="flex items-center gap-2 mb-3">
+                          <span className="text-xs bg-electric-violet/20 text-electric-violet px-2 py-1 rounded">{blog.category}</span>
+                          <span className="text-xs text-text-muted flex items-center gap-1">
+                            <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                            {blog.views}
+                          </span>
+                          <span className="text-xs text-text-muted flex items-center gap-1">
+                            <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            {readingTime(blog.content)}
+                          </span>
+                        </div>
+                        <h2 className="text-text-primary font-semibold mb-2 group-hover:text-neon-cyan transition-colors">{blog.title}</h2>
+                        <p className="text-text-muted text-sm leading-relaxed">{excerpt(blog.content)}</p>
+                        <div className="flex items-center justify-between mt-4">
+                          <div className="flex items-center gap-2">
+                            <div className="w-6 h-6 rounded-full bg-gradient-to-br from-neon-cyan to-electric-violet flex items-center justify-center text-white text-[8px] font-bold">
+                              {blog.author?.charAt(0) || 'C'}
+                            </div>
+                            <span className="text-xs text-text-muted">{blog.author || 'Calcutta Node'}</span>
+                          </div>
+                          <span className="text-xs text-text-muted/60">{new Date(blog.createdAt).toLocaleDateString('en-IN', { day: 'numeric', month: 'short' })}</span>
+                        </div>
                       </div>
                     </div>
                   </Link>

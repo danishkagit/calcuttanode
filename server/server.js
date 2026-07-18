@@ -1,13 +1,15 @@
 import express from 'express';
-import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import helmet from 'helmet';
 import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
+import { fileURLToPath } from 'url';
+import path from 'path';
 import { authLimiter, apiLimiter } from './middleware/rateLimiter.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 dotenv.config();
 
@@ -17,6 +19,10 @@ if (!process.env.JWT_SECRET) {
 }
 if (!process.env.JWT_REFRESH_SECRET) {
   console.error('FATAL: JWT_REFRESH_SECRET environment variable is not set.');
+  process.exit(1);
+}
+if (!process.env.COOKIE_SECRET) {
+  console.error('FATAL: COOKIE_SECRET environment variable is not set.');
   process.exit(1);
 }
 if (!process.env.OPENCODE_ZEN_KEY) {
@@ -32,13 +38,13 @@ const allowedOrigins = [
   'http://localhost:5173',
   'http://localhost:3000',
   'https://calcuttanode.vercel.app',
+  'https://danishkagit.github.io',
 ].filter(Boolean);
 app.use(cors({ origin: allowedOrigins, credentials: true }));
 app.use(express.json());
 app.use(cookieParser(process.env.COOKIE_SECRET));
 
 app.use('/api/', apiLimiter);
-app.use('/api/auth/login', authLimiter);
 
 import authRoutes from './routes/authRoutes.js';
 import blogRoutes from './routes/blogRoutes.js';
@@ -74,8 +80,6 @@ app.use('/api/admin', adminRoutes);
 app.use('/api/notifications', notificationRoutes);
 app.use('/api/ai', aiRoutes);
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-
 const APK_DOWNLOAD_URL = 'https://github.com/danishkagit/calcuttanode/releases/download/v1.0.0/calcuttanode-app.apk';
 
 app.get('/api/app/download/android', (req, res) => {
@@ -84,6 +88,15 @@ app.get('/api/app/download/android', (req, res) => {
 
 app.get('/sitemap.xml', (req, res) => {
   res.redirect(301, 'https://calcuttanode-api.onrender.com/api/seo/sitemap');
+});
+
+app.get('/api/resume/download', (req, res) => {
+  const resumePath = path.resolve(__dirname, '..', 'Resume.md');
+  res.download(resumePath, 'Danish_Shoaib_Resume.md', (err) => {
+    if (err) {
+      res.status(404).json({ message: 'Resume not found' });
+    }
+  });
 });
 
 app.get('/api/health', (req, res) => {

@@ -5,7 +5,7 @@ import Transaction from '../models/Transaction.js';
 
 export const getPlans = async (req, res) => {
   try {
-    const plans = await SubscriptionPlan.find({ isActive: true }).sort({ price: 1 });
+    const plans = await SubscriptionPlan.find({ isActive: true }).sort({ popularity: -1, price: 1 });
     res.json(plans);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -35,6 +35,7 @@ export const subscribe = async (req, res) => {
       autoRenew: true,
     });
     await User.findByIdAndUpdate(req.user._id, { $inc: { walletBalance: -plan.price } });
+    await SubscriptionPlan.findByIdAndUpdate(plan._id, { $inc: { popularity: 1 } });
     await Transaction.create({
       userId: req.user._id,
       amount: plan.price,

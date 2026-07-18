@@ -9,6 +9,7 @@ const planSchema = new mongoose.Schema({
   features: [{ type: String }],
   isActive: { type: Boolean, default: true },
   badge: { type: String },
+  popularity: { type: Number, default: 0 },
 }, { timestamps: true });
 
 export default mongoose.model('SubscriptionPlan', planSchema);

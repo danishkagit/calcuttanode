@@ -7,8 +7,8 @@ Digital Marketing | AI Prompt Engineer | Freelance social media & Content Specia
 
 ## C A R E E R O B J E C T I V E
 
-Results-oriented professional with 4+ years of combined experience in freelance digital marketing, social media
-management, and retail pharmacy ownership. Skilled in leveraging AI tools and prompt engineering techniques
+Results-oriented professional with combined experience in freelance digital marketing, social media
+management, and retail pharmacy ownership since 2020. Skilled in leveraging AI tools and prompt engineering techniques
 (ChatGPT, Claude, Gemini) to produce high-quality content, automate tasks, and enhance marketing output.
 Certified in Digital Marketing from Tech Mahindra Foundation. Currently pursuing D.Pharm (2026) alongside a
 Data Analytics course. Seeking roles in digital marketing, AI-assisted content creation, customer support, or BPO

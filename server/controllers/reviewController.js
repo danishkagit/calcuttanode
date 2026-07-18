@@ -5,8 +5,8 @@ import Notification from '../models/Notification.js';
 export const createReview = async (req, res) => {
   try {
     const { serviceName, rating, comment } = req.body;
-    const serviceId = typeof req.body.serviceId === 'string' ? req.body.serviceId : String(req.body.serviceId);
-    const orderId = typeof req.body.orderId === 'string' ? req.body.orderId : String(req.body.orderId);
+    const serviceId = String(req.body.serviceId);
+    const orderId = String(req.body.orderId);
     const order = await Order.findOne({ _id: orderId, userId: req.user._id });
     if (!order) {
       return res.status(400).json({ message: 'Order not found' });
@@ -14,7 +14,7 @@ export const createReview = async (req, res) => {
     if (order.status !== 'completed') {
       return res.status(400).json({ message: 'Can only review completed orders' });
     }
-    const existing = await Review.findOne({ userId: req.user._id, serviceId: typeof serviceId === 'string' ? serviceId : String(serviceId) });
+    const existing = await Review.findOne({ userId: req.user._id, serviceId });
     if (existing) {
       return res.status(400).json({ message: 'You already reviewed this service' });
     }

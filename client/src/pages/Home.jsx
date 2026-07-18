@@ -9,10 +9,10 @@ import logo from '../assets/logo.png';
 const fadeUp = { initial: { opacity: 0, y: 30 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, margin: '-50px' }, transition: { duration: 0.5 } };
 
 const stats = [
-  { value: '22+', label: 'Case Studies', icon: 'M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2' },
-  { value: '36+', label: 'Projects', icon: 'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2' },
+  { value: '✓', label: 'Building client success stories', icon: 'M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2' },
+  { value: '→', label: 'Ready to help you grow', icon: 'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2' },
   { value: '8', label: 'Service Categories', icon: 'M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6z' },
-  { value: '99%', label: 'Satisfaction', icon: 'M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5' },
+  { value: '★', label: 'Client-first approach', icon: 'M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5' },
 ];
 
 const categoryIcons = {
@@ -85,7 +85,7 @@ export default function Home() {
             transition={{ repeat: Infinity, duration: 2.5 }}
             className="inline-block text-xs font-semibold text-electric-violet bg-electric-violet/15 px-4 py-1.5 rounded-full mb-5 border border-electric-violet/30 shadow-lg shadow-electric-violet/10"
           >
-            🤖 AI-Powered Digital Growth Partner Since 2023
+            🚀 Digital Growth Partner
           </motion.span>
           <motion.div
             animate={{ y: [0, -8, 0] }}
@@ -102,7 +102,7 @@ export default function Home() {
             transition={{ delay: 0.2 }}
             className="text-lg md:text-xl text-transparent bg-clip-text bg-gradient-to-r from-text-primary to-neon-cyan font-medium mb-3"
           >
-            AI-First Digital Growth. Delivered Instantly. Anywhere.
+            Digital Growth. Delivered Instantly. Anywhere.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 10 }}
@@ -162,9 +162,9 @@ export default function Home() {
       <motion.section className="py-16 px-4 relative" {...fadeUp}>
         <div className="max-w-5xl mx-auto">
           <motion.div className="text-center mb-10" {...fadeUp}>
-            <span className="text-sm font-medium text-neon-cyan bg-neon-cyan/10 px-4 py-1.5 rounded-full border border-neon-cyan/20">AI-Powered Showcase</span>
-            <h2 className="text-3xl font-bold text-text-primary mt-4">4 Free AI Models — One Chat</h2>
-            <p className="text-text-muted max-w-xl mx-auto mt-2">Pick a model or let auto-fallback choose the best one for your question. All free, all in one place.</p>
+            <span className="text-sm font-medium text-neon-cyan bg-neon-cyan/10 px-4 py-1.5 rounded-full border border-neon-cyan/20">Featured Models</span>
+            <h2 className="text-3xl font-bold text-text-primary mt-4">6 Free AI Models — One Chat</h2>
+            <p className="text-text-muted max-w-xl mx-auto mt-2">DeepSeek, MiMo, North, Nemotron, Hy3 & Big Pickle — pick one or let auto-fallback choose. All free, all in one place.</p>
           </motion.div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
@@ -244,7 +244,7 @@ export default function Home() {
       <motion.section className="py-16 px-4 relative" {...fadeUp}>
         <div className="max-w-4xl mx-auto">
           <motion.div className="text-center mb-10" {...fadeUp}>
-            <span className="text-sm font-medium text-neon-cyan bg-neon-cyan/10 px-4 py-1.5 rounded-full border border-neon-cyan/20">AI-Powered Speed Promise</span>
+            <span className="text-sm font-medium text-neon-cyan bg-neon-cyan/10 px-4 py-1.5 rounded-full border border-neon-cyan/20">Speed Promise</span>
             <h2 className="text-3xl font-bold text-text-primary mt-4">From Request to Delivery</h2>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
@@ -274,13 +274,13 @@ export default function Home() {
       <motion.section className="py-16 px-4 relative" {...fadeUp}>
         <div className="max-w-6xl mx-auto">
           <motion.div className="text-center mb-10" {...fadeUp}>
-            <span className="text-sm font-medium text-electric-violet bg-electric-violet/10 px-4 py-1.5 rounded-full border border-electric-violet/20">AI-Powered — What's New in 2026</span>
+            <span className="text-sm font-medium text-electric-violet bg-electric-violet/10 px-4 py-1.5 rounded-full border border-electric-violet/20">What's New in 2026</span>
             <h2 className="text-3xl md:text-4xl font-bold text-text-primary mt-4 mb-3">Your Digital Growth Partner for 2026</h2>
             <p className="text-text-muted max-w-2xl mx-auto">This year, we're expanding our services with AI-powered tools, enhanced remote support, and tailored packages for businesses of all sizes.</p>
           </motion.div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {[
-              { emoji: '🤖', title: 'AI-Powered Support', desc: 'Instant troubleshooting with our AI chat. Get answers 24/7 without waiting.' },
+              { emoji: '🤖', title: '24/7 Support', desc: 'Instant troubleshooting with our AI chat. Get answers 24/7 without waiting.' },
               { emoji: '🌐', title: 'Global Remote Service', desc: '100% remote delivery to any location worldwide. No barriers, no delays — just fast results.' },
               { emoji: '🏪', title: 'Local Business Packages', desc: 'Digital presence packages designed for small shops, clinics, and local enterprises.' },
               { emoji: '⚡', title: 'Same-Day Response', desc: 'Priority response within 4 hours for urgent IT issues. No more waiting days.' },
@@ -305,7 +305,7 @@ export default function Home() {
       <motion.section className="py-16 px-4 relative" {...fadeUp}>
         <div className="max-w-5xl mx-auto">
           <motion.div className="text-center mb-10" {...fadeUp}>
-            <span className="text-sm font-medium text-neon-cyan bg-neon-cyan/10 px-4 py-1.5 rounded-full border border-neon-cyan/20">AI-Powered — How It Works</span>
+            <span className="text-sm font-medium text-neon-cyan bg-neon-cyan/10 px-4 py-1.5 rounded-full border border-neon-cyan/20">How It Works</span>
             <h2 className="text-3xl font-bold text-text-primary mt-4">Getting Help is Easy</h2>
           </motion.div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -346,7 +346,7 @@ export default function Home() {
               <div className="w-8 h-8 rounded-full bg-brand-gradient flex items-center justify-center text-white text-sm font-bold">CN</div>
               <div>
                 <p className="text-text-primary text-sm font-semibold">Calcutta Node AI</p>
-                <p className="text-text-muted text-xs">AI-Powered · 4 Free Models</p>
+                <p className="text-text-muted text-xs">4 Free Models</p>
               </div>
               <span className="ml-auto flex items-center gap-1.5 text-xs text-neon-cyan">
                 <span className="w-2 h-2 rounded-full bg-neon-cyan animate-pulse" />
@@ -357,7 +357,7 @@ export default function Home() {
               <div className="flex gap-2 items-start">
                 <div className="w-6 h-6 rounded-full bg-electric-violet/20 flex items-center justify-center text-xs shrink-0 mt-0.5">🤖</div>
                 <div className="bg-electric-violet/10 rounded-2xl rounded-tl-sm px-3 py-2 text-sm text-text-primary max-w-[80%]">
-                  Hi! I'm Calcutta Node AI. Ask me about our services, pricing, tech support, or anything else. I'm powered by 4 free AI models!
+                   Hi! I'm Calcutta Node AI. Ask me about our services, pricing, tech support, or anything else. I can access 4 different AI models for your questions!
                 </div>
               </div>
               <div className="flex gap-2 items-start justify-end">
@@ -369,7 +369,7 @@ export default function Home() {
               <div className="flex gap-2 items-start">
                 <div className="w-6 h-6 rounded-full bg-electric-violet/20 flex items-center justify-center text-xs shrink-0 mt-0.5">🤖</div>
                 <div className="bg-electric-violet/10 rounded-2xl rounded-tl-sm px-3 py-2 text-sm text-text-primary max-w-[80%]">
-                  We offer AI-enhanced web development, mobile apps, remote IT support, SEO, digital marketing, UI/UX design, and more. All powered by AI for faster delivery! 🚀
+                   We offer web development, mobile apps, remote IT support, SEO, digital marketing, UI/UX design, and more. Let me know what you need! 🚀
                 </div>
               </div>
             </div>
@@ -445,35 +445,14 @@ export default function Home() {
         </section>
       ))}
 
-      <motion.section className="py-16 px-4 relative" {...fadeUp}>
-        <div className="max-w-3xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="relative rounded-2xl p-8 glass-section overflow-hidden"
-          >
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-48 h-1 bg-gradient-to-r from-transparent via-neon-cyan to-transparent" />
-            <svg className="w-8 h-8 text-neon-cyan/30 mb-4 mx-auto" viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10H14.017zM0 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151C7.546 6.068 5.983 8.789 5.983 11H10v10H0z"/></svg>
-            <p className="text-text-muted italic text-lg leading-relaxed mb-4">
-              "Calcutta Node. transformed our online presence. Professional service, quick turnaround, and exceptional support. Highly recommended for any business looking to grow digitally."
-            </p>
-            <div className="flex items-center justify-center gap-1 text-yellow-400 mb-3">
-              {[...Array(5)].map((_, i) => (
-                <svg key={i} className="w-5 h-5 animate-[pop_0.3s_ease-out] opacity-0" style={{ animationDelay: `${i * 0.1}s`, animationFillMode: 'forwards' }} viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              ))}
-            </div>
-            <p className="text-neon-cyan font-medium">— Danish Shoaib, Founder</p>
-          </motion.div>
-        </div>
-      </motion.section>
+
 
       <motion.section className="py-16 px-4 relative" {...fadeUp}>
         <div className="max-w-4xl mx-auto">
           <motion.div className="text-center mb-10" {...fadeUp}>
             <span className="text-sm font-medium text-neon-cyan bg-neon-cyan/10 px-4 py-1.5 rounded-full border border-neon-cyan/20">Meet the Founder</span>
-            <h2 className="text-3xl font-bold text-text-primary mt-4">Built by <span className="text-neon-cyan">Danish Shoaib</span></h2>
-            <p className="text-text-muted max-w-xl mx-auto mt-2">Founder of Calcutta Node. — a one-person army delivering IT solutions remotely worldwide.</p>
+            <h2 className="text-3xl font-bold text-text-primary mt-4">Founded by <span className="text-neon-cyan">Danish Shoaib</span></h2>
+            <p className="text-text-muted max-w-xl mx-auto mt-2">Founder of Calcutta Node. — delivering IT solutions remotely worldwide.</p>
           </motion.div>
           <motion.div className="glass-card p-8 rounded-2xl text-center" whileHover={{ y: -4 }}>
             <div className="w-24 h-24 rounded-full mx-auto mb-4 bg-gradient-to-br from-neon-cyan to-electric-violet p-0.5">
@@ -482,7 +461,7 @@ export default function Home() {
             <h3 className="text-xl font-bold text-text-primary">Danish Shoaib</h3>
             <p className="text-neon-cyan text-sm font-medium mb-3">Digital Marketing & AI Prompt Engineer | Founder @ Calcutta Node.</p>
             <p className="text-text-muted text-sm max-w-lg mx-auto mb-4">
-              4+ years of experience in digital marketing, AI prompt engineering, content creation, web development, and IT support. 
+              Experienced in digital marketing, AI prompt engineering, content creation, web development, and IT support. 
               Certified in Digital Marketing from Tech Mahindra Foundation. Currently pursuing D.Pharm (2026) and Data Analytics.
             </p>
             <div className="flex gap-4 justify-center">
@@ -523,15 +502,28 @@ export default function Home() {
                   transition={{ delay: i * 0.1 }}
                   whileHover={{ y: -4 }}
                 >
-                  <Link to={`/blogs/${blog.slug}`} className="block p-5 rounded-2xl glass-card h-full">
-                    <div className="flex items-center gap-2 mb-2">
-                      <span className="text-xs bg-electric-violet/10 text-electric-violet px-2 py-0.5 rounded-full">{blog.category || 'General'}</span>
-                      {blog.createdAt && (
-                        <span className="text-xs text-text-muted">{new Date(blog.createdAt).toLocaleDateString()}</span>
-                      )}
+                  <Link to={`/blogs/${blog.slug}`} className="block rounded-2xl glass-card h-full overflow-hidden">
+                    {blog.coverImage && (
+                      <div className="h-40 overflow-hidden">
+                        <img src={blog.coverImage} alt={blog.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
+                      </div>
+                    )}
+                    <div className="p-5">
+                      <div className="flex items-center gap-2 mb-2">
+                        <span className="text-xs bg-electric-violet/10 text-electric-violet px-2 py-0.5 rounded-full">{blog.category || 'General'}</span>
+                        {blog.createdAt && (
+                          <span className="text-xs text-text-muted">{new Date(blog.createdAt).toLocaleDateString('en-IN', { day: 'numeric', month: 'short' })}</span>
+                        )}
+                      </div>
+                      <h3 className="text-text-primary font-semibold text-sm mb-2 line-clamp-2">{blog.title}</h3>
+                      <p className="text-text-muted text-xs line-clamp-3 leading-relaxed">{blog.content?.replace(/<[^>]*>/g, '').slice(0, 120)}...</p>
+                      <div className="flex items-center gap-2 mt-3">
+                        <div className="w-5 h-5 rounded-full bg-gradient-to-br from-neon-cyan to-electric-violet flex items-center justify-center text-white text-[7px] font-bold">
+                          {blog.author?.charAt(0) || 'C'}
+                        </div>
+                        <span className="text-[11px] text-text-muted">{blog.author || 'Calcutta Node'}</span>
+                      </div>
                     </div>
-                    <h3 className="text-text-primary font-semibold text-sm mb-2 line-clamp-2">{blog.title}</h3>
-                    <p className="text-text-muted text-xs line-clamp-2">{blog.content?.replace(/<[^>]*>/g, '').slice(0, 100)}...</p>
                   </Link>
                 </motion.div>
               ))}
@@ -594,7 +586,7 @@ export default function Home() {
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(126,187,197,0.05)_0%,transparent_70%)]" />
           <motion.span className="inline-block text-4xl mb-4" animate={{ scale: [1, 1.15, 1], rotate: [0, 5, -5, 0] }} transition={{ repeat: Infinity, duration: 3 }}>🧠</motion.span>
           <h2 className="text-2xl font-bold text-text-primary mb-3 relative">Need quick help? Ask AI</h2>
-          <p className="text-text-muted mb-6 max-w-lg mx-auto relative">Get instant answers, troubleshooting, or recommendations from our AI assistant — powered by 4 free models. Available 24/7.</p>
+           <p className="text-text-muted mb-6 max-w-lg mx-auto relative">Get instant answers, troubleshooting, or recommendations from our AI assistant with access to 4 different models. Available 24/7.</p>
           <motion.a href="/ai" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
             className="inline-block bg-brand-gradient text-white px-8 py-3 rounded-xl font-medium transition-all duration-200 hover:shadow-xl hover:shadow-neon-cyan/30 relative"
           >
@@ -607,11 +599,7 @@ export default function Home() {
         <h2 className="text-2xl font-bold text-text-primary mb-4">Ready to grow your business?</h2>
         <p className="text-text-muted mb-8 max-w-xl mx-auto">Whether you need a website, IT support, or digital marketing — we're here to help your business succeed in 2026.</p>
         <div className="flex gap-4 justify-center flex-wrap">
-          <motion.a href="/work" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
-            className="bg-brand-gradient text-white px-8 py-3 rounded-xl font-medium transition-all duration-200 hover:shadow-xl hover:shadow-neon-cyan/30"
-          >
-            Our Work
-          </motion.a>
+
           <motion.a href="/pricing" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
             className="border border-neon-cyan text-neon-cyan px-8 py-3 rounded-xl font-medium transition-all duration-200 hover:bg-neon-cyan/10"
           >

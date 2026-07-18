@@ -11,6 +11,7 @@ const productSchema = new mongoose.Schema({
   features: [{ type: String }],
   isActive: { type: Boolean, default: true },
   salesCount: { type: Number, default: 0 },
+  originalPrice: { type: Number },
 }, { timestamps: true });
 
 export default mongoose.model('Product', productSchema);

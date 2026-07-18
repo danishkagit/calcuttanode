@@ -4,7 +4,7 @@ const transactionSchema = new mongoose.Schema({
   userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
   amount: { type: Number, required: true },
   type: { type: String, enum: ['credit', 'debit'], required: true },
-  method: { type: String, enum: ['upi', 'card', 'netbanking', 'bank_transfer'] },
+  method: { type: String, enum: ['upi', 'card', 'netbanking', 'bank_transfer', 'wallet', 'cash'] },
   status: { type: String, enum: ['pending', 'success', 'failed'], default: 'pending' },
   gatewayRefId: { type: String },
   description: { type: String },

@@ -15,8 +15,6 @@ const Courses = lazy(() => import('./pages/Courses'));
 const Pricing = lazy(() => import('./pages/Pricing'));
 const About = lazy(() => import('./pages/About'));
 const Contact = lazy(() => import('./pages/Contact'));
-const Work = lazy(() => import('./pages/Work'));
-const CaseStudy = lazy(() => import('./pages/CaseStudy'));
 const Login = lazy(() => import('./pages/Login'));
 const Register = lazy(() => import('./pages/Register'));
 const Dashboard = lazy(() => import('./pages/Dashboard'));
@@ -58,8 +56,6 @@ export default function App() {
             <Route path="/pricing" element={<AnimatedPage><Pricing /></AnimatedPage>} />
             <Route path="/about" element={<AnimatedPage><About /></AnimatedPage>} />
             <Route path="/contact" element={<AnimatedPage><Contact /></AnimatedPage>} />
-            <Route path="/work" element={<AnimatedPage><Work /></AnimatedPage>} />
-            <Route path="/work/:slug" element={<AnimatedPage><CaseStudy /></AnimatedPage>} />
             <Route path="/login" element={<AnimatedPage><Login /></AnimatedPage>} />
             <Route path="/register" element={<AnimatedPage><Register /></AnimatedPage>} />
             <Route path="/dashboard" element={<AnimatedPage><Dashboard /></AnimatedPage>} />

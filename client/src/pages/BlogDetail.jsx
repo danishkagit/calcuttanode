@@ -5,10 +5,27 @@ import ReactMarkdown from 'react-markdown';
 import api from '../utils/api';
 import ParticleField from '../components/common/ParticleField';
 
+function readingTime(content) {
+  const words = content.trim().split(/\s+/).length;
+  const minutes = Math.ceil(words / 200);
+  return `${minutes} min read`;
+}
+
 export default function BlogDetail() {
   const { slug } = useParams();
   const [blog, setBlog] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      setScrollProgress(docHeight > 0 ? Math.min((scrollTop / docHeight) * 100, 100) : 0);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   useEffect(() => {
     const fetch = async () => {
@@ -47,9 +64,17 @@ export default function BlogDetail() {
     </div>
   );
 
+  const readTime = readingTime(blog.content);
+  const formattedDate = new Date(blog.createdAt).toLocaleDateString('en-IN', { year: 'numeric', month: 'long', day: 'numeric' });
+
   return (
     <div className="relative min-h-screen">
       <ParticleField count={20} speed={0.1} />
+
+      <motion.div
+        className="fixed top-0 left-0 h-1 bg-gradient-to-r from-neon-cyan to-electric-violet z-50 transition-all duration-150"
+        style={{ width: `${scrollProgress}%` }}
+      />
 
       <motion.article className="relative z-10 max-w-4xl mx-auto px-4 py-12" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
         <motion.div whileHover={{ x: -2 }}>
@@ -59,13 +84,29 @@ export default function BlogDetail() {
           </Link>
         </motion.div>
 
+        {blog.coverImage && (
+          <motion.div
+            initial={{ opacity: 0, y: 20, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.05 }}
+            className="mb-8 rounded-2xl overflow-hidden shadow-2xl shadow-neon-cyan/10"
+          >
+            <img
+              src={blog.coverImage}
+              alt={blog.title}
+              className="w-full h-64 md:h-96 object-cover"
+              loading="eager"
+            />
+          </motion.div>
+        )}
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.1 }}
           className="glass-card rounded-2xl p-8"
         >
-          <div className="flex items-center gap-3 mb-4">
+          <div className="flex items-center gap-3 mb-4 flex-wrap">
             <motion.span
               whileHover={{ scale: 1.05 }}
               className="text-xs bg-electric-violet/20 text-electric-violet px-2 py-1 rounded"
@@ -75,6 +116,10 @@ export default function BlogDetail() {
             <span className="text-xs text-text-muted flex items-center gap-1">
               <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
               {blog.views} views
+            </span>
+            <span className="text-xs text-text-muted flex items-center gap-1">
+              <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              {readTime}
             </span>
           </div>
 
@@ -96,14 +141,16 @@ export default function BlogDetail() {
             <ReactMarkdown>{blog.content}</ReactMarkdown>
           </div>
 
-          <div className="border-t border-electric-violet/20 mt-8 pt-4 flex items-center justify-between text-sm text-text-muted">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-full bg-brand-gradient flex items-center justify-center text-white text-xs font-bold">
+          <div className="border-t border-electric-violet/20 mt-8 pt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-sm text-text-muted">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-neon-cyan to-electric-violet flex items-center justify-center text-white text-xs font-bold shadow-lg shadow-neon-cyan/20">
                 {blog.author?.charAt(0) || 'C'}
               </div>
-              <span>By <span className="text-neon-cyan">{blog.author}</span></span>
+              <div>
+                <p className="text-text-primary font-medium">By <span className="text-neon-cyan">{blog.author || 'Calcutta Node'}</span></p>
+                <p className="text-xs text-text-muted/60">{formattedDate} &middot; {readTime}</p>
+              </div>
             </div>
-            <span>{new Date(blog.createdAt).toLocaleDateString('en-IN', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
           </div>
         </motion.div>
       </motion.article>

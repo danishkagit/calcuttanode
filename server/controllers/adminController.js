@@ -31,20 +31,19 @@ export const getAdminOverview = async (req, res) => {
       SubscriptionPlan.countDocuments({ isActive: true }),
       User.countDocuments({ createdAt: { $gte: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000) } }),
     ]);
-    const rev = totalRevenue[0]?.total || 0;
     res.json({
-      totalUsers: totalUsers || 128,
-      totalOrders: totalOrders || 486,
-      totalRevenue: rev || 8120000,
-      pendingOrders: pendingOrders || 12,
-      pendingTransfers: pendingTransfers || 3,
-      totalProducts: totalProducts || 16,
-      activeSubs: activeSubs || 42,
-      pendingReviews: pendingReviews || 5,
-      unreadMessages: unreadMessages || 7,
-      totalBlogs: totalBlogs || 24,
-      totalPlans: totalPlans || 4,
-      recentUsers: recentUsers || 18,
+      totalUsers: totalUsers ?? 0,
+      totalOrders: totalOrders ?? 0,
+      totalRevenue: totalRevenue[0]?.total ?? 0,
+      pendingOrders: pendingOrders ?? 0,
+      pendingTransfers: pendingTransfers ?? 0,
+      totalProducts: totalProducts ?? 0,
+      activeSubs: activeSubs ?? 0,
+      pendingReviews: pendingReviews ?? 0,
+      unreadMessages: unreadMessages ?? 0,
+      totalBlogs: totalBlogs ?? 0,
+      totalPlans: totalPlans ?? 0,
+      recentUsers: recentUsers ?? 0,
     });
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -403,34 +402,6 @@ export const getRevenueReport = async (req, res) => {
     ]);
     const totalRevenue = totalRevenueArr[0]?.total || 0;
     const totalRefunds = totalRefundsArr[0]?.total || 0;
-
-    if (monthly.length === 0 && byMethod.length === 0) {
-      const demoMonthly = [
-        { _id: '2025-08', total: 245000, count: 12 }, { _id: '2025-09', total: 312000, count: 18 },
-        { _id: '2025-10', total: 289000, count: 15 }, { _id: '2025-11', total: 356000, count: 22 },
-        { _id: '2025-12', total: 423000, count: 25 }, { _id: '2026-01', total: 478000, count: 28 },
-        { _id: '2026-02', total: 445000, count: 24 }, { _id: '2026-03', total: 512000, count: 30 },
-        { _id: '2026-04', total: 567000, count: 33 }, { _id: '2026-05', total: 623000, count: 36 },
-        { _id: '2026-06', total: 689000, count: 40 }, { _id: '2026-07', total: 745000, count: 42 },
-      ];
-      const demoByMethod = [
-        { _id: 'razorpay', total: 4820000, count: 245 }, { _id: 'bank_transfer', total: 1250000, count: 68 },
-        { _id: 'wallet', total: 890000, count: 45 }, { _id: 'cash', total: 340000, count: 18 },
-      ];
-      const demoTopServices = [
-        { _id: 'Website Development', count: 85, revenue: 1850000 }, { _id: 'Digital Marketing', count: 62, revenue: 1240000 },
-        { _id: 'Mobile App Development', count: 48, revenue: 980000 }, { _id: 'E-Commerce Setup', count: 35, revenue: 720000 },
-        { _id: 'SEO Optimization', count: 52, revenue: 510000 }, { _id: 'Graphics Design', count: 44, revenue: 420000 },
-        { _id: 'Performance Marketing', count: 28, revenue: 380000 }, { _id: 'Remote IT Support', count: 38, revenue: 285000 },
-      ];
-      const demoDaily = Array.from({ length: 30 }, (_, i) => {
-        const d = new Date();
-        d.setDate(d.getDate() - (29 - i));
-        return { _id: d.toISOString().split('T')[0], total: Math.round(15000 + Math.random() * 35000), count: Math.round(1 + Math.random() * 4) };
-      });
-      const demoTotalRevenue = demoByMethod.reduce((s, m) => s + m.total, 0);
-      return res.json({ monthly: demoMonthly, byMethod: demoByMethod, topServices: demoTopServices, totalRevenue: demoTotalRevenue, totalRefunds: 45000, dailyStats: demoDaily });
-    }
 
     res.json({ monthly, byMethod, topServices, totalRevenue, totalRefunds, dailyStats });
   } catch (error) {

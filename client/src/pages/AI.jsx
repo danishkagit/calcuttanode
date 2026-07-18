@@ -8,15 +8,12 @@ import { useAuth } from '../context/AuthContext';
 const API_BASE = import.meta.env.PROD ? 'https://calcuttanode-api.onrender.com' : '';
 
 const defaultModels = [
-  { id: 'deepseek-v4-flash-free', name: 'DeepSeek V4 Flash', icon: '🔍', color: '#7EBBC5', description: 'Advanced reasoning & analysis with lightning-fast responses' },
+  { id: 'deepseek-v4-flash-free', name: 'DeepSeek V4 Flash', icon: '🔍', color: '#7EBBC5', description: 'Advanced reasoning & lightning-fast responses' },
   { id: 'mimo-v2.5-free', name: 'MiMo V2.5', icon: '🧠', color: '#543A67', description: 'Multimodal intelligence for complex problem-solving' },
-  { id: 'north-mini-code-free', name: 'North Mini Code', icon: '⚡', color: '#FFD700', description: 'Lightning-fast code generation & debugging' },
-  { id: 'nemotron-3-ultra-free', name: 'Nemotron 3 Ultra', icon: '🚀', color: '#FF6B6B', description: 'Ultra-high performance for demanding tasks' },
-  { id: 'hy3-free', name: 'Hy3', icon: '🌊', color: '#4FC3F7', description: 'Creative writing & content generation expert' },
-  { id: 'big-pickle', name: 'Big Pickle', icon: '🥒', color: '#81C784', description: 'Versatile assistant for everyday queries & tasks' },
-  { id: 'chatgpt-turbo-free', name: 'ChatGPT Turbo', icon: '💬', color: '#74AA9C', description: 'OpenAI-powered conversational AI for general tasks' },
-  { id: 'claude-haiku-free', name: 'Claude Haiku', icon: '🎯', color: '#D97757', description: 'Anthropic\'s fast & concise model for analysis' },
-  { id: 'gemini-pro-free', name: 'Gemini Pro', icon: '🌟', color: '#4285F4', description: 'Google\'s multimodal AI for reasoning & creativity' },
+  { id: 'north-mini-code-free', name: 'North Mini Code', icon: '⚡', color: '#FFD700', description: 'Fast code generation & debugging' },
+  { id: 'nemotron-3-ultra-free', name: 'Nemotron 3 Ultra', icon: '🚀', color: '#FF6B6B', description: 'High performance for demanding tasks' },
+  { id: 'hy3-free', name: 'Hy3', icon: '🌊', color: '#4FC3F7', description: 'Creative writing & content generation' },
+  { id: 'big-pickle', name: 'Big Pickle', icon: '🥒', color: '#81C784', description: 'Versatile assistant for everyday queries' },
 ];
 
 const quickActionGroups = [
@@ -43,10 +40,10 @@ const quickActionGroups = [
 ];
 
 const heroStats = [
-  { value: '9+', label: 'Models' },
+  { value: '6', label: 'Models' },
   { value: '24/7', label: 'Available' },
-  { value: '10/day', label: 'Free Tier' },
-  { value: '500/day', label: 'Premium' },
+  { value: 'Free', label: 'Tier' },
+  { value: 'Premium', label: 'Plan' },
 ];
 
 function TypingDots() {
@@ -139,7 +136,7 @@ function HeroSection() {
           transition={{ delay: 0.1 }}
           className="text-text-muted text-xs sm:text-sm max-w-2xl mx-auto mb-4 leading-relaxed"
         >
-          Powered by 10+ free AI models — chat, code, create, and solve problems instantly.
+          Powered by free AI models — chat, code, create, and solve problems instantly.
         </motion.p>
         <motion.div
           initial={{ opacity: 0, y: 10 }}
@@ -162,7 +159,7 @@ function HeroSection() {
 function ModelShowcase({ models, selectedModel, onSelect }) {
   return (
     <div className="mb-3">
-      <div className="grid grid-cols-3 sm:grid-cols-6 gap-1.5">
+      <div className="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-6 gap-1.5">
         {models.map(model => {
           const isSelected = selectedModel === model.id;
           return (
@@ -473,7 +470,7 @@ export default function AI() {
   };
 
   return (
-    <div className="relative min-h-[calc(100vh-64px)] flex flex-col">
+    <div className="relative min-h-[calc(100dvh-128px)] md:min-h-[calc(100dvh-64px)] flex flex-col">
       <ParticleField count={60} speed={0.3} color="#7EBBC5" />
 
       <div className="relative z-10 flex-1 flex flex-col max-w-4xl mx-auto w-full px-4 py-3">
@@ -628,7 +625,7 @@ export default function AI() {
         <div
           ref={chatRef}
           className="flex-1 overflow-y-auto space-y-2 mb-2 px-2 py-3 scroll-smooth glass-card"
-          style={{ maxHeight: 'calc(100vh - 280px)' }}
+          style={{ maxHeight: 'calc(100dvh - 280px)' }}
         >
           {messages.length === 0 && !streamingContent ? (
             <WelcomeScreen onSelectQuestion={(q) => { setInput(q); inputRef.current?.focus(); }} />

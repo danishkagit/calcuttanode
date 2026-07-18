@@ -2,7 +2,6 @@ import Razorpay from 'razorpay';
 import crypto from 'crypto';
 import Transaction from '../models/Transaction.js';
 import User from '../models/User.js';
-import Wallet from '../models/Wallet.js';
 
 const getRazorpay = () => {
   if (!process.env.RAZORPAY_KEY_ID || !process.env.RAZORPAY_KEY_SECRET) {
@@ -16,9 +15,13 @@ const getRazorpay = () => {
 
 export const createRazorpayOrder = async (req, res) => {
   try {
-    const { amount } = req.body;
+    let { amount } = req.body;
+    amount = Number(amount);
+    if (!amount || amount <= 0 || isNaN(amount)) {
+      return res.status(400).json({ message: 'Valid amount is required' });
+    }
     const razorpay = getRazorpay();
-    const options = { amount: amount * 100, currency: 'INR', receipt: `receipt_${Date.now()}` };
+    const options = { amount: Math.round(amount * 100), currency: 'INR', receipt: `receipt_${Date.now()}` };
     const order = await razorpay.orders.create(options);
     res.json({ orderId: order.id, amount: order.amount, currency: order.currency });
   } catch (error) {
@@ -28,7 +31,14 @@ export const createRazorpayOrder = async (req, res) => {
 
 export const verifyRazorpayPayment = async (req, res) => {
   try {
-    const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = req.body;
+    const { razorpay_order_id, razorpay_payment_id, razorpay_signature, amount: reqAmount } = req.body;
+    if (!razorpay_order_id || !razorpay_payment_id || !razorpay_signature) {
+      return res.status(400).json({ message: 'Missing payment details' });
+    }
+    const amount = Number(reqAmount);
+    if (!amount || amount <= 0 || isNaN(amount)) {
+      return res.status(400).json({ message: 'Valid amount is required' });
+    }
     const body = razorpay_order_id + '|' + razorpay_payment_id;
     const expectedSignature = crypto.createHmac('sha256', process.env.RAZORPAY_KEY_SECRET).update(body).digest('hex');
     if (expectedSignature !== razorpay_signature) {
@@ -36,13 +46,13 @@ export const verifyRazorpayPayment = async (req, res) => {
     }
     const transaction = await Transaction.create({
       userId: req.user._id,
-      amount: req.body.amount / 100,
+      amount: amount,
       type: 'credit',
       method: req.body.method || 'card',
       status: 'success',
       gatewayRefId: razorpay_payment_id,
     });
-    await User.findByIdAndUpdate(req.user._id, { $inc: { walletBalance: req.body.amount / 100 } });
+    await User.findByIdAndUpdate(req.user._id, { $inc: { walletBalance: amount } });
     res.json({ success: true, transaction });
   } catch (error) {
     res.status(500).json({ message: error.message });

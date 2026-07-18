@@ -9,9 +9,6 @@
     "dev": "node --watch server.js",
     "test": "jest",
     "seed:blogs": "node seed/seedBlogs.js",
-    "seed:tools": "node seed/seedTools.js",
-    "seed:courses": "node seed/seedCourses.js",
-    "seed:products": "node seed/seedProducts.js",
     "seed:plans": "node seed/seedPlans.js",
     "seed:services": "node seed/seedServices.js"
   },

@@ -6,10 +6,10 @@ import ParticleField from '../components/common/ParticleField';
 const fadeUp = { initial: { opacity: 0, y: 30 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, margin: '-50px' }, transition: { duration: 0.5 } };
 
 const milestones = [
-  { year: '2023', title: 'Founded', text: 'Danish Shoaib started Calcutta Node. with a simple mission: make professional IT support accessible and affordable for everyone.', icon: '🚀' },
-  { year: '2024', title: 'Expansion', text: 'Grew to 7 service categories — from web development and design to digital marketing and data recovery. Crossed 22+ case studies across 8 countries and 66+ successful projects.', icon: '📈' },
-  { year: '2025', title: 'Digital Transformation', text: 'Launched digital products store, membership subscriptions, AI chat support, and a full-featured client dashboard with wallet, referrals, and loyalty rewards.', icon: '🏆' },
-  { year: '2026', title: 'AI-Powered Future', text: 'Introducing AI-assisted troubleshooting, enhanced remote support, digital packages for every business, and same-day response guarantee for all premium clients.', icon: '🌟' },
+  { year: '2025', title: 'Founded', text: 'Danish Shoaib started Calcutta Node. with a simple mission: make professional IT support accessible and affordable for everyone.', icon: '🚀' },
+  { year: '2025', title: 'Expansion',     text: 'Expanded service categories — from web development and design to digital marketing and data recovery. Started building a portfolio of projects across multiple service areas.', icon: '📈' },
+  { year: '2026', title: 'Digital Launch', text: 'Launched digital products store, membership subscriptions, AI chat support, and a full-featured client dashboard with wallet, referrals, and loyalty rewards.', icon: '🏆' },
+  { year: '2026', title: 'Digital Future', text: 'Introducing enhanced remote support, digital packages for every business, and same-day response guarantee for all premium clients.', icon: '🌟' },
 ];
 
 const values = [
@@ -20,16 +20,16 @@ const values = [
 ];
 
 const stats = [
-  { value: '3+', label: 'Years in Business' },
-  { value: '22+', label: 'Case Studies' },
-  { value: '36+', label: 'Projects Delivered' },
   { value: '8', label: 'Service Categories' },
-  { value: '99%', label: 'Client Satisfaction' },
-  { value: '🌐', label: 'Worldwide Reach' },
+  { value: '✓', label: 'Building client success stories' },
+  { value: '→', label: 'Ready to help you grow' },
+  { value: '🌐', label: 'Remote Service Worldwide' },
+  { value: '24/7', label: 'AI Support Available' },
+  { value: '★', label: 'Client-first approach' },
 ];
 
 const whyUs2026 = [
-  { emoji: '🤖', title: 'AI-Assisted Support', desc: 'Our AI chat handles common queries instantly. For complex issues, human experts step in — you get the best of both worlds.' },
+  { emoji: '🤖', title: '24/7 AI Support', desc: 'Our AI chat handles common queries instantly. For complex issues, human experts step in — you get the best of both worlds.' },
   { emoji: '🌐', title: 'Global Remote Delivery', desc: '100% remote — we serve clients anywhere in the world. No location barriers, no travel needed. Just fast, reliable delivery.' },
   { emoji: '💰', title: 'Affordable & Transparent', desc: 'No hidden fees. Clear pricing upfront. Pay via UPI, card, or our in-app wallet with loyalty rewards.' },
   { emoji: '⚡', title: 'Remote-First Delivery', desc: 'All issues solved remotely in under 24 hours. No location barriers — we serve clients anywhere in the world.' },
@@ -110,10 +110,9 @@ export default function About() {
             <div className="flex-1">
               <div className="flex items-center gap-2 mb-2 flex-wrap">
                 <span className="text-xs font-semibold text-neon-cyan bg-neon-cyan/10 px-3 py-1 rounded-full border border-neon-cyan/20">Founder Story</span>
-                <span className="ai-badge">AI Expert</span>
                 <span className="text-sm font-medium text-text-primary">Danish Shoaib</span>
               </div>
-              <h2 className="text-xl font-bold text-text-primary mb-3">From Pharmacy to <span className="text-ai-gradient">AI Agency</span></h2>
+              <h2 className="text-xl font-bold text-text-primary mb-3">From Pharmacy to <span className="text-ai-gradient">Digital Agency</span></h2>
               <div className="space-y-3 text-sm text-text-muted leading-relaxed">
                 <p>
                   Before Calcutta Node., Danish Shoaib ran a pharmacy. Long hours, high pressure, and a growing realization
@@ -122,12 +121,12 @@ export default function About() {
                   and what the market offered.
                 </p>
                 <p>
-                  Self-taught in digital marketing, AI prompt engineering, and full-stack development, Danish decided
+                  Self-taught in digital marketing and full-stack development, Danish decided
                   to bridge that gap. What started as helping a few local businesses with remote IT support turned into
                   Calcutta Node. — a remote-first digital growth agency serving clients across the globe.
                 </p>
                 <p>
-                  Today, Danish manages a lean global team, oversees AI-assisted support operations, and continues
+                  Today, Danish manages operations, oversees support, and continues
                   to study (D.Pharm) while running the agency. His personal motto: <span className="text-neon-cyan font-medium">"Technology should be accessible to everyone — not just big corporations."</span>
                 </p>
               </div>
@@ -170,44 +169,7 @@ export default function About() {
           </div>
         </motion.div>
 
-        <motion.div className="mb-12" {...fadeUp}>
-          <h2 className="text-2xl font-bold text-text-primary mb-8 border-l-4 border-ai-cyan pl-4">Our AI Stack</h2>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 mb-4">
-            {[
-              { name: 'GPT-4o', icon: '🧠', desc: 'LLM Integration' },
-              { name: 'Claude 3.5', icon: '🤖', desc: 'Conversational AI' },
-              { name: 'TensorFlow', icon: '🔢', desc: 'ML & Analytics' },
-              { name: 'RAG Pipelines', icon: '🔗', desc: 'Knowledge Retrieval' },
-              { name: 'HuggingFace', icon: '🤗', desc: 'NLP Models' },
-              { name: 'DALL·E 3', icon: '🎨', desc: 'AI Image Gen' },
-              { name: 'LangChain', icon: '⛓️', desc: 'Agent Orchestration' },
-              { name: 'Whisper', icon: '🎙️', desc: 'Speech-to-Text' },
-              { name: 'Stable Diffusion', icon: '🖼️', desc: 'Image Generation' },
-              { name: 'OpenAI TTS', icon: '🔊', desc: 'Voice Synthesis' },
-              { name: 'LangSmith', icon: '📊', desc: 'AI Monitoring' },
-              { name: 'Vector DB (Pinecone)', icon: '📐', desc: 'Semantic Search' },
-            ].map((item, i) => (
-              <motion.div key={i}
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.04 }}
-                whileHover={{ y: -4, scale: 1.02 }}
-                className="p-3 rounded-xl bg-ai-gradient-subtle border border-ai-cyan/10 text-center group card-hover-premium gradient-border"
-              >
-                <motion.span
-                  whileHover={{ scale: 1.2, rotate: 10 }}
-                  className="text-2xl block mb-1"
-                >
-                  {item.icon}
-                </motion.span>
-                <p className="text-xs font-bold text-ai-cyan group-hover:text-ai-cyan transition-colors">{item.name}</p>
-                <p className="text-[10px] text-text-muted">{item.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-          <p className="text-xs text-text-muted text-center mb-8 max-w-xl mx-auto">We leverage cutting-edge AI models and frameworks to deliver smarter, faster, and more affordable digital solutions.</p>
-        </motion.div>
+
 
         <motion.div className="mb-12" {...fadeUp}>
           <h2 className="text-2xl font-bold text-text-primary mb-8 border-l-4 border-electric-violet pl-4">Our Values</h2>
@@ -238,7 +200,7 @@ export default function About() {
         </motion.div>
 
         <motion.div className="mb-12" {...fadeUp}>
-          <h2 className="text-2xl font-bold text-text-primary mb-8 border-l-4 border-neon-cyan pl-4">Calcutta Node. in Numbers</h2>
+          <h2 className="text-2xl font-bold text-text-primary mb-8 border-l-4 border-neon-cyan pl-4">Calcutta Node. at a Glance</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
             {stats.map((s, i) => (
               <motion.div key={i}
@@ -293,18 +255,23 @@ export default function About() {
                 <img src="https://danishkagit.github.io/portfolio/assets/danish-passport.jpg" alt="Danish Shoaib" className="w-full h-full rounded-full object-cover" style={{objectPosition: 'center 25%'}} />
               </div>
               <h3 className="text-xl font-bold text-text-primary">Danish Shoaib</h3>
-              <p className="text-ai-gradient text-sm font-medium mb-3">AI Prompt Engineer & Digital Marketing | Founder @ Calcutta Node.</p>
+              <p className="text-ai-gradient text-sm font-medium mb-3">Digital Marketing & Growth | Founder @ Calcutta Node.</p>
               <p className="text-text-muted text-sm max-w-lg mx-auto mb-4">
-                4+ years of experience in AI prompt engineering, digital marketing, content creation, web development, and IT support.
-                Certified in Digital Marketing from Tech Mahindra Foundation. Specializing in LLM integration, RAG pipelines,
-                and AI-assisted workflow automation. Currently pursuing D.Pharm (2026) and Data Analytics.
+                Experienced in digital marketing, web development, and IT support.
+                Certified in Digital Marketing from Tech Mahindra Foundation. Currently pursuing D.Pharm (2026) and Data Analytics.
               </p>
-              <div className="flex gap-4 justify-center">
+              <div className="flex gap-4 justify-center flex-wrap">
                 <a href="https://danishkagit.github.io/portfolio/" target="_blank" rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 bg-ai-gradient text-white px-5 py-2 rounded-xl text-sm font-medium hover:shadow-lg hover:shadow-ai-cyan/20 transition-all duration-200"
                 >
                   <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
                   View Portfolio
+                </a>
+                <a href="https://calcuttanode-api.onrender.com/api/resume/download" target="_blank" rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 border border-neon-cyan text-neon-cyan px-5 py-2 rounded-xl text-sm font-medium hover:bg-neon-cyan/10 transition-all duration-200"
+                >
+                  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                  Resume
                 </a>
                 <a href="https://www.linkedin.com/in/danishshoaib-in/" target="_blank" rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 border border-ai-cyan text-ai-cyan px-5 py-2 rounded-xl text-sm font-medium hover:bg-ai-cyan/10 transition-all duration-200"

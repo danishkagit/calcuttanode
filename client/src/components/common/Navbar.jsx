@@ -18,7 +18,7 @@ const serviceGroups = [
     title: 'Marketing & Design',
     items: [
       { label: 'SEO & Digital Marketing', path: '/pricing', icon: '📈', desc: 'Rank higher, grow faster', price: '₹1,999' },
-      { label: 'SEO Audit', path: '/seo-audit', icon: '📊', desc: 'AI-powered site audit & tools', price: '₹1,999' },
+      { label: 'SEO Audit', path: '/seo-audit', icon: '📊', desc: 'Comprehensive site audit & tools', price: '₹1,999' },
       { label: 'UI/UX & Graphic Design', path: '/pricing', icon: '🎨', desc: 'Brand identity & interfaces', price: '₹999' },
       { label: 'Video Editing', path: '/pricing', icon: '🎬', desc: 'Promos, reels, tutorials', price: '₹1,499' },
     ],
@@ -271,10 +271,21 @@ export default function Navbar() {
                     <div className="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-neon-cyan/40 to-transparent" />
                     {[
                       { label: 'About', path: '/about', icon: '👤', desc: 'Our story & team' },
-                      { label: 'Our Work', path: '/work', icon: '🏆', desc: 'Portfolio & case studies' },
+                      { label: 'Portfolio', path: 'https://danishkagit.github.io/portfolio/', icon: '📂', desc: "Founder's portfolio", external: true },
+                      { label: 'Resume', path: 'https://calcuttanode-api.onrender.com/api/resume/download', icon: '📄', desc: 'Download resume', external: true },
                       { label: 'Referral Program', path: '/referral', icon: '🤝', desc: 'Refer & earn ₹100' },
                       { label: 'Contact', path: '/contact', icon: '📬', desc: 'Get in touch' },
-                    ].map((item) => (
+                    ].map((item) => item.external ? (
+                      <a key={item.label} href={item.path} target="_blank" rel="noopener noreferrer" onClick={() => setOpenDropdown(null)}
+                        className="group relative flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-gradient-to-r hover:from-neon-cyan/[0.07] hover:to-electric-violet/[0.04] transition-all duration-200"
+                      >
+                        <span className="text-lg shrink-0">{item.icon}</span>
+                        <div className="min-w-0">
+                          <div className="text-sm font-medium text-text-primary group-hover:text-neon-cyan transition-colors">{item.label}</div>
+                          <div className="text-[10px] text-text-muted/50">{item.desc}</div>
+                        </div>
+                      </a>
+                    ) : (
                       <Link key={item.label} to={item.path} onClick={() => setOpenDropdown(null)}
                         className="group relative flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-gradient-to-r hover:from-neon-cyan/[0.07] hover:to-electric-violet/[0.04] transition-all duration-200"
                       >
@@ -414,7 +425,6 @@ export default function Navbar() {
                 </div>
                 {[
                   { label: 'About', path: '/about', icon: '👤' },
-                  { label: 'Our Work', path: '/work', icon: '🏆' },
                   { label: 'Referral Program', path: '/referral', icon: '🤝' },
                   { label: 'Contact', path: '/contact', icon: '📬' },
                 ].map((item) => (
