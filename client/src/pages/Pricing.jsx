@@ -33,16 +33,47 @@ const aiFeatures = {
   'Marketing': ['AI ad copy generation', 'Predictive campaign analytics', 'Automated audience segmentation', 'Smart bid optimization'],
 };
 
+const sortOptions = [
+  { value: 'trending', label: '📈 Most Popular' },
+  { value: 'price-asc', label: '💰 Price: Low to High' },
+  { value: 'price-desc', label: '💰 Price: High to Low' },
+  { value: 'newest', label: '🆕 Newest First' },
+];
+
 export default function Pricing() {
   const [servicesList, setServicesList] = useState([]);
   const [filter, setFilter] = useState('All');
   const [hoveredId, setHoveredId] = useState(null);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [sortBy, setSortBy] = useState('trending');
 
   const categories = useMemo(() => ['All', ...new Set(servicesList.map((s) => s.category))], [servicesList]);
-  const filtered = filter === 'All' ? servicesList : servicesList.filter((s) => s.category === filter);
+
+  const processed = useMemo(() => {
+    let list = servicesList;
+    if (filter !== 'All') list = list.filter((s) => s.category === filter);
+    if (searchQuery.trim()) {
+      const q = searchQuery.toLowerCase();
+      list = list.filter((s) =>
+        s.name.toLowerCase().includes(q) ||
+        s.description?.toLowerCase().includes(q) ||
+        s.category.toLowerCase().includes(q) ||
+        s.features?.some(f => f.toLowerCase().includes(q))
+      );
+    }
+    const sorted = [...list].sort((a, b) => {
+      if (sortBy === 'price-asc') return a.price - b.price;
+      if (sortBy === 'price-desc') return b.price - a.price;
+      if (sortBy === 'newest') return new Date(b.createdAt || 0) - new Date(a.createdAt || 0);
+      const scoreA = (a.trending || 0) * 3 + (a.viewCount || 0) * 2 + (a.bookingCount || 0) * 5;
+      const scoreB = (b.trending || 0) * 3 + (b.viewCount || 0) * 2 + (b.bookingCount || 0) * 5;
+      return scoreB - scoreA;
+    });
+    return sorted;
+  }, [servicesList, filter, searchQuery, sortBy]);
 
   useEffect(() => {
-    api.get('/services')
+    api.get('/services?sort=trending')
       .then((res) => setServicesList(Array.isArray(res.data) ? res.data : []))
       .catch(() => {});
   }, []);
@@ -86,6 +117,31 @@ export default function Pricing() {
           })}
         </motion.div>
 
+        {/* Search + Sort + Filter */}
+        <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
+          className="flex flex-wrap items-center gap-3 mb-6"
+        >
+          <div className="relative flex-1 min-w-[200px] max-w-md">
+            <svg className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+            </svg>
+            <input type="text" value={searchQuery} onChange={e => setSearchQuery(e.target.value)}
+              placeholder="Search services by name, category, or feature..."
+              className="w-full pl-9 pr-4 py-2.5 rounded-xl bg-surface/30 border border-electric-violet/20 text-text-primary text-sm focus:outline-none focus:border-neon-cyan/50 focus:bg-surface/50 transition-all"
+            />
+            {searchQuery && (
+              <button onClick={() => setSearchQuery('')} className="absolute right-3 top-1/2 -translate-y-1/2 text-text-muted hover:text-text-primary">
+                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+              </button>
+            )}
+          </div>
+          <select value={sortBy} onChange={e => setSortBy(e.target.value)}
+            className="px-3 py-2.5 rounded-xl bg-surface/30 border border-electric-violet/20 text-text-primary text-sm focus:outline-none focus:border-neon-cyan/50 cursor-pointer"
+          >
+            {sortOptions.map(o => <option key={o.value} value={o.value}>{o.label}</option>)}
+          </select>
+        </motion.div>
+
         {/* Category Filter Pills */}
         <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
           className="flex flex-wrap justify-center gap-2 mb-10"
@@ -109,7 +165,7 @@ export default function Pricing() {
           <motion.div key={filter} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.3 }}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
           >
-            {filtered.map((service, i) => {
+            {processed.map((service, i) => {
               const isTrending = service.trending >= 85;
               const hasAiAddon = aiAddonCategories.includes(service.category);
               const aiFeatureList = aiFeatures[service.category] || [];
@@ -141,6 +197,19 @@ export default function Pricing() {
                     <div className="flex items-baseline gap-1 mb-4">
                       <span className={`text-3xl font-bold ${isTrending ? 'text-neon-cyan' : 'text-text-primary'}`}>₹{service.price}</span>
                       <span className="text-text-muted text-sm">one-time</span>
+                    </div>
+                    <div className="flex items-center gap-3 text-xs text-text-muted mb-3">
+                      <span className="flex items-center gap-1">
+                        <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                        {service.viewCount || 0}
+                      </span>
+                      <span className="flex items-center gap-1">
+                        <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 13l4 4L19 7"/></svg>
+                        {service.bookingCount || 0} booked
+                      </span>
+                      {(service.trending || 0) >= 80 && (
+                        <span className="text-orange-400 font-medium">{service.trending}%🔥</span>
+                      )}
                     </div>
                     <ul className="space-y-2.5 mb-4">
                       {service.features.map((f, j) => (
@@ -186,6 +255,13 @@ export default function Pricing() {
         {servicesList.length === 0 && (
           <div className="text-center py-16">
             <div className="w-8 h-8 border-2 border-neon-cyan border-t-transparent rounded-full animate-spin mx-auto" />
+          </div>
+        )}
+        {servicesList.length > 0 && processed.length === 0 && (
+          <div className="text-center py-16">
+            <span className="text-4xl block mb-3">🔍</span>
+            <p className="text-text-muted">No services match "{searchQuery}"</p>
+            <button onClick={() => { setSearchQuery(''); setFilter('All'); }} className="mt-3 text-sm text-neon-cyan hover:underline">Clear filters</button>
           </div>
         )}
       </div>

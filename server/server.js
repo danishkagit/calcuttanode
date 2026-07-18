@@ -62,6 +62,7 @@ import adminRoutes from './routes/adminRoutes.js';
 import notificationRoutes from './routes/notificationRoutes.js';
 import aiRoutes from './routes/aiRoutes.js';
 import seoRoutes from './routes/seoRoutes.js';
+import categoryRoutes from './routes/categoryRoutes.js';
 
 app.use('/api/auth', authRoutes);
 app.use('/api/blogs', blogRoutes);
@@ -79,6 +80,7 @@ app.use('/api/seo', seoRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/notifications', notificationRoutes);
 app.use('/api/ai', aiRoutes);
+app.use('/api/categories', categoryRoutes);
 
 const APK_DOWNLOAD_URL = 'https://github.com/danishkagit/calcuttanode/releases/download/v1.0.0/calcuttanode-app.apk';
 

@@ -6,6 +6,12 @@ import ParticleField from '../components/common/ParticleField';
 import api from '../utils/api';
 import logo from '../assets/logo.png';
 
+const DemandBadge = ({ count }) => {
+  if (count >= 100) return <span className="text-xs font-bold text-red-400 bg-red-400/10 px-2 py-0.5 rounded-full border border-red-400/20">🔥 Hot</span>;
+  if (count >= 50) return <span className="text-xs font-bold text-orange-400 bg-orange-400/10 px-2 py-0.5 rounded-full border border-orange-400/20">⚡ Popular</span>;
+  return <span className="text-xs font-bold text-blue-400 bg-blue-400/10 px-2 py-0.5 rounded-full border border-blue-400/20">📈 Growing</span>;
+};
+
 const fadeUp = { initial: { opacity: 0, y: 30 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, margin: '-50px' }, transition: { duration: 0.5 } };
 
 const categoryMeta = {
@@ -45,6 +51,7 @@ export default function Home() {
   const [recentBlogs, setRecentBlogs] = useState([]);
   const [blogLoading, setBlogLoading] = useState(true);
   const [servicesList, setServicesList] = useState([]);
+  const [trendingServices, setTrendingServices] = useState([]);
   const [products, setProducts] = useState([]);
 
   const categories = useMemo(() => [...new Set(servicesList.map((s) => s.category))], [servicesList]);
@@ -52,6 +59,9 @@ export default function Home() {
   useEffect(() => {
     api.get('/services')
       .then((res) => setServicesList(Array.isArray(res.data) ? res.data : []))
+      .catch(() => {});
+    api.get('/services/trending')
+      .then((res) => setTrendingServices(Array.isArray(res.data) ? res.data : []))
       .catch(() => {});
     api.get('/blogs', { params: { limit: 3 } })
       .then((res) => setRecentBlogs(Array.isArray(res.data) ? res.data.slice(0, 3) : []))
@@ -135,9 +145,9 @@ export default function Home() {
       <motion.section className="py-12 px-4 relative" {...fadeUp}>
         <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4">
           {[
-            { value: '8', label: 'Service Categories', icon: 'M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6z' },
-            { value: '17', label: 'Services Offered', icon: 'M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z' },
-            { value: '19', label: 'Digital Products', icon: 'M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4' },
+            { value: servicesList.length > 0 ? [...new Set(servicesList.map(s => s.category))].length : '8', label: 'Service Categories', icon: 'M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6z' },
+            { value: servicesList.length > 0 ? servicesList.length : '17', label: 'Services Offered', icon: 'M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z' },
+            { value: products.length > 0 ? products.length : '19', label: 'Digital Products', icon: 'M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4' },
             { value: '24/7', label: 'AI Support Available', icon: 'M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z' },
           ].map((stat, i) => (
             <motion.div key={stat.label} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: i * 0.1 }}
@@ -220,6 +230,54 @@ export default function Home() {
           </div>
           <div className="text-center mt-8">
             <Link to="/pricing" className="text-sm text-neon-cyan hover:underline">View all services with pricing →</Link>
+          </div>
+        </div>
+      </motion.section>
+
+      {/* ─── TRENDING SERVICES (demand-based) ─── */}
+      <motion.section className="py-16 px-4 relative overflow-hidden" {...fadeUp}>
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,107,53,0.03)_0%,transparent_70%)]" />
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-10">
+            <span className="text-sm font-medium text-orange-400 bg-orange-400/10 px-4 py-1.5 rounded-full border border-orange-400/20">🔥 Trending Now</span>
+            <h2 className="text-3xl font-bold text-text-primary mt-4">Most In-Demand Services</h2>
+            <p className="text-text-muted max-w-2xl mx-auto mt-2">
+              Updated automatically based on real bookings, views & demand signals — what people need most right now
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {trendingServices.slice(0, 6).map((service, i) => (
+              <Link key={service._id} to="/pricing">
+                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.06 }}
+                  whileHover={{ y: -6, scale: 1.01 }}
+                  className="p-5 rounded-2xl glass-card group h-full relative overflow-hidden"
+                >
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-orange-400/5 to-transparent rounded-bl-full" />
+                  <div className="relative">
+                    <div className="flex items-center justify-between mb-3">
+                      <span className="text-2xl">{categoryMeta[service.category]?.icon || '📋'}</span>
+                      <DemandBadge count={service.bookingCount || 0} />
+                    </div>
+                    <h3 className="text-text-primary font-semibold group-hover:text-neon-cyan transition-colors">{service.name}</h3>
+                    <p className="text-xs text-text-muted/60 mt-1 mb-3 line-clamp-2">{service.description || categoryMeta[service.category]?.desc || ''}</p>
+                    <div className="flex items-center gap-4 text-xs text-text-muted">
+                      <span className="flex items-center gap-1">
+                        <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                        {service.viewCount || 0} views
+                      </span>
+                      <span className="flex items-center gap-1">
+                        <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 13l4 4L19 7"/></svg>
+                        {service.bookingCount || 0} bookings
+                      </span>
+                      <span className="text-neon-cyan font-semibold ml-auto">₹{service.price}</span>
+                    </div>
+                  </div>
+                </motion.div>
+              </Link>
+            ))}
+          </div>
+          <div className="text-center mt-8">
+            <Link to="/pricing" className="text-sm text-orange-400 hover:underline">Browse all services by demand →</Link>
           </div>
         </div>
       </motion.section>
