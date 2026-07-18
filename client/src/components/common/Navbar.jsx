@@ -218,6 +218,7 @@ export default function Navbar() {
                       { label: 'Courses', path: '/courses', icon: '🎓', desc: 'Free & paid courses' },
                       { label: 'Free Tools', path: '/tools', icon: '🛠️', desc: '50+ SEO & AI tools' },
                       { label: 'Products', path: '/products', icon: '📦', desc: 'Templates & scripts' },
+                      { label: 'Prompt Packs', path: '/prompt-packs', icon: '🧠', desc: 'AI prompt collections' },
                       { label: 'Plans', path: '/plans', icon: '📋', desc: 'Membership & support' },
                       { label: 'Mobile App', path: '/app', icon: '📱', desc: 'Android APK download' },
                       { label: 'SEO Tools', path: '/seo', icon: '🚀', desc: 'AI-powered SEO & content tools' },
@@ -408,6 +409,7 @@ export default function Navbar() {
                     { label: 'Courses', path: '/courses', icon: '🎓' },
                     { label: 'Free Tools', path: '/tools', icon: '🛠️' },
                     { label: 'Products', path: '/products', icon: '📦' },
+                    { label: 'Prompt Packs', path: '/prompt-packs', icon: '🧠' },
                     { label: 'Plans', path: '/plans', icon: '📋' },
                     { label: 'Mobile App', path: '/app', icon: '📱' },
                   ].map((item) => (

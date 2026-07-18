@@ -4,3 +4,5 @@ node_modules/
 server.err
 uploads/*
 !uploads/.gitkeep
+!uploads/products/
+!uploads/products/*.md

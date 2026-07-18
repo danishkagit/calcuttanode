@@ -42,6 +42,7 @@ const allowedOrigins = [
 app.use(cors({ origin: allowedOrigins, credentials: true }));
 app.use(express.json());
 app.use(cookieParser(process.env.COOKIE_SECRET));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 app.use('/api/', apiLimiter);
 

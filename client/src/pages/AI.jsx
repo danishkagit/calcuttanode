@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
@@ -874,6 +875,23 @@ export default function AI() {
         <p className="text-center text-[9px] text-text-muted/30 mt-2">
           {models.length} free models via OpenCode · 20 req/min · auto-fallback on quota exhaustion
         </p>
+
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}
+          className="mt-12 text-center"
+        >
+          <Link to="/prompt-packs"
+            className="inline-flex items-center gap-3 px-6 py-3 rounded-xl bg-gradient-to-r from-emerald-500/10 to-teal-500/10 border border-emerald-500/20 hover:border-emerald-400/40 text-emerald-400 hover:text-emerald-300 transition-all duration-300 group"
+          >
+            <span className="text-2xl">🧠</span>
+            <div className="text-left">
+              <div className="text-sm font-semibold">Get More From AI</div>
+              <div className="text-xs text-text-muted/60">Browse 10 prompt packs → better results, instantly</div>
+            </div>
+            <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </Link>
+        </motion.div>
       </div>
     </div>
   );

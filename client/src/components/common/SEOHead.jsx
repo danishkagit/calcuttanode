@@ -23,6 +23,7 @@ const pageMeta = {
   '/ai': { title: 'AI Chat — Calcutta Node', description: 'Chat with Calcutta Node AI for instant IT support, tech help, and general queries.' },
   '/app': { title: 'Mobile App — Calcutta Node', description: 'Download the Calcutta Node mobile app for Android for IT support on the go.' },
   '/seo': { title: 'SEO Tools — Calcutta Node', description: 'Free SEO tools for content generation, meta tags, keyword research, and schema markup.' },
+  '/prompt-packs': { title: 'AI Prompt Packs — Calcutta Node', description: '10 curated AI prompt packs for SEO, coding, copywriting, social media, career, business, and more. Get better AI results instantly.' },
 };
 
 const schemas = {
