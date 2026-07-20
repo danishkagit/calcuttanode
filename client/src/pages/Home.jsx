@@ -135,7 +135,7 @@ export default function Home() {
               className="border border-neon-cyan text-neon-cyan px-8 py-3 rounded-xl font-medium transition-all duration-200 hover:bg-neon-cyan/10"
             >Contact Us</motion.a>
             <motion.a href="/ai" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
-              className="border border-electric-violet/40 text-electric-violet px-8 py-3 rounded-xl font-medium transition-all duration-200 hover:bg-electric-violet/10"
+              className="border border-electric-violet/40 text-text-primary bg-electric-violet/20 px-8 py-3 rounded-xl font-medium transition-all duration-200 hover:bg-electric-violet/40"
             >🤖 Try AI Support</motion.a>
           </div>
         </motion.div>
@@ -312,11 +312,11 @@ export default function Home() {
               ))}
             </div>
           ) : (
-            <div className="flex justify-center gap-4">
-              <Link to="/products" className="text-sm bg-surface/50 border border-electric-violet/20 px-5 py-2.5 rounded-xl text-text-muted hover:text-neon-cyan hover:border-neon-cyan/30 transition-all">
+            <div className="flex flex-col md:flex-row justify-center items-center gap-4">
+              <Link to="/products" className="w-full md:w-auto text-center text-sm bg-surface/50 border border-electric-violet/20 px-5 py-2.5 rounded-xl text-text-muted hover:text-neon-cyan hover:border-neon-cyan/30 transition-all">
                 📦 Browse Digital Products
               </Link>
-              <Link to="/prompt-packs" className="text-sm bg-surface/50 border border-electric-violet/20 px-5 py-2.5 rounded-xl text-text-muted hover:text-neon-cyan hover:border-neon-cyan/30 transition-all">
+              <Link to="/prompt-packs" className="w-full md:w-auto text-center text-sm bg-surface/50 border border-electric-violet/20 px-5 py-2.5 rounded-xl text-text-muted hover:text-neon-cyan hover:border-neon-cyan/30 transition-all">
                 🧠 Explore Prompt Packs
               </Link>
             </div>

@@ -58,7 +58,7 @@ export default function About() {
           <h1 className="text-4xl md:text-5xl font-bold text-text-primary mb-2">
             Danish <span className="bg-gradient-to-r from-neon-cyan to-electric-violet bg-clip-text text-transparent">Shoaib</span>
           </h1>
-          <p className="text-lg text-text-muted max-w-xl mx-auto">Digital Marketing & AI Prompt Engineer | Founder @ <span className="text-neon-cyan">Calcutta Node.</span></p>
+          <p className="text-lg text-text-muted max-w-xl mx-auto">Digital Marketing & AI Prompt Engineer | <span className="whitespace-nowrap">Founder @ <span className="text-neon-cyan">Calcutta Node.</span></span></p>
           <p className="text-sm text-text-muted/60 mt-1">📍 Champdani, Hooghly, West Bengal, India</p>
         </motion.div>
 

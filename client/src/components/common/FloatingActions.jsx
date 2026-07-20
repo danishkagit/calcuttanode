@@ -80,7 +80,7 @@ export default function FloatingActions() {
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
-            className="w-10 h-10 rounded-full bg-surface border border-neon-cyan/30 text-neon-cyan flex items-center justify-center shadow-lg hover:shadow-neon-cyan/20 transition-shadow cursor-pointer"
+            className="hidden md:flex w-10 h-10 rounded-full bg-surface border border-neon-cyan/30 text-neon-cyan items-center justify-center shadow-lg hover:shadow-neon-cyan/20 transition-shadow cursor-pointer"
             title="Back to top"
           >
             <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="18 15 12 9 6 15"/></svg>

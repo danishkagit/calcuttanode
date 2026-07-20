@@ -91,7 +91,7 @@ export default function Pricing() {
 
         {/* Category Overview Grid */}
         <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-10"
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 mb-10"
         >
           {Object.entries(categoryIcons).map(([cat, icon], i) => {
             const count = servicesList.filter((s) => s.category === cat).length;
@@ -119,9 +119,9 @@ export default function Pricing() {
 
         {/* Search + Sort + Filter */}
         <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
-          className="flex flex-wrap items-center gap-3 mb-6"
+          className="flex flex-col md:flex-row items-stretch md:items-center gap-3 mb-6"
         >
-          <div className="relative flex-1 min-w-[200px] max-w-md">
+          <div className="relative w-full md:flex-1 md:min-w-[200px] md:max-w-md">
             <svg className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
             </svg>
@@ -136,7 +136,7 @@ export default function Pricing() {
             )}
           </div>
           <select value={sortBy} onChange={e => setSortBy(e.target.value)}
-            className="px-3 py-2.5 rounded-xl bg-surface/30 border border-electric-violet/20 text-text-primary text-sm focus:outline-none focus:border-neon-cyan/50 cursor-pointer"
+            className="w-full md:w-auto px-3 py-2.5 rounded-xl bg-surface/30 border border-electric-violet/20 text-text-primary text-sm focus:outline-none focus:border-neon-cyan/50 cursor-pointer"
           >
             {sortOptions.map(o => <option key={o.value} value={o.value}>{o.label}</option>)}
           </select>

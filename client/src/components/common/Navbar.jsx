@@ -320,7 +320,7 @@ export default function Navbar() {
           {/* Right side: Theme toggle + Social icons + Hamburger */}
           <div className="flex items-center gap-1">
             {/* Dark/Light Mode Toggle */}
-            <div className="hidden md:flex items-center gap-1.5 pr-1.5 border-r border-neon-cyan/15 h-7">
+            <div className="flex items-center gap-1.5 pr-1.5 border-r border-neon-cyan/15 h-7">
               <button
                 onClick={toggleTheme}
                 className="theme-toggle w-[54px] h-[30px]"
@@ -337,7 +337,7 @@ export default function Navbar() {
             </div>
 
             <Link to="/app"
-              className="hidden md:flex w-9 h-9 items-center justify-center rounded-lg transition-all hover:bg-white/5"
+              className="flex w-9 h-9 items-center justify-center rounded-lg transition-all hover:bg-white/5"
               aria-label="Play Store"
             >
               <svg className="w-5.5 h-5.5" viewBox="0 0 24 24" fill="#3DDC84">

@@ -72,7 +72,7 @@ export default function Contact() {
           >
             📬
           </motion.div>
-          <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-neon-cyan to-electric-violet bg-clip-text text-transparent mb-4">Contact Us</h1>
+          <h1 className="text-4xl md:text-5xl font-bold text-text-primary mb-4">Contact Us</h1>
           <p className="text-lg text-text-muted">Have a question or need help? We're just a message away.</p>
           <motion.div
             initial={{ opacity: 0, y: 10 }}
@@ -169,7 +169,7 @@ export default function Contact() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="flex flex-wrap gap-3 pt-2"
+              className="flex flex-wrap gap-4 pt-2"
             >
               <motion.a whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
                 href={`https://wa.me/91${companyInfo.phone.replace(/\D/g, '')}`} target="_blank" rel="noopener noreferrer"
