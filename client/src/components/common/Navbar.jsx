@@ -320,21 +320,14 @@ export default function Navbar() {
           {/* Right side: Theme toggle + Social icons + Hamburger */}
           <div className="flex items-center gap-1">
             {/* Dark/Light Mode Toggle */}
-            <div className="flex items-center gap-1.5 pr-1.5 border-r border-neon-cyan/15 h-7">
-              <button
-                onClick={toggleTheme}
-                className="theme-toggle w-[54px] h-[30px]"
-                title={isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
-                aria-label={isDark ? 'Switch to Light Mode — currently Dark Mode' : 'Switch to Dark Mode — currently Light Mode'}
-              >
-                <div className={`theme-toggle-knob ${isDark ? '' : 'light'}`}>
-                  {isDark ? '🌙' : '☀️'}
-                </div>
-              </button>
-              <span className="text-[10px] font-medium text-text-muted/60 hidden sm:block select-none">
-                {isDark ? 'Dark' : 'Light'}
-              </span>
-            </div>
+            <button
+              onClick={toggleTheme}
+              className="flex w-9 h-9 items-center justify-center rounded-lg transition-all hover:bg-white/5 text-xl"
+              title={isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+              aria-label={isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+            >
+              <span className="transition-transform duration-300 hover:scale-110">{isDark ? '🌙' : '☀️'}</span>
+            </button>
 
             <Link to="/app"
               className="flex w-9 h-9 items-center justify-center rounded-lg transition-all hover:bg-white/5"
