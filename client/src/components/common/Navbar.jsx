@@ -105,7 +105,7 @@ export default function Navbar() {
       }`}>
         <div className="max-w-7xl mx-auto px-4 flex items-center justify-between h-16">
           <Link to="/" className="flex items-center gap-2 group shrink-0">
-            <img src={logo} alt="Calcutta Node." className="h-12 w-auto transition-transform duration-300 group-hover:scale-105" />
+            <img src={logo} alt="Calcutta Node." className="h-9 md:h-12 w-auto transition-transform duration-300 group-hover:scale-105" />
             <span className="text-neon-cyan font-bold text-lg hidden sm:block transition-all duration-300 group-hover:neon-glow-cyan">Calcutta Node.</span>
           </Link>
 
@@ -320,7 +320,7 @@ export default function Navbar() {
           {/* Right side: Theme toggle + Social icons + Hamburger */}
           <div className="flex items-center gap-1">
             {/* Dark/Light Mode Toggle */}
-            <div className="flex items-center gap-1.5 pr-1.5 border-r border-neon-cyan/15 h-7">
+            <div className="hidden md:flex items-center gap-1.5 pr-1.5 border-r border-neon-cyan/15 h-7">
               <button
                 onClick={toggleTheme}
                 className="theme-toggle w-[54px] h-[30px]"
@@ -337,7 +337,7 @@ export default function Navbar() {
             </div>
 
             <Link to="/app"
-              className="w-9 h-9 flex items-center justify-center rounded-lg transition-all hover:bg-white/5"
+              className="hidden md:flex w-9 h-9 items-center justify-center rounded-lg transition-all hover:bg-white/5"
               aria-label="Play Store"
             >
               <svg className="w-5.5 h-5.5" viewBox="0 0 24 24" fill="#3DDC84">
@@ -345,7 +345,7 @@ export default function Navbar() {
               </svg>
             </Link>
             <a href="https://wa.me/918584885450" target="_blank" rel="noopener noreferrer"
-              className="w-9 h-9 flex items-center justify-center rounded-lg transition-all hover:bg-white/5"
+              className="hidden md:flex w-9 h-9 items-center justify-center rounded-lg transition-all hover:bg-white/5"
               aria-label="WhatsApp"
             >
               <svg className="w-5.5 h-5.5" viewBox="0 0 24 24" fill="#25D366">
@@ -353,7 +353,7 @@ export default function Navbar() {
               </svg>
             </a>
             <a href="https://instagram.com/calcuttanode" target="_blank" rel="noopener noreferrer"
-              className="w-9 h-9 flex items-center justify-center rounded-lg transition-all hover:bg-white/5"
+              className="hidden md:flex w-9 h-9 items-center justify-center rounded-lg transition-all hover:bg-white/5"
               aria-label="Instagram"
             >
               <svg className="w-5.5 h-5.5" viewBox="0 0 24 24" fill="#E4405F">

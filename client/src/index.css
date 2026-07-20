@@ -444,12 +444,7 @@ body {
   button, a, [role="button"] { min-height: 44px; }
   /* Ensure no horizontal overflow on small screens */
   .grid { margin-left: 0; margin-right: 0; }
-  img { max-width: 100%; height: auto; }
   /* Fix scrollable chat containers to account for fixed bottom nav */
-  [class*="overflow-y-auto"] { -webkit-overflow-scrolling: touch; }
-  /* Prevent images from causing overflow on small screens */
-  img { max-width: 100%; height: auto; }
-  /* Fix scrollable containers for mobile */
   [class*="overflow-y-auto"] { -webkit-overflow-scrolling: touch; }
   /* Ensure grid items don't overflow container */
   .grid > * { min-width: 0; }
