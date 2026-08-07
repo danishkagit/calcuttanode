@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { body } from 'express-validator';
-import { register, login, refreshToken, logout, getMe, googleLogin } from '../controllers/authController.js';
+import { register, login, refreshToken, logout, getMe, googleLogin, forgotPassword, resetPassword } from '../controllers/authController.js';
 import { protect } from '../middleware/authMiddleware.js';
 import { authLimiter } from '../middleware/rateLimiter.js';
 import sendEmail from '../utils/sendEmail.js';
@@ -20,6 +20,15 @@ const loginValidation = [
   body('password').notEmpty().withMessage('Password is required'),
 ];
 
+const forgotPasswordValidation = [
+  body('email').isEmail().withMessage('Valid email is required').normalizeEmail(),
+];
+
+const resetPasswordValidation = [
+  body('token').notEmpty().withMessage('Reset token is required'),
+  body('password').isLength({ min: 6 }).withMessage('Password must be at least 6 characters'),
+];
+
 router.post('/register', authLimiter, registerValidation, register);
 router.post('/login', authLimiter, loginValidation, login);
 router.post('/refresh-token', refreshToken);
@@ -27,6 +36,9 @@ router.post('/logout', logout);
 router.get('/me', protect, getMe);
 
 router.post('/google', googleLogin);
+
+router.post('/forgot-password', authLimiter, forgotPasswordValidation, forgotPassword);
+router.post('/reset-password', authLimiter, resetPasswordValidation, resetPassword);
 
 router.post('/contact', async (req, res) => {
   try {

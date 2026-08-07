@@ -30,7 +30,10 @@ export default function Products() {
   const filtered = filter === 'All' ? products : products.filter((p) => p.category === filter);
 
   const handlePurchase = async (product) => {
-    if (!user) { setMessage({ type: 'error', text: 'Please login to purchase' }); return; }
+    if (!user) { 
+      window.location.href = `/login?redirect=/products`;
+      return; 
+    }
     setPurchasing(product.slug);
     setMessage(null);
     try {

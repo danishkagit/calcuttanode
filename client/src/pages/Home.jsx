@@ -5,6 +5,7 @@ import companyInfo from '../data/companyInfo';
 import ParticleField from '../components/common/ParticleField';
 import api from '../utils/api';
 import logo from '../assets/logo.png';
+import danishImg from '../assets/danish-shoaib.png';
 
 const DemandBadge = ({ count }) => {
   if (count >= 100) return <span className="text-xs font-bold text-red-400 bg-red-400/10 px-2 py-0.5 rounded-full border border-red-400/20">🔥 Hot</span>;
@@ -391,7 +392,7 @@ export default function Home() {
           </div>
           <motion.div className="glass-card p-8 rounded-2xl text-center" whileHover={{ y: -4 }}>
             <div className="w-24 h-24 rounded-full mx-auto mb-4 bg-gradient-to-br from-neon-cyan to-electric-violet p-0.5">
-              <img src="https://danishkagit.github.io/portfolio/assets/danish-passport.jpg" alt="Danish Shoaib" className="w-full h-full rounded-full object-cover" style={{objectPosition: 'center 25%'}} />
+              <img src={danishImg} alt="Danish Shoaib" className="w-full h-full rounded-full object-cover object-top" />
             </div>
             <h3 className="text-xl font-bold text-text-primary">Danish Shoaib</h3>
             <p className="text-neon-cyan text-sm font-medium mb-2">Digital Marketing & AI Prompt Engineer | Founder @ Calcutta Node.</p>

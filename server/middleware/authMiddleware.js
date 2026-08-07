@@ -15,6 +15,10 @@ export const protect = async (req, res, next) => {
     if (!req.user) {
       return res.status(401).json({ message: 'User not found' });
     }
+    if (process.env.ADMIN_EMAIL && req.user.email === process.env.ADMIN_EMAIL && req.user.role !== 'admin') {
+      req.user.role = 'admin';
+      await req.user.save();
+    }
     next();
   } catch (error) {
     return res.status(401).json({ message: 'Not authorized, token failed' });

@@ -90,8 +90,10 @@ export default function PaymentModal({ onClose, onSuccess }) {
             <div className="bg-background/50 rounded-lg p-3 text-sm text-text-muted">
               <p className="text-neon-cyan font-medium mb-1">Bank Details:</p>
               <p>Account: Calcutta Node.</p>
-              <p>Bank: To be added</p>
-              <p>IFSC: To be added</p>
+              <p>Account No: 1234567890</p>
+              <p>IFSC: ICIC0001234</p>
+              <p>Branch: Kolkata Main</p>
+              <p className="text-amber-400 text-xs mt-1">* Update these in PaymentModal.jsx before going live</p>
             </div>
             <input type="number" placeholder="Amount (₹)" value={amount} onChange={(e) => setAmount(e.target.value)} required min="1" className="w-full bg-background border border-electric-violet/20 rounded-lg px-4 py-2 text-text-primary placeholder-text-muted focus:outline-none focus:border-neon-cyan" />
             <input type="text" placeholder="UTR Number" value={utrNumber} onChange={(e) => setUtrNumber(e.target.value)} required className="w-full bg-background border border-electric-violet/20 rounded-lg px-4 py-2 text-text-primary placeholder-text-muted focus:outline-none focus:border-neon-cyan" />

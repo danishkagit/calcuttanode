@@ -15,6 +15,8 @@ const userSchema = new mongoose.Schema({
   loyaltyPoints: { type: Number, default: 0 },
   savedServices: [{ type: String }],
   emailNotifications: { type: Boolean, default: true },
+  resetPasswordToken: { type: String },
+  resetPasswordExpires: { type: Date },
 }, { timestamps: true });
 
 userSchema.pre('save', async function (next) {

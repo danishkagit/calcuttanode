@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import companyInfo from '../data/companyInfo';
 import ParticleField from '../components/common/ParticleField';
+import danishImg from '../assets/danish-shoaib.png';
 
 const fadeUp = { initial: { opacity: 0, y: 30 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, margin: '-50px' }, transition: { duration: 0.5 } };
 
@@ -50,7 +51,7 @@ export default function About() {
           <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ type: 'spring', stiffness: 200, damping: 15 }}
             className="w-28 h-28 rounded-full mx-auto mb-5 bg-gradient-to-br from-neon-cyan to-electric-violet p-1 shadow-xl shadow-neon-cyan/20"
           >
-            <img src="https://danishkagit.github.io/portfolio/assets/danish-passport.jpg" alt="Danish Shoaib" className="w-full h-full rounded-full object-cover border-2 border-background" style={{objectPosition: 'center 25%'}} />
+            <img src={danishImg} alt="Danish Shoaib" className="w-full h-full rounded-full object-cover object-top border-2 border-background" />
           </motion.div>
           <motion.span animate={{ y: [0, -4, 0] }} transition={{ repeat: Infinity, duration: 2.5 }}
             className="inline-block text-xs font-semibold text-electric-violet bg-electric-violet/15 px-4 py-1.5 rounded-full mb-4 border border-electric-violet/30"
