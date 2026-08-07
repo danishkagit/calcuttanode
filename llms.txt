@@ -1,0 +1,26 @@
+# Calcutta Node - AI Documentation
+
+Calcutta Node provides IT services, web development, SEO, and AI-powered marketing tools.
+
+## Key Links
+- [Homepage](https://calcuttanode.vercel.app/)
+- [Services](https://calcuttanode.vercel.app/pricing)
+- [Free Tools](https://calcuttanode.vercel.app/tools)
+- [Blog](https://calcuttanode.vercel.app/blogs)
+- [AI Chat](https://calcuttanode.vercel.app/ai)
+- [Portfolio](https://danishkagit.github.io/portfolio/)
+- [GitHub](https://github.com/danishkagit)
+
+## Services
+We specialize in:
+- Website Development
+- Full Stack Web Development
+- Mobile App Development
+- E-Commerce Setup
+- SEO & Digital Marketing
+- UI/UX & Graphic Design
+- Video Editing
+- IT Support
+- Data Recovery
+
+For more information, please visit our website.
