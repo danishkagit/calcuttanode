@@ -46,9 +46,8 @@ Full-stack digital agency ecosystem built by **Danish Shoaib**. Three interconne
 │  │  → Links to portfolio & resume       │  ← CROSS-LINKS ADDED      │
 │  └──────────────────────────────────────┘                           │
 │                                                                     │
-│  📄 Resume.md (Single Source of Truth)                              │
-│  → Served via /api/resume/download                                   │
-│  → Linked from portfolio hero & agency site                         │
+│  📄 Resume.md (Removed)                                               │
+│  → Centralized resume delivery removed                               │
 │                                                                     │
 └─────────────────────────────────────────────────────────────────────┘
 ```
@@ -63,8 +62,8 @@ Full-stack digital agency ecosystem built by **Danish Shoaib**. Three interconne
 | Portfolio Form | `/api/auth/contact` | Contact form via agency (was FormSubmit.co) |
 | Agency About page | `View Portfolio` | Shows founder's personal brand |
 | Agency Footer | `Founder's Portfolio` | Cross-links back to portfolio |
-| Agency Nav (Company) | `Portfolio` + `Resume` | Easy access to founder materials |
-| All surfaces | `/api/resume/download` | Centralized resume delivery |
+| Agency Nav (Company) | `Portfolio` + `GitHub` | Easy access to founder materials |
+| All surfaces | N/A | Centralized resume delivery removed |
 
 ## Quick Start
 
@@ -95,7 +94,7 @@ cd client && npm run dev
 | Backend API | http://localhost:5000/api | https://calcuttanode-api.onrender.com/api |
 | Portfolio | http://localhost (live server) | https://danishkagit.github.io/portfolio/ |
 | MongoDB | mongodb://localhost:27017/calcuttanode | MongoDB Atlas |
-| Resume Download | http://localhost:5000/api/resume/download | https://calcuttanode-api.onrender.com/api/resume/download |
+| Resume Download | http://localhost:5000/api/resume/download (Removed) | https://calcuttanode-api.onrender.com/api/resume/download (Removed) |
 
 ## Seed Data
 
@@ -124,7 +123,7 @@ npm run seed:plans     # Populate 3 subscription plans
 
 - Never commit `.env` — only commit `.env.example`
 - Real API keys, passwords, and secrets go in your local `.env` file only
-- `credentials.txt` at `D:\Danish\credentials.txt` — **CRITICAL: delete or move to secure storage**
+- Security Alert: Ensure no local paths like `D:\Danish\credentials.txt` exist in your environment. Use environment variables for secrets.
 - See `MANUAL.md` for editing content and configuration
 
 ## Changes Made
@@ -142,6 +141,6 @@ npm run seed:plans     # Populate 3 subscription plans
 - Added `fileURLToPath` + `path` imports for proper ESM `__dirname`
 
 ### `Calcutta Node Client`
-- Added Portfolio + Resume links to Navbar Company dropdown
-- Added Resume download button in About page founder section
+- Added Portfolio + GitHub links to Navbar Company dropdown
+- Removed Resume link/page
 - Footer already links to founder's portfolio
