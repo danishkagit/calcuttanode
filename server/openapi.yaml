@@ -1,0 +1,83 @@
+openapi: 3.0.0
+info:
+  title: Calcutta Node API
+  description: API for managing agency services, authentication, and AI interactions.
+  version: 1.0.0
+servers:
+  - url: https://calcuttanode-api.onrender.com/api
+paths:
+  /auth/login:
+    post:
+      summary: User Login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Invalid credentials
+  /auth/register:
+    post:
+      summary: User Registration
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                phone:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '201':
+          description: User registered
+  /auth/google:
+    post:
+      summary: Google Login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                credential:
+                  type: string
+                  description: Google ID token
+      responses:
+        '200':
+          description: Authentication successful
+  /auth/contact:
+    post:
+      summary: Send Contact Message
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                phone:
+                  type: string
+                subject:
+                  type: string
+                message:
+                  type: string
+      responses:
+        '200':
+          description: Message sent
