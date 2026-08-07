@@ -177,9 +177,9 @@ export default function About() {
           <div className="glass-card-premium p-8 rounded-2xl text-center relative overflow-hidden">
             <div className="absolute -top-20 -right-20 w-40 h-40 bg-neon-cyan/5 rounded-full blur-3xl pointer-events-none" />
             <div className="relative z-10">
-              <span className="text-3xl block mb-3">📄</span>
+              <span className="text-3xl block mb-3">🚀</span>
               <h2 className="text-xl font-bold text-text-primary mb-2">Want to know more?</h2>
-              <p className="text-text-muted text-sm mb-6 max-w-md mx-auto">Download my resume or check out my portfolio and LinkedIn for the full picture.</p>
+              <p className="text-text-muted text-sm mb-6 max-w-md mx-auto">Check out my portfolio and LinkedIn for the full picture.</p>
               <div className="flex gap-3 justify-center flex-wrap">
                 <a href="https://danishkagit.github.io/portfolio/" target="_blank" rel="noopener noreferrer"
                   className="flex items-center gap-2 border border-neon-cyan text-neon-cyan px-5 py-2.5 rounded-xl text-sm font-medium hover:bg-neon-cyan/10"
