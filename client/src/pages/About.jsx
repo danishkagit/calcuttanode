@@ -56,12 +56,12 @@ export default function About() {
           </motion.div>
           <motion.span animate={{ y: [0, -4, 0] }} transition={{ repeat: Infinity, duration: 2.5 }}
             className="inline-block text-xs font-semibold text-electric-violet bg-electric-violet/15 px-4 py-1.5 rounded-full mb-4 border border-electric-violet/30"
-          >👋 About Me</motion.span>
+          >👋 Hi, I'm Danish!</motion.span>
           <h1 className="text-4xl md:text-5xl font-bold text-text-primary mb-2">
-            Danish <span className="bg-gradient-to-r from-neon-cyan to-electric-violet bg-clip-text text-transparent">Shoaib</span>
+            Technologist & Digital Architect
           </h1>
-          <p className="text-lg text-text-muted max-w-xl mx-auto">Digital Marketing & AI Prompt Engineer | <span className="whitespace-nowrap">Founder @ <span className="text-neon-cyan">Calcutta Node.</span></span></p>
-          <p className="text-sm text-text-muted/60 mt-1">📍 Champdani, Hooghly, West Bengal, India</p>
+          <p className="text-lg text-text-muted max-w-xl mx-auto">Building the future of digital experiences at <span className="text-neon-cyan font-bold">Calcutta Node.</span></p>
+          <p className="text-sm text-text-muted/60 mt-1">Based in Champdani, Hooghly | Innovating Globally</p>
         </motion.div>
 
         {/* WHO I AM */}
