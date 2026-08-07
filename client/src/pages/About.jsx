@@ -70,13 +70,13 @@ export default function About() {
             {
               icon: '👤',
               title: 'Who I Am',
-              text: 'I\'m Danish Shoaib — a self-taught digital professional based in Champdani, Hooghly. Before Calcutta Node., I ran a pharmacy. I saw small businesses struggle with technology and decided to bridge that gap. Today I run a remote-first digital agency serving clients globally while continuing my education.',
+              text: 'I\'m Danish Shoaib — a technologist and digital architect based in Champdani, Hooghly. Transitioning from traditional business management to the forefront of AI and full-stack development, I build solutions that don\'t just function—they scale, inspire, and drive growth.',
               color: 'from-neon-cyan/20 to-neon-cyan/5 border-neon-cyan/30',
             },
             {
               icon: '🎯',
-              title: 'What I Do',
-              text: 'I help businesses grow through web development, digital marketing, AI-powered solutions, and IT support. Every service is delivered remotely, making professional tech support accessible to anyone, anywhere — without the big-agency price tag.',
+              title: 'My Mission',
+              text: 'At Calcutta Node., my goal is to democratize high-end technology. Whether you need a lightning-fast web app, a custom Android tool, or an AI-powered growth strategy, I deliver premium-grade digital experiences with a personal, accessible touch. I turn complex problems into simplified, actionable digital reality.',
               color: 'from-electric-violet/20 to-electric-violet/5 border-electric-violet/30',
             },
           ].map((card, i) => (
