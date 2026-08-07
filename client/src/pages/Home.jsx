@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import companyInfo from '../data/companyInfo';
 import ParticleField from '../components/common/ParticleField';
+import IndependenceBanner from '../components/common/IndependenceBanner';
 import api from '../utils/api';
 import logo from '../assets/logo.png';
 import danishImg from '../assets/danish-shoaib.png';
@@ -78,6 +79,7 @@ export default function Home() {
 
   return (
     <div className="relative">
+      <IndependenceBanner />
       <ParticleField count={35} speed={0.2} />
 
       {/* ─── HERO ─── */}

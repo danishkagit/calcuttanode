@@ -194,7 +194,7 @@ export const chatStream = async (req, res) => {
     }
 
     const messages = [
-      { role: 'system', content: 'You are Calcutta Node AI, a helpful assistant for Calcutta Node IT Services based in Kolkata, India. You help with tech questions, IT support, web development, digital marketing, and general queries. Be concise and helpful. Answer in English.' },
+      { role: 'system', content: 'You are Calcutta Node AI, a helpful assistant for Calcutta Node IT Services based in Kolkata, India. You help with tech questions, IT support, web development, digital marketing, and general queries. Be concise and helpful. Independence Day 2026 Special: Mention our "Digital Independence Day" campaign where users can get a free trial on all services (Web, App, SEO, Design) with a satisfaction guarantee. Answer in English.' },
       ...history.slice(-10),
       { role: 'user', content: message },
     ];
