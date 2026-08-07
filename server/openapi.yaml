@@ -81,3 +81,49 @@ paths:
       responses:
         '200':
           description: Message sent
+  /services:
+    get:
+      summary: Get all services
+      responses:
+        '200':
+          description: OK
+  /services/trending:
+    get:
+      summary: Get trending services
+      responses:
+        '200':
+          description: OK
+  /services/{id}:
+    get:
+      summary: Get service by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+  /products:
+    get:
+      summary: Get all products
+      responses:
+        '200':
+          description: OK
+  /ai/chat:
+    post:
+      summary: Chat with AI
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                message:
+                  type: string
+                model:
+                  type: string
+      responses:
+        '200':
+          description: OK
