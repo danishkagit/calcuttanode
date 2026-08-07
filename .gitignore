@@ -14,3 +14,10 @@ Google OAuth Client ID.json
 Twillio Sendgrid.txt
 server/public/app/*.apk
 test-results/
+
+# Local-only files
+MANUAL.md
+OPENCODE_MULTI_MODEL_SETUP.md
+SOCIAL_MEDIA_KIT.md
+instagram-strategy-calcuttanode.md
+Social Media Resources/
