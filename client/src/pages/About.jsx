@@ -181,12 +181,6 @@ export default function About() {
               <h2 className="text-xl font-bold text-text-primary mb-2">Want to know more?</h2>
               <p className="text-text-muted text-sm mb-6 max-w-md mx-auto">Download my resume or check out my portfolio and LinkedIn for the full picture.</p>
               <div className="flex gap-3 justify-center flex-wrap">
-                <a href="https://calcuttanode-api.onrender.com/api/resume/download" target="_blank" rel="noopener noreferrer"
-                  className="flex items-center gap-2 bg-brand-gradient text-white px-5 py-2.5 rounded-xl text-sm font-medium hover:shadow-xl hover:shadow-neon-cyan/30"
-                >
-                  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-                  Download Resume
-                </a>
                 <a href="https://danishkagit.github.io/portfolio/" target="_blank" rel="noopener noreferrer"
                   className="flex items-center gap-2 border border-neon-cyan text-neon-cyan px-5 py-2.5 rounded-xl text-sm font-medium hover:bg-neon-cyan/10"
                 >

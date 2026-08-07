@@ -92,15 +92,6 @@ app.get('/sitemap.xml', (req, res) => {
   res.redirect(301, 'https://calcuttanode-api.onrender.com/api/seo/sitemap');
 });
 
-app.get('/api/resume/download', (req, res) => {
-  const resumePath = path.resolve(__dirname, '..', 'Resume.md');
-  res.download(resumePath, 'Danish_Shoaib_Resume.md', (err) => {
-    if (err) {
-      res.status(404).json({ message: 'Resume not found' });
-    }
-  });
-});
-
 app.get('/api/health', (req, res) => {
   res.json({ success: true, message: 'Server is running', timestamp: new Date().toISOString() });
 });
