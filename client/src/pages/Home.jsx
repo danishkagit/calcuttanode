@@ -96,19 +96,19 @@ export default function Home() {
           >
             🚀 Digital Growth Partner
           </motion.span>
-          <motion.div animate={{ y: [0, -8, 0] }} transition={{ repeat: Infinity, duration: 3, ease: 'easeInOut' }} className="text-5xl md:text-7xl font-bold mb-3">
-            <span className="bg-gradient-to-r from-neon-cyan via-electric-violet to-neon-cyan bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient-x">
-              Calcutta Node.
-            </span>
-          </motion.div>
-          <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
-            className="text-lg md:text-xl text-transparent bg-clip-text bg-gradient-to-r from-text-primary to-neon-cyan font-medium mb-3"
-          >
-            Digital Growth. Delivered Instantly. Anywhere.
-          </motion.p>
-          <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}
-            className="flex flex-wrap justify-center gap-2 max-w-2xl mx-auto mb-3"
-          >
+           <motion.div animate={{ y: [0, -8, 0] }} transition={{ repeat: Infinity, duration: 3, ease: 'easeInOut' }} className="text-5xl md:text-7xl font-bold mb-3">
+             <span className="bg-gradient-to-r from-neon-cyan via-electric-violet to-neon-cyan bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient-x">
+               Calcutta Node.
+             </span>
+           </motion.div>
+           <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
+             className="text-lg md:text-xl text-transparent bg-clip-text bg-gradient-to-r from-text-primary to-neon-cyan font-medium mb-3"
+           >
+             Your AI-Powered Growth Engine. Engineering Tomorrow's Digital Experiences, Delivered Remotely.
+           </motion.p>
+           <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}
+             className="flex flex-wrap justify-center gap-2 max-w-2xl mx-auto mb-3"
+           >
             {[
               { label: '🌐 Websites', color: 'from-neon-cyan/20 to-neon-cyan/5 border-neon-cyan/20' },
               { label: '📱 Mobile Apps', color: 'from-electric-violet/20 to-electric-violet/5 border-electric-violet/20' },
@@ -128,17 +128,17 @@ export default function Home() {
           >
             From fixing a slow PC to building your dream website — we deliver practical tech solutions worldwide. <span className="text-neon-cyan font-medium">100% remote delivery.</span>
           </motion.p>
-          <div className="flex gap-4 justify-center flex-wrap">
-            <motion.a href="/pricing" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
-              className="bg-brand-gradient text-white px-8 py-3 rounded-xl font-medium transition-all duration-200 hover:shadow-xl hover:shadow-neon-cyan/30"
-            >View Services</motion.a>
-            <motion.a href="/contact" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
-              className="border border-neon-cyan text-neon-cyan px-8 py-3 rounded-xl font-medium transition-all duration-200 hover:bg-neon-cyan/10"
-            >Contact Us</motion.a>
-            <motion.a href="/ai" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
-              className="border border-electric-violet/40 text-text-primary bg-electric-violet/20 px-8 py-3 rounded-xl font-medium transition-all duration-200 hover:bg-electric-violet/40"
-            >🤖 Try AI Support</motion.a>
-          </div>
+           <div className="flex gap-4 justify-center flex-wrap">
+             <motion.a href="/pricing" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
+               className="bg-brand-gradient text-white px-8 py-3 rounded-xl font-medium transition-all duration-200 hover:shadow-xl hover:shadow-neon-cyan/30"
+             >Launch Your Project</motion.a>
+             <motion.a href="/contact" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
+               className="border border-neon-cyan text-neon-cyan px-8 py-3 rounded-xl font-medium transition-all duration-200 hover:bg-neon-cyan/10"
+             >Book a Consultation</motion.a>
+             <motion.a href="/ai" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
+               className="border border-electric-violet/40 text-text-primary bg-electric-violet/20 px-8 py-3 rounded-xl font-medium transition-all duration-200 hover:bg-electric-violet/40"
+             >🤖 Talk to AI</motion.a>
+           </div>
         </motion.div>
       </section>
 
