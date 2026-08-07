@@ -124,9 +124,9 @@ export default function Dashboard() {
   return (
     <div className="max-w-7xl mx-auto px-4 py-8 flex gap-6 flex-col md:flex-row">
       <aside className="w-full md:w-64 shrink-0">
-        <div className="glass-card rounded-xl p-4 space-y-1 md:sticky md:top-20">
+        <div className="glass-card-premium rounded-2xl p-4 space-y-1 md:sticky md:top-20">
           <div className="flex items-center justify-between px-4 py-2 mb-2">
-            <p className="text-xs text-text-muted font-medium flex items-center gap-2">
+            <p className="text-xs text-text-muted font-bold uppercase tracking-wider flex items-center gap-2">
               <button onClick={() => setSidebarOpen(!sidebarOpen)} className="md:hidden p-1 hover:text-text-primary transition-colors" aria-label="Toggle sidebar">
                 <svg className={`w-4 h-4 transition-transform ${sidebarOpen ? 'rotate-90' : ''}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
               </button>
@@ -173,8 +173,8 @@ export default function Dashboard() {
           <div className={`md:!max-h-none overflow-hidden transition-all duration-300 ${sidebarOpen ? 'max-h-[800px]' : 'max-h-0 md:max-h-none'}`}>
             {mainSections.map((s) => (
               <button key={s} onClick={() => { setSection(s); setSidebarOpen(false); }}
-                className={`w-full text-left px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 flex items-center gap-2 ${
-                  section === s ? 'bg-neon-cyan/10 text-neon-cyan' : 'text-text-muted hover:text-text-primary hover:bg-white/5'
+                className={`w-full text-left px-4 py-3 rounded-xl text-sm font-semibold transition-all duration-200 flex items-center gap-3 ${
+                  section === s ? 'bg-gradient-to-r from-neon-cyan/20 to-electric-violet/20 text-neon-cyan shadow-sm border border-neon-cyan/20' : 'text-text-muted hover:text-text-primary hover:bg-white/5'
                 }`}
               >
                 {s === 'overview' && <svg className="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>}
@@ -206,7 +206,7 @@ export default function Dashboard() {
 
       <main className="flex-1">
         <motion.div key={section} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.2 }}
-          className="glass-card rounded-xl p-6 min-h-[400px]"
+          className="glass-card-premium rounded-2xl p-8 min-h-[400px]"
         >
           {section === 'overview' && (
             <div>
