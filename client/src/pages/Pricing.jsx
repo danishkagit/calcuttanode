@@ -173,56 +173,43 @@ export default function Pricing() {
                 <motion.div key={service._id} layout initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: i * 0.06 }}
                   onMouseEnter={() => setHoveredId(service._id)} onMouseLeave={() => setHoveredId(null)}
                   whileHover={{ y: -8 }}
-                  className={`relative group rounded-2xl p-6 glass-card-premium overflow-hidden ${
-                    isTrending ? 'border-neon-cyan/40 shadow-lg shadow-neon-cyan/10' : ''
-                  } ${hasAiAddon ? 'ring-1 ring-ai-cyan/10' : ''}`}
+                  className={`relative group rounded-3xl p-8 glass-card-premium overflow-hidden ${
+                    isTrending ? 'border-neon-cyan/50 shadow-2xl shadow-neon-cyan/20' : ''
+                  } ${hasAiAddon ? 'ring-1 ring-ai-cyan/20' : ''}`}
                 >
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                    style={{ background: 'linear-gradient(135deg, rgba(69,229,192,0.06) 0%, transparent 40%, rgba(167,139,250,0.06) 100%)' }}
-                  />
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-neon-cyan/5 to-electric-violet/5" />
                   <div className="relative z-10">
                     {isTrending && (
-                      <motion.span animate={{ y: [0, -2, 0] }} transition={{ repeat: Infinity, duration: 2 }}
-                        className="absolute -top-3 left-1/2 -translate-x-1/2 bg-neon-cyan text-white text-xs font-bold px-4 py-1 rounded-full shadow-lg shadow-neon-cyan/30 z-10"
-                      >🔥 Trending</motion.span>
+                      <motion.span animate={{ y: [0, -3, 0] }} transition={{ repeat: Infinity, duration: 2.5 }}
+                        className="absolute -top-3 right-6 bg-gradient-to-r from-neon-cyan to-ai-cyan text-white text-[10px] font-bold px-3 py-1 rounded-full shadow-lg shadow-neon-cyan/30 z-10 uppercase tracking-wider"
+                      >🔥 High Demand</motion.span>
                     )}
-                    <div className="flex items-center gap-3 mb-4">
-                      <motion.span animate={hoveredId === service._id ? { rotate: [0, -15, 15, 0] } : {}} transition={{ duration: 0.4 }} className="text-2xl">
+                    <div className="flex items-center gap-3 mb-6">
+                      <motion.div animate={hoveredId === service._id ? { rotate: [0, -10, 10, 0] } : {}} transition={{ duration: 0.5 }} className="w-12 h-12 rounded-2xl bg-surface/50 flex items-center justify-center text-3xl border border-white/5 shadow-inner">
                         {categoryIcons[service.category] || '📋'}
-                      </motion.span>
-                      <span className="text-xs uppercase tracking-wider text-text-muted">{service.category}</span>
+                      </motion.div>
+                      <div>
+                        <span className="text-[10px] uppercase tracking-widest text-text-muted font-semibold">{service.category}</span>
+                        <h3 className="text-lg font-bold text-text-primary group-hover:text-neon-cyan transition-colors">{service.name}</h3>
+                      </div>
                     </div>
-                    <h3 className="text-text-primary font-semibold mb-1 group-hover:text-neon-cyan transition-colors">{service.name}</h3>
-                    <p className="text-xs text-text-muted/60 mb-4">{categoryDesc[service.category] || ''}</p>
-                    <div className="flex items-baseline gap-1 mb-4">
-                      <span className={`text-3xl font-bold ${isTrending ? 'text-neon-cyan' : 'text-text-primary'}`}>₹{service.price}</span>
-                      <span className="text-text-muted text-sm">one-time</span>
+                    <p className="text-xs text-text-muted mb-6 leading-relaxed">{categoryDesc[service.category] || ''}</p>
+                    <div className="flex items-baseline gap-1 mb-6">
+                      <span className="text-text-muted text-xs">Starting at</span>
+                      <span className={`text-4xl font-black ${isTrending ? 'text-neon-cyan' : 'text-text-primary'}`}>₹{service.price}</span>
                     </div>
-                    <div className="flex items-center gap-3 text-xs text-text-muted mb-3">
-                      <span className="flex items-center gap-1">
-                        <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-                        {service.viewCount || 0}
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 13l4 4L19 7"/></svg>
-                        {service.bookingCount || 0} booked
-                      </span>
-                      {(service.trending || 0) >= 80 && (
-                        <span className="text-orange-400 font-medium">{service.trending}%🔥</span>
-                      )}
-                    </div>
-                    <ul className="space-y-2.5 mb-4">
+
+                    <ul className="space-y-3 mb-8">
                       {service.features.map((f, j) => (
-                        <motion.li key={j} initial={{ opacity: 0, x: -10 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: j * 0.05 }}
-                          className="text-text-muted text-sm flex items-start gap-2"
-                        >
-                          <svg className="w-4 h-4 mt-0.5 shrink-0 text-electric-violet" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                            <polyline points="20 6 9 17 4 12"/>
-                          </svg>
+                        <li key={j} className="text-text-primary/80 text-sm flex items-center gap-3">
+                          <div className="w-5 h-5 rounded-full bg-neon-cyan/10 flex items-center justify-center shrink-0">
+                            <svg className="w-3 h-3 text-neon-cyan" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><polyline points="20 6 9 17 4 12"/></svg>
+                          </div>
                           {f}
-                        </motion.li>
+                        </li>
                       ))}
                     </ul>
+
                     {hasAiAddon && (
                       <motion.div initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
                         className="mb-4 p-3 rounded-xl bg-ai-gradient-subtle border border-ai-cyan/15"
