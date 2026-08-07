@@ -1,0 +1,22 @@
+{
+  "actions": [
+    {
+      "name": "get_services",
+      "description": "Fetch all agency services",
+      "endpoint": "/services",
+      "method": "GET"
+    },
+    {
+      "name": "chat_with_ai",
+      "description": "Send a message to the AI chat interface",
+      "endpoint": "/ai/chat",
+      "method": "POST"
+    },
+    {
+      "name": "submit_contact",
+      "description": "Send a contact form submission",
+      "endpoint": "/auth/contact",
+      "method": "POST"
+    }
+  ]
+}

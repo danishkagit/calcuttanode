@@ -1,0 +1,22 @@
+{
+  "name": "Calcutta Node Agency API",
+  "description": "Permissions for AI agents interacting with the Calcutta Node ecosystem.",
+  "version": "1.0.0",
+  "capabilities": {
+    "public_read": [
+      "/services",
+      "/services/trending",
+      "/products"
+    ],
+    "user_interaction": [
+      "/auth/contact"
+    ],
+    "ai_features": [
+      "/ai/chat"
+    ]
+  },
+  "constraints": {
+    "rate_limiting": "Strict",
+    "write_access": "Restricted to contact and chat"
+  }
+}
