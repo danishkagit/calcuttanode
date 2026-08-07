@@ -273,7 +273,6 @@ export default function Navbar() {
                     {[
                       { label: 'About', path: '/about', icon: '👤', desc: 'Our story & team' },
                       { label: 'Portfolio', path: 'https://danishkagit.github.io/portfolio/', icon: '📂', desc: "Founder's portfolio", external: true },
-                      { label: 'Resume', path: 'https://calcuttanode-api.onrender.com/api/resume/download', icon: '📄', desc: 'Download resume', external: true },
                       { label: 'Referral Program', path: '/referral', icon: '🤝', desc: 'Refer & earn ₹100' },
                       { label: 'Contact', path: '/contact', icon: '📬', desc: 'Get in touch' },
                     ].map((item) => item.external ? (
