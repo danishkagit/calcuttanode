@@ -60,6 +60,25 @@ const schemas = {
     publisher: { '@type': 'Organization', name: 'Calcutta Node', logo: { '@type': 'ImageObject', url: 'https://calcuttanode.vercel.app/logo.png' } },
     mainEntityOfPage: { '@type': 'WebPage', '@id': 'https://calcuttanode.vercel.app' },
   },
+  Service: {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    provider: { '@type': 'LocalBusiness', name: 'Calcutta Node' },
+    serviceType: 'IT and Digital Services',
+    description: 'Professional IT support, web development, and digital marketing services in Kolkata.',
+    areaServed: { '@type': 'City', name: 'Kolkata' },
+  },
+  FAQPage: {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'What services does Calcutta Node offer?',
+        acceptedAnswer: { '@type': 'Answer', text: 'Calcutta Node offers web development, IT support, SEO, digital marketing, and UI/UX design.' }
+      }
+    ]
+  },
 };
 
 export default function SEOHead() {
@@ -87,7 +106,12 @@ export default function SEOHead() {
     setMeta('twitter:title', meta.title);
     setMeta('twitter:description', meta.description);
 
-    const baseSchema = pathname.startsWith('/blogs/') ? schemas.BlogPosting : schemas.LocalBusiness;
+    let schema;
+    if (pathname.startsWith('/blogs/')) schema = schemas.BlogPosting;
+    else if (pathname === '/pricing') schema = schemas.Service;
+    else if (pathname === '/contact') schema = schemas.FAQPage;
+    else schema = schemas.LocalBusiness;
+
     let script = document.getElementById('json-ld');
     if (!script) {
       script = document.createElement('script');
@@ -95,7 +119,7 @@ export default function SEOHead() {
       script.type = 'application/ld+json';
       document.head.appendChild(script);
     }
-    script.textContent = JSON.stringify(baseSchema);
+    script.textContent = JSON.stringify(schema);
   }, [pathname]);
 
   return null;
