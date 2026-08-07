@@ -1,6 +1,6 @@
 const companyInfo = {
   name: 'Calcutta Node.',
-  tagline: 'Digital Growth Agency — Web & app development, remote IT support, digital marketing & technology solutions — delivered remotely worldwide. Founded by Danish Shoaib.',
+  tagline: 'Digital Growth Agency — Web, Android, & AI solutions, remote IT support, and technical education. Building faster, smarter digital experiences. Founded by Danish Shoaib.',
   address: 'Kolkata, India',
   email: 'calcuttanode@gmail.com',
   phone: '8584885450',

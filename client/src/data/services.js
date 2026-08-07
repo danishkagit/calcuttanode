@@ -118,6 +118,13 @@ const services = [
     price: 1499,
     features: ['HDD/SSD/NVMe diagnostics', 'File recovery attempt', 'Free consultation', 'No recovery, no charge policy'],
   },
+  {
+    id: 'tech-tutoring',
+    name: 'Technical Documentation & Tutoring',
+    category: 'Education',
+    price: 1999,
+    features: ['Custom learning paths', 'Step-by-step documentation', 'System architecture breakdown', 'Live troubleshooting sessions'],
+  },
 ];
 
 export default services;

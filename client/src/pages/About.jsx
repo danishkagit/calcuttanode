@@ -11,6 +11,7 @@ const skills = [
   { name: 'Digital Marketing', level: 90, icon: '📈', color: 'from-orange-400 to-red-500' },
   { name: 'AI Prompt Engineering', level: 95, icon: '🤖', color: 'from-violet-400 to-purple-500' },
   { name: 'UI/UX Design', level: 75, icon: '🎨', color: 'from-pink-400 to-rose-500' },
+  { name: 'Android Development', level: 85, icon: '📱', color: 'from-green-400 to-emerald-500' },
   { name: 'IT Support', level: 88, icon: '🖥️', color: 'from-blue-400 to-indigo-500' },
   { name: 'Content Creation', level: 82, icon: '✍️', color: 'from-amber-400 to-yellow-500' },
 ];
