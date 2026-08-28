@@ -434,12 +434,6 @@ export default function Home() {
               Certified in Digital Marketing from Tech Mahindra Foundation. Currently pursuing D.Pharm (2026) and Data Analytics.
             </p>
             <div className="flex gap-3 justify-center flex-wrap">
-              <motion.a href="https://danishkagit.github.io/portfolio/" target="_blank" rel="noopener noreferrer" whileHover={{ scale: 1.05 }}
-                className="flex items-center gap-2 bg-brand-gradient text-white px-5 py-2 rounded-xl text-sm font-medium hover:shadow-xl hover:shadow-neon-cyan/30"
-              >
-                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-                View Portfolio
-              </motion.a>
               <motion.a href="https://www.linkedin.com/in/danishshoaib-in/" target="_blank" rel="noopener noreferrer" whileHover={{ scale: 1.05 }}
                 className="flex items-center gap-2 border border-neon-cyan text-neon-cyan px-5 py-2 rounded-xl text-sm font-medium hover:bg-neon-cyan/10"
               >

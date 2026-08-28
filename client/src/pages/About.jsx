@@ -180,13 +180,8 @@ export default function About() {
             <div className="relative z-10">
               <span className="text-3xl block mb-3">🚀</span>
               <h2 className="text-xl font-bold text-text-primary mb-2">Want to know more?</h2>
-              <p className="text-text-muted text-sm mb-6 max-w-md mx-auto">Check out my portfolio and LinkedIn for the full picture.</p>
+              <p className="text-text-muted text-sm mb-6 max-w-md mx-auto">Connect with me on LinkedIn for the full picture.</p>
               <div className="flex gap-3 justify-center flex-wrap">
-                <a href="https://danishkagit.github.io/portfolio/" target="_blank" rel="noopener noreferrer"
-                  className="flex items-center gap-2 border border-neon-cyan text-neon-cyan px-5 py-2.5 rounded-xl text-sm font-medium hover:bg-neon-cyan/10"
-                >
-                  View Portfolio
-                </a>
                 <a href="https://www.linkedin.com/in/danishshoaib-in/" target="_blank" rel="noopener noreferrer"
                   className="flex items-center gap-2 border border-electric-violet/40 text-electric-violet px-5 py-2.5 rounded-xl text-sm font-medium hover:bg-electric-violet/10"
                 >

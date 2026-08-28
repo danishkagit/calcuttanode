@@ -10,7 +10,6 @@ const companyInfo = {
   },
   founder: {
     name: 'Danish Shoaib',
-    portfolio: 'https://danishkagit.github.io/portfolio/',
   },
 };
 
