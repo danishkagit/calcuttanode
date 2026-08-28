@@ -99,8 +99,8 @@ export default function Navbar() {
     <>
       <nav ref={navRef} className={`sticky top-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-white/90 backdrop-blur-xl border-b border-slate-200 shadow-sm'
-          : 'bg-white/70 backdrop-blur-md border-b border-slate-100'
+          ? 'bg-surface/90 backdrop-blur-xl border-b border-border shadow-sm'
+          : 'bg-surface/70 backdrop-blur-md border-b border-border/60'
       }`}>
         <div className="max-w-7xl mx-auto px-4 flex items-center justify-between h-16">
           <Link to="/" className="flex items-center gap-2.5 group shrink-0">
@@ -119,7 +119,7 @@ export default function Navbar() {
                 className={`flex items-center gap-1.5 px-4 py-2 text-sm font-medium rounded-xl transition-all duration-200 ${
                   openDropdown === 'services'
                     ? 'text-neon-cyan bg-neon-cyan/15 shadow-sm shadow-neon-cyan/10'
-                    : 'text-text-muted hover:text-text-primary hover:bg-white/5'
+                    : 'text-text-muted hover:text-text-primary hover:bg-border/50'
                 }`}
               >
                 <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
@@ -191,7 +191,7 @@ export default function Navbar() {
                 className={`flex items-center gap-1.5 px-4 py-2 text-sm font-medium rounded-xl transition-all duration-200 ${
                   openDropdown === 'tools'
                     ? 'text-neon-cyan bg-neon-cyan/15 shadow-sm shadow-neon-cyan/10'
-                    : 'text-text-muted hover:text-text-primary hover:bg-white/5'
+                    : 'text-text-muted hover:text-text-primary hover:bg-border/50'
                 }`}
               >
                 <span className="text-base">🛠️</span>
@@ -255,7 +255,7 @@ export default function Navbar() {
                 className={`flex items-center gap-1.5 px-4 py-2 text-sm font-medium rounded-xl transition-all duration-200 ${
                   openDropdown === 'resources'
                     ? 'text-neon-cyan bg-neon-cyan/15 shadow-sm shadow-neon-cyan/10'
-                    : 'text-text-muted hover:text-text-primary hover:bg-white/5'
+                    : 'text-text-muted hover:text-text-primary hover:bg-border/50'
                 }`}
               >
                 <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
@@ -310,7 +310,7 @@ export default function Navbar() {
                 className={`flex items-center gap-1.5 px-4 py-2 text-sm font-medium rounded-xl transition-all duration-200 ${
                   openDropdown === 'company'
                     ? 'text-neon-cyan bg-neon-cyan/15 shadow-sm shadow-neon-cyan/10'
-                    : 'text-text-muted hover:text-text-primary hover:bg-white/5'
+                    : 'text-text-muted hover:text-text-primary hover:bg-border/50'
                 }`}
               >
                 <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
@@ -383,7 +383,7 @@ export default function Navbar() {
           {/* Right side: Social icons + Hamburger */}
           <div className="flex items-center gap-1">
             <Link to="/app"
-              className="flex w-9 h-9 items-center justify-center rounded-lg transition-all hover:bg-white/5"
+              className="flex w-9 h-9 items-center justify-center rounded-lg transition-all hover:bg-border/50"
               aria-label="Play Store"
             >
               <svg className="w-5.5 h-5.5" viewBox="0 0 24 24" fill="#3DDC84">
@@ -391,7 +391,7 @@ export default function Navbar() {
               </svg>
             </Link>
             <a href="https://wa.me/918584885450" target="_blank" rel="noopener noreferrer"
-              className="hidden md:flex w-9 h-9 items-center justify-center rounded-lg transition-all hover:bg-white/5"
+              className="hidden md:flex w-9 h-9 items-center justify-center rounded-lg transition-all hover:bg-border/50"
               aria-label="WhatsApp"
             >
               <svg className="w-5.5 h-5.5" viewBox="0 0 24 24" fill="#25D366">
@@ -399,7 +399,7 @@ export default function Navbar() {
               </svg>
             </a>
             <a href="https://instagram.com/calcuttanode" target="_blank" rel="noopener noreferrer"
-              className="hidden md:flex w-9 h-9 items-center justify-center rounded-lg transition-all hover:bg-white/5"
+              className="hidden md:flex w-9 h-9 items-center justify-center rounded-lg transition-all hover:bg-border/50"
               aria-label="Instagram"
             >
               <svg className="w-5.5 h-5.5" viewBox="0 0 24 24" fill="#E4405F">
@@ -517,7 +517,7 @@ export default function Navbar() {
       </nav>
 
       {/* Mobile bottom tab bar */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-2xl border-t border-slate-200 pb-1 pb-safe">
+      <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-surface/95 backdrop-blur-2xl border-t border-border pb-1 pb-safe">
         <div className="flex items-center justify-around py-1 relative">
           {[
             { label: 'Home', path: '/', icon: '🏠' },
@@ -533,7 +533,7 @@ export default function Navbar() {
                   className={`relative flex flex-col items-center gap-0.5 px-4 py-1.5 rounded-xl text-[11px] font-medium transition-all ${
                     mobileOpen
                       ? 'text-neon-cyan bg-neon-cyan/10'
-                      : 'text-text-muted/70 hover:text-text-primary hover:bg-white/5'
+                      : 'text-text-muted/70 hover:text-text-primary hover:bg-border/50'
                   }`}
                 >
                   <span className="text-xl mb-0.5">{tab.icon}</span>
@@ -549,7 +549,7 @@ export default function Navbar() {
                     ? 'bg-gradient-to-b from-neon-cyan/20 to-electric-violet/20 border border-neon-cyan/40 text-neon-cyan -mt-1.5 px-5 py-2 shadow-lg shadow-neon-cyan/20 animate-pulse-glow'
                     : isActive
                       ? 'text-neon-cyan bg-neon-cyan/10'
-                      : 'text-text-muted/70 hover:text-text-primary hover:bg-white/5'
+                      : 'text-text-muted/70 hover:text-text-primary hover:bg-border/50'
                 }`}
               >
                 <span className="text-xl mb-0.5">{tab.icon}</span>
