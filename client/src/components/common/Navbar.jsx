@@ -2,7 +2,6 @@ import { Link, useLocation } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import logo from '../../assets/logo.png';
-import { useTheme } from '../../context/ThemeContext';
 import toolsRegistry, { categories as toolCategories, categoryIcons as toolCategoryIcons } from '../../data/toolsRegistry';
 
 const serviceGroups = [
@@ -50,7 +49,6 @@ const itemVariants = {
 
 export default function Navbar() {
   const { pathname } = useLocation();
-  const { isDark, toggleTheme } = useTheme();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
@@ -101,8 +99,8 @@ export default function Navbar() {
     <>
       <nav ref={navRef} className={`sticky top-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-white/90 dark:bg-background/80 backdrop-blur-xl border-b border-slate-200 dark:border-neon-cyan/10 shadow-sm dark:shadow-black/20'
-          : 'bg-white/60 dark:bg-background/40 backdrop-blur-md border-b border-slate-100 dark:border-transparent'
+          ? 'bg-white/90 backdrop-blur-xl border-b border-slate-200 shadow-sm'
+          : 'bg-white/70 backdrop-blur-md border-b border-slate-100'
       }`}>
         <div className="max-w-7xl mx-auto px-4 flex items-center justify-between h-16">
           <Link to="/" className="flex items-center gap-2.5 group shrink-0">
@@ -382,18 +380,8 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Right side: Theme toggle + Social icons + Hamburger */}
+          {/* Right side: Social icons + Hamburger */}
           <div className="flex items-center gap-1">
-            {/* Dark/Light Mode Toggle */}
-            <button
-              onClick={toggleTheme}
-              className="flex w-9 h-9 items-center justify-center rounded-lg transition-all hover:bg-white/5 text-xl"
-              title={isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
-              aria-label={isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
-            >
-              <span className="transition-transform duration-300 hover:scale-110">{isDark ? '🌙' : '☀️'}</span>
-            </button>
-
             <Link to="/app"
               className="flex w-9 h-9 items-center justify-center rounded-lg transition-all hover:bg-white/5"
               aria-label="Play Store"
@@ -509,14 +497,6 @@ export default function Navbar() {
                   </Link>
                 ))}
                 <div className="border-t border-electric-violet/10 my-2" />
-                <button onClick={toggleTheme}
-                  className="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm text-text-muted hover:text-text-primary hover:bg-gradient-to-r hover:from-neon-cyan/[0.07] hover:to-electric-violet/[0.04] transition-all w-full"
-                  title={isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
-                >
-                  <span>{isDark ? '☀️' : '🌙'}</span>
-                  <span>Switch to <span className="font-semibold text-neon-cyan">{isDark ? 'Light' : 'Dark'}</span> Mode</span>
-                </button>
-                <div className="border-t border-electric-violet/10 my-2" />
                 <Link to="/ai" onClick={() => setMobileOpen(false)}
                   className="flex items-center justify-center gap-2 mx-2 mt-3 bg-gradient-to-r from-neon-cyan/15 to-electric-violet/15 border border-neon-cyan/30 text-neon-cyan px-4 py-3 rounded-xl text-sm font-semibold relative overflow-hidden group"
                 >
@@ -537,7 +517,7 @@ export default function Navbar() {
       </nav>
 
       {/* Mobile bottom tab bar */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 dark:bg-background/95 backdrop-blur-2xl border-t border-slate-200 dark:border-electric-violet/10 pb-1 pb-safe">
+      <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-2xl border-t border-slate-200 pb-1 pb-safe">
         <div className="flex items-center justify-around py-1 relative">
           {[
             { label: 'Home', path: '/', icon: '🏠' },
