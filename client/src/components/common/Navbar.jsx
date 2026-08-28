@@ -335,7 +335,6 @@ export default function Navbar() {
                     <div className="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-neon-cyan/40 to-transparent" />
                     {[
                       { label: 'About', path: '/about', icon: '👤', desc: 'Our story & team' },
-                      { label: 'Portfolio', path: 'https://danishkagit.github.io/portfolio/', icon: '📂', desc: "Founder's portfolio", external: true },
                       { label: 'GitHub', path: 'https://github.com/danishkagit', icon: '💻', desc: 'My code repository', external: true },
                       { label: 'Referral Program', path: '/referral', icon: '🤝', desc: 'Refer & earn ₹100' },
                       { label: 'Contact', path: '/contact', icon: '📬', desc: 'Get in touch' },
