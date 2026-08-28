@@ -164,39 +164,33 @@ export default function Home() {
         </div>
       </motion.section>
 
-      {/* ─── AI MODELS ─── */}
+      {/* ─── FREE AI CHAT ─── */}
       <motion.section className="py-16 px-4 relative" {...fadeUp}>
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-10">
-            <span className="text-sm font-medium text-neon-cyan bg-neon-cyan/10 px-4 py-1.5 rounded-full border border-neon-cyan/20">🤖 AI Chat</span>
-            <h2 className="text-3xl font-bold text-text-primary mt-4">6 Free AI Models — One Chat</h2>
-            <p className="text-text-muted max-w-xl mx-auto mt-2">DeepSeek, MiMo, North, Nemotron, Hy3 & Big Pickle — pick one or let auto-fallback choose. All free, all in one place.</p>
+            <span className="text-sm font-medium text-neon-cyan bg-neon-cyan/10 px-4 py-1.5 rounded-full border border-neon-cyan/20">✦ Free AI Chat</span>
+            <h2 className="text-3xl font-bold text-text-primary mt-4">Free AI Chat — Instant, Private</h2>
+            <p className="text-text-muted max-w-xl mx-auto mt-2">Ask anything. Auto-routed to the fastest available free model — no signup, no limits hassle, replies in seconds.</p>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             {[
-              { name: 'DeepSeek', desc: 'V4 Flash — fast reasoning & code', icon: '🧠' },
-              { name: 'MiMo', desc: 'V2.5 — creative & contextual', icon: '✨' },
-              { name: 'North', desc: 'Mini Code — lightweight & fast', icon: '⚡' },
-              { name: 'Nemotron', desc: '3 Ultra — deep analysis', icon: '🔬' },
-              { name: 'Hy3', desc: 'Creative writing & content', icon: '🌊' },
-              { name: 'Big Pickle', desc: 'Versatile everyday assistant', icon: '🥒' },
-            ].slice(0, 4).map((model, i) => (
-              <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
-                whileHover={{ y: -4, scale: 1.02 }} className="p-4 rounded-2xl glass-card text-center group"
-              >
-                <motion.div animate={{ scale: [1, 1.1, 1], rotate: [0, 5, -5, 0] }} transition={{ repeat: Infinity, duration: 3, delay: i * 0.3 }} className="text-3xl mb-2">{model.icon}</motion.div>
-                <h3 className="text-text-primary font-semibold text-sm group-hover:text-neon-cyan transition-colors">{model.name}</h3>
-                <p className="text-text-muted text-xs mt-1">{model.desc}</p>
+              { title: 'Ask anything', desc: 'Write, code, explain, brainstorm — natural chat, markdown + code blocks', icon: '💬' },
+              { title: 'Auto picks best model', desc: 'No model picker. We try 8 free models in order until one replies — zero errors', icon: '⚡' },
+              { title: 'Private & fast', desc: 'Streaming replies, copy with one tap, your chats stay in your browser', icon: '🔒' },
+            ].map((f, i) => (
+              <motion.div key={f.title} initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.06 }} className="p-5 rounded-2xl bg-surface border border-border text-left">
+                <span className="text-xl mb-2 block">{f.icon}</span>
+                <h3 className="text-text-primary font-semibold text-sm">{f.title}</h3>
+                <p className="text-text-muted text-xs mt-1 leading-relaxed">{f.desc}</p>
               </motion.div>
             ))}
           </div>
           <div className="text-center mt-8">
-            <motion.a href="/ai" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center gap-2 bg-brand-gradient text-white px-6 py-2.5 rounded-xl font-medium text-sm hover:shadow-xl hover:shadow-neon-cyan/30"
-            >
-              Try AI Chat Free
+            <motion.a href="/ai" whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="inline-flex items-center gap-2 bg-text-primary text-white px-6 py-2.5 rounded-full font-medium text-sm hover:bg-text-secondary transition-colors">
+              Open Free AI Chat
               <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </motion.a>
+            <p className="text-[11px] text-text-faint mt-2">Auto • 8 free models • Streaming • No data stored</p>
           </div>
         </div>
       </motion.section>
