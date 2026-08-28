@@ -5,7 +5,7 @@ const ThemeContext = createContext();
 export function ThemeProvider({ children }) {
   const [theme, setTheme] = useState(() => {
     const saved = localStorage.getItem('cn-theme');
-    return saved || 'dark';
+    return saved || 'light';
   });
 
   useEffect(() => {
@@ -31,11 +31,14 @@ export function ThemeProvider({ children }) {
 
 export const useTheme = () => useContext(ThemeContext);
 
-// Sync theme class immediately on script load to prevent FOUC
+// Sync theme class immediately on script load to prevent FOUC — default light minimalist
 (function() {
   try {
     const saved = localStorage.getItem('cn-theme');
-    if (saved === 'light') {
+    if (saved === 'dark') {
+      document.documentElement.classList.add('dark');
+      document.documentElement.classList.remove('light');
+    } else {
       document.documentElement.classList.add('light');
       document.documentElement.classList.remove('dark');
     }

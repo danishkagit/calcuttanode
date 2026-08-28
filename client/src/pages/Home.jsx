@@ -88,19 +88,25 @@ export default function Home() {
           <div className="absolute bottom-20 right-10 w-96 h-96 bg-electric-violet/5 rounded-full blur-3xl ai-pulse-ring" style={{ animationDelay: '1.5s' }} />
         </div>
         <motion.div className="max-w-4xl mx-auto relative" initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-          <motion.div initial={{ scale: 0.8, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ duration: 0.5 }} className="mb-6">
-            <img src={logo} alt="Calcutta Node." className="h-32 md:h-44 w-32 md:w-44 mx-auto animate-float drop-shadow-[0_0_35px_rgba(0,240,255,0.45)] object-contain" />
+          {/* Logo + Brand lockup — visible on light minimalist */}
+          <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ duration: 0.5 }} className="mb-6 flex flex-col items-center gap-4">
+            <span className="inline-flex items-center justify-center w-28 h-28 md:w-36 md:h-36 rounded-[28px] bg-white border border-slate-200 shadow-lg shadow-slate-200/60 p-4 dark:border-transparent dark:shadow-black/20">
+              <img src={logo} alt="Calcutta Node logo" className="h-full w-full object-contain animate-float" />
+            </span>
+            <span className="inline-flex items-center gap-3">
+              <span className="w-9 h-9 md:w-10 md:h-10 rounded-xl bg-white border border-slate-200 shadow-sm p-1.5 dark:border-transparent hidden">
+                <img src={logo} alt="" className="h-full w-full object-contain" />
+              </span>
+              <span className="text-4xl md:text-6xl font-extrabold tracking-tight">
+                <span className="bg-gradient-to-r from-slate-900 via-neon-cyan to-electric-violet bg-clip-text text-transparent dark:from-white dark:via-neon-cyan dark:to-electric-violet">Calcutta Node</span><span className="text-neon-cyan">.</span>
+              </span>
+            </span>
           </motion.div>
           <motion.span animate={{ y: [0, -5, 0] }} transition={{ repeat: Infinity, duration: 2.5 }}
-            className="inline-block text-xs font-semibold text-electric-violet bg-electric-violet/15 px-4 py-1.5 rounded-full mb-5 border border-electric-violet/30 shadow-lg shadow-electric-violet/10"
+            className="inline-block text-xs font-semibold text-electric-violet bg-electric-violet/10 dark:bg-electric-violet/15 px-4 py-1.5 rounded-full mb-5 border border-electric-violet/20 dark:border-electric-violet/30 shadow-sm"
           >
             🚀 Digital Growth Partner
           </motion.span>
-           <motion.div animate={{ y: [0, -8, 0] }} transition={{ repeat: Infinity, duration: 3, ease: 'easeInOut' }} className="text-5xl md:text-7xl font-bold mb-3">
-             <span className="bg-gradient-to-r from-neon-cyan via-electric-violet to-neon-cyan bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient-x">
-               Calcutta Node.
-             </span>
-           </motion.div>
            <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
              className="text-lg md:text-xl text-transparent bg-clip-text bg-gradient-to-r from-text-primary to-neon-cyan font-medium mb-3"
            >

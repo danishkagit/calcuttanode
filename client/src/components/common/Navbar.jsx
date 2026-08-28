@@ -99,15 +99,20 @@ export default function Navbar() {
 
   return (
     <>
-      <nav ref={navRef} className={`sticky top-0 z-50 transition-all duration-500 ${
+      <nav ref={navRef} className={`sticky top-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'glass shadow-lg shadow-black/20 border-b border-neon-cyan/10'
-          : 'bg-background/40 backdrop-blur-md border-b border-transparent'
+          ? 'bg-white/90 dark:bg-background/80 backdrop-blur-xl border-b border-slate-200 dark:border-neon-cyan/10 shadow-sm dark:shadow-black/20'
+          : 'bg-white/60 dark:bg-background/40 backdrop-blur-md border-b border-slate-100 dark:border-transparent'
       }`}>
-        <div className="max-w-7xl mx-auto px-4 flex items-center justify-between h-16">
-          <Link to="/" className="flex items-center gap-2.5 group shrink-0">
-            <img src={logo} alt="Calcutta Node." className="h-10 md:h-11 w-10 md:w-11 object-contain drop-shadow-[0_0_15px_rgba(0,240,255,0.4)] transition-transform duration-300 group-hover:scale-110" />
-            <span className="text-neon-cyan font-bold text-lg hidden sm:block tracking-tight transition-all duration-300 group-hover:neon-glow-cyan">Calcutta Node.</span>
+        <div className="max-w-7xl mx-auto px-4 flex items-center justify-between h-[68px]">
+          <Link to="/" className="flex items-center gap-3 group shrink-0">
+            <span className="flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-xl bg-white border border-slate-200 shadow-sm group-hover:shadow-md transition-all duration-300 p-1.5 dark:bg-white dark:border-transparent">
+              <img src={logo} alt="Calcutta Node logo" className="h-full w-full object-contain transition-transform duration-300 group-hover:scale-105" />
+            </span>
+            <span className="hidden sm:block leading-none">
+              <span className="block text-[20px] md:text-[22px] font-extrabold tracking-tight text-slate-900 dark:text-white group-hover:text-neon-cyan transition-colors">Calcutta Node<span className="text-neon-cyan">.</span></span>
+              <span className="block text-[10px] font-semibold tracking-[0.18em] uppercase text-slate-500 dark:text-text-muted -mt-0.5">Digital Growth Partner</span>
+            </span>
           </Link>
 
           {/* ===== DESKTOP NAV ===== */}
@@ -537,7 +542,7 @@ export default function Navbar() {
       </nav>
 
       {/* Mobile bottom tab bar */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-background/95 backdrop-blur-2xl border-t border-electric-violet/10 pb-1 pb-safe">
+      <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 dark:bg-background/95 backdrop-blur-2xl border-t border-slate-200 dark:border-electric-violet/10 pb-1 pb-safe">
         <div className="flex items-center justify-around py-1 relative">
           {[
             { label: 'Home', path: '/', icon: '🏠' },
