@@ -9,12 +9,14 @@ if (!ZEN_KEY) {
 }
 
 const modelList = [
-  { id: 'deepseek-v4-flash-free', name: 'DeepSeek V4 Flash', icon: '🔍', color: '#7EBBC5', tier: 1, provider: 'opencode' },
-  { id: 'mimo-v2.5-free', name: 'MiMo V2.5', icon: '🧠', color: '#543A67', tier: 1, provider: 'opencode' },
-  { id: 'north-mini-code-free', name: 'North Mini Code', icon: '⚡', color: '#FFD700', tier: 1, provider: 'opencode' },
-  { id: 'nemotron-3-ultra-free', name: 'Nemotron 3 Ultra', icon: '🚀', color: '#FF6B6B', tier: 1, provider: 'opencode' },
-  { id: 'hy3-free', name: 'Hy3', icon: '🌊', color: '#4FC3F7', tier: 1, provider: 'opencode' },
-  { id: 'big-pickle', name: 'Big Pickle', icon: '🥒', color: '#81C784', tier: 1, provider: 'opencode' },
+  { id: 'deepseek-v4-flash-free', name: 'DeepSeek V4 Flash', icon: '◐', color: '#0F766E', tier: 1, provider: 'opencode' },
+  { id: 'muse-spark-1.2-contributor-free', name: 'Muse Spark', icon: '✦', color: '#7C3A2E', tier: 1, provider: 'opencode' },
+  { id: 'mimo-v2.5-free', name: 'MiMo V2.5', icon: '◎', color: '#334155', tier: 1, provider: 'opencode' },
+  { id: 'hy3-free', name: 'Hy3', icon: '≈', color: '#0E7490', tier: 1, provider: 'opencode' },
+  { id: 'nemotron-3-ultra-free', name: 'Nemotron 3 Ultra', icon: '⬢', color: '#92400E', tier: 1, provider: 'opencode' },
+  { id: 'nemotron-3.5-lightning-free', name: 'Nemotron 3.5 Lightning', icon: '⚡', color: '#B45309', tier: 1, provider: 'opencode' },
+  { id: 'ling-3.0-flash-fin-free', name: 'Ling 3 Flash', icon: '⬣', color: '#475569', tier: 1, provider: 'opencode' },
+  { id: 'laguna-s-2.1-free', name: 'Laguna S 2.1', icon: '⬔', color: '#1E3A5F', tier: 1, provider: 'opencode' },
 ];
 
 const rateLimitStore = new Map();
