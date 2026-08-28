@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import logo from '../../assets/logo.png';
 import { useTheme } from '../../context/ThemeContext';
+import toolsRegistry, { categories as toolCategories, categoryIcons as toolCategoryIcons } from '../../data/toolsRegistry';
 
 const serviceGroups = [
   {
@@ -104,9 +105,9 @@ export default function Navbar() {
           : 'bg-background/40 backdrop-blur-md border-b border-transparent'
       }`}>
         <div className="max-w-7xl mx-auto px-4 flex items-center justify-between h-16">
-          <Link to="/" className="flex items-center gap-2 group shrink-0">
-            <img src={logo} alt="Calcutta Node." className="h-9 md:h-12 w-auto transition-transform duration-300 group-hover:scale-105" />
-            <span className="text-neon-cyan font-bold text-lg hidden sm:block transition-all duration-300 group-hover:neon-glow-cyan">Calcutta Node.</span>
+          <Link to="/" className="flex items-center gap-2.5 group shrink-0">
+            <img src={logo} alt="Calcutta Node." className="h-10 md:h-11 w-10 md:w-11 object-contain drop-shadow-[0_0_15px_rgba(0,240,255,0.4)] transition-transform duration-300 group-hover:scale-110" />
+            <span className="text-neon-cyan font-bold text-lg hidden sm:block tracking-tight transition-all duration-300 group-hover:neon-glow-cyan">Calcutta Node.</span>
           </Link>
 
           {/* ===== DESKTOP NAV ===== */}
@@ -177,6 +178,70 @@ export default function Navbar() {
                           <polyline points="12 5 19 12 12 19" />
                         </motion.svg>
                       </Link>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
+            {/* Free Tools — Mega Menu (10015.io style) */}
+            <div className="relative"
+              onMouseEnter={() => openWithDelay('tools')}
+              onMouseLeave={() => closeWithDelay()}
+            >
+              <button onClick={() => toggleDropdown('tools')}
+                className={`flex items-center gap-1.5 px-4 py-2 text-sm font-medium rounded-xl transition-all duration-200 ${
+                  openDropdown === 'tools'
+                    ? 'text-neon-cyan bg-neon-cyan/15 shadow-sm shadow-neon-cyan/10'
+                    : 'text-text-muted hover:text-text-primary hover:bg-white/5'
+                }`}
+              >
+                <span className="text-base">🛠️</span>
+                Free Tools
+                <span className="hidden lg:inline text-[10px] font-bold bg-neon-cyan/15 text-neon-cyan px-1.5 py-0.5 rounded animate-pulse">FREE</span>
+                <motion.svg animate={{ rotate: openDropdown === 'tools' ? 180 : 0 }} className="w-3 h-3 opacity-60" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="6 9 12 15 18 9" /></motion.svg>
+              </button>
+              <AnimatePresence>
+                {openDropdown === 'tools' && (
+                  <motion.div
+                    variants={containerVariants}
+                    initial="hidden"
+                    animate="visible"
+                    exit="exit"
+                    className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[760px] max-w-[min(760px,92vw)] rounded-2xl border border-neon-cyan/25 bg-background shadow-2xl shadow-black/60 overflow-hidden"
+                  >
+                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-neon-cyan/[0.04] via-transparent to-electric-violet/[0.04] pointer-events-none" />
+                    <div className="absolute top-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-neon-cyan/40 to-transparent" />
+                    <div className="p-3 relative">
+                      <div className="flex items-center justify-between px-2 pb-2">
+                        <span className="text-xs font-bold text-neon-cyan uppercase tracking-wider">Free Tools — 100% in-browser</span>
+                        <Link to="/tools" onClick={() => setOpenDropdown(null)} className="text-xs font-semibold text-neon-cyan hover:underline">View all {toolsRegistry.length} →</Link>
+                      </div>
+                      <div className="grid grid-cols-4 gap-2">
+                        {toolCategories.map(cat => (
+                          <div key={cat} className="rounded-xl bg-surface/30 border border-electric-violet/10 p-2">
+                            <div className="text-xs font-bold text-text-primary mb-1.5 flex items-center gap-1.5"><span>{toolCategoryIcons[cat] || '🔧'}</span>{cat}</div>
+                            <div className="space-y-0.5">
+                              {toolsRegistry.filter(t => t.category === cat).slice(0, 4).map(t => (
+                                <Link key={t.slug} to={`/tools/${t.slug}`} onClick={() => setOpenDropdown(null)} className="flex items-center gap-1.5 text-xs text-text-muted hover:text-neon-cyan hover:bg-neon-cyan/5 px-1.5 py-1 rounded-lg transition-colors">
+                                  <span className="text-[11px]">{t.icon}</span><span className="truncate">{t.name}</span>
+                                </Link>
+                              ))}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="mt-2 flex gap-2">
+                        {toolsRegistry.slice(0, 6).map(t => (
+                          <Link key={t.slug} to={`/tools/${t.slug}`} onClick={() => setOpenDropdown(null)} className="flex-1 text-center text-xs bg-gradient-to-br from-neon-cyan/10 to-electric-violet/10 border border-neon-cyan/20 rounded-lg px-2 py-2 hover:border-neon-cyan/30 transition-colors">
+                            <span className="block text-sm">{t.icon}</span><span className="text-[11px] text-text-muted line-clamp-1">{t.name}</span>
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="relative border-t border-neon-cyan/10 bg-gradient-to-r from-neon-cyan/[0.03] to-electric-violet/[0.03] px-4 py-2.5 flex items-center justify-between">
+                      <span className="text-xs text-text-muted/60">No signup · No data sent to server · Bookmark /tools</span>
+                      <Link to="/tools" onClick={() => setOpenDropdown(null)} className="text-xs font-semibold bg-brand-gradient text-white px-3 py-1.5 rounded-lg hover:shadow-lg">Open Free Tools</Link>
                     </div>
                   </motion.div>
                 )}
@@ -393,6 +458,20 @@ export default function Navbar() {
                   </Link>
                 ))}
                 <div className="border-t border-electric-violet/10 my-2" />
+                <div className="text-xs font-bold text-neon-cyan uppercase tracking-wider px-4 pt-2 pb-1 flex items-center gap-2">
+                  <span>🛠️</span> Free Tools
+                </div>
+                <Link to="/tools" onClick={() => setMobileOpen(false)} className="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm bg-neon-cyan/10 text-neon-cyan border border-neon-cyan/20 mb-1">
+                  <span>⚡</span><span className="flex-1 font-semibold">All Free Tools — {toolsRegistry.length} tools</span><span className="text-xs">→</span>
+                </Link>
+                <div className="grid grid-cols-2 gap-1.5 px-1 mb-2">
+                  {toolsRegistry.slice(0, 8).map(t => (
+                    <Link key={t.slug} to={`/tools/${t.slug}`} onClick={() => setMobileOpen(false)} className="flex items-center gap-1.5 px-2.5 py-2 rounded-lg text-xs bg-surface/50 border border-electric-violet/10 text-text-muted hover:text-neon-cyan hover:border-neon-cyan/20">
+                      <span>{t.icon}</span><span className="truncate">{t.name}</span>
+                    </Link>
+                  ))}
+                </div>
+                <div className="border-t border-electric-violet/10 my-2" />
                 <div className="text-xs font-bold text-electric-violet uppercase tracking-wider px-4 pt-2 pb-1 flex items-center gap-2">
                   <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
                   Resources
@@ -400,7 +479,6 @@ export default function Navbar() {
                   {[
                     { label: 'Blog', path: '/blogs', icon: '📝' },
                     { label: 'Courses', path: '/courses', icon: '🎓' },
-                    { label: 'Free Tools', path: '/tools', icon: '🛠️' },
                     { label: 'Products', path: '/products', icon: '📦' },
                     { label: 'Prompt Packs', path: '/prompt-packs', icon: '🧠' },
                     { label: 'Plans', path: '/plans', icon: '📋' },
@@ -463,9 +541,9 @@ export default function Navbar() {
         <div className="flex items-center justify-around py-1 relative">
           {[
             { label: 'Home', path: '/', icon: '🏠' },
-            { label: 'Services', path: '/pricing', icon: '📋' },
+            { label: 'Tools', path: '/tools', icon: '🛠️' },
             { label: 'AI Chat', path: '/ai', icon: '🧠', highlight: true },
-            { label: 'Learn', path: '/courses', icon: '📚' },
+            { label: 'Services', path: '/pricing', icon: '📋' },
             { label: 'Menu', path: null, icon: '☰', toggle: true },
           ].map((tab) => {
             const isActive = tab.path && pathname === tab.path;

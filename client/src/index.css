@@ -118,4 +118,24 @@ body {
   box-shadow: 0 10px 20px -5px rgba(126, 187, 197, 0.4);
 }
 
-/* ... rest of the CSS ... */
+/* Safe area & responsive fixes */
+.pb-safe { padding-bottom: max(0.25rem, env(safe-area-inset-bottom)); }
+@media (max-width: 768px) {
+  .glass-card:hover { transform: translateY(-4px) scale(1.01); }
+  /* Disable heavy hover on touch */
+  @media (hover: none) { .glass-card:hover { transform: none; } }
+}
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  .ai-pulse-ring, .animate-float, .animate-gradient-x { animation: none !important; }
+}
+/* Minimalist focus */
+*:focus-visible { outline: 2px solid #7EBBC5; outline-offset: 2px; border-radius: 4px; }
+
+/* Anim utils */
+@keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+.animate-float { animation: float 3s ease-in-out infinite; }
+@keyframes gradient-x { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
+.animate-gradient-x { animation: gradient-x 4s ease infinite; }
+.ai-pulse-ring { animation: float 4s ease-in-out infinite; }

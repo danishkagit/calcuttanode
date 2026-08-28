@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import companyInfo from '../data/companyInfo';
 import ParticleField from '../components/common/ParticleField';
-import IndependenceBanner from '../components/common/IndependenceBanner';
 import api from '../utils/api';
 import logo from '../assets/logo.png';
 import danishImg from '../assets/danish-shoaib.png';
@@ -79,7 +78,6 @@ export default function Home() {
 
   return (
     <div className="relative">
-      <IndependenceBanner />
       <ParticleField count={35} speed={0.2} />
 
       {/* ─── HERO ─── */}
@@ -90,8 +88,8 @@ export default function Home() {
           <div className="absolute bottom-20 right-10 w-96 h-96 bg-electric-violet/5 rounded-full blur-3xl ai-pulse-ring" style={{ animationDelay: '1.5s' }} />
         </div>
         <motion.div className="max-w-4xl mx-auto relative" initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-          <motion.div initial={{ scale: 0.8, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ duration: 0.5 }} className="mb-8">
-            <img src={logo} alt="Calcutta Node." className="h-32 md:h-40 mx-auto animate-float drop-shadow-2xl" />
+          <motion.div initial={{ scale: 0.8, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ duration: 0.5 }} className="mb-6">
+            <img src={logo} alt="Calcutta Node." className="h-32 md:h-44 w-32 md:w-44 mx-auto animate-float drop-shadow-[0_0_35px_rgba(0,240,255,0.45)] object-contain" />
           </motion.div>
           <motion.span animate={{ y: [0, -5, 0] }} transition={{ repeat: Infinity, duration: 2.5 }}
             className="inline-block text-xs font-semibold text-electric-violet bg-electric-violet/15 px-4 py-1.5 rounded-full mb-5 border border-electric-violet/30 shadow-lg shadow-electric-violet/10"
@@ -199,6 +197,45 @@ export default function Home() {
               Try AI Chat Free
               <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </motion.a>
+          </div>
+        </div>
+      </motion.section>
+
+      {/* ─── FREE TOOLS PREVIEW (10015.io style) ─── */}
+      <motion.section className="py-16 px-4 relative" {...fadeUp}>
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-8">
+            <span className="text-sm font-medium text-neon-cyan bg-neon-cyan/10 px-4 py-1.5 rounded-full border border-neon-cyan/20">🛠️ Free Tools</span>
+            <h2 className="text-3xl font-bold text-text-primary mt-4">Free Tools — 100% In-Browser</h2>
+            <p className="text-text-muted max-w-2xl mx-auto mt-2">Like 10015.io — {`40+`} tools that run instantly in your browser. No signup, no data leaves your device.</p>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
+            {[
+              { slug: 'json-formatter', name: 'JSON Formatter', icon: '🧩' },
+              { slug: 'word-counter', name: 'Word Counter', icon: '📝' },
+              { slug: 'qr-generator', name: 'QR Generator', icon: '🔲' },
+              { slug: 'base64', name: 'Base64', icon: '🔐' },
+              { slug: 'password-generator', name: 'Password Gen', icon: '🔑' },
+              { slug: 'color-picker', name: 'Color Picker', icon: '🎨' },
+              { slug: 'case-converter', name: 'Case Converter', icon: '🔤' },
+              { slug: 'regex-tester', name: 'Regex Tester', icon: '🧪' },
+              { slug: 'uuid-generator', name: 'UUID Gen', icon: '🆔' },
+              { slug: 'timestamp-converter', name: 'Timestamp', icon: '⏰' },
+              { slug: 'hash-generator', name: 'Hash Gen', icon: '#️⃣' },
+              { slug: 'url-encoder', name: 'URL Encoder', icon: '🌐' },
+            ].map((t, i) => (
+              <Link key={t.slug} to={`/tools/${t.slug}`}>
+                <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.03 }} whileHover={{ y: -4, scale: 1.02 }} className="p-4 rounded-2xl glass-card text-center group">
+                  <span className="text-2xl block mb-1">{t.icon}</span>
+                  <span className="text-xs font-semibold text-text-primary group-hover:text-neon-cyan line-clamp-1">{t.name}</span>
+                  <span className="text-[10px] bg-neon-cyan/10 text-neon-cyan px-2 py-0.5 rounded-full mt-1 inline-block">FREE</span>
+                </motion.div>
+              </Link>
+            ))}
+          </div>
+          <div className="text-center mt-6 flex gap-3 justify-center flex-wrap">
+            <Link to="/tools" className="inline-flex items-center gap-2 bg-brand-gradient text-white px-6 py-2.5 rounded-xl text-sm font-medium hover:shadow-xl">Explore all 40+ tools →</Link>
+            <span className="text-xs text-text-muted self-center">Runs offline · Copy & Download · No signup</span>
           </div>
         </div>
       </motion.section>

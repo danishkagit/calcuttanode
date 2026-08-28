@@ -27,6 +27,7 @@ const Referral = lazy(() => import('./pages/Referral'));
 const Hire = lazy(() => import('./pages/Hire'));
 const SEOAudit = lazy(() => import('./pages/SEOAudit'));
 const PromptPacks = lazy(() => import('./pages/PromptPacks'));
+const ToolDetail = lazy(() => import('./pages/ToolDetail'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 const pageVariants = {
@@ -53,6 +54,7 @@ export default function App() {
             <Route path="/blogs" element={<AnimatedPage><Blogs /></AnimatedPage>} />
             <Route path="/blogs/:slug" element={<AnimatedPage><BlogDetail /></AnimatedPage>} />
             <Route path="/tools" element={<AnimatedPage><Tools /></AnimatedPage>} />
+            <Route path="/tools/:slug" element={<AnimatedPage><ToolDetail /></AnimatedPage>} />
             <Route path="/courses" element={<AnimatedPage><Courses /></AnimatedPage>} />
             <Route path="/pricing" element={<AnimatedPage><Pricing /></AnimatedPage>} />
             <Route path="/about" element={<AnimatedPage><About /></AnimatedPage>} />

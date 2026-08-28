@@ -1,103 +1,135 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import tools from '../data/seoTools';
+import { Link } from 'react-router-dom';
+import Fuse from 'fuse.js';
+import toolsRegistry, { categories, categoryIcons } from '../data/toolsRegistry';
+import externalTools from '../data/seoTools';
 import ParticleField from '../components/common/ParticleField';
 
-const categories = [...new Set(tools.map((t) => t.category))];
-
-const categoryIcons = {
-  'AI': '🤖',
-  'SEO': '🔍',
-  'Writing': '✍️',
-  'Design': '🎨',
-  'Development': '💻',
-  'Marketing': '📢',
-  'Productivity': '⚡',
-  'Research': '📚',
-};
+const externalCategories = [...new Set(externalTools.map(t => t.category))];
 
 export default function Tools() {
+  const [query, setQuery] = useState('');
   const [activeCategory, setActiveCategory] = useState('All');
+  const [tab, setTab] = useState('native'); // native | external
 
-  const filtered = activeCategory === 'All'
-    ? tools
-    : tools.filter((t) => t.category === activeCategory);
+  const fuseNative = useMemo(() => new Fuse(toolsRegistry, { keys: ['name', 'desc', 'category'], threshold: 0.3 }), []);
+  const fuseExternal = useMemo(() => new Fuse(externalTools, { keys: ['name', 'description', 'category'], threshold: 0.3 }), []);
+
+  const nativeFiltered = useMemo(() => {
+    let list = query ? fuseNative.search(query).map(r => r.item) : toolsRegistry;
+    if (activeCategory !== 'All') list = list.filter(t => t.category === activeCategory);
+    return list;
+  }, [query, activeCategory, fuseNative]);
+
+  const externalFiltered = useMemo(() => {
+    let list = query ? fuseExternal.search(query).map(r => r.item) : externalTools;
+    if (activeCategory !== 'All') list = list.filter(t => t.category === activeCategory);
+    return list;
+  }, [query, activeCategory, fuseExternal]);
+
+  const cats = tab === 'native' ? categories : externalCategories;
 
   return (
     <div className="relative min-h-screen">
-      <ParticleField count={35} speed={0.15} color="#543A67" />
+      <ParticleField count={18} speed={0.12} color="#543A67" />
 
-      <div className="max-w-7xl mx-auto px-4 py-12 relative z-10">
-        <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-12">
-          <motion.div
-            animate={{ rotate: [0, 10, -10, 0] }}
-            transition={{ repeat: Infinity, duration: 3 }}
-            className="inline-block text-4xl mb-4"
-          >
-            🛠️
-          </motion.div>
-          <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-neon-cyan to-electric-violet bg-clip-text text-transparent mb-3">Free Tools & AI Resources</h1>
-          <p className="text-text-muted text-lg">Curated free tools and AI assistants for SEO, design, coding, writing, research, and productivity</p>
+      <div className="max-w-7xl mx-auto px-4 py-8 md:py-10 relative z-10">
+        {/* Header */}
+        <motion.div initial={{ opacity: 0, y: -12 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-6">
+          <motion.div animate={{ rotate: [0, 8, -8, 0] }} transition={{ repeat: Infinity, duration: 3 }} className="inline-block text-3xl mb-2">🛠️</motion.div>
+          <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-neon-cyan to-electric-violet bg-clip-text text-transparent">Free Tools</h1>
+          <p className="text-text-muted text-sm md:text-base mt-2 max-w-2xl mx-auto">100% free, no signup, runs in your browser — inspired by <span className="text-neon-cyan">10015.io</span>. Instant search, one-click copy & download.</p>
+          <p className="text-xs text-text-muted/60 mt-1">{toolsRegistry.length} native tools + {externalTools.length} curated resources</p>
         </motion.div>
 
-        <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
-          className="flex flex-wrap justify-center gap-2 mb-8"
-        >
-          {['All', ...categories].map((cat) => (
-            <motion.button key={cat}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => setActiveCategory(cat)}
-              className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-200 flex items-center gap-1.5 ${
-                activeCategory === cat
-                  ? 'bg-neon-cyan text-white shadow-lg shadow-neon-cyan/30 scale-105'
-                  : 'bg-surface/50 text-text-muted border border-electric-violet/20 hover:border-neon-cyan/40'
-              }`}
-            >
-              {cat !== 'All' && <span>{categoryIcons[cat] || '🔧'}</span>}
-              {cat}
+        {/* Search + Tab */}
+        <div className="max-w-3xl mx-auto mb-6 space-y-3">
+          <div className="relative">
+            <svg className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+            <input
+              value={query}
+              onChange={e => setQuery(e.target.value)}
+              placeholder="Search tools — try 'json', 'qr', 'password'...  (Press / to focus)"
+              onKeyDown={e => { if (e.key === 'Escape') setQuery(''); }}
+              className="w-full pl-10 pr-4 py-3 rounded-xl bg-surface/60 border border-electric-violet/20 text-sm text-text-primary placeholder:text-text-muted/60 focus:outline-none focus:border-neon-cyan/40 focus:bg-surface transition-all"
+            />
+            {query && <button onClick={() => setQuery('')} className="absolute right-3 top-1/2 -translate-y-1/2 text-xs bg-neon-cyan/10 text-neon-cyan px-2 py-1 rounded-lg">Clear</button>}
+          </div>
+
+          <div className="flex justify-center">
+            <div className="inline-flex bg-surface/60 border border-electric-violet/20 rounded-full p-1">
+              <button onClick={() => { setTab('native'); setActiveCategory('All'); }} className={`px-4 py-1.5 rounded-full text-xs font-semibold transition-all ${tab === 'native' ? 'bg-brand-gradient text-white shadow' : 'text-text-muted hover:text-text-primary'}`}>
+                ⚡ Native Free ({toolsRegistry.length})
+              </button>
+              <button onClick={() => { setTab('external'); setActiveCategory('All'); }} className={`px-4 py-1.5 rounded-full text-xs font-semibold transition-all ${tab === 'external' ? 'bg-brand-gradient text-white shadow' : 'text-text-muted hover:text-text-primary'}`}>
+                🔗 Curated ({externalTools.length})
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Category pills */}
+        <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.08 }} className="flex flex-wrap justify-center gap-1.5 md:gap-2 mb-6">
+          {['All', ...cats].map(cat => (
+            <motion.button key={cat} whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }} onClick={() => setActiveCategory(cat)}
+              className={`px-3 md:px-4 py-1.5 rounded-full text-xs font-medium flex items-center gap-1.5 border transition-all ${activeCategory === cat ? 'bg-neon-cyan text-white border-neon-cyan shadow-md' : 'bg-surface/50 text-text-muted border-electric-violet/20 hover:border-neon-cyan/30 hover:text-text-primary'}`}>
+              {cat !== 'All' && <span>{categoryIcons[cat] || '🔧'}</span>} {cat}
             </motion.button>
           ))}
         </motion.div>
 
+        {/* Grid */}
         <AnimatePresence mode="wait">
-          <motion.div key={activeCategory} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.3 }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-          >
-            {filtered.map((tool, i) => (
-              <motion.div key={i} layout initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: i * 0.06 }}>
-                <motion.a href={tool.link} target="_blank" rel="noopener noreferrer"
-                  whileHover={{ y: -6, scale: 1.02 }}
-                  className="block glass-card rounded-xl p-6 group h-full relative overflow-hidden"
-                >
-                  <motion.div className="absolute inset-0 bg-gradient-to-br from-neon-cyan/5 via-transparent to-electric-violet/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          <motion.div key={tab + activeCategory + query} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.22 }}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-4">
+            {tab === 'native' ? nativeFiltered.map((tool, i) => (
+              <motion.div key={tool.slug} layout initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.02 }}>
+                <Link to={`/tools/${tool.slug}`} className="block glass-card rounded-xl p-4 group h-full relative overflow-hidden hover:border-neon-cyan/30 transition-colors">
+                  <div className="absolute inset-0 bg-gradient-to-br from-neon-cyan/5 to-electric-violet/5 opacity-0 group-hover:opacity-100 transition-opacity" />
                   <div className="relative">
-                    <div className="flex items-start justify-between mb-3">
-                      <div className="flex items-center gap-2">
-                        <span className="text-lg">{categoryIcons[tool.category] || '🔧'}</span>
-                        <h3 className="text-text-primary font-semibold group-hover:text-neon-cyan transition-colors">{tool.name}</h3>
-                      </div>
-                      <div className="flex gap-1 shrink-0 ml-2">
-                        <span className="text-xs bg-electric-violet/20 text-electric-violet px-2 py-1 rounded">{tool.category}</span>
-                        {tool.affiliate && (
-                          <span className="text-xs bg-neon-cyan/20 text-neon-cyan px-2 py-1 rounded">🔗</span>
-                        )}
-                      </div>
+                    <div className="flex items-start justify-between mb-2">
+                      <span className="text-xl">{tool.icon}</span>
+                      <span className="text-[10px] font-bold bg-neon-cyan/10 text-neon-cyan px-2 py-0.5 rounded-full border border-neon-cyan/20">FREE</span>
                     </div>
-                    <p className="text-text-muted text-sm">{tool.description}</p>
+                    <h3 className="text-sm font-semibold text-text-primary group-hover:text-neon-cyan transition-colors line-clamp-1">{tool.name}</h3>
+                    <p className="text-xs text-text-muted mt-1 line-clamp-2 leading-relaxed">{tool.desc}</p>
+                    <div className="mt-2 flex items-center justify-between">
+                      <span className="text-[10px] bg-surface border border-electric-violet/15 px-2 py-0.5 rounded-full text-text-muted">{tool.category}</span>
+                      <span className="text-xs text-neon-cyan font-medium group-hover:translate-x-0.5 transition-transform">Open →</span>
+                    </div>
                   </div>
-                </motion.a>
+                </Link>
+              </motion.div>
+            )) : externalFiltered.map((tool, i) => (
+              <motion.div key={tool.name + i} layout initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.02 }}>
+                <a href={tool.link} target="_blank" rel="noopener noreferrer" className="block glass-card rounded-xl p-4 group h-full relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-neon-cyan/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <div className="relative">
+                    <div className="flex items-start justify-between mb-2">
+                      <span className="text-base">🔗</span>
+                      <span className="text-[10px] bg-electric-violet/15 text-electric-violet px-2 py-0.5 rounded-full">{tool.category}</span>
+                    </div>
+                    <h3 className="text-sm font-semibold text-text-primary group-hover:text-neon-cyan transition-colors">{tool.name}</h3>
+                    <p className="text-xs text-text-muted mt-1 line-clamp-2">{tool.description}</p>
+                    <span className="mt-2 inline-block text-xs text-text-muted/60 group-hover:text-neon-cyan">External ↗</span>
+                  </div>
+                </a>
               </motion.div>
             ))}
           </motion.div>
         </AnimatePresence>
 
-        {filtered.length === 0 && (
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-20">
-            <div className="text-5xl mb-4 opacity-50">🔍</div>
-            <p className="text-text-muted">No tools in this category.</p>
+        {(tab === 'native' ? nativeFiltered : externalFiltered).length === 0 && (
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-12">
+            <p className="text-3xl mb-2">🔍</p><p className="text-text-muted text-sm">No tools found for "{query}" in {activeCategory}</p>
+            <button onClick={() => { setQuery(''); setActiveCategory('All'); }} className="mt-3 text-xs bg-neon-cyan text-white px-4 py-2 rounded-xl">Clear filters</button>
           </motion.div>
         )}
+
+        <div className="mt-8 text-center">
+          <p className="text-xs text-text-muted/60">All native tools run 100% client-side. No data leaves your device. Bookmark <span className="text-neon-cyan">/tools</span> — more tools added weekly.</p>
+        </div>
       </div>
     </div>
   );

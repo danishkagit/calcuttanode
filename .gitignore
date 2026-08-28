@@ -24,3 +24,6 @@ Social Media Resources/
 
 # Archived files
 archived_files/
+
+# Keep robots.txt local but in root
+robots.txt
