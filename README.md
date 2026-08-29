@@ -61,7 +61,6 @@ Full-stack digital agency ecosystem built by **Danish Shoaib**. Three interconne
 | Portfolio AI Chat | `/api/ai/chat` | Live AI assistant via agency backend |
 | Portfolio Form | `/api/auth/contact` | Contact form via agency (was FormSubmit.co) |
 | Agency About page | `View Portfolio` | Shows founder's personal brand |
-| Agency Footer | `Founder's Portfolio` | Cross-links back to portfolio |
 | Agency Nav (Company) | `Portfolio` + `GitHub` | Easy access to founder materials |
 | All surfaces | N/A | Centralized resume delivery removed |
 
@@ -143,4 +142,3 @@ npm run seed:plans     # Populate 3 subscription plans
 ### `Calcutta Node Client`
 - Added Portfolio + GitHub links to Navbar Company dropdown
 - Removed Resume link/page
-- Footer already links to founder's portfolio
