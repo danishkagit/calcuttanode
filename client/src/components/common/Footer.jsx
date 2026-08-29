@@ -49,6 +49,7 @@ export default function Footer() {
               { label: 'About', to: '/about' },
               { label: 'Contact', to: '/contact' },
               { label: 'Free Tools', to: '/tools' },
+              { label: 'File Converters', to: '/convert' },
               { label: 'Mobile App', to: '/app' },
               { label: 'Blog', to: '/blogs' },
             ].map(({ label, to }) => (

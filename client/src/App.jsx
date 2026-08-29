@@ -28,6 +28,7 @@ const Hire = lazy(() => import('./pages/Hire'));
 const SEOAudit = lazy(() => import('./pages/SEOAudit'));
 const PromptPacks = lazy(() => import('./pages/PromptPacks'));
 const ToolDetail = lazy(() => import('./pages/ToolDetail'));
+const FileConverters = lazy(() => import('./pages/FileConverters'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 const pageVariants = {
@@ -72,6 +73,7 @@ export default function App() {
             <Route path="/hire" element={<AnimatedPage><Hire /></AnimatedPage>} />
             <Route path="/seo-audit" element={<AnimatedPage><SEOAudit /></AnimatedPage>} />
             <Route path="/prompt-packs" element={<AnimatedPage><PromptPacks /></AnimatedPage>} />
+            <Route path="/convert" element={<AnimatedPage><FileConverters /></AnimatedPage>} />
             <Route path="*" element={<AnimatedPage><NotFound /></AnimatedPage>} />
           </Routes>
         </AnimatePresence>

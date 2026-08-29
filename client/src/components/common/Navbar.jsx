@@ -285,6 +285,7 @@ export default function Navbar() {
                       { label: 'Plans', path: '/plans', icon: '📋', desc: 'Membership & support' },
                       { label: 'Mobile App', path: '/app', icon: '📱', desc: 'Android APK download' },
                       { label: 'SEO Tools', path: '/seo', icon: '🚀', desc: 'AI-powered SEO & content tools' },
+                      { label: 'File Converters', path: '/convert', icon: '📁', desc: 'Free PDF & image converters' },
                     ].map((item) => (
                       <Link key={item.label} to={item.path} onClick={() => setOpenDropdown(null)}
                         className="group relative flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-gradient-to-r hover:from-neon-cyan/[0.07] hover:to-electric-violet/[0.04] transition-all duration-200"
@@ -470,6 +471,7 @@ export default function Navbar() {
                     { label: 'Prompt Packs', path: '/prompt-packs', icon: '🧠' },
                     { label: 'Plans', path: '/plans', icon: '📋' },
                     { label: 'Mobile App', path: '/app', icon: '📱' },
+                    { label: 'File Converters', path: '/convert', icon: '📁' },
                   ].map((item) => (
                     <Link key={item.label} to={item.path} onClick={() => setMobileOpen(false)}
                       className="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm text-text-muted hover:text-text-primary hover:bg-gradient-to-r hover:from-neon-cyan/[0.07] hover:to-electric-violet/[0.04] transition-all"

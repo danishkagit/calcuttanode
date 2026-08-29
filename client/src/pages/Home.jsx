@@ -242,6 +242,43 @@ export default function Home() {
         </div>
       </motion.section>
 
+      {/* ─── FREE FILE CONVERTERS ─── */}
+      <motion.section className="py-16 px-4 relative" {...fadeUp}>
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-8">
+            <span className="text-sm font-medium text-neon-cyan bg-neon-cyan/10 px-4 py-1.5 rounded-full border border-neon-cyan/20">📁 Free File Converter</span>
+            <h2 className="text-3xl font-bold text-text-primary mt-4">File Converter — Like iLovePDF</h2>
+            <p className="text-text-muted max-w-2xl mx-auto mt-2">Convert, merge, split & compress PDFs and images — <span className="text-neon-cyan font-medium">100% free, no signup, runs in your browser</span></p>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+            {[
+              { slug: 'image-to-pdf', name: 'Image to PDF', icon: '🖼️' },
+              { slug: 'merge-pdf', name: 'Merge PDFs', icon: '📑' },
+              { slug: 'split-pdf', name: 'Split PDF', icon: '✂️' },
+              { slug: 'pdf-to-text', name: 'PDF to Text', icon: '📄' },
+              { slug: 'image-converter', name: 'Image Converter', icon: '🔄' },
+              { slug: 'image-compressor', name: 'Compress Images', icon: '📦' },
+              { slug: 'compress-pdf', name: 'Compress PDF', icon: '🗜️' },
+              { slug: 'pdf-watermark', name: 'PDF Watermark', icon: '💧' },
+              { slug: 'pdf-to-images', name: 'PDF to Images', icon: '📸' },
+              { slug: 'image-resize', name: 'Image Resize', icon: '📐' },
+            ].map((t, i) => (
+              <Link key={t.slug} to="/convert">
+                <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.03 }} whileHover={{ y: -4, scale: 1.02 }} className="p-4 rounded-2xl glass-card text-center group">
+                  <span className="text-2xl block mb-1">{t.icon}</span>
+                  <span className="text-xs font-semibold text-text-primary group-hover:text-neon-cyan line-clamp-1">{t.name}</span>
+                  <span className="text-[10px] bg-neon-cyan/10 text-neon-cyan px-2 py-0.5 rounded-full mt-1 inline-block">FREE</span>
+                </motion.div>
+              </Link>
+            ))}
+          </div>
+          <div className="text-center mt-6 flex gap-3 justify-center flex-wrap">
+            <Link to="/convert" className="inline-flex items-center gap-2 bg-brand-gradient text-white px-6 py-2.5 rounded-xl text-sm font-medium hover:shadow-xl">Open File Converter →</Link>
+            <span className="text-xs text-text-muted self-center">🔒 Private · ⚡ Instant · No upload to server</span>
+          </div>
+        </div>
+      </motion.section>
+
       {/* ─── SERVICES CATALOG ─── */}
       <motion.section className="py-16 px-4 relative" {...fadeUp}>
         <div className="max-w-6xl mx-auto">

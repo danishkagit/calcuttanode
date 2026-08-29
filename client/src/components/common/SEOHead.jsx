@@ -24,6 +24,7 @@ const pageMeta = {
   '/app': { title: 'Mobile App — Calcutta Node', description: 'Download the Calcutta Node mobile app for Android for IT support on the go.' },
   '/seo': { title: 'SEO Tools — Calcutta Node', description: 'Free SEO tools for content generation, meta tags, keyword research, and schema markup.' },
   '/prompt-packs': { title: 'AI Prompt Packs — Calcutta Node', description: '10 curated AI prompt packs for SEO, coding, copywriting, social media, career, business, and more. Get better AI results instantly.' },
+  '/convert': { title: 'Free File Converter — PDF & Image Tools — Calcutta Node', description: 'Convert, merge, split & compress PDFs and images. Free file converter that runs 100% in your browser — no signup, no upload, fully private.' },
 };
 
 const schemas = {
