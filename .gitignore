@@ -21,6 +21,13 @@ OPENCODE_MULTI_MODEL_SETUP.md
 SOCIAL_MEDIA_KIT.md
 instagram-strategy-calcuttanode.md
 Social Media Resources/
+AI_CREATIVE_PROMPTS.md
+
+# AI agent automation
+.github/workflows/agent-checks.yml
+scripts/auto-workflow.ps1
+scripts/
+reports/
 
 # Archived files
 archived_files/

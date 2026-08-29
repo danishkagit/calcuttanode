@@ -12,9 +12,9 @@ export default function Footer() {
 
       <div className="max-w-7xl mx-auto px-4 py-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
         <motion.div className="sm:col-span-2 md:col-span-1" {...fadeUp}>
-          <div className="flex items-center gap-2 mb-4">
-            <img src={logo} alt="Calcutta Node." className="h-10 w-auto" />
-            <span className="text-neon-cyan font-bold">Calcutta Node.</span>
+          <div className="flex items-center gap-2.5 mb-4">
+            <img src={logo} alt="Calcutta Node." className="h-10 w-10 object-contain drop-shadow-[0_0_12px_rgba(0,240,255,0.4)]" />
+            <span className="text-neon-cyan font-bold text-lg">Calcutta Node.</span>
           </div>
           <p className="text-text-muted text-sm leading-relaxed">IT Services & Digital Growth Agency based in Kolkata, India. Ready to serve you remotely.</p>
           <div className="flex gap-3 mt-4">
