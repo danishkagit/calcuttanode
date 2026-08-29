@@ -259,9 +259,16 @@ export default function Home() {
               { slug: 'image-converter', name: 'Image Converter', icon: '🔄' },
               { slug: 'image-compressor', name: 'Compress Images', icon: '📦' },
               { slug: 'compress-pdf', name: 'Compress PDF', icon: '🗜️' },
-              { slug: 'pdf-watermark', name: 'PDF Watermark', icon: '💧' },
-              { slug: 'pdf-to-images', name: 'PDF to Images', icon: '📸' },
-              { slug: 'image-resize', name: 'Image Resize', icon: '📐' },
+              { slug: 'merge-pdf', name: 'Merge PDFs', icon: '📑' },
+              { slug: 'pdf-to-word', name: 'PDF to Word', icon: '📝' },
+              { slug: 'word-to-pdf', name: 'Word to PDF', icon: '📕' },
+              { slug: 'compress-pdf', name: 'Compress PDF', icon: '🗜️' },
+              { slug: 'pdf-rotate', name: 'Rotate PDF', icon: '🔄' },
+              { slug: 'svg-to-png', name: 'SVG to PNG', icon: '🎨' },
+              { slug: 'heic-to-jpg', name: 'HEIC to JPG', icon: '📱' },
+              { slug: 'csv-to-json', name: 'CSV to JSON', icon: '📊' },
+              { slug: 'image-to-ico', name: 'Favicon Gen', icon: '⭐' },
+              { slug: 'color-extractor', name: 'Color Extractor', icon: '🎨' },
             ].map((t, i) => (
               <Link key={t.slug} to="/convert">
                 <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.03 }} whileHover={{ y: -4, scale: 1.02 }} className="p-4 rounded-2xl glass-card text-center group">
