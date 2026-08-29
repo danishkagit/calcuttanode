@@ -239,7 +239,10 @@ export default function Navbar() {
                     </div>
                     <div className="relative border-t border-neon-cyan/10 bg-gradient-to-r from-neon-cyan/[0.03] to-electric-violet/[0.03] px-4 py-2.5 flex items-center justify-between">
                       <span className="text-xs text-text-muted/60">No signup · No data sent to server · Bookmark /tools</span>
-                      <Link to="/tools" onClick={() => setOpenDropdown(null)} className="text-xs font-semibold bg-brand-gradient text-white px-3 py-1.5 rounded-lg hover:shadow-lg">Open Free Tools</Link>
+                      <div className="flex gap-2">
+                        <Link to="/convert" onClick={() => setOpenDropdown(null)} className="text-xs font-semibold border border-neon-cyan/30 text-neon-cyan px-3 py-1.5 rounded-lg hover:bg-neon-cyan/10">📁 File Converters</Link>
+                        <Link to="/tools" onClick={() => setOpenDropdown(null)} className="text-xs font-semibold bg-brand-gradient text-white px-3 py-1.5 rounded-lg hover:shadow-lg">Open Free Tools</Link>
+                      </div>
                     </div>
                   </motion.div>
                 )}
@@ -365,8 +368,15 @@ export default function Navbar() {
               </AnimatePresence>
             </div>
 
+            <Link to="/convert"
+              className="ml-2 flex items-center gap-1.5 px-3 py-2 rounded-xl text-sm font-semibold border border-neon-cyan/30 text-neon-cyan hover:bg-neon-cyan/10 hover:border-neon-cyan/50 hover:shadow-lg transition-all duration-200"
+            >
+              <span>📁</span>
+              <span>Convert</span>
+              <span className="text-[10px] font-bold bg-neon-cyan/15 text-neon-cyan px-1.5 py-0.5 rounded">FREE</span>
+            </Link>
             <Link to="/ai"
-              className="ml-3 flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-semibold bg-gradient-to-r from-neon-cyan/15 to-electric-violet/15 border border-neon-cyan/30 text-neon-cyan hover:from-neon-cyan/25 hover:to-electric-violet/25 hover:border-neon-cyan/50 hover:shadow-lg hover:shadow-neon-cyan/10 transition-all duration-200 relative overflow-hidden group"
+              className="ml-2 flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-semibold bg-gradient-to-r from-neon-cyan/15 to-electric-violet/15 border border-neon-cyan/30 text-neon-cyan hover:from-neon-cyan/25 hover:to-electric-violet/25 hover:border-neon-cyan/50 hover:shadow-lg hover:shadow-neon-cyan/10 transition-all duration-200 relative overflow-hidden group"
             >
               <span className="absolute inset-0 bg-gradient-to-r from-neon-cyan/10 to-electric-violet/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <span className="relative">🧠</span>
@@ -451,6 +461,9 @@ export default function Navbar() {
                 </div>
                 <Link to="/tools" onClick={() => setMobileOpen(false)} className="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm bg-neon-cyan/10 text-neon-cyan border border-neon-cyan/20 mb-1">
                   <span>⚡</span><span className="flex-1 font-semibold">All Free Tools — {toolsRegistry.length} tools</span><span className="text-xs">→</span>
+                </Link>
+                <Link to="/convert" onClick={() => setMobileOpen(false)} className="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm bg-neon-cyan/10 text-neon-cyan border border-neon-cyan/20 mb-1">
+                  <span>📁</span><span className="flex-1 font-semibold">Free File Converter — PDF & Image tools</span><span className="text-xs">→</span>
                 </Link>
                 <div className="grid grid-cols-2 gap-1.5 px-1 mb-2">
                   {toolsRegistry.slice(0, 8).map(t => (
