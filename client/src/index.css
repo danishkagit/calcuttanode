@@ -97,6 +97,18 @@ body {
   border-radius: 1.25rem;
   box-shadow: 0 4px 20px rgba(28,25,23,0.04);
 }
+.glass-card-premium {
+  background: #FFFBF0;
+  border: 1px solid #E8DDD0;
+  border-radius: 1rem;
+  box-shadow: 0 2px 8px rgba(28,25,23,0.04), 0 0 0 1px rgba(28,25,23,0.02);
+  transition: all 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.glass-card-premium:hover {
+  border-color: #D6C9B6;
+  background: #FFFEF9;
+  box-shadow: 0 8px 24px rgba(28,25,23,0.08);
+}
 .bg-brand-gradient {
   background: linear-gradient(135deg, #0F766E 0%, #7C3A2E 100%);
   transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);

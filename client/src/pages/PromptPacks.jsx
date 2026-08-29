@@ -68,7 +68,7 @@ export default function PromptPacks() {
       <div className="max-w-7xl mx-auto px-4 py-12 relative z-10">
         <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-12">
           <motion.div animate={{ y: [0, -5, 0] }} transition={{ repeat: Infinity, duration: 2.5 }} className="inline-block text-5xl mb-4">🧠</motion.div>
-          <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-emerald-400 via-cyan-400 to-violet-400 bg-clip-text text-transparent mb-3">
+          <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-neon-cyan to-electric-violet bg-clip-text text-transparent mb-3">
             AI Prompt Packs
           </h1>
           <p className="text-text-muted text-lg max-w-2xl mx-auto">
@@ -92,7 +92,7 @@ export default function PromptPacks() {
         {loading ? (
           <div className="flex justify-center py-20">
             <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 1.5, ease: 'linear' }}
-              className="w-8 h-8 border-2 border-emerald-400 border-t-transparent rounded-full"
+              className="w-8 h-8 border-2 border-neon-cyan border-t-transparent rounded-full"
             />
           </div>
         ) : (
@@ -113,12 +113,12 @@ export default function PromptPacks() {
                         <span className="text-3xl">{packIcons[slugKey] || '📋'}</span>
                         <span className="text-xs uppercase tracking-wider text-text-muted bg-surface/50 px-2 py-1 rounded-full">15 Prompts</span>
                       </div>
-                      <h3 className="text-text-primary font-semibold text-lg mb-1 group-hover:text-emerald-400 transition-colors">{product.name}</h3>
+                      <h3 className="text-text-primary font-semibold text-lg mb-1 group-hover:text-neon-cyan transition-colors">{product.name}</h3>
                       <p className="text-text-muted text-sm mb-4 flex-1">{product.description}</p>
                       <ul className="space-y-1.5 mb-6">
                         {product.features.map((f, j) => (
                           <li key={j} className="text-text-muted text-xs flex items-start gap-2">
-                            <svg className="w-3.5 h-3.5 mt-0.5 shrink-0 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                            <svg className="w-3.5 h-3.5 mt-0.5 shrink-0 text-neon-cyan" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                               <polyline points="20 6 9 17 4 12" />
                             </svg>
                             {f}
@@ -126,12 +126,12 @@ export default function PromptPacks() {
                         ))}
                       </ul>
                       <div className="flex items-baseline gap-2 mb-4">
-                        <span className="text-3xl font-bold text-emerald-400">₹{product.price}</span>
+                        <span className="text-3xl font-bold text-neon-cyan">₹{product.price}</span>
                         <span className="text-text-muted text-sm">one-time</span>
                       </div>
                       <motion.button onClick={() => handlePurchase(product)} disabled={purchasing === product.slug}
                         whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}
-                        className="w-full py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 bg-gradient-to-r from-emerald-500 to-teal-500 text-white hover:opacity-90 disabled:opacity-50 shadow-md hover:shadow-lg hover:shadow-emerald-500/20"
+                        className="w-full py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 bg-brand-gradient text-white hover:opacity-90 disabled:opacity-50 shadow-md hover:shadow-lg"
                       >
                         {purchasing === product.slug ? 'Processing...' : `Buy Now — ₹${product.price}`}
                       </motion.button>

@@ -7,7 +7,7 @@ const fadeUp = { initial: { opacity: 0, y: 30 }, whileInView: { opacity: 1, y: 0
 
 const features = [
   { icon: '📱', title: 'Browse Services', desc: 'Explore all IT services, website packages, and digital products with real-time pricing.' },
-  { icon: '🤖', title: 'AI Chat Assistant', desc: 'Get instant answers from 6 free AI models — DeepSeek, MiMo, North, Nemotron, Hy3, Big Pickle & auto-fallback.' },
+  { icon: '🤖', title: 'AI Chat Assistant', desc: 'Get instant answers from 8 free AI models — DeepSeek, Muse Spark, MiMo, Hy3, Nemotron, Ling, Laguna & auto-fallback.' },
   { icon: '📦', title: 'Digital Products', desc: 'Purchase templates, scripts, and tools directly from your phone.' },
   { icon: '📋', title: 'Track Orders', desc: 'Monitor your service requests and order status in real time.' },
   { icon: '💳', title: 'Secure Payments', desc: 'Pay via Razorpay, UPI, or bank transfer — all within the app.' },

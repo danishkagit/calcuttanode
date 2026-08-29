@@ -229,9 +229,11 @@ export default function Pricing() {
                         </ul>
                       </motion.div>
                     )}
-                    <motion.a href="/contact" whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}
-                      className="block text-center w-full py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 bg-brand-gradient text-white hover:opacity-90 shadow-md hover:shadow-lg"
-                    >Book Now</motion.a>
+                    <Link to="/contact">
+                      <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}
+                        className="text-center w-full py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 bg-brand-gradient text-white hover:opacity-90 shadow-md hover:shadow-lg"
+                      >Book Now</motion.div>
+                    </Link>
                   </div>
                 </motion.div>
               );

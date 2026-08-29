@@ -32,11 +32,11 @@ export default function Footer() {
               </motion.a>
             ))}
           </div>
-          <motion.a href="/ai"
+          <Link to="/ai"
             className="mt-4 inline-flex items-center gap-1.5 text-xs text-neon-cyan/70 hover:text-neon-cyan transition-colors"
           >
             🤖 Try AI Support
-          </motion.a>
+          </Link>
           <a href="https://danishkagit.github.io/portfolio/" target="_blank" rel="noopener noreferrer"
             className="mt-2 inline-flex items-center gap-1.5 text-xs text-neon-cyan/70 hover:text-neon-cyan transition-colors"
           >

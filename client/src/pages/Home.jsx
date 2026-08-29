@@ -129,15 +129,21 @@ export default function Home() {
             From fixing a slow PC to building your dream website — we deliver practical tech solutions worldwide. <span className="text-neon-cyan font-medium">100% remote delivery.</span>
           </motion.p>
            <div className="flex gap-4 justify-center flex-wrap">
-             <motion.a href="/pricing" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
-               className="bg-brand-gradient text-white px-8 py-3 rounded-xl font-medium transition-all duration-200 hover:shadow-xl hover:shadow-neon-cyan/30"
-             >Launch Your Project</motion.a>
-             <motion.a href="/contact" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
-               className="border border-neon-cyan text-neon-cyan px-8 py-3 rounded-xl font-medium transition-all duration-200 hover:bg-neon-cyan/10"
-             >Book a Consultation</motion.a>
-             <motion.a href="/ai" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
-               className="border border-electric-violet/40 text-text-primary bg-electric-violet/20 px-8 py-3 rounded-xl font-medium transition-all duration-200 hover:bg-electric-violet/40"
-             >🤖 Talk to AI</motion.a>
+             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+               <Link to="/pricing"
+                 className="block bg-brand-gradient text-white px-8 py-3 rounded-xl font-medium transition-all duration-200 hover:shadow-xl hover:shadow-neon-cyan/30"
+               >Launch Your Project</Link>
+             </motion.div>
+             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+               <Link to="/contact"
+                 className="block border border-neon-cyan text-neon-cyan px-8 py-3 rounded-xl font-medium transition-all duration-200 hover:bg-neon-cyan/10"
+               >Book a Consultation</Link>
+             </motion.div>
+             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+               <Link to="/ai"
+                 className="block border border-electric-violet/40 text-text-primary bg-electric-violet/20 px-8 py-3 rounded-xl font-medium transition-all duration-200 hover:bg-electric-violet/40"
+               >🤖 Talk to AI</Link>
+             </motion.div>
            </div>
         </motion.div>
       </section>
@@ -186,10 +192,12 @@ export default function Home() {
             ))}
           </div>
           <div className="text-center mt-8">
-            <motion.a href="/ai" whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="inline-flex items-center gap-2 bg-text-primary text-white px-6 py-2.5 rounded-full font-medium text-sm hover:bg-text-secondary transition-colors">
-              Open Free AI Chat
-              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </motion.a>
+            <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="inline-block">
+              <Link to="/ai" className="inline-flex items-center gap-2 bg-text-primary text-white px-6 py-2.5 rounded-full font-medium text-sm hover:bg-text-secondary transition-colors">
+                Open Free AI Chat
+                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </Link>
+            </motion.div>
             <p className="text-[11px] text-text-faint mt-2">Auto • 8 free models • Streaming • No data stored</p>
           </div>
         </div>
@@ -440,11 +448,13 @@ export default function Home() {
                 <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 6a2 2 0 100-4 2 2 0 000 4z"/></svg>
                 LinkedIn
               </motion.a>
-              <motion.a href="/about" whileHover={{ scale: 1.05 }}
-                className="flex items-center gap-2 border border-electric-violet/40 text-electric-violet px-5 py-2 rounded-xl text-sm font-medium hover:bg-electric-violet/10"
-              >
-                Full Story →
-              </motion.a>
+              <Link to="/about">
+                <motion.div whileHover={{ scale: 1.05 }}
+                  className="flex items-center gap-2 border border-electric-violet/40 text-electric-violet px-5 py-2 rounded-xl text-sm font-medium hover:bg-electric-violet/10"
+                >
+                  Full Story →
+                </motion.div>
+              </Link>
             </div>
           </motion.div>
         </div>
@@ -529,13 +539,16 @@ export default function Home() {
           <motion.span className="inline-block text-4xl mb-4" animate={{ scale: [1, 1.15, 1], rotate: [0, 5, -5, 0] }} transition={{ repeat: Infinity, duration: 3 }}>🚀</motion.span>
           <h2 className="text-2xl font-bold text-text-primary mb-3 relative">Ready to grow your business?</h2>
           <p className="text-text-muted mb-6 max-w-lg mx-auto relative">Whether you need a website, IT support, or digital marketing — we're here to help your business succeed.</p>
-          <div className="flex gap-4 justify-center flex-wrap relative">
-            <motion.a href="/pricing" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
-              className="bg-brand-gradient text-white px-8 py-3 rounded-xl font-medium hover:shadow-xl hover:shadow-neon-cyan/30"
-            >View Services</motion.a>
-            <motion.a href="/contact" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
-              className="border border-electric-violet/40 text-electric-violet px-8 py-3 rounded-xl font-medium hover:bg-electric-violet/10"
-            >📞 Book a Call</motion.a>
+          <div className="flex gap-4 justify-center flex-wrap relative">             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Link to="/pricing"
+                className="block bg-brand-gradient text-white px-8 py-3 rounded-xl font-medium hover:shadow-xl hover:shadow-neon-cyan/30"
+              >View Services</Link>
+            </motion.div>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Link to="/contact"
+                className="block border border-electric-violet/40 text-electric-violet px-8 py-3 rounded-xl font-medium hover:bg-electric-violet/10"
+              >📞 Book a Call</Link>
+            </motion.div>
           </div>
           <div className="flex items-center justify-center gap-6 mt-8 text-xs text-text-muted flex-wrap">
             <span>🔒 Secure Payment</span>

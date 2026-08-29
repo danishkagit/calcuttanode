@@ -75,7 +75,7 @@ export default function SEOTools() {
 
   return (
     <div className="relative min-h-screen">
-      <ParticleField count={30} speed={0.15} color="#7EBBC5" />
+      <ParticleField count={30} speed={0.15} />
       <div className="relative z-10 max-w-5xl mx-auto px-4 py-12">
         <motion.div className="text-center mb-10" initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }}>
           <span className="text-4xl block mb-3">🚀</span>
@@ -151,7 +151,7 @@ export default function SEOTools() {
                   <motion.button whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}
                     onClick={() => handleSubmit('generate-content', contentForm)}
                     disabled={loading || !contentForm.topic}
-                    className="w-full bg-gradient-to-r from-neon-cyan to-electric-violet text-white font-semibold py-3 rounded-xl text-sm disabled:opacity-50 transition-all"
+                    className="w-full bg-brand-gradient text-white font-semibold py-3 rounded-xl text-sm disabled:opacity-50 transition-all"
                   >
                     {loading ? 'Generating...' : 'Generate Content'}
                   </motion.button>
@@ -193,7 +193,7 @@ export default function SEOTools() {
                   <motion.button whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}
                     onClick={() => handleSubmit('generate-meta', metaForm)}
                     disabled={loading || !metaForm.pageTitle}
-                    className="w-full bg-gradient-to-r from-neon-cyan to-electric-violet text-white font-semibold py-3 rounded-xl text-sm disabled:opacity-50 transition-all"
+                    className="w-full bg-brand-gradient text-white font-semibold py-3 rounded-xl text-sm disabled:opacity-50 transition-all"
                   >
                     {loading ? 'Generating...' : 'Generate Meta Tags'}
                   </motion.button>
@@ -218,7 +218,7 @@ export default function SEOTools() {
                   <motion.button whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}
                     onClick={() => handleSubmit('keyword-suggest', keywordForm)}
                     disabled={loading || !keywordForm.topic}
-                    className="w-full bg-gradient-to-r from-neon-cyan to-electric-violet text-white font-semibold py-3 rounded-xl text-sm disabled:opacity-50 transition-all"
+                    className="w-full bg-brand-gradient text-white font-semibold py-3 rounded-xl text-sm disabled:opacity-50 transition-all"
                   >
                     {loading ? 'Researching...' : 'Get Keyword Suggestions'}
                   </motion.button>
@@ -243,7 +243,7 @@ export default function SEOTools() {
                   <motion.button whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}
                     onClick={() => handleSubmit('analyze', analyzeForm)}
                     disabled={loading || !analyzeForm.content}
-                    className="w-full bg-gradient-to-r from-neon-cyan to-electric-violet text-white font-semibold py-3 rounded-xl text-sm disabled:opacity-50 transition-all"
+                    className="w-full bg-brand-gradient text-white font-semibold py-3 rounded-xl text-sm disabled:opacity-50 transition-all"
                   >
                     {loading ? 'Analyzing...' : 'Analyze Content'}
                   </motion.button>
@@ -286,7 +286,7 @@ export default function SEOTools() {
                       handleSubmit('generate-schema', { ...schemaForm, data: parsed });
                     }}
                     disabled={loading || !schemaForm.name}
-                    className="w-full bg-gradient-to-r from-neon-cyan to-electric-violet text-white font-semibold py-3 rounded-xl text-sm disabled:opacity-50 transition-all"
+                    className="w-full bg-brand-gradient text-white font-semibold py-3 rounded-xl text-sm disabled:opacity-50 transition-all"
                   >
                     {loading ? 'Generating...' : 'Generate Schema'}
                   </motion.button>
