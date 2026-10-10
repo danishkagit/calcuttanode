@@ -1,7 +1,4 @@
-import api from '../../utils/api';
-
 const steps = ['pending', 'in-progress', 'completed'];
-const stepLabels = { pending: 'Order Placed', 'in-progress': 'In Progress', completed: 'Completed' };
 
 export default function OrderTracker({ order }) {
   const currentStep = steps.indexOf(order.status);

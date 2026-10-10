@@ -104,7 +104,7 @@ export default function BlogDetail() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.1 }}
-          className="glass-card rounded-2xl p-8"
+          className="glass-card rounded-2xl p-5 md:p-8"
         >
           <div className="flex items-center gap-3 mb-4 flex-wrap">
             <motion.span
@@ -130,14 +130,14 @@ export default function BlogDetail() {
           <div className="flex flex-wrap gap-2 mb-6">
             {blog.tags?.map((tag) => (
               <motion.span key={tag} whileHover={{ scale: 1.05 }}
-                className="text-xs text-text-muted bg-white/5 px-2 py-1 rounded-full"
+                className="text-xs text-text-muted bg-neon-cyan/10 border border-neon-cyan/20 px-2 py-1 rounded-full"
               >
                 #{tag}
               </motion.span>
             ))}
           </div>
 
-          <div className="text-sm md:text-base text-text-primary leading-[1.8] prose prose-invert max-w-none">
+          <div className="md-body text-sm md:text-base text-text-primary leading-[1.8] max-w-none overflow-hidden">
             <ReactMarkdown>{blog.content}</ReactMarkdown>
           </div>
 

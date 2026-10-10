@@ -40,7 +40,7 @@ export default function Login() {
       if (window.google) { clearInterval(check); initGSI(); }
     }, 200);
     return () => clearInterval(check);
-  }, []);
+  }, [navigate, setUser]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

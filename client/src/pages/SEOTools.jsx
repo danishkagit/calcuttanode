@@ -311,7 +311,7 @@ export default function SEOTools() {
                   <div>
                     {result.title && <div className="text-lg font-bold text-neon-cyan mb-2">{result.title}</div>}
                     {result.metaDescription && <div className="text-xs text-text-muted mb-4 border-l-2 border-electric-violet pl-3">Meta: {result.metaDescription}</div>}
-                    <div className="prose prose-invert max-w-none">{result.content}</div>
+                    <div className="md-body text-sm max-w-none overflow-hidden">{result.content}</div>
                   </div>
                 )}
                 {activeTab === 'meta' && (

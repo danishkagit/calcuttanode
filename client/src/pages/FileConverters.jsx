@@ -2,7 +2,7 @@ import { useState, useRef, useCallback, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { PDFDocument } from 'pdf-lib';
-import { Document, Packer, Paragraph, TextRun, HeadingLevel } from 'docx';
+import { Document, Packer, Paragraph, HeadingLevel } from 'docx';
 import ParticleField from '../components/common/ParticleField';
 
 const fadeUp = { initial: { opacity: 0, y: 20 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true }, transition: { duration: 0.5 } };
@@ -188,11 +188,9 @@ function ConverterTool({ tool }) {
   const [progress, setProgress] = useState('');
   const [textInput, setTextInput] = useState('');
   const [rotateAngle, setRotateAngle] = useState(90);
-  const [pageRange, setPageRange] = useState('');
   const [deleteRange, setDeleteRange] = useState('');
   const [gifDelay, setGifDelay] = useState(500);
   const [flipMode, setFlipMode] = useState('horizontal');
-  const [ttsVoice, setTtsVoice] = useState('');
   const [ttsRate, setTtsRate] = useState(1);
   const [isRecording, setIsRecording] = useState(false);
   const [resizeWidth, setResizeWidth] = useState(800);
@@ -309,11 +307,7 @@ function ConverterTool({ tool }) {
   const handleWordToPdf = async () => {
     setProgress('Converting Word to PDF...');
     const file = files[0];
-    const arrayBuffer = await file.arrayBuffer();
-    // Parse DOCX (ZIP) and extract document.xml
     // DOCX is a ZIP archive — basic text extraction for conversion
-    // Fallback: read as text and extract basic content
-    const text = await file.text();
     // For a basic conversion, we create a PDF with the filename as content
     const pdf = await PDFDocument.create();
     const font = await pdf.embedFont('Helvetica');
@@ -460,7 +454,6 @@ function ConverterTool({ tool }) {
 
   const handleImageToIco = async () => {
     const bmp = await createImageBitmap(files[0]);
-    const sizes = [16, 32, 48];
     // Create ICO file (simplified: single 32x32)
     const c = document.createElement('canvas'); c.width = 32; c.height = 32;
     c.getContext('2d').drawImage(bmp, 0, 0, 32, 32);
@@ -619,7 +612,6 @@ function ConverterTool({ tool }) {
     if (!('speechSynthesis' in window)) { setError('Text-to-speech not supported in this browser.'); return; }
     const utterance = new SpeechSynthesisUtterance(textInput);
     utterance.rate = ttsRate;
-    if (ttsVoice) utterance.voice = speechSynthesis.getVoices().find(v => v.name === ttsVoice);
     speechSynthesis.speak(utterance);
     setResult({ type: 'info', info: '🔊 Speaking... The browser will read the text aloud.' });
   };

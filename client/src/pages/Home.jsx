@@ -1,10 +1,9 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import companyInfo from '../data/companyInfo';
 import ParticleField from '../components/common/ParticleField';
 import api from '../utils/api';
-import logo from '../assets/logo.png';
+import logoFull from '../assets/logo-full.png';
 import danishImg from '../assets/danish-shoaib.png';
 
 const DemandBadge = ({ count }) => {
@@ -55,8 +54,6 @@ export default function Home() {
   const [trendingServices, setTrendingServices] = useState([]);
   const [products, setProducts] = useState([]);
 
-  const categories = useMemo(() => [...new Set(servicesList.map((s) => s.category))], [servicesList]);
-
   useEffect(() => {
     api.get('/services')
       .then((res) => setServicesList(Array.isArray(res.data) ? res.data : []))
@@ -88,20 +85,16 @@ export default function Home() {
           <div className="absolute bottom-20 right-10 w-96 h-96 bg-electric-violet/5 rounded-full blur-3xl ai-pulse-ring" style={{ animationDelay: '1.5s' }} />
         </div>
         <motion.div className="max-w-4xl mx-auto relative" initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+          <h1 className="sr-only">Calcutta Node — IT Services & Digital Growth Agency</h1>
           <motion.div initial={{ scale: 0.8, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ duration: 0.5 }} className="mb-6">
-            <img src={logo} alt="Calcutta Node." className="h-32 md:h-44 w-32 md:w-44 mx-auto animate-float drop-shadow-[0_0_35px_rgba(0,240,255,0.45)] object-contain" />
+            <img src={logoFull} alt="Calcutta Node — CN circuit logo" className="w-72 sm:w-80 md:w-[26rem] h-auto mx-auto animate-float drop-shadow-[0_0_45px_rgba(34,211,238,0.35)] dark:drop-shadow-[0_0_55px_rgba(34,211,238,0.45)] object-contain" />
           </motion.div>
           <motion.span animate={{ y: [0, -5, 0] }} transition={{ repeat: Infinity, duration: 2.5 }}
             className="inline-block text-xs font-semibold text-electric-violet bg-electric-violet/15 px-4 py-1.5 rounded-full mb-5 border border-electric-violet/30 shadow-lg shadow-electric-violet/10"
           >
             🚀 Digital Growth Partner
           </motion.span>
-           <motion.div animate={{ y: [0, -8, 0] }} transition={{ repeat: Infinity, duration: 3, ease: 'easeInOut' }} className="text-5xl md:text-7xl font-bold mb-3">
-             <span className="bg-gradient-to-r from-neon-cyan via-electric-violet to-neon-cyan bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient-x">
-               Calcutta Node.
-             </span>
-           </motion.div>
-           <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
+            <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
              className="text-lg md:text-xl text-transparent bg-clip-text bg-gradient-to-r from-text-primary to-neon-cyan font-medium mb-3"
            >
              Your AI-Powered Growth Engine. Engineering Tomorrow's Digital Experiences, Delivered Remotely.
@@ -298,7 +291,7 @@ export default function Home() {
             {Object.entries(categoryMeta).map(([cat, meta], i) => {
               const count = servicesList.filter((s) => s.category === cat).length;
               return (
-                <Link key={cat} to={`/pricing`} onClick={() => { try { window.__setPricingFilter?.(cat); } catch(e) {} }}>
+                <Link key={cat} to={`/pricing`} onClick={() => { try { window.__setPricingFilter?.(cat); } catch {} }}>
                   <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.06 }}
                     whileHover={{ y: -5, scale: 1.02 }} className="p-5 rounded-2xl glass-card group h-full"
                   >

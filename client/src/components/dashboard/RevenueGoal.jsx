@@ -1,5 +1,3 @@
-import { useMemo } from 'react';
-
 export default function RevenueGoal({ revenue, overview }) {
   const monthlyData = revenue?.monthly || [];
   const byMethodData = revenue?.byMethod || [];

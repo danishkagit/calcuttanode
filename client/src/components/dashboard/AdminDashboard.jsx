@@ -24,7 +24,7 @@ export default function AdminDashboard() {
   const [showPlanForm, setShowPlanForm] = useState(false);
   const [broadcast, setBroadcast] = useState({ title: '', message: '' });
   const [sending, setSending] = useState(false);
-  const [loading, setLoading] = useState({});
+  const [, setLoading] = useState({});
 
   useEffect(() => {
     const fetchAll = async () => {
@@ -56,7 +56,7 @@ export default function AdminDashboard() {
     fetchAll();
   }, [refresh, userSearch, orderFilter, txFilter]);
 
-  const apiCall = async (method, url, body = null, msg = 'Success') => {
+  const apiCall = async (method, url, body = null) => {
     setLoading(l => ({ ...l, [url]: true }));
     try {
       if (body) await api[method](url, body);

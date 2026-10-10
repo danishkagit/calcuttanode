@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom';
 const defaults = {
   title: 'Calcutta Node — Digital Growth Agency | Champdani, Hooghly',
   description: 'Calcutta Node is a digital growth agency in Champdani, Hooghly. We offer remote IT support, web development, UI/UX design, digital marketing, and more.',
-  image: 'https://calcuttanode.vercel.app/logo.png',
+  image: 'https://calcuttanode.vercel.app/logo-full.png',
   url: 'https://calcuttanode.vercel.app',
 };
 
@@ -106,6 +106,8 @@ export default function SEOHead() {
     setMeta('og:url', defaults.url + pathname);
     setMeta('twitter:title', meta.title);
     setMeta('twitter:description', meta.description);
+    setMeta('og:image', defaults.image);
+    setMeta('twitter:image', defaults.image);
 
     let schema;
     if (pathname.startsWith('/blogs/')) schema = schemas.BlogPosting;

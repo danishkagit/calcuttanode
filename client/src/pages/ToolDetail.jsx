@@ -1,6 +1,5 @@
 import { useState, useMemo, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
 import toolsRegistry from '../data/toolsRegistry';
 
 function CopyBtn({ text }) {
@@ -67,7 +66,6 @@ function ToolRenderer({ tool }) {
   const [a, setA] = useState(''); // input 1
   const [b, setB] = useState(''); // input 2
   const [out, setOut] = useState('');
-  const [opt, setOpt] = useState('upper'); // option
   const [len, setLen] = useState(16);
   const [includeSymbols, setIncludeSymbols] = useState(true);
 
@@ -216,7 +214,6 @@ function ToolRenderer({ tool }) {
       );
     }
     case 'color-picker': {
-      const hex = a || '#7EBBC5';
       const hexToRgb = (h) => { const v = h.replace('#',''); const n=parseInt(v,16); return `${(n>>16)&255}, ${(n>>8)&255}, ${n&255}`; };
       const hexToHsl = (h) => {
         let r=parseInt(h.slice(1,3),16)/255,g=parseInt(h.slice(3,5),16)/255,b=parseInt(h.slice(5,7),16)/255;
@@ -263,7 +260,6 @@ function ToolRenderer({ tool }) {
     }
     default: {
       // Generic not-yet-implemented but functional placeholder with copy/download for text tools
-      const isTextLike = ['lorem-generator','remove-duplicates','slugify','html-encoder','css-minifier','js-minifier','json-to-csv','image-to-base64','unit-converter','timestamp-converter','number-base','percentage-calculator','meta-generator','og-generator','robots-generator','sitemap-generator','keyword-density','http-status','jwt-decoder','cron-parser','age-calculator','bmi-calculator','emi-calculator','text-diff','image-compressor','random-number'].includes(tool.slug);
       if (tool.slug === 'lorem-generator') {
         const gen = (paras=3) => {
           const lorem='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';

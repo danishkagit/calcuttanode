@@ -104,7 +104,7 @@ export default function Hire() {
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }} className="glass-card rounded-2xl p-8 mb-8">
           <h2 className="text-xl font-bold text-text-primary text-center mb-6">How It Works</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {workSteps.map((s, i) => (
+            {workSteps.map((s) => (
               <div key={s.step} className="text-center">
                 <div className="w-10 h-10 rounded-full bg-brand-gradient text-white text-sm font-bold flex items-center justify-center mx-auto mb-2">{s.step}</div>
                 <h3 className="text-sm font-semibold text-text-primary">{s.title}</h3>

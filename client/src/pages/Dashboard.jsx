@@ -105,15 +105,6 @@ export default function Dashboard() {
     }
   };
 
-  const toggleWishlist = async (serviceId) => {
-    try {
-      const res = await api.post('/wishlist/toggle', { serviceId });
-      return res.data.saved;
-    } catch {
-      return false;
-    }
-  };
-
   if (loading) return null;
   if (!user) return <Navigate to="/login" />;
 

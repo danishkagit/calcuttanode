@@ -1,9 +1,15 @@
 <!doctype html>
-<html lang="en" class="light">
+<html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
+    <link rel="manifest" href="/manifest.json" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="dark light" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#050b16" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#e8f1f8" />
     <title>Calcutta Node — IT Services & Digital Growth Agency | Champdani, Hooghly</title>
     <meta name="description" content="Calcutta Node is an IT services and digital growth agency in Champdani, Hooghly. We offer remote IT support, web development, UI/UX design, digital marketing, and more." />
     <meta name="keywords" content="IT services, digital marketing, web development, remote support, Champdani, Hooghly, West Bengal, Calcutta Node" />
@@ -12,13 +18,31 @@
     <meta property="og:description" content="Professional IT support, web development, design, and marketing services in Champdani, Hooghly." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://calcuttanode.com" />
+    <meta property="og:image" content="https://calcuttanode.com/logo-full.png" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Calcutta Node — IT Services & Digital Growth Agency" />
     <meta name="twitter:description" content="Professional IT support, web development, design, and marketing services." />
+    <meta name="twitter:image" content="https://calcuttanode.com/logo-full.png" />
     <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script>
+      // No-FOUC theme init: Night (dark) is the signature logo look; respect saved choice first.
+      (function () {
+        try {
+          var saved = localStorage.getItem('cn-theme');
+          var theme = saved || 'dark';
+          if (!saved && window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+            theme = 'light';
+          }
+          var root = document.documentElement;
+          root.classList.remove('light', 'dark');
+          root.classList.add(theme);
+          root.style.colorScheme = theme;
+        } catch (e) {}
+      })();
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=DM+Sans:wght@500;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
   </head>
   <body>
 

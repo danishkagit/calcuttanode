@@ -78,7 +78,7 @@ export default function PaymentModal({ onClose, onSuccess }) {
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60" onClick={onClose}>
       <div className="bg-surface rounded-xl p-6 border border-electric-violet/20 w-full max-w-md mx-4" onClick={(e) => e.stopPropagation()}>
         <h2 className="text-xl font-bold text-text-primary mb-4">Add Funds</h2>
-        <div className="flex gap-2 mb-4">
+        <div className="flex flex-wrap gap-2 mb-4">
           {['upi', 'card', 'netbanking', 'bank_transfer'].map((m) => (
             <button key={m} onClick={() => setMethod(m)} className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${method === m ? 'bg-neon-cyan text-background' : 'bg-electric-violet/20 text-text-muted hover:text-text-primary'}`}>
               {m === 'bank_transfer' ? 'Bank Transfer' : m.toUpperCase()}

@@ -2,6 +2,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import logo from '../../assets/logo.png';
+import ThemeToggle from './ThemeToggle';
 import toolsRegistry, { categories as toolCategories, categoryIcons as toolCategoryIcons } from '../../data/toolsRegistry';
 
 const serviceGroups = [
@@ -104,19 +105,19 @@ export default function Navbar() {
       }`}>
         <div className="max-w-7xl mx-auto px-4 flex items-center justify-between h-16">
           <Link to="/" className="flex items-center gap-2.5 group shrink-0">
-            <img src={logo} alt="Calcutta Node." className="h-10 md:h-11 w-10 md:w-11 object-contain drop-shadow-[0_0_15px_rgba(0,240,255,0.4)] transition-transform duration-300 group-hover:scale-110" />
+            <img src={logo} alt="Calcutta Node logo" className="h-9 md:h-10 w-auto object-contain drop-shadow-[0_0_15px_rgba(34,211,238,0.45)] transition-transform duration-300 group-hover:scale-105" />
             <span className="text-neon-cyan font-bold text-lg hidden sm:block tracking-tight transition-all duration-300 group-hover:neon-glow-cyan">Calcutta Node.</span>
           </Link>
 
-          {/* ===== DESKTOP NAV ===== */}
-          <div className="hidden md:flex items-center gap-1">
+          {/* ===== DESKTOP NAV (lg+: md screens use mobile UI to avoid crowding) ===== */}
+          <div className="hidden lg:flex items-center gap-0.5">
             {/* Services - Mega Menu */}
             <div className="relative"
               onMouseEnter={() => openWithDelay('services')}
               onMouseLeave={() => closeWithDelay()}
             >
               <button onClick={() => toggleDropdown('services')}
-                className={`flex items-center gap-1.5 px-4 py-2 text-sm font-medium rounded-xl transition-all duration-200 ${
+                className={`flex items-center gap-1.5 px-3 py-2 text-sm font-medium rounded-xl transition-all duration-200 ${
                   openDropdown === 'services'
                     ? 'text-neon-cyan bg-neon-cyan/15 shadow-sm shadow-neon-cyan/10'
                     : 'text-text-muted hover:text-text-primary hover:bg-border/50'
@@ -139,11 +140,11 @@ export default function Navbar() {
                     initial="hidden"
                     animate="visible"
                     exit="exit"
-                    className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[720px] rounded-2xl border border-neon-cyan/25 bg-background shadow-2xl shadow-black/60 overflow-hidden"
+                    className="fixed left-1/2 top-16 -translate-x-1/2 w-[min(720px,94vw)] rounded-2xl border border-neon-cyan/25 glass shadow-2xl overflow-hidden"
                   >
                     <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-neon-cyan/[0.04] via-transparent to-electric-violet/[0.04] pointer-events-none" />
                     <div className="absolute top-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-neon-cyan/40 to-transparent" />
-                    <div className="grid grid-cols-3 gap-0.5 p-2 relative">
+                    <div className="grid grid-cols-2 lg:grid-cols-3 gap-0.5 p-2 relative">
                       {serviceGroups.map((group) =>
                         group.items.map((s) => (
                           <motion.div key={s.label} variants={itemVariants}>
@@ -188,7 +189,7 @@ export default function Navbar() {
               onMouseLeave={() => closeWithDelay()}
             >
               <button onClick={() => toggleDropdown('tools')}
-                className={`flex items-center gap-1.5 px-4 py-2 text-sm font-medium rounded-xl transition-all duration-200 ${
+                className={`flex items-center gap-1.5 px-3 py-2 text-sm font-medium rounded-xl transition-all duration-200 ${
                   openDropdown === 'tools'
                     ? 'text-neon-cyan bg-neon-cyan/15 shadow-sm shadow-neon-cyan/10'
                     : 'text-text-muted hover:text-text-primary hover:bg-border/50'
@@ -206,7 +207,7 @@ export default function Navbar() {
                     initial="hidden"
                     animate="visible"
                     exit="exit"
-                    className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[760px] max-w-[min(760px,92vw)] rounded-2xl border border-neon-cyan/25 bg-background shadow-2xl shadow-black/60 overflow-hidden"
+                    className="fixed left-1/2 top-16 -translate-x-1/2 w-[min(760px,94vw)] rounded-2xl border border-neon-cyan/25 glass shadow-2xl overflow-hidden"
                   >
                     <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-neon-cyan/[0.04] via-transparent to-electric-violet/[0.04] pointer-events-none" />
                     <div className="absolute top-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-neon-cyan/40 to-transparent" />
@@ -215,7 +216,7 @@ export default function Navbar() {
                         <span className="text-xs font-bold text-neon-cyan uppercase tracking-wider">Free Tools — 100% in-browser</span>
                         <Link to="/tools" onClick={() => setOpenDropdown(null)} className="text-xs font-semibold text-neon-cyan hover:underline">View all {toolsRegistry.length} →</Link>
                       </div>
-                      <div className="grid grid-cols-4 gap-2">
+                      <div className="grid grid-cols-2 lg:grid-cols-4 gap-2">
                         {toolCategories.map(cat => (
                           <div key={cat} className="rounded-xl bg-surface/30 border border-electric-violet/10 p-2">
                             <div className="text-xs font-bold text-text-primary mb-1.5 flex items-center gap-1.5"><span>{toolCategoryIcons[cat] || '🔧'}</span>{cat}</div>
@@ -255,7 +256,7 @@ export default function Navbar() {
               onMouseLeave={() => closeWithDelay()}
             >
               <button onClick={() => toggleDropdown('resources')}
-                className={`flex items-center gap-1.5 px-4 py-2 text-sm font-medium rounded-xl transition-all duration-200 ${
+                className={`flex items-center gap-1.5 px-3 py-2 text-sm font-medium rounded-xl transition-all duration-200 ${
                   openDropdown === 'resources'
                     ? 'text-neon-cyan bg-neon-cyan/15 shadow-sm shadow-neon-cyan/10'
                     : 'text-text-muted hover:text-text-primary hover:bg-border/50'
@@ -275,7 +276,7 @@ export default function Navbar() {
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 6, scale: 0.96 }}
                     transition={{ duration: 0.15 }}
-                    className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-56 rounded-2xl border border-neon-cyan/25 bg-background shadow-2xl shadow-black/60 overflow-hidden p-2"
+                    className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-56 rounded-2xl border border-neon-cyan/25 glass shadow-2xl overflow-hidden p-2"
                   >
                     <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-neon-cyan/[0.04] via-transparent to-electric-violet/[0.04] pointer-events-none" />
                     <div className="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-neon-cyan/40 to-transparent" />
@@ -311,7 +312,7 @@ export default function Navbar() {
               onMouseLeave={() => closeWithDelay()}
             >
               <button onClick={() => toggleDropdown('company')}
-                className={`flex items-center gap-1.5 px-4 py-2 text-sm font-medium rounded-xl transition-all duration-200 ${
+                className={`flex items-center gap-1.5 px-3 py-2 text-sm font-medium rounded-xl transition-all duration-200 ${
                   openDropdown === 'company'
                     ? 'text-neon-cyan bg-neon-cyan/15 shadow-sm shadow-neon-cyan/10'
                     : 'text-text-muted hover:text-text-primary hover:bg-border/50'
@@ -333,7 +334,7 @@ export default function Navbar() {
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 6, scale: 0.96 }}
                     transition={{ duration: 0.15 }}
-                    className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-48 rounded-2xl border border-neon-cyan/25 bg-background shadow-2xl shadow-black/60 overflow-hidden p-2"
+                    className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-48 rounded-2xl border border-neon-cyan/25 glass shadow-2xl overflow-hidden p-2"
                   >
                     <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-neon-cyan/[0.04] via-transparent to-electric-violet/[0.04] pointer-events-none" />
                     <div className="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-neon-cyan/40 to-transparent" />
@@ -390,8 +391,9 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Right side: Social icons + Hamburger */}
-          <div className="flex items-center gap-1">
+          {/* Right side: Theme toggle + Social icons + Hamburger */}
+          <div className="flex items-center gap-1.5">
+            <ThemeToggle compact />
             <Link to="/app"
               className="flex w-9 h-9 items-center justify-center rounded-lg transition-all hover:bg-border/50"
               aria-label="Play Store"
@@ -401,7 +403,7 @@ export default function Navbar() {
               </svg>
             </Link>
             <a href="https://wa.me/918584885450" target="_blank" rel="noopener noreferrer"
-              className="hidden md:flex w-9 h-9 items-center justify-center rounded-lg transition-all hover:bg-border/50"
+              className="hidden xl:flex w-9 h-9 items-center justify-center rounded-lg transition-all hover:bg-border/50"
               aria-label="WhatsApp"
             >
               <svg className="w-5.5 h-5.5" viewBox="0 0 24 24" fill="#25D366">
@@ -409,7 +411,7 @@ export default function Navbar() {
               </svg>
             </a>
             <a href="https://instagram.com/calcuttanode" target="_blank" rel="noopener noreferrer"
-              className="hidden md:flex w-9 h-9 items-center justify-center rounded-lg transition-all hover:bg-border/50"
+              className="hidden xl:flex w-9 h-9 items-center justify-center rounded-lg transition-all hover:bg-border/50"
               aria-label="Instagram"
             >
               <svg className="w-5.5 h-5.5" viewBox="0 0 24 24" fill="#E4405F">
@@ -417,9 +419,9 @@ export default function Navbar() {
               </svg>
             </a>
 
-            {/* Mobile hamburger */}
+            {/* Mobile hamburger (below lg) */}
             <button onClick={() => setMobileOpen(!mobileOpen)}
-              className="md:hidden relative w-9 h-9 flex items-center justify-center text-text-primary hover:text-neon-cyan transition-colors"
+              className="lg:hidden relative w-9 h-9 flex items-center justify-center text-text-primary hover:text-neon-cyan transition-colors"
               aria-label="Toggle menu"
             >
               <div className="flex flex-col items-center justify-center gap-1">
@@ -439,9 +441,13 @@ export default function Navbar() {
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.25, ease: 'easeInOut' }}
-              className="md:hidden overflow-hidden border-t border-electric-violet/10"
+              className="lg:hidden overflow-hidden border-t border-electric-violet/10"
             >
               <div className="bg-background/95 backdrop-blur-xl px-4 py-4 space-y-1 max-h-[80vh] overflow-y-auto">
+                <div className="flex items-center justify-between px-4 py-2.5 rounded-xl glass-card mb-1">
+                  <span className="text-sm font-semibold text-text-primary font-display">Appearance</span>
+                  <ThemeToggle compact />
+                </div>
                 <div className="text-xs font-bold text-electric-violet uppercase tracking-wider px-4 pt-2 pb-1 flex items-center gap-2">
                   <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="2" width="8" height="8" rx="1.5"/><rect x="14" y="2" width="8" height="8" rx="1.5"/><rect x="2" y="14" width="8" height="8" rx="1.5"/><rect x="14" y="14" width="8" height="8" rx="1.5"/></svg>
                   Services
@@ -530,8 +536,8 @@ export default function Navbar() {
         </AnimatePresence>
       </nav>
 
-      {/* Mobile bottom tab bar */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-surface/95 backdrop-blur-2xl border-t border-border pb-1 pb-safe">
+      {/* Mobile bottom tab bar (below lg) */}
+      <div className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-surface/95 backdrop-blur-2xl border-t border-border pb-1 pb-safe">
         <div className="flex items-center justify-around py-1 relative">
           {[
             { label: 'Home', path: '/', icon: '🏠' },
@@ -544,30 +550,30 @@ export default function Navbar() {
             if (tab.toggle) {
               return (
                 <button key={tab.label} onClick={() => setMobileOpen((prev) => !prev)}
-                  className={`relative flex flex-col items-center gap-0.5 px-4 py-1.5 rounded-xl text-[11px] font-medium transition-all ${
+                  className={`relative flex-1 min-w-0 flex flex-col items-center gap-0.5 px-1 py-1.5 rounded-xl text-[10px] font-medium transition-all ${
                     mobileOpen
                       ? 'text-neon-cyan bg-neon-cyan/10'
                       : 'text-text-muted/70 hover:text-text-primary hover:bg-border/50'
                   }`}
                 >
                   <span className="text-xl mb-0.5">{tab.icon}</span>
-                  <span>{tab.label}</span>
+                  <span className="truncate w-full text-center">{tab.label}</span>
                   {mobileOpen && <motion.span layoutId="tabIndicator" className="absolute -top-0.5 left-1/2 -translate-x-1/2 w-6 h-0.5 rounded-full bg-neon-cyan" />}
                 </button>
               );
             }
             return (
               <Link key={tab.label} to={tab.path} onClick={() => setMobileOpen(false)}
-                className={`relative flex flex-col items-center gap-0.5 px-4 py-1.5 rounded-xl text-[11px] font-medium transition-all ${
+                className={`relative flex-1 min-w-0 flex flex-col items-center gap-0.5 px-1 py-1.5 rounded-xl text-[10px] font-medium transition-all ${
                   tab.highlight
-                    ? 'bg-gradient-to-b from-neon-cyan/20 to-electric-violet/20 border border-neon-cyan/40 text-neon-cyan -mt-1.5 px-5 py-2 shadow-lg shadow-neon-cyan/20 animate-pulse-glow'
+                    ? 'bg-gradient-to-b from-neon-cyan/20 to-electric-violet/20 border border-neon-cyan/40 text-neon-cyan -mt-1.5 py-2 shadow-lg shadow-neon-cyan/20 animate-pulse-glow'
                     : isActive
                       ? 'text-neon-cyan bg-neon-cyan/10'
                       : 'text-text-muted/70 hover:text-text-primary hover:bg-border/50'
                 }`}
               >
                 <span className="text-xl mb-0.5">{tab.icon}</span>
-                <span>{tab.label}</span>
+                <span className="truncate w-full text-center">{tab.label}</span>
                 {isActive && !tab.highlight && <span className="absolute -top-0.5 left-1/2 -translate-x-1/2 w-6 h-0.5 rounded-full bg-neon-cyan" />}
               </Link>
             );
@@ -575,7 +581,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      <div className="md:hidden h-16" />
+      <div className="lg:hidden h-16" />
     </>
   );
 }

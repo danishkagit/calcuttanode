@@ -37,7 +37,7 @@ export default function Products() {
     setPurchasing(product.slug);
     setMessage(null);
     try {
-      const { data } = await api.post('/products/purchase', { slug: product.slug });
+      await api.post('/products/purchase', { slug: product.slug });
       setMessage({ type: 'success', text: `Purchased "${product.name}"! Download link sent.` });
     } catch (err) {
       setMessage({ type: 'error', text: err.response?.data?.message || 'Purchase failed' });

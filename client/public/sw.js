@@ -1,9 +1,12 @@
-const CACHE_NAME = 'calcutta-node-v1';
+const CACHE_NAME = 'calcutta-node-v2';
 const STATIC_ASSETS = [
   '/',
   '/index.html',
   '/manifest.json',
   '/favicon.svg',
+  '/favicon.png',
+  '/logo.png',
+  '/logo-full.png',
 ];
 
 self.addEventListener('install', (event) => {

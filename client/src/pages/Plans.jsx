@@ -53,7 +53,7 @@ export default function Plans() {
   const handleCancel = async () => {
     if (!confirm('Are you sure you want to cancel your subscription?')) return;
     try {
-      const { data } = await api.post('/subscriptions/cancel');
+      await api.post('/subscriptions/cancel');
       setMySub({ ...mySub, status: 'cancelled', autoRenew: false });
       setMessage({ type: 'success', text: 'Subscription cancelled.' });
     } catch (err) {

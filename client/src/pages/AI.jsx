@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { useAuth } from '../context/AuthContext';
@@ -195,7 +195,7 @@ export default function AI() {
                         {isUser ? (
                           <span className="whitespace-pre-wrap">{msg.content}</span>
                         ) : (
-                          <div className="space-y-1.5 prose-sm max-w-none prose-p:my-1 prose-ul:my-1">
+                          <div className="space-y-1.5 max-w-none">
                             <ReactMarkdown remarkPlugins={[remarkGfm]} components={{
                               p: ({ children }) => <p className="my-1.5">{children}</p>,
                               ul: ({ children }) => <ul className="my-1.5 list-disc list-inside space-y-1">{children}</ul>,
