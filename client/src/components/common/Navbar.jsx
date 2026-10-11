@@ -101,8 +101,8 @@ export default function Navbar() {
     <>
       <nav ref={navRef} className={`sticky top-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-surface/90 backdrop-blur-xl border-b border-border shadow-sm'
-          : 'bg-surface/70 backdrop-blur-md border-b border-border/60'
+          ? 'bg-surface shadow-[0_10px_26px_-8px_var(--shadow-neu-dark),inset_0_1px_0_0_var(--shadow-clay-in-light)]'
+          : 'bg-surface shadow-[0_4px_14px_-8px_var(--shadow-neu-dark)]'
       }`}>
         <div className="max-w-7xl mx-auto px-4 flex items-center justify-between h-16">
           <Link to="/" className="flex items-center gap-2 group shrink-0">
@@ -141,7 +141,7 @@ export default function Navbar() {
                     initial="hidden"
                     animate="visible"
                     exit="exit"
-                    className="absolute top-full left-0 mt-2 w-[660px] rounded-2xl border border-neon-cyan/30 bg-surface/98 dark:bg-[#070D1B] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.85)] backdrop-blur-2xl z-50 overflow-hidden before:absolute before:-top-3 before:left-0 before:right-0 before:h-3"
+                    className="absolute top-full left-0 mt-2 w-[660px] rounded-2xl clay-panel z-50 overflow-hidden before:absolute before:-top-3 before:left-0 before:right-0 before:h-3"
                   >
                     <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-neon-cyan/[0.06] via-transparent to-electric-violet/[0.04] pointer-events-none" />
                     <div className="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-neon-cyan/50 to-transparent" />
@@ -219,7 +219,7 @@ export default function Navbar() {
                     initial="hidden"
                     animate="visible"
                     exit="exit"
-                    className="absolute top-full -left-16 lg:left-0 mt-2 w-[620px] rounded-2xl border border-neon-cyan/30 bg-surface/98 dark:bg-[#070D1B] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.85)] backdrop-blur-2xl z-50 overflow-hidden before:absolute before:-top-3 before:left-0 before:right-0 before:h-3"
+                    className="absolute top-full -left-16 lg:left-0 mt-2 w-[620px] rounded-2xl clay-panel z-50 overflow-hidden before:absolute before:-top-3 before:left-0 before:right-0 before:h-3"
                   >
                     <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-neon-cyan/[0.06] via-transparent to-electric-violet/[0.04] pointer-events-none" />
                     <div className="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-neon-cyan/50 to-transparent" />
@@ -290,7 +290,7 @@ export default function Navbar() {
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 6, scale: 0.96 }}
                     transition={{ duration: 0.15 }}
-                    className="absolute top-full right-0 mt-2 w-60 rounded-2xl border border-neon-cyan/30 bg-surface/98 dark:bg-[#070D1B] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.85)] backdrop-blur-2xl p-2 z-50 overflow-hidden before:absolute before:-top-3 before:left-0 before:right-0 before:h-3"
+                    className="absolute top-full right-0 mt-2 w-60 rounded-2xl clay-panel p-2 z-50 overflow-hidden before:absolute before:-top-3 before:left-0 before:right-0 before:h-3"
                   >
                     <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-neon-cyan/[0.06] via-transparent to-electric-violet/[0.04] pointer-events-none" />
                     <div className="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-neon-cyan/50 to-transparent" />
@@ -348,7 +348,7 @@ export default function Navbar() {
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 6, scale: 0.96 }}
                     transition={{ duration: 0.15 }}
-                    className="absolute top-full right-0 mt-2 w-52 rounded-2xl border border-neon-cyan/30 bg-surface/98 dark:bg-[#070D1B] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.85)] backdrop-blur-2xl p-2 z-50 overflow-hidden before:absolute before:-top-3 before:left-0 before:right-0 before:h-3"
+                    className="absolute top-full right-0 mt-2 w-52 rounded-2xl clay-panel p-2 z-50 overflow-hidden before:absolute before:-top-3 before:left-0 before:right-0 before:h-3"
                   >
                     <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-neon-cyan/[0.06] via-transparent to-electric-violet/[0.04] pointer-events-none" />
                     <div className="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-neon-cyan/50 to-transparent" />
@@ -447,7 +447,7 @@ export default function Navbar() {
               transition={{ duration: 0.25, ease: 'easeInOut' }}
               className="lg:hidden overflow-hidden border-t border-electric-violet/10"
             >
-              <div className="bg-background/95 backdrop-blur-xl px-4 py-4 space-y-1 max-h-[80vh] overflow-y-auto">
+              <div className="bg-surface px-4 py-4 space-y-1 max-h-[80vh] overflow-y-auto shadow-[0_14px_30px_-10px_var(--shadow-neu-dark)]">
                 <div className="flex items-center justify-between px-4 py-2.5 rounded-xl glass-card mb-1">
                   <span className="text-sm font-semibold text-text-primary font-display">Appearance</span>
                   <ThemeToggle compact />
@@ -477,7 +477,7 @@ export default function Navbar() {
                 </Link>
                 <div className="grid grid-cols-2 gap-1.5 px-1 mb-2">
                   {toolsRegistry.slice(0, 8).map(t => (
-                    <Link key={t.slug} to={`/tools/${t.slug}`} onClick={() => setMobileOpen(false)} className="flex items-center gap-1.5 px-2.5 py-2 rounded-lg text-xs bg-surface/50 border border-electric-violet/10 text-text-muted hover:text-neon-cyan hover:border-neon-cyan/20">
+                    <Link key={t.slug} to={`/tools/${t.slug}`} onClick={() => setMobileOpen(false)} className="flex items-center gap-1.5 px-2.5 py-2 rounded-lg text-xs neu-chip text-text-muted hover:text-neon-cyan">
                       <span>{t.icon}</span><span className="truncate">{t.name}</span>
                     </Link>
                   ))}
@@ -541,7 +541,7 @@ export default function Navbar() {
       </nav>
 
       {/* Mobile bottom tab bar (below lg) */}
-      <div className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-surface/95 backdrop-blur-2xl border-t border-border pb-1 pb-safe">
+      <div className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-surface shadow-[0_-10px_26px_-8px_var(--shadow-neu-dark),inset_0_1px_0_0_var(--shadow-clay-in-light)] pb-1 pb-safe">
         <div className="flex items-center justify-around py-1 relative">
           {[
             { label: 'Home', path: '/', icon: '🏠' },

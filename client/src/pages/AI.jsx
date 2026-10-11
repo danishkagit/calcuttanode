@@ -140,7 +140,7 @@ export default function AI() {
   return (
     <div className="min-h-[calc(100dvh-64px)] flex flex-col bg-background">
       {/* Minimal header — no hero/models/about */}
-      <div className="sticky top-0 z-10 bg-surface/80 backdrop-blur-xl border-b border-border">
+      <div className="sticky top-0 z-10 bg-surface shadow-[0_8px_20px_-10px_var(--shadow-neu-dark)]">
         <div className="max-w-3xl mx-auto px-4 h-[56px] flex items-center justify-between gap-3">
           <div className="flex items-center gap-3 min-w-0">
             <span className="w-8 h-8 rounded-xl bg-text-primary text-surface flex items-center justify-center text-[13px] font-bold">AI</span>

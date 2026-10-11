@@ -3,16 +3,31 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  /* ── NODE GLASS · Light = "Ice Node" (airy ice-blue, never pure white) ── */
-  --color-background: #e9f1f7;
-  --color-surface: #f6fafd;
-  --color-surface-hover: #eef5fb;
-  --color-surface-muted: #dde8f1;
-  --color-border: #cfdfeb;
-  --color-border-strong: #aec6d8;
+  /* ═══════════════════════════════════════════════════════════════
+     NODE CLAY · Neomorphism + Claymorphism, palette from the CN logo
+     (cyan circuit · amber nodes · glassy navy)
+     ═══════════════════════════════════════════════════════════════ */
+
+  /* ── Light = "Clay Ice" (matte blue-gray slab, never pure white) ── */
+  --color-background: #e4ecf5;
+  --color-surface: #e4ecf5;
+  --color-surface-hover: #e9f0f8;
+  --color-surface-muted: #dbe5f0;
+  --color-surface-sunken: #d3dfec;
+  --color-border: rgba(148, 170, 195, 0.35);
+  --color-border-strong: rgba(120, 148, 180, 0.55);
+
+  /* Dual-shadow engine — the essence of neumorphism */
+  --shadow-neu-dark: rgba(159, 176, 199, 0.62);
+  --shadow-neu-light: #ffffff;
+  --shadow-neu-dark-soft: rgba(159, 176, 199, 0.42);
+  --shadow-neu-light-soft: rgba(255, 255, 255, 0.82);
+  /* Clay inner shadows (morphism) */
+  --shadow-clay-in-light: rgba(255, 255, 255, 0.95);
+  --shadow-clay-in-dark: rgba(146, 165, 190, 0.55);
 
   /* Logo palette — cyan circuit + amber node.
-     NOTE: --color-electric-violet is kept as a token NAME for compatibility
+     NOTE: --color-electric-violet keeps its token NAME for compatibility
      across 20+ pages, but its VALUE is the logo's amber node glow. */
   --color-neon-cyan: #0891b2;
   --color-neon-cyan-light: #cffafe;
@@ -22,10 +37,10 @@
   --color-node-cyan: #0891b2;
   --color-node-amber: #d97706;
 
-  --color-text-primary: #0b1c2c;
-  --color-text-secondary: #33506a;
+  --color-text-primary: #12253a;
+  --color-text-secondary: #3a5672;
   --color-text-muted: #64809a;
-  --color-text-faint: #93aec4;
+  --color-text-faint: #8ba4bc;
   --color-ai-cyan: #0891b2;
   --color-ai-violet: #d97706;
   --color-ai-glow: rgba(8, 145, 178, 0.1);
@@ -36,14 +51,22 @@
   --font-mono: 'JetBrains Mono', ui-monospace, monospace;
 }
 
-/* ── Night = "Night Node" (signature logo look: deep navy + neon glow) ── */
+/* ── Night = "Night Clay" (deep logo-glass navy slab) ── */
 .dark {
-  --color-background: #050b16;
-  --color-surface: #0a1526;
-  --color-surface-hover: #0e1c33;
-  --color-surface-muted: #12233c;
-  --color-border: rgba(103, 232, 249, 0.14);
-  --color-border-strong: rgba(103, 232, 249, 0.32);
+  --color-background: #101b2e;
+  --color-surface: #101b2e;
+  --color-surface-hover: #142238;
+  --color-surface-muted: #172740;
+  --color-surface-sunken: #0b1424;
+  --color-border: rgba(96, 130, 170, 0.22);
+  --color-border-strong: rgba(120, 160, 205, 0.4);
+
+  --shadow-neu-dark: rgba(3, 8, 17, 0.88);
+  --shadow-neu-light: rgba(64, 96, 140, 0.4);
+  --shadow-neu-dark-soft: rgba(3, 8, 17, 0.6);
+  --shadow-neu-light-soft: rgba(64, 96, 140, 0.28);
+  --shadow-clay-in-light: rgba(72, 106, 150, 0.35);
+  --shadow-clay-in-dark: rgba(2, 6, 13, 0.85);
 
   --color-neon-cyan: #22d3ee;
   --color-neon-cyan-light: #a5f3fc;
@@ -53,10 +76,10 @@
   --color-node-cyan: #22d3ee;
   --color-node-amber: #ffb224;
 
-  --color-text-primary: #eaf2fa;
-  --color-text-secondary: #a9c0d6;
+  --color-text-primary: #e8f1fa;
+  --color-text-secondary: #a7bfd6;
   --color-text-muted: #6b87a1;
-  --color-text-faint: #47617a;
+  --color-text-faint: #4a647d;
   --color-ai-cyan: #22d3ee;
   --color-ai-violet: #ffb224;
   --color-ai-glow: rgba(34, 211, 238, 0.12);
@@ -95,25 +118,22 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
-  transition: background-color 0.35s ease, color 0.35s ease;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Light — ice aurora wash */
+/* Matte clay backdrops — no blur filters, pure paint (fast) */
 html:not(.dark) body {
   background-image:
-    radial-gradient(ellipse 90% 55% at 50% -12%, rgba(8, 145, 178, 0.1) 0%, transparent 62%),
-    radial-gradient(ellipse 55% 40% at 96% 100%, rgba(217, 119, 6, 0.07) 0%, transparent 60%),
-    radial-gradient(ellipse 45% 35% at 4% 88%, rgba(8, 145, 178, 0.06) 0%, transparent 60%);
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(8, 145, 178, 0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 36% at 96% 100%, rgba(217, 119, 6, 0.05) 0%, transparent 58%);
   background-attachment: fixed;
 }
-/* Night — deep navy aurora + logo dot-matrix texture */
 .dark body {
   background-image:
-    radial-gradient(ellipse 70% 45% at 15% 0%, rgba(34, 211, 238, 0.09) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 45% at 88% 8%, rgba(255, 178, 36, 0.06) 0%, transparent 60%),
-    radial-gradient(ellipse 80% 60% at 50% 115%, rgba(34, 211, 238, 0.05) 0%, transparent 62%),
-    radial-gradient(rgba(148, 197, 255, 0.055) 1px, transparent 1.4px);
-  background-size: auto, auto, auto, 22px 22px;
+    radial-gradient(ellipse 65% 42% at 14% 0%, rgba(34, 211, 238, 0.06) 0%, transparent 58%),
+    radial-gradient(ellipse 55% 42% at 88% 8%, rgba(255, 178, 36, 0.04) 0%, transparent 58%),
+    radial-gradient(rgba(148, 197, 255, 0.03) 1px, transparent 1.4px);
+  background-size: auto, auto, 24px 24px;
   background-attachment: fixed;
 }
 
@@ -129,103 +149,126 @@ html:not(.dark) ::selection { background: rgba(8, 145, 178, 0.18); }
 }
 *:focus-visible { outline: 2px solid var(--color-neon-cyan); outline-offset: 2px; border-radius: 6px; }
 
-/* ═══════════ NODE GLASS morphism — frosted glass + gradient edge + glow ═══════════ */
+/* ═══════════════════════════════════════════════════════════════
+   NODE CLAY morphism — neumorphic slabs + clay inner shadows
+   (class names kept from the old glass theme so 20+ pages restyle
+   automatically; zero backdrop-filter → faster paint & scroll)
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Thin chrome bar (nav / footer) — soft raised shelf */
 .glass {
   position: relative;
-  background: color-mix(in srgb, var(--color-surface) 78%, transparent);
-  backdrop-filter: blur(18px) saturate(1.3);
-  -webkit-backdrop-filter: blur(18px) saturate(1.3);
-  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  border: none;
   box-shadow:
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.5),
-    0 1px 10px rgba(11, 28, 44, 0.06);
-  transition: background-color 0.35s ease, border-color 0.35s ease, box-shadow 0.25s ease, transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+    0 10px 26px -8px var(--shadow-neu-dark),
+    0 2px 8px -2px var(--shadow-neu-dark-soft),
+    inset 0 1px 0 0 var(--shadow-clay-in-light);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 .dark .glass {
-  background: linear-gradient(160deg, rgba(18, 35, 60, 0.72), rgba(8, 17, 33, 0.78));
   box-shadow:
-    inset 0 1px 0 0 rgba(103, 232, 249, 0.14),
-    0 8px 32px rgba(0, 0, 0, 0.45);
+    0 12px 30px -8px var(--shadow-neu-dark),
+    0 2px 10px -2px var(--shadow-neu-dark-soft),
+    inset 0 1px 0 0 var(--shadow-clay-in-light);
 }
 
+/* Clay card — the workhorse: soft outer lift + inner clay volume */
 .glass-card {
   position: relative;
-  background: color-mix(in srgb, var(--color-surface) 88%, transparent);
-  backdrop-filter: blur(14px) saturate(1.2);
-  -webkit-backdrop-filter: blur(14px) saturate(1.2);
-  border: 1px solid var(--color-border);
-  border-radius: 1.1rem;
+  background: var(--color-surface);
+  border: none;
+  border-radius: 1.35rem;
   box-shadow:
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.55),
-    0 2px 10px rgba(11, 28, 44, 0.05);
-  transition: background-color 0.35s ease, border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+    10px 10px 22px -6px var(--shadow-neu-dark),
+    -8px -8px 18px -6px var(--shadow-neu-light),
+    inset 2px 2px 4px var(--shadow-clay-in-light),
+    inset -3px -3px 8px var(--shadow-clay-in-dark);
+  transition: background-color 0.3s ease, box-shadow 0.28s ease, transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 .glass-card:hover {
-  border-color: var(--color-border-strong);
   transform: translateY(-3px);
   box-shadow:
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.6),
-    0 12px 32px -8px rgba(8, 145, 178, 0.22),
-    0 4px 14px rgba(11, 28, 44, 0.07);
-}
-.dark .glass-card {
-  background: linear-gradient(165deg, rgba(20, 38, 64, 0.66), rgba(9, 18, 35, 0.72));
-  box-shadow:
-    inset 0 1px 0 0 rgba(103, 232, 249, 0.12),
-    0 6px 24px rgba(0, 0, 0, 0.4);
+    14px 16px 30px -8px var(--shadow-neu-dark),
+    -10px -10px 22px -8px var(--shadow-neu-light),
+    inset 2px 2px 4px var(--shadow-clay-in-light),
+    inset -3px -3px 8px var(--shadow-clay-in-dark),
+    0 0 0 1px color-mix(in srgb, var(--color-neon-cyan) 28%, transparent),
+    0 14px 34px -14px color-mix(in srgb, var(--color-neon-cyan) 35%, transparent);
 }
 .dark .glass-card:hover {
-  border-color: rgba(34, 211, 238, 0.4);
   box-shadow:
-    inset 0 1px 0 0 rgba(103, 232, 249, 0.2),
-    0 0 0 1px rgba(34, 211, 238, 0.08),
-    0 14px 44px -10px rgba(34, 211, 238, 0.28),
-    0 8px 28px rgba(0, 0, 0, 0.5);
+    16px 18px 34px -8px var(--shadow-neu-dark),
+    -10px -10px 22px -8px var(--shadow-neu-light),
+    inset 2px 2px 4px var(--shadow-clay-in-light),
+    inset -3px -3px 8px var(--shadow-clay-in-dark),
+    0 0 0 1px rgba(34, 211, 238, 0.22),
+    0 16px 40px -14px rgba(34, 211, 238, 0.3);
 }
 
+/* Big clay panel (page sections) */
 .glass-section {
-  background: color-mix(in srgb, var(--color-surface) 82%, transparent);
-  backdrop-filter: blur(20px) saturate(1.25);
-  -webkit-backdrop-filter: blur(20px) saturate(1.25);
-  border: 1px solid var(--color-border);
-  border-radius: 1.5rem;
+  background: var(--color-surface);
+  border: none;
+  border-radius: 1.6rem;
   box-shadow:
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.5),
-    0 10px 40px rgba(11, 28, 44, 0.07);
-  transition: background-color 0.35s ease, border-color 0.35s ease;
-}
-.dark .glass-section {
-  background: linear-gradient(170deg, rgba(19, 36, 61, 0.6), rgba(7, 14, 28, 0.7));
-  box-shadow:
-    inset 0 1px 0 0 rgba(103, 232, 249, 0.12),
-    0 16px 56px rgba(0, 0, 0, 0.5);
+    14px 14px 30px -8px var(--shadow-neu-dark),
+    -10px -10px 24px -8px var(--shadow-neu-light),
+    inset 2px 2px 5px var(--shadow-clay-in-light),
+    inset -4px -4px 10px var(--shadow-clay-in-dark);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Premium clay card — gradient border + logo-colored glow */
 .glass-card-premium {
   position: relative;
-  border-radius: 1.1rem;
-  border: 1px solid transparent;
+  border-radius: 1.35rem;
+  border: 2px solid transparent;
   background:
     linear-gradient(var(--color-surface), var(--color-surface)) padding-box,
     linear-gradient(135deg, var(--color-neon-cyan), var(--color-electric-violet)) border-box;
-  box-shadow: 0 4px 18px rgba(11, 28, 44, 0.08);
-  transition: box-shadow 0.25s ease, transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-.dark .glass-card-premium {
-  background:
-    linear-gradient(165deg, rgba(22, 42, 70, 0.9), rgba(9, 18, 35, 0.92)) padding-box,
-    linear-gradient(135deg, rgba(34, 211, 238, 0.7), rgba(255, 178, 36, 0.7)) border-box;
+  box-shadow:
+    10px 10px 22px -6px var(--shadow-neu-dark),
+    -8px -8px 18px -6px var(--shadow-neu-light),
+    inset 2px 2px 4px var(--shadow-clay-in-light),
+    inset -3px -3px 8px var(--shadow-clay-in-dark);
+  transition: box-shadow 0.28s ease, transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 .glass-card-premium:hover {
   transform: translateY(-3px);
   box-shadow:
-    0 16px 44px -12px rgba(8, 145, 178, 0.4),
-    0 8px 24px -8px rgba(217, 119, 6, 0.3);
+    14px 16px 30px -8px var(--shadow-neu-dark),
+    -10px -10px 22px -8px var(--shadow-neu-light),
+    inset 2px 2px 4px var(--shadow-clay-in-light),
+    inset -3px -3px 8px var(--shadow-clay-in-dark),
+    0 16px 40px -14px rgba(8, 145, 178, 0.4),
+    0 10px 26px -12px rgba(217, 119, 6, 0.32);
+}
+.dark .glass-card-premium {
+  background:
+    linear-gradient(165deg, #15243c, #0d1728) padding-box,
+    linear-gradient(135deg, rgba(34, 211, 238, 0.75), rgba(255, 178, 36, 0.7)) border-box;
 }
 .dark .glass-card-premium:hover {
   box-shadow:
-    0 0 32px -6px rgba(34, 211, 238, 0.4),
-    0 18px 50px -12px rgba(255, 178, 36, 0.25);
+    16px 18px 34px -8px var(--shadow-neu-dark),
+    -10px -10px 22px -8px var(--shadow-neu-light),
+    inset 2px 2px 4px var(--shadow-clay-in-light),
+    inset -3px -3px 8px var(--shadow-clay-in-dark),
+    0 0 30px -8px rgba(34, 211, 238, 0.38),
+    0 18px 46px -14px rgba(255, 178, 36, 0.24);
+}
+
+/* Floating clay panel (dropdowns, popovers, mobile sheets) */
+.clay-panel {
+  background: var(--color-surface);
+  border: none;
+  border-radius: 1.25rem;
+  box-shadow:
+    12px 14px 28px -8px var(--shadow-neu-dark),
+    -8px -8px 18px -8px var(--shadow-neu-light),
+    inset 2px 2px 4px var(--shadow-clay-in-light),
+    inset -3px -3px 8px var(--shadow-clay-in-dark);
 }
 
 /* Gradient hairline used on nav / footer edges */
@@ -233,20 +276,34 @@ html:not(.dark) ::selection { background: rgba(8, 145, 178, 0.18); }
   background: linear-gradient(90deg, transparent, var(--color-neon-cyan), var(--color-electric-violet), transparent);
 }
 
-/* ═══════════ Brand gradient — logo's cyan → amber circuit flow ═══════════ */
+/* ═══════════ Brand button — clay pill with logo circuit gradient ═══════════ */
 .bg-brand-gradient {
   background: linear-gradient(120deg, #06b6d4 0%, #0e7490 42%, #d97706 100%);
-  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s ease, filter 0.25s ease;
+  box-shadow:
+    inset 0 2px 0 0 rgba(255, 255, 255, 0.28),
+    inset 0 -2px 0 0 rgba(0, 0, 0, 0.18),
+    0 8px 18px -6px rgba(8, 145, 178, 0.45),
+    0 4px 10px -4px rgba(217, 119, 6, 0.35);
+  transition: transform 0.22s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.22s ease, filter 0.22s ease;
 }
 .dark .bg-brand-gradient {
   background: linear-gradient(120deg, #22d3ee 0%, #0e9db8 45%, #ffb224 100%);
+  box-shadow:
+    inset 0 2px 0 0 rgba(255, 255, 255, 0.3),
+    inset 0 -2px 0 0 rgba(0, 0, 0, 0.25),
+    0 10px 22px -6px rgba(34, 211, 238, 0.5),
+    0 5px 12px -4px rgba(255, 178, 36, 0.35);
 }
 .bg-brand-gradient:hover {
-  filter: brightness(1.07);
-  transform: translateY(-1px);
-  box-shadow: 0 8px 24px -6px rgba(34, 211, 238, 0.55), 0 4px 14px -4px rgba(255, 178, 36, 0.4);
+  filter: brightness(1.06);
+  transform: translateY(-2px);
 }
-.bg-brand-gradient:active { transform: translateY(0) scale(0.98); }
+.bg-brand-gradient:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow:
+    inset 0 2px 6px 0 rgba(0, 0, 0, 0.3),
+    0 2px 6px -2px rgba(8, 145, 178, 0.3);
+}
 
 /* Chrome title text — echoes the logo's metallic CN letters */
 .text-chrome {
@@ -268,37 +325,78 @@ html:not(.dark) .text-chrome {
   color: transparent;
 }
 
-/* Neon glow text (logo node glow) */
-.neon-glow-cyan { text-shadow: 0 0 18px rgba(34, 211, 238, 0.65), 0 0 46px rgba(34, 211, 238, 0.3); }
-.neon-glow-amber { text-shadow: 0 0 18px rgba(255, 178, 36, 0.6), 0 0 46px rgba(255, 178, 36, 0.28); }
+/* Subtle node-glow text (kept restrained for the matte clay look) */
+.neon-glow-cyan { text-shadow: 0 0 14px rgba(34, 211, 238, 0.45), 0 0 36px rgba(34, 211, 238, 0.18); }
+.neon-glow-amber { text-shadow: 0 0 14px rgba(255, 178, 36, 0.4), 0 0 36px rgba(255, 178, 36, 0.16); }
 
 /* Node dot-matrix texture (logo backdrop) for hero bands */
 .node-dots {
-  background-image: radial-gradient(rgba(148, 197, 255, 0.09) 1px, transparent 1.4px);
+  background-image: radial-gradient(rgba(148, 197, 255, 0.07) 1px, transparent 1.4px);
   background-size: 22px 22px;
 }
 html:not(.dark) .node-dots {
-  background-image: radial-gradient(rgba(8, 145, 178, 0.1) 1px, transparent 1.4px);
+  background-image: radial-gradient(rgba(8, 145, 178, 0.08) 1px, transparent 1.4px);
+}
+
+/* Pressable neumorphic chip / icon button */
+.neu-chip {
+  background: var(--color-surface);
+  border: none;
+  box-shadow:
+    5px 5px 12px -3px var(--shadow-neu-dark),
+    -4px -4px 10px -3px var(--shadow-neu-light),
+    inset 1px 1px 2px var(--shadow-clay-in-light),
+    inset -2px -2px 5px var(--shadow-clay-in-dark);
+  transition: box-shadow 0.2s ease, transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.neu-chip:hover {
+  box-shadow:
+    7px 7px 16px -3px var(--shadow-neu-dark),
+    -5px -5px 12px -3px var(--shadow-neu-light),
+    inset 1px 1px 2px var(--shadow-clay-in-light),
+    inset -2px -2px 5px var(--shadow-clay-in-dark),
+    0 0 0 1px color-mix(in srgb, var(--color-neon-cyan) 30%, transparent);
+}
+.neu-chip:active {
+  transform: scale(0.97);
+  box-shadow:
+    inset 4px 4px 8px var(--shadow-clay-in-dark),
+    inset -3px -3px 7px var(--shadow-clay-in-light);
+}
+
+/* Sunken neumorphic well (inputs, tracks, code blocks) */
+.neu-well {
+  background: var(--color-surface-sunken);
+  box-shadow:
+    inset 4px 4px 9px var(--shadow-clay-in-dark),
+    inset -4px -4px 9px var(--shadow-clay-in-light);
 }
 
 /* Interactive lift for any clickable card */
-.node-lift { transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s ease, border-color 0.25s ease; }
+.node-lift { transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s ease; }
 .node-lift:hover { transform: translateY(-3px); }
 .node-lift:active { transform: translateY(-1px) scale(0.99); }
 
 /* Buttons — tactile press */
 button, a { -webkit-tap-highlight-color: transparent; }
 
-/* Inputs inherit theme */
+/* Inputs — neumorphic inset wells */
 input, textarea, select {
   color: var(--color-text-primary);
-  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.35s ease;
+  background-color: var(--color-surface-sunken);
+  border: none !important;
+  box-shadow:
+    inset 4px 4px 9px var(--shadow-clay-in-dark),
+    inset -4px -4px 9px var(--shadow-clay-in-light) !important;
+  transition: box-shadow 0.2s ease, background-color 0.3s ease;
 }
 input::placeholder, textarea::placeholder { color: var(--color-text-faint); }
 input:focus, textarea:focus, select:focus {
-  border-color: var(--color-neon-cyan) !important;
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-neon-cyan) 22%, transparent);
   outline: none;
+  box-shadow:
+    inset 4px 4px 9px var(--shadow-clay-in-dark),
+    inset -4px -4px 9px var(--shadow-clay-in-light),
+    0 0 0 3px color-mix(in srgb, var(--color-neon-cyan) 30%, transparent) !important;
 }
 
 /* ═══════════ Markdown body (blog content — replaces typography plugin) ═══════════ */
@@ -315,13 +413,13 @@ input:focus, textarea:focus, select:focus {
 .md-body a:hover { color: var(--color-electric-violet); }
 .md-body strong { color: var(--color-text-primary); }
 .md-body code { background: color-mix(in srgb, var(--color-neon-cyan) 12%, transparent); border: 1px solid var(--color-border); border-radius: 6px; padding: 0.15em 0.4em; overflow-wrap: anywhere; }
-.md-body pre { overflow-x: auto; max-width: 100%; border: 1px solid var(--color-border); border-radius: 12px; padding: 1em; margin: 0 0 1em; background: color-mix(in srgb, var(--color-surface-muted) 45%, transparent); }
-.md-body pre code { background: none; border: none; padding: 0; }
+.md-body pre { overflow-x: auto; max-width: 100%; border: 1px solid var(--color-border); border-radius: 12px; padding: 1em; margin: 0 0 1em; background: var(--color-surface-sunken); box-shadow: inset 3px 3px 8px var(--shadow-clay-in-dark), inset -3px -3px 8px var(--shadow-clay-in-light); }
+.md-body pre code { background: none; border: none; padding: 0; box-shadow: none; }
 .md-body img { max-width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--color-border); margin: 1em auto; display: block; }
 .md-body blockquote { border-left: 3px solid var(--color-neon-cyan); padding: 0.4em 0 0.4em 1em; color: var(--color-text-muted); font-style: italic; }
 .md-body table { display: block; width: 100%; overflow-x: auto; border-collapse: collapse; margin: 0 0 1em; font-size: 0.9em; }
 .md-body th, .md-body td { border: 1px solid var(--color-border); padding: 0.5em 0.8em; text-align: left; }
-.md-body th { background: color-mix(in srgb, var(--color-surface-muted) 60%, transparent); }
+.md-body th { background: var(--color-surface-muted); }
 .md-body hr { border: none; border-top: 1px solid var(--color-border); margin: 1.6em 0; }
 
 /* ═══════════ Motion ═══════════ */
@@ -335,8 +433,8 @@ input:focus, textarea:focus, select:focus {
 .ai-pulse-ring { animation: float 4.2s ease-in-out infinite; }
 
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 12px -2px rgba(34, 211, 238, 0.5), 0 0 28px -6px rgba(255, 178, 36, 0.3); }
-  50% { box-shadow: 0 0 22px -2px rgba(34, 211, 238, 0.75), 0 0 44px -6px rgba(255, 178, 36, 0.45); }
+  0%, 100% { box-shadow: 0 0 10px -4px rgba(34, 211, 238, 0.4), 0 0 22px -8px rgba(255, 178, 36, 0.22); }
+  50% { box-shadow: 0 0 18px -4px rgba(34, 211, 238, 0.6), 0 0 34px -8px rgba(255, 178, 36, 0.32); }
 }
 .animate-pulse-glow { animation: pulse-glow 2.8s ease-in-out infinite; }
 
@@ -350,7 +448,7 @@ input:focus, textarea:focus, select:focus {
 }
 
 /* Theme swap transition helper */
-.theme-fade { transition: background-color 0.35s ease, border-color 0.35s ease, color 0.35s ease, box-shadow 0.3s ease; }
+.theme-fade { transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease; }
 
 @media (max-width: 768px) {
   .glass-card:hover { transform: translateY(-1px); }

@@ -45,11 +45,10 @@ export default function App() {
   const location = useLocation();
   return (
     <div className="min-h-screen bg-background text-text-primary flex flex-col w-full theme-fade relative">
-      {/* Ambient aurora orbs — cyan + amber, echo the logo glow */}
+      {/* Ambient glow — light radial tints only (no blur filters; matte clay look stays fast) */}
       <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden" aria-hidden="true">
-        <div className="absolute -top-32 -left-32 w-[480px] h-[480px] rounded-full bg-neon-cyan/10 blur-[130px] dark:bg-neon-cyan/[0.13] animate-float" />
-        <div className="absolute top-1/3 -right-40 w-[520px] h-[520px] rounded-full bg-electric-violet/10 blur-[140px] dark:bg-electric-violet/[0.1] ai-pulse-ring" />
-        <div className="absolute -bottom-48 left-1/3 w-[560px] h-[420px] rounded-full bg-neon-cyan/[0.07] blur-[150px] dark:bg-neon-cyan/[0.07]" />
+        <div className="absolute -top-40 -left-40 w-[440px] h-[440px] rounded-full bg-neon-cyan/[0.05] dark:bg-neon-cyan/[0.06]" />
+        <div className="absolute top-1/3 -right-48 w-[480px] h-[480px] rounded-full bg-electric-violet/[0.04] dark:bg-electric-violet/[0.045]" />
       </div>
       <SEOHead />
       <Navbar />
