@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import logo from '../../assets/logo.png';
+import brandText from '../../assets/brand-text.png';
 import companyInfo from '../../data/companyInfo';
 
 const fadeUp = { initial: { opacity: 0, y: 20 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true }, transition: { duration: 0.5 } };
@@ -14,7 +15,7 @@ export default function Footer() {
         <motion.div className="sm:col-span-2 md:col-span-1" {...fadeUp}>
           <div className="flex items-center gap-2.5 mb-4">
             <img src={logo} alt="Calcutta Node logo" className="h-9 w-auto object-contain drop-shadow-[0_0_12px_rgba(34,211,238,0.4)]" />
-            <span className="text-neon-cyan font-bold text-lg">Calcutta Node.</span>
+            <img src={brandText} alt="Calcutta Node." className="h-4 md:h-[18px] w-auto object-contain drop-shadow-[0_0_10px_rgba(34,211,238,0.25)]" />
           </div>
           <p className="text-text-muted text-sm leading-relaxed">IT Services & Digital Growth Agency based in Kolkata, India. Ready to serve you remotely.</p>
           <div className="flex gap-3 mt-4">

@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import ParticleField from '../components/common/ParticleField';
 import api from '../utils/api';
 import logoFull from '../assets/logo-full.png';
-import danishImg from '../assets/danish-shoaib.png';
 
 const DemandBadge = ({ count }) => {
   if (count >= 100) return <span className="text-xs font-bold text-red-400 bg-red-400/10 px-2 py-0.5 rounded-full border border-red-400/20">🔥 Hot</span>;
@@ -78,19 +77,19 @@ export default function Home() {
       <ParticleField count={35} speed={0.2} />
 
       {/* ─── HERO ─── */}
-      <section className="relative overflow-hidden py-24 px-4 text-center">
+      <section className="relative overflow-hidden pt-8 pb-12 md:pt-10 md:pb-14 px-4 text-center">
         <div className="absolute inset-0 bg-gradient-to-b from-neon-cyan/5 via-transparent to-transparent pointer-events-none" />
         <div className="absolute inset-0 opacity-30">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-neon-cyan/5 rounded-full blur-3xl ai-pulse-ring" />
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-electric-violet/5 rounded-full blur-3xl ai-pulse-ring" style={{ animationDelay: '1.5s' }} />
+          <div className="absolute top-10 left-10 w-60 h-60 bg-neon-cyan/5 rounded-full blur-3xl ai-pulse-ring" />
+          <div className="absolute bottom-10 right-10 w-72 h-72 bg-electric-violet/5 rounded-full blur-3xl ai-pulse-ring" style={{ animationDelay: '1.5s' }} />
         </div>
         <motion.div className="max-w-4xl mx-auto relative" initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
           <h1 className="sr-only">Calcutta Node — IT Services & Digital Growth Agency</h1>
-          <motion.div initial={{ scale: 0.8, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ duration: 0.5 }} className="mb-6">
-            <img src={logoFull} alt="Calcutta Node — CN circuit logo" className="w-72 sm:w-80 md:w-[26rem] h-auto mx-auto animate-float drop-shadow-[0_0_45px_rgba(34,211,238,0.35)] dark:drop-shadow-[0_0_55px_rgba(34,211,238,0.45)] object-contain" />
+          <motion.div initial={{ scale: 0.8, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ duration: 0.5 }} className="mb-3">
+            <img src={logoFull} alt="Calcutta Node — CN circuit logo" className="w-40 sm:w-48 md:w-56 h-auto mx-auto animate-float drop-shadow-[0_0_25px_rgba(34,211,238,0.35)] dark:drop-shadow-[0_0_35px_rgba(34,211,238,0.45)] object-contain" />
           </motion.div>
-          <motion.span animate={{ y: [0, -5, 0] }} transition={{ repeat: Infinity, duration: 2.5 }}
-            className="inline-block text-xs font-semibold text-electric-violet bg-electric-violet/15 px-4 py-1.5 rounded-full mb-5 border border-electric-violet/30 shadow-lg shadow-electric-violet/10"
+          <motion.span animate={{ y: [0, -4, 0] }} transition={{ repeat: Infinity, duration: 2.5 }}
+            className="inline-block text-xs font-semibold text-electric-violet bg-electric-violet/15 px-3.5 py-1 rounded-full mb-3 border border-electric-violet/30 shadow-md shadow-electric-violet/10"
           >
             🚀 Digital Growth Partner
           </motion.span>
@@ -457,43 +456,6 @@ export default function Home() {
               </motion.div>
             ))}
           </div>
-        </div>
-      </motion.section>
-
-      {/* ─── FOUNDER ─── */}
-      <motion.section className="py-16 px-4 relative" {...fadeUp}>
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-10">
-            <span className="text-sm font-medium text-neon-cyan bg-neon-cyan/10 px-4 py-1.5 rounded-full border border-neon-cyan/20">👤 Founder</span>
-            <h2 className="text-3xl font-bold text-text-primary mt-4">Built by <span className="text-neon-cyan">Danish Shoaib</span></h2>
-            <p className="text-text-muted max-w-xl mx-auto mt-2">From pharmacy to digital agency — delivering IT solutions remotely worldwide.</p>
-          </div>
-          <motion.div className="glass-card p-8 rounded-2xl text-center" whileHover={{ y: -4 }}>
-            <div className="w-24 h-24 rounded-full mx-auto mb-4 bg-gradient-to-br from-neon-cyan to-electric-violet p-0.5">
-              <img src={danishImg} alt="Danish Shoaib" className="w-full h-full rounded-full object-cover object-top" />
-            </div>
-            <h3 className="text-xl font-bold text-text-primary">Danish Shoaib</h3>
-            <p className="text-neon-cyan text-sm font-medium mb-2">Digital Marketing & AI Prompt Engineer | Founder @ Calcutta Node.</p>
-            <p className="text-text-muted text-sm max-w-lg mx-auto mb-4">
-              Experienced in digital marketing, AI prompt engineering, content creation, web development, and IT support. 
-              Certified in Digital Marketing from Tech Mahindra Foundation. Currently pursuing D.Pharm (2026) and Data Analytics.
-            </p>
-            <div className="flex gap-3 justify-center flex-wrap">
-              <motion.a href="https://www.linkedin.com/in/danishshoaib-in/" target="_blank" rel="noopener noreferrer" whileHover={{ scale: 1.05 }}
-                className="flex items-center gap-2 border border-neon-cyan text-neon-cyan px-5 py-2 rounded-xl text-sm font-medium hover:bg-neon-cyan/10"
-              >
-                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 6a2 2 0 100-4 2 2 0 000 4z"/></svg>
-                LinkedIn
-              </motion.a>
-              <Link to="/about">
-                <motion.div whileHover={{ scale: 1.05 }}
-                  className="flex items-center gap-2 border border-electric-violet/40 text-electric-violet px-5 py-2 rounded-xl text-sm font-medium hover:bg-electric-violet/10"
-                >
-                  Full Story →
-                </motion.div>
-              </Link>
-            </div>
-          </motion.div>
         </div>
       </motion.section>
 

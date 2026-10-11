@@ -2,42 +2,40 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import companyInfo from '../data/companyInfo';
 import ParticleField from '../components/common/ParticleField';
-import danishImg from '../assets/danish-shoaib.png';
+import logo from '../assets/logo.png';
+import brandText from '../assets/brand-text.png';
 
 const fadeUp = { initial: { opacity: 0, y: 30 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, margin: '-50px' }, transition: { duration: 0.5 } };
 
-const skills = [
-  { name: 'Web Development', level: 85, icon: '🌐', color: 'from-emerald-400 to-teal-500' },
-  { name: 'Digital Marketing', level: 90, icon: '📈', color: 'from-orange-400 to-red-500' },
-  { name: 'AI Prompt Engineering', level: 95, icon: '🤖', color: 'from-violet-400 to-purple-500' },
-  { name: 'UI/UX Design', level: 75, icon: '🎨', color: 'from-pink-400 to-rose-500' },
-  { name: 'Android Development', level: 85, icon: '📱', color: 'from-green-400 to-emerald-500' },
-  { name: 'IT Support', level: 88, icon: '🖥️', color: 'from-blue-400 to-indigo-500' },
-  { name: 'Content Creation', level: 82, icon: '✍️', color: 'from-amber-400 to-yellow-500' },
+const capabilities = [
+  { name: 'Web & Full-Stack Development', level: 95, icon: '🌐', color: 'from-emerald-400 to-teal-500', desc: 'Responsive web applications, portals & high-performance e-commerce' },
+  { name: 'AI Automation & Prompt Engineering', level: 98, icon: '🤖', color: 'from-violet-400 to-purple-500', desc: 'Custom LLM integrations, conversational agents & automated pipelines' },
+  { name: 'Digital Growth & Technical SEO', level: 92, icon: '📈', color: 'from-orange-400 to-amber-500', desc: 'Search engine optimization, performance campaigns & conversion funnels' },
+  { name: 'Mobile Application Engineering', level: 88, icon: '📱', color: 'from-cyan-400 to-blue-500', desc: 'Native Android & modern cross-platform mobile solutions' },
+  { name: 'UI/UX & Brand System Design', level: 86, icon: '🎨', color: 'from-pink-400 to-rose-500', desc: 'Design systems, interface prototypes & distinct digital branding' },
+  { name: 'Remote IT & Cloud Infrastructure', level: 90, icon: '🖥️', color: 'from-indigo-400 to-purple-500', desc: 'Diagnostic troubleshooting, network setups & disaster recovery' },
 ];
 
-const certifications = [
-  { name: 'Digital Marketing', issuer: 'Tech Mahindra Foundation', year: '2024', icon: '📜' },
-  { name: 'Data Analytics', issuer: 'Self-Paced', year: '2026', icon: '📊' },
-  { name: 'D.Pharm', issuer: 'Pursuing', year: '2026', icon: '💊' },
-  { name: 'Full-Stack Development', issuer: 'Self-Taught', year: '2024', icon: '💻' },
+const pillars = [
+  { icon: '🌐', title: '100% Remote Delivery', desc: 'Seamless global collaboration, real-time project tracking, and frictionless communication.' },
+  { icon: '⚡', title: 'Agile & Rapid Cycles', desc: 'Fast prototyping and iterative deployments with zero bureaucratic overhead.' },
+  { icon: '💎', title: 'Transparent Pricing', desc: 'Clear, upfront packages with no hidden retainers or surprise invoices.' },
+  { icon: '🛡️', title: 'Modern Standards', desc: 'Security-first architecture, responsive layouts, and performance-optimized code.' },
 ];
 
 const milestones = [
-  { year: '2024', title: 'Self-Taught Journey', text: 'Started learning digital marketing, web development, and AI prompt engineering through online resources.', icon: '📚' },
-  { year: '2025', title: 'Founded Calcutta Node.', text: 'Danish Shoaib started Calcutta Node. with a mission to make professional IT support accessible and affordable for everyone.', icon: '🚀' },
-  { year: '2025', title: 'Service Expansion', text: 'Expanded from IT support into web development, design, digital marketing, and data recovery services.', icon: '📈' },
-  { year: '2026', title: 'Digital Launch', text: 'Launched digital products store, AI chat support, membership subscriptions, and a full client dashboard.', icon: '🏆' },
-  { year: '2026', title: 'Continuous Growth', text: 'Pursuing D.Pharm and Data Analytics while expanding the agency with new services and AI-powered tools.', icon: '🌟' },
+  { year: '2024', title: 'Foundation & Launch', text: 'Established in Kolkata with a vision to deliver accessible, high-performance IT and web engineering services.', icon: '🚀' },
+  { year: '2025', title: 'Service & Tech Expansion', text: 'Scaled operations into full-stack SaaS builds, AI-driven marketing systems, and mobile application engineering.', icon: '📈' },
+  { year: '2026', title: 'Ecosystem & In-Browser Tools', text: 'Launched 50+ client-side free developer and SEO tools, digital products catalogue, 24/7 AI support, and mobile portal.', icon: '🏆' },
 ];
 
 const stats = [
-  { value: '8', label: 'Service Categories', icon: '📋' },
-  { value: '17', label: 'Services Offered', icon: '🔧' },
-  { value: '19', label: 'Digital Products', icon: '📦' },
-  { value: '6', label: 'AI Models', icon: '🤖' },
-  { value: '24/7', label: 'AI Support', icon: '⏰' },
-  { value: '🌐', label: 'Worldwide Service', icon: '🌐' },
+  { value: '8', label: 'Service Verticals', icon: '📋' },
+  { value: '17+', label: 'Active Services', icon: '🔧' },
+  { value: '50+', label: 'In-Browser Tools', icon: '🛠️' },
+  { value: '6+', label: 'AI Models Integrated', icon: '🤖' },
+  { value: '24/7', label: 'AI Support Desk', icon: '⏰' },
+  { value: '100%', label: 'Remote Delivery', icon: '🌐' },
 ];
 
 export default function About() {
@@ -49,39 +47,56 @@ export default function About() {
 
         {/* HERO */}
         <motion.div className="text-center mb-12" initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-          <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ type: 'spring', stiffness: 200, damping: 15 }}
-            className="w-28 h-28 rounded-full mx-auto mb-5 bg-gradient-to-br from-neon-cyan to-electric-violet p-1 shadow-xl shadow-neon-cyan/20"
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ type: 'spring', stiffness: 200, damping: 15 }}
+            className="flex items-center justify-center gap-3 mb-6"
           >
-            <img src={danishImg} alt="Danish Shoaib" className="w-full h-full rounded-full object-cover object-top border-2 border-background" />
+            <img src={logo} alt="Calcutta Node logo" className="h-14 md:h-16 w-auto object-contain drop-shadow-[0_0_20px_rgba(34,211,238,0.5)]" />
+            <img src={brandText} alt="Calcutta Node." className="h-6 md:h-8 w-auto object-contain drop-shadow-[0_0_12px_rgba(34,211,238,0.3)] hidden sm:block" />
           </motion.div>
-          <motion.span animate={{ y: [0, -4, 0] }} transition={{ repeat: Infinity, duration: 2.5 }}
-            className="inline-block text-xs font-semibold text-electric-violet bg-electric-violet/15 px-4 py-1.5 rounded-full mb-4 border border-electric-violet/30"
-          >👋 Hi, I'm Danish!</motion.span>
-          <h1 className="text-4xl md:text-5xl font-bold text-text-primary mb-2">
-            Technologist & Digital Architect
+
+          <motion.span
+            animate={{ y: [0, -4, 0] }}
+            transition={{ repeat: Infinity, duration: 2.5 }}
+            className="inline-block text-xs font-semibold text-neon-cyan bg-neon-cyan/15 px-4 py-1.5 rounded-full mb-4 border border-neon-cyan/30"
+          >
+            ✨ Digital Growth & Engineering Agency
+          </motion.span>
+          <h1 className="text-4xl md:text-5xl font-bold text-text-primary mb-3">
+            Engineering Tomorrow's Digital Experiences
           </h1>
-          <p className="text-lg text-text-muted max-w-xl mx-auto">Building the future of digital experiences at <span className="text-neon-cyan font-bold">Calcutta Node.</span></p>
-          <p className="text-sm text-text-muted/60 mt-1">Based in Champdani, Hooghly | Innovating Globally</p>
+          <p className="text-lg text-text-muted max-w-2xl mx-auto leading-relaxed">
+            <span className="text-neon-cyan font-bold">Calcutta Node.</span> provides modern web development, custom software, AI automation, and remote technical support for clients worldwide.
+          </p>
+          <p className="text-sm text-text-muted/60 mt-2">Based in Kolkata, India | Delivering Globally</p>
         </motion.div>
 
-        {/* WHO I AM */}
+        {/* MISSION & VISION */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
           {[
             {
-              icon: '👤',
-              title: 'Who I Am',
-              text: 'I\'m Danish Shoaib — a technologist and digital architect based in Champdani, Hooghly. Transitioning from traditional business management to the forefront of AI and full-stack development, I build solutions that don\'t just function—they scale, inspire, and drive growth.',
+              icon: '🎯',
+              title: 'Our Mission',
+              text: 'At Calcutta Node., our mission is to democratize high-end technology and AI capabilities. Whether you are launching a fast web app, automating complex workflows, or requiring immediate remote IT support, we deliver enterprise-grade digital experiences with transparent pricing and rapid turnaround.',
               color: 'from-neon-cyan/20 to-neon-cyan/5 border-neon-cyan/30',
             },
             {
-              icon: '🎯',
-              title: 'My Mission',
-              text: 'At Calcutta Node., my goal is to democratize high-end technology. Whether you need a lightning-fast web app, a custom Android tool, or an AI-powered growth strategy, I deliver premium-grade digital experiences with a personal, accessible touch. I turn complex problems into simplified, actionable digital reality.',
+              icon: '🌟',
+              title: 'Our Vision',
+              text: 'We envision a future where location is no barrier to world-class software development. We engineer scalable, beautiful, and resilient digital solutions that empower businesses, creators, and startups to grow fearlessly in the AI-first economy.',
               color: 'from-electric-violet/20 to-electric-violet/5 border-electric-violet/30',
             },
           ].map((card, i) => (
-            <motion.div key={i} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.1 }}
-              whileHover={{ y: -4 }} className={`rounded-2xl p-6 glass-card border ${card.color}`}
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+              whileHover={{ y: -4 }}
+              className={`rounded-2xl p-6 glass-card border ${card.color}`}
             >
               <span className="text-3xl block mb-3">{card.icon}</span>
               <h2 className="text-xl font-bold text-text-primary mb-3">{card.title}</h2>
@@ -90,17 +105,46 @@ export default function About() {
           ))}
         </div>
 
+        {/* AGENCY PILLARS */}
+        <motion.div className="mb-12" {...fadeUp}>
+          <h2 className="text-2xl font-bold text-text-primary mb-6 border-l-4 border-neon-cyan pl-4">How We Work</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {pillars.map((p, i) => (
+              <motion.div
+                key={p.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08 }}
+                whileHover={{ y: -4 }}
+                className="p-5 rounded-2xl glass-card flex flex-col"
+              >
+                <span className="text-3xl block mb-2">{p.icon}</span>
+                <h3 className="text-text-primary font-semibold text-sm mb-1">{p.title}</h3>
+                <p className="text-xs text-text-muted leading-relaxed">{p.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
         {/* JOURNEY TIMELINE */}
         <motion.div className="mb-12" {...fadeUp}>
-          <h2 className="text-2xl font-bold text-text-primary mb-8 border-l-4 border-neon-cyan pl-4">My Journey</h2>
+          <h2 className="text-2xl font-bold text-text-primary mb-8 border-l-4 border-electric-violet pl-4">Our Growth Story</h2>
           <div className="relative">
             <div className="absolute left-8 top-0 bottom-0 w-px bg-gradient-to-b from-neon-cyan via-electric-violet to-transparent" />
             <div className="space-y-6">
               {milestones.map((m, i) => (
-                <motion.div key={m.year + m.title} initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: i * 0.15 }}
+                <motion.div
+                  key={m.year + m.title}
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: i * 0.15 }}
                   className="flex items-start gap-5 relative"
                 >
-                  <motion.div whileHover={{ scale: 1.2 }} className="w-16 h-16 rounded-xl bg-surface border border-neon-cyan/30 flex items-center justify-center text-xl shrink-0 z-10 shadow-lg shadow-neon-cyan/10">{m.icon}</motion.div>
+                  <motion.div whileHover={{ scale: 1.15 }} className="w-16 h-16 rounded-xl bg-surface border border-neon-cyan/30 flex items-center justify-center text-xl shrink-0 z-10 shadow-lg shadow-neon-cyan/10">
+                    {m.icon}
+                  </motion.div>
                   <motion.div whileHover={{ y: -2 }} className="flex-1 p-4 rounded-xl glass-card">
                     <div className="flex items-center gap-3 mb-1">
                       <span className="text-sm font-bold text-neon-cyan">{m.year}</span>
@@ -114,26 +158,36 @@ export default function About() {
           </div>
         </motion.div>
 
-        {/* SKILLS */}
+        {/* CAPABILITIES */}
         <motion.div className="mb-12" {...fadeUp}>
-          <h2 className="text-2xl font-bold text-text-primary mb-8 border-l-4 border-electric-violet pl-4">Skills & Expertise</h2>
+          <h2 className="text-2xl font-bold text-text-primary mb-8 border-l-4 border-neon-cyan pl-4">Core Capabilities</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {skills.map((skill, i) => (
-              <motion.div key={skill.name} initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
+            {capabilities.map((cap, i) => (
+              <motion.div
+                key={cap.name}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08 }}
                 className="p-5 rounded-2xl glass-card"
               >
-                <div className="flex items-center gap-3 mb-3">
-                  <span className="text-2xl">{skill.icon}</span>
-                  <div className="flex-1">
-                    <div className="flex justify-between items-center">
-                      <h3 className="text-text-primary font-semibold text-sm">{skill.name}</h3>
-                      <span className="text-xs text-neon-cyan font-medium">{skill.level}%</span>
+                <div className="flex items-start gap-3 mb-3">
+                  <span className="text-2xl">{cap.icon}</span>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex justify-between items-center mb-0.5">
+                      <h3 className="text-text-primary font-semibold text-sm truncate">{cap.name}</h3>
+                      <span className="text-xs text-neon-cyan font-medium ml-2">{cap.level}%</span>
                     </div>
+                    <p className="text-xs text-text-muted truncate">{cap.desc}</p>
                   </div>
                 </div>
                 <div className="w-full h-2 rounded-full bg-surface overflow-hidden">
-                  <motion.div initial={{ width: 0 }} whileInView={{ width: `${skill.level}%` }} viewport={{ once: true }} transition={{ duration: 1, delay: i * 0.1 }}
-                    className={`h-full rounded-full bg-gradient-to-r ${skill.color}`}
+                  <motion.div
+                    initial={{ width: 0 }}
+                    whileInView={{ width: `${cap.level}%` }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1, delay: i * 0.1 }}
+                    className={`h-full rounded-full bg-gradient-to-r ${cap.color}`}
                   />
                 </div>
               </motion.div>
@@ -141,30 +195,19 @@ export default function About() {
           </div>
         </motion.div>
 
-        {/* CERTIFICATIONS */}
-        <motion.div className="mb-12" {...fadeUp}>
-          <h2 className="text-2xl font-bold text-text-primary mb-8 border-l-4 border-neon-cyan pl-4">Certifications & Education</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {certifications.map((cert, i) => (
-              <motion.div key={cert.name} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
-                whileHover={{ y: -4 }} className="p-5 rounded-2xl glass-card text-center"
-              >
-                <span className="text-3xl block mb-3">{cert.icon}</span>
-                <h3 className="text-text-primary font-semibold text-sm mb-1">{cert.name}</h3>
-                <p className="text-xs text-text-muted">{cert.issuer}</p>
-                <span className="text-xs text-neon-cyan mt-2 inline-block">{cert.year}</span>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-
         {/* STATS */}
         <motion.div className="mb-12" {...fadeUp}>
-          <h2 className="text-2xl font-bold text-text-primary mb-8 border-l-4 border-electric-violet pl-4">At a Glance</h2>
+          <h2 className="text-2xl font-bold text-text-primary mb-8 border-l-4 border-electric-violet pl-4">Agency At a Glance</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
             {stats.map((s, i) => (
-              <motion.div key={s.label} initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
-                whileHover={{ y: -2 }} className="text-center p-4 rounded-2xl glass-card"
+              <motion.div
+                key={s.label}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08 }}
+                whileHover={{ y: -2 }}
+                className="text-center p-4 rounded-2xl glass-card"
               >
                 <p className="text-2xl font-bold text-neon-cyan">{s.value}</p>
                 <p className="text-xs text-text-muted mt-1">{s.label}</p>
@@ -173,27 +216,35 @@ export default function About() {
           </div>
         </motion.div>
 
-        {/* RESUME + LINKS */}
+        {/* CALL TO ACTION */}
         <motion.div className="mb-12" {...fadeUp}>
           <div className="glass-card-premium p-8 rounded-2xl text-center relative overflow-hidden">
             <div className="absolute -top-20 -right-20 w-40 h-40 bg-neon-cyan/5 rounded-full blur-3xl pointer-events-none" />
             <div className="relative z-10">
               <span className="text-3xl block mb-3">🚀</span>
-              <h2 className="text-xl font-bold text-text-primary mb-2">Want to know more?</h2>
-              <p className="text-text-muted text-sm mb-6 max-w-md mx-auto">Connect with me on LinkedIn for the full picture.</p>
+              <h2 className="text-xl font-bold text-text-primary mb-2">Ready to Build Your Project?</h2>
+              <p className="text-text-muted text-sm mb-6 max-w-md mx-auto">
+                Explore our transparent service packages or contact our engineering team to discuss your project.
+              </p>
               <div className="flex gap-3 justify-center flex-wrap">
-                <a href="https://www.linkedin.com/in/danishshoaib-in/" target="_blank" rel="noopener noreferrer"
-                  className="flex items-center gap-2 border border-electric-violet/40 text-electric-violet px-5 py-2.5 rounded-xl text-sm font-medium hover:bg-electric-violet/10"
+                <Link
+                  to="/pricing"
+                  className="bg-brand-gradient text-white px-6 py-2.5 rounded-xl text-sm font-semibold hover:shadow-lg hover:shadow-neon-cyan/25 transition-all"
                 >
-                  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 6a2 2 0 100-4 2 2 0 000 4z"/></svg>
-                  LinkedIn
-                </a>
+                  View Services & Pricing
+                </Link>
+                <Link
+                  to="/contact"
+                  className="flex items-center gap-2 border border-neon-cyan/40 text-neon-cyan px-5 py-2.5 rounded-xl text-sm font-medium hover:bg-neon-cyan/10 transition-all"
+                >
+                  Contact Our Team →
+                </Link>
               </div>
             </div>
           </div>
         </motion.div>
 
-        {/* CONTACT */}
+        {/* CONTACT INFO */}
         <motion.div className="rounded-2xl p-6 glass-card" {...fadeUp}>
           <h2 className="text-xl font-bold text-text-primary mb-4 flex items-center gap-2">
             <svg className="w-5 h-5 text-neon-cyan" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -215,7 +266,7 @@ export default function About() {
             ))}
           </div>
           <div className="mt-6 text-center">
-            <Link to="/contact" className="text-sm text-neon-cyan hover:underline">Get in touch →</Link>
+            <Link to="/contact" className="text-sm text-neon-cyan hover:underline">Get in touch with us →</Link>
           </div>
         </motion.div>
       </div>

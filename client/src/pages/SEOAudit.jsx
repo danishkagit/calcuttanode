@@ -120,11 +120,11 @@ export default function SEOAudit() {
                   {tier.cta}
                 </Link>
               ) : (
-                <a href="https://calendly.com/danishshoaib/30min" target="_blank" rel="noopener noreferrer"
+                <Link to="/contact"
                   className="block text-center bg-brand-gradient text-white py-2.5 rounded-xl font-semibold text-sm transition-all hover:shadow-lg hover:shadow-neon-cyan/25"
                 >
                   {tier.cta}
-                </a>
+                </Link>
               )}
             </motion.div>
           ))}
@@ -146,12 +146,12 @@ export default function SEOAudit() {
         </motion.div>
 
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }} className="text-center">
-          <p className="text-text-muted text-sm mb-3">Not sure which tier fits? Book a free 15-min discovery call.</p>
-          <a href="https://calendly.com/danishshoaib/30min" target="_blank" rel="noopener noreferrer"
+          <p className="text-text-muted text-sm mb-3">Not sure which tier fits? Reach out for a free consultation.</p>
+          <Link to="/contact"
             className="inline-block bg-brand-gradient text-white px-8 py-3 rounded-xl font-semibold transition-all hover:shadow-lg hover:shadow-neon-cyan/25"
           >
-            Book Free Call
-          </a>
+            Contact Our Team
+          </Link>
         </motion.div>
       </div>
     </div>

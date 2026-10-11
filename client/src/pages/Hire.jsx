@@ -49,7 +49,7 @@ const packages = [
     original: '₹9,999/mo',
     badge: 'Retainer',
     icon: '📈',
-    features: ['Social media management', 'Google ads setup & management', 'WhatsApp broadcast campaigns', 'Monthly performance report', 'Dedicated account manager (me)'],
+    features: ['Social media management', 'Google ads setup & management', 'WhatsApp broadcast campaigns', 'Monthly performance report', 'Dedicated account manager'],
   },
 ];
 
@@ -67,8 +67,8 @@ export default function Hire() {
       <div className="max-w-6xl mx-auto px-4 py-12 relative z-10">
         <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-12">
           <motion.div animate={{ y: [0, -5, 0] }} transition={{ repeat: Infinity, duration: 2 }} className="inline-block text-5xl mb-4">🚀</motion.div>
-          <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-neon-cyan to-electric-violet bg-clip-text text-transparent mb-3">Hire Me</h1>
-          <p className="text-text-muted text-lg max-w-2xl mx-auto">You need something built. I make it happen — websites, chatbots, apps, automation. Solo founder, zero overhead, fast delivery.</p>
+          <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-neon-cyan to-electric-violet bg-clip-text text-transparent mb-3">Custom Projects</h1>
+          <p className="text-text-muted text-lg max-w-2xl mx-auto">You need something built. We make it happen — websites, chatbots, apps, and automation. Rapid delivery, transparent pricing, 100% remote execution.</p>
         </motion.div>
 
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-12">
@@ -92,11 +92,11 @@ export default function Hire() {
                   </li>
                 ))}
               </ul>
-              <a href="https://calendly.com/danishshoaib/30min" target="_blank" rel="noopener noreferrer"
+              <Link to="/contact"
                 className="block text-center bg-brand-gradient text-white py-2.5 rounded-xl font-semibold text-sm transition-all hover:shadow-lg hover:shadow-neon-cyan/25"
               >
-                Book Free Call
-              </a>
+                Inquire Now
+              </Link>
             </motion.div>
           ))}
         </motion.div>

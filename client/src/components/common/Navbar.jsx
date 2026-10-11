@@ -2,6 +2,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import logo from '../../assets/logo.png';
+import brandText from '../../assets/brand-text.png';
 import ThemeToggle from './ThemeToggle';
 import toolsRegistry, { categories as toolCategories, categoryIcons as toolCategoryIcons } from '../../data/toolsRegistry';
 
@@ -88,7 +89,7 @@ export default function Navbar() {
   };
 
   const closeWithDelay = () => {
-    closeTimer.current = setTimeout(() => setOpenDropdown(null), 100);
+    closeTimer.current = setTimeout(() => setOpenDropdown(null), 200);
   };
 
   const toggleDropdown = (name) => {
@@ -104,26 +105,26 @@ export default function Navbar() {
           : 'bg-surface/70 backdrop-blur-md border-b border-border/60'
       }`}>
         <div className="max-w-7xl mx-auto px-4 flex items-center justify-between h-16">
-          <Link to="/" className="flex items-center gap-2.5 group shrink-0">
-            <img src={logo} alt="Calcutta Node logo" className="h-9 md:h-10 w-auto object-contain drop-shadow-[0_0_15px_rgba(34,211,238,0.45)] transition-transform duration-300 group-hover:scale-105" />
-            <span className="text-neon-cyan font-bold text-lg hidden sm:block tracking-tight transition-all duration-300 group-hover:neon-glow-cyan">Calcutta Node.</span>
+          <Link to="/" className="flex items-center gap-2 group shrink-0">
+            <img src={logo} alt="Calcutta Node logo" className="h-8 w-auto object-contain drop-shadow-[0_0_12px_rgba(34,211,238,0.4)] transition-transform duration-300 group-hover:scale-105" />
+            <img src={brandText} alt="Calcutta Node." className="h-3.5 w-auto object-contain hidden sm:block transition-all duration-300 group-hover:brightness-110 drop-shadow-[0_0_8px_rgba(34,211,238,0.2)]" />
           </Link>
 
           {/* ===== DESKTOP NAV (lg+: md screens use mobile UI to avoid crowding) ===== */}
-          <div className="hidden lg:flex items-center gap-0.5">
+          <div className="hidden lg:flex items-center gap-1">
             {/* Services - Mega Menu */}
             <div className="relative"
               onMouseEnter={() => openWithDelay('services')}
               onMouseLeave={() => closeWithDelay()}
             >
               <button onClick={() => toggleDropdown('services')}
-                className={`flex items-center gap-1.5 px-3 py-2 text-sm font-medium rounded-xl transition-all duration-200 ${
+                className={`flex items-center gap-1 px-2.5 py-1.5 text-xs lg:text-sm font-medium rounded-xl transition-all duration-200 ${
                   openDropdown === 'services'
                     ? 'text-neon-cyan bg-neon-cyan/15 shadow-sm shadow-neon-cyan/10'
                     : 'text-text-muted hover:text-text-primary hover:bg-border/50'
                 }`}
               >
-                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+                <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
                   <rect x="2" y="2" width="8" height="8" rx="1.5" />
                   <rect x="14" y="2" width="8" height="8" rx="1.5" />
                   <rect x="2" y="14" width="8" height="8" rx="1.5" />
@@ -140,42 +141,54 @@ export default function Navbar() {
                     initial="hidden"
                     animate="visible"
                     exit="exit"
-                    className="fixed left-1/2 top-16 -translate-x-1/2 w-[min(720px,94vw)] rounded-2xl border border-neon-cyan/25 glass shadow-2xl overflow-hidden"
+                    className="absolute top-full left-0 mt-2 w-[660px] rounded-2xl border border-neon-cyan/30 bg-surface/98 dark:bg-[#070D1B] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.85)] backdrop-blur-2xl z-50 overflow-hidden before:absolute before:-top-3 before:left-0 before:right-0 before:h-3"
                   >
-                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-neon-cyan/[0.04] via-transparent to-electric-violet/[0.04] pointer-events-none" />
-                    <div className="absolute top-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-neon-cyan/40 to-transparent" />
-                    <div className="grid grid-cols-2 lg:grid-cols-3 gap-0.5 p-2 relative">
-                      {serviceGroups.map((group) =>
-                        group.items.map((s) => (
-                          <motion.div key={s.label} variants={itemVariants}>
-                            <Link to={s.path} onClick={() => setOpenDropdown(null)}
-                              className="group relative flex flex-col gap-1 p-4 rounded-xl bg-transparent hover:bg-gradient-to-br hover:from-neon-cyan/[0.07] hover:to-electric-violet/[0.04] border border-transparent hover:border-neon-cyan/20 transition-all duration-200"
-                            >
-                              <div className="flex items-start justify-between mb-1">
-                                <span className="text-xl">{s.icon}</span>
-                                <span className="text-[10px] font-bold text-neon-cyan/70 bg-neon-cyan/10 px-2 py-0.5 rounded-full group-hover:bg-neon-cyan/20 transition-colors">
-                                  {s.price}
-                                </span>
-                              </div>
-                              <div className="text-sm font-semibold text-text-primary group-hover:text-neon-cyan transition-colors">{s.label}</div>
-                              <div className="text-[11px] text-text-muted/60 leading-tight">{s.desc}</div>
-                            </Link>
-                          </motion.div>
-                        ))
-                      )}
+                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-neon-cyan/[0.06] via-transparent to-electric-violet/[0.04] pointer-events-none" />
+                    <div className="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-neon-cyan/50 to-transparent" />
+                    <div className="grid grid-cols-3 gap-2.5 p-3 relative">
+                      {serviceGroups.map((group) => (
+                        <div key={group.title} className="flex flex-col">
+                          <div className="text-[11px] font-bold text-neon-cyan uppercase tracking-wider px-2 py-1 mb-1 border-b border-border/40 flex items-center gap-1.5">
+                            <span>{group.title === 'Development' ? '💻' : group.title === 'Marketing & Design' ? '📈' : '🛠️'}</span>
+                            <span>{group.title}</span>
+                          </div>
+                          <div className="space-y-1">
+                            {group.items.map((s) => (
+                              <motion.div key={s.label} variants={itemVariants}>
+                                <Link
+                                  to={s.path}
+                                  onClick={() => setOpenDropdown(null)}
+                                  className="group flex items-center justify-between p-1.5 rounded-xl hover:bg-neon-cyan/[0.08] dark:hover:bg-neon-cyan/[0.12] border border-transparent hover:border-neon-cyan/25 transition-all duration-150"
+                                >
+                                  <div className="flex items-center gap-2 min-w-0">
+                                    <span className="text-base shrink-0 group-hover:scale-110 transition-transform">{s.icon}</span>
+                                    <div className="min-w-0">
+                                      <div className="text-xs font-semibold text-text-primary group-hover:text-neon-cyan transition-colors truncate">
+                                        {s.label}
+                                      </div>
+                                      <div className="text-[10px] text-text-muted truncate">
+                                        {s.desc}
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <span className="text-[10px] font-bold text-neon-cyan bg-neon-cyan/15 px-1.5 py-0.5 rounded-md shrink-0 ml-1.5">
+                                    {s.price}
+                                  </span>
+                                </Link>
+                              </motion.div>
+                            ))}
+                          </div>
+                        </div>
+                      ))}
                     </div>
-                    <div className="relative border-t border-neon-cyan/10 bg-gradient-to-r from-neon-cyan/[0.03] to-electric-violet/[0.03] px-5 py-3 flex items-center justify-between">
-                      <span className="text-xs text-text-muted/50">All services with transparent pricing — no hidden fees</span>
-                      <Link to="/pricing" onClick={() => setOpenDropdown(null)}
-                        className="group flex items-center gap-2 text-sm font-semibold bg-gradient-to-r from-neon-cyan to-electric-violet bg-clip-text text-transparent hover:from-neon-cyan/80 hover:to-electric-violet/80 transition-all"
+                    <div className="relative border-t border-border/60 bg-surface-muted/50 dark:bg-black/40 px-4 py-2.5 flex items-center justify-between">
+                      <span className="text-xs text-text-muted">All services with transparent pricing — no hidden fees</span>
+                      <Link
+                        to="/pricing"
+                        onClick={() => setOpenDropdown(null)}
+                        className="group flex items-center gap-1.5 text-xs font-bold text-neon-cyan hover:underline transition-all"
                       >
-                        View Full Pricing
-                        <motion.svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"
-                          initial={false}
-                        >
-                          <line x1="5" y1="12" x2="19" y2="12" />
-                          <polyline points="12 5 19 12 12 19" />
-                        </motion.svg>
+                        View Full Pricing →
                       </Link>
                     </div>
                   </motion.div>
@@ -183,21 +196,20 @@ export default function Navbar() {
               </AnimatePresence>
             </div>
 
-            {/* Free Tools — Mega Menu (10015.io style) */}
+            {/* Free Tools — Mega Menu */}
             <div className="relative"
               onMouseEnter={() => openWithDelay('tools')}
               onMouseLeave={() => closeWithDelay()}
             >
               <button onClick={() => toggleDropdown('tools')}
-                className={`flex items-center gap-1.5 px-3 py-2 text-sm font-medium rounded-xl transition-all duration-200 ${
+                className={`flex items-center gap-1 px-2.5 py-1.5 text-xs lg:text-sm font-medium rounded-xl transition-all duration-200 ${
                   openDropdown === 'tools'
                     ? 'text-neon-cyan bg-neon-cyan/15 shadow-sm shadow-neon-cyan/10'
                     : 'text-text-muted hover:text-text-primary hover:bg-border/50'
                 }`}
               >
-                <span className="text-base">🛠️</span>
+                <span>🛠️</span>
                 Free Tools
-                <span className="hidden lg:inline text-[10px] font-bold bg-neon-cyan/15 text-neon-cyan px-1.5 py-0.5 rounded animate-pulse">FREE</span>
                 <motion.svg animate={{ rotate: openDropdown === 'tools' ? 180 : 0 }} className="w-3 h-3 opacity-60" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="6 9 12 15 18 9" /></motion.svg>
               </button>
               <AnimatePresence>
@@ -207,42 +219,44 @@ export default function Navbar() {
                     initial="hidden"
                     animate="visible"
                     exit="exit"
-                    className="fixed left-1/2 top-16 -translate-x-1/2 w-[min(760px,94vw)] rounded-2xl border border-neon-cyan/25 glass shadow-2xl overflow-hidden"
+                    className="absolute top-full -left-16 lg:left-0 mt-2 w-[620px] rounded-2xl border border-neon-cyan/30 bg-surface/98 dark:bg-[#070D1B] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.85)] backdrop-blur-2xl z-50 overflow-hidden before:absolute before:-top-3 before:left-0 before:right-0 before:h-3"
                   >
-                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-neon-cyan/[0.04] via-transparent to-electric-violet/[0.04] pointer-events-none" />
-                    <div className="absolute top-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-neon-cyan/40 to-transparent" />
+                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-neon-cyan/[0.06] via-transparent to-electric-violet/[0.04] pointer-events-none" />
+                    <div className="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-neon-cyan/50 to-transparent" />
                     <div className="p-3 relative">
-                      <div className="flex items-center justify-between px-2 pb-2">
-                        <span className="text-xs font-bold text-neon-cyan uppercase tracking-wider">Free Tools — 100% in-browser</span>
+                      <div className="flex items-center justify-between px-1 pb-2">
+                        <span className="text-xs font-bold text-neon-cyan uppercase tracking-wider flex items-center gap-1.5">
+                          <span>🛠️</span> Free Tools — 100% in-browser
+                        </span>
                         <Link to="/tools" onClick={() => setOpenDropdown(null)} className="text-xs font-semibold text-neon-cyan hover:underline">View all {toolsRegistry.length} →</Link>
                       </div>
                       <div className="grid grid-cols-2 lg:grid-cols-4 gap-2">
                         {toolCategories.map(cat => (
-                          <div key={cat} className="rounded-xl bg-surface/30 border border-electric-violet/10 p-2">
-                            <div className="text-xs font-bold text-text-primary mb-1.5 flex items-center gap-1.5"><span>{toolCategoryIcons[cat] || '🔧'}</span>{cat}</div>
+                          <div key={cat} className="rounded-xl bg-surface-muted/50 dark:bg-black/30 border border-border/40 p-2">
+                            <div className="text-[11px] font-bold text-text-primary mb-1 flex items-center gap-1"><span>{toolCategoryIcons[cat] || '🔧'}</span>{cat}</div>
                             <div className="space-y-0.5">
                               {toolsRegistry.filter(t => t.category === cat).slice(0, 4).map(t => (
-                                <Link key={t.slug} to={`/tools/${t.slug}`} onClick={() => setOpenDropdown(null)} className="flex items-center gap-1.5 text-xs text-text-muted hover:text-neon-cyan hover:bg-neon-cyan/5 px-1.5 py-1 rounded-lg transition-colors">
-                                  <span className="text-[11px]">{t.icon}</span><span className="truncate">{t.name}</span>
+                                <Link key={t.slug} to={`/tools/${t.slug}`} onClick={() => setOpenDropdown(null)} className="flex items-center gap-1.5 text-xs text-text-muted hover:text-neon-cyan hover:bg-neon-cyan/10 px-1.5 py-0.5 rounded transition-colors">
+                                  <span className="text-[10px]">{t.icon}</span><span className="truncate">{t.name}</span>
                                 </Link>
                               ))}
                             </div>
                           </div>
                         ))}
                       </div>
-                      <div className="mt-2 flex gap-2">
+                      <div className="mt-2 flex gap-1.5">
                         {toolsRegistry.slice(0, 6).map(t => (
-                          <Link key={t.slug} to={`/tools/${t.slug}`} onClick={() => setOpenDropdown(null)} className="flex-1 text-center text-xs bg-gradient-to-br from-neon-cyan/10 to-electric-violet/10 border border-neon-cyan/20 rounded-lg px-2 py-2 hover:border-neon-cyan/30 transition-colors">
-                            <span className="block text-sm">{t.icon}</span><span className="text-[11px] text-text-muted line-clamp-1">{t.name}</span>
+                          <Link key={t.slug} to={`/tools/${t.slug}`} onClick={() => setOpenDropdown(null)} className="flex-1 text-center text-xs bg-neon-cyan/[0.06] border border-neon-cyan/20 rounded-lg px-1.5 py-1.5 hover:bg-neon-cyan/15 hover:border-neon-cyan/40 transition-colors">
+                            <span className="block text-xs">{t.icon}</span><span className="text-[10px] text-text-muted line-clamp-1">{t.name}</span>
                           </Link>
                         ))}
                       </div>
                     </div>
-                    <div className="relative border-t border-neon-cyan/10 bg-gradient-to-r from-neon-cyan/[0.03] to-electric-violet/[0.03] px-4 py-2.5 flex items-center justify-between">
-                      <span className="text-xs text-text-muted/60">No signup · No data sent to server · Bookmark /tools</span>
+                    <div className="relative border-t border-border/60 bg-surface-muted/50 dark:bg-black/40 px-3.5 py-2 flex items-center justify-between">
+                      <span className="text-[11px] text-text-muted">No signup · No data sent to server · Bookmark /tools</span>
                       <div className="flex gap-2">
-                        <Link to="/convert" onClick={() => setOpenDropdown(null)} className="text-xs font-semibold border border-neon-cyan/30 text-neon-cyan px-3 py-1.5 rounded-lg hover:bg-neon-cyan/10">📁 File Converters</Link>
-                        <Link to="/tools" onClick={() => setOpenDropdown(null)} className="text-xs font-semibold bg-brand-gradient text-white px-3 py-1.5 rounded-lg hover:shadow-lg">Open Free Tools</Link>
+                        <Link to="/convert" onClick={() => setOpenDropdown(null)} className="text-xs font-semibold border border-neon-cyan/30 text-neon-cyan px-2.5 py-1 rounded-lg hover:bg-neon-cyan/10">📁 File Converters</Link>
+                        <Link to="/tools" onClick={() => setOpenDropdown(null)} className="text-xs font-semibold bg-brand-gradient text-white px-2.5 py-1 rounded-lg hover:shadow-lg">Open Free Tools</Link>
                       </div>
                     </div>
                   </motion.div>
@@ -256,13 +270,13 @@ export default function Navbar() {
               onMouseLeave={() => closeWithDelay()}
             >
               <button onClick={() => toggleDropdown('resources')}
-                className={`flex items-center gap-1.5 px-3 py-2 text-sm font-medium rounded-xl transition-all duration-200 ${
+                className={`flex items-center gap-1 px-2.5 py-1.5 text-xs lg:text-sm font-medium rounded-xl transition-all duration-200 ${
                   openDropdown === 'resources'
                     ? 'text-neon-cyan bg-neon-cyan/15 shadow-sm shadow-neon-cyan/10'
                     : 'text-text-muted hover:text-text-primary hover:bg-border/50'
                 }`}
               >
-                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+                <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
                   <path d="M4 19.5A2.5 2.5 0 016.5 17H20" />
                   <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" />
                 </svg>
@@ -276,10 +290,10 @@ export default function Navbar() {
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 6, scale: 0.96 }}
                     transition={{ duration: 0.15 }}
-                    className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-56 rounded-2xl border border-neon-cyan/25 glass shadow-2xl overflow-hidden p-2"
+                    className="absolute top-full right-0 mt-2 w-60 rounded-2xl border border-neon-cyan/30 bg-surface/98 dark:bg-[#070D1B] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.85)] backdrop-blur-2xl p-2 z-50 overflow-hidden before:absolute before:-top-3 before:left-0 before:right-0 before:h-3"
                   >
-                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-neon-cyan/[0.04] via-transparent to-electric-violet/[0.04] pointer-events-none" />
-                    <div className="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-neon-cyan/40 to-transparent" />
+                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-neon-cyan/[0.06] via-transparent to-electric-violet/[0.04] pointer-events-none" />
+                    <div className="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-neon-cyan/50 to-transparent" />
                     {[
                       { label: 'Blog', path: '/blogs', icon: '📝', desc: 'Tech tips & insights' },
                       { label: 'Courses', path: '/courses', icon: '🎓', desc: 'Free & paid courses' },
@@ -288,16 +302,16 @@ export default function Navbar() {
                       { label: 'Prompt Packs', path: '/prompt-packs', icon: '🧠', desc: 'AI prompt collections' },
                       { label: 'Plans', path: '/plans', icon: '📋', desc: 'Membership & support' },
                       { label: 'Mobile App', path: '/app', icon: '📱', desc: 'Android APK download' },
-                      { label: 'SEO Tools', path: '/seo', icon: '🚀', desc: 'AI-powered SEO & content tools' },
-                      { label: 'File Converters', path: '/convert', icon: '📁', desc: 'Free PDF & image converters' },
+                      { label: 'SEO Tools', path: '/seo', icon: '🚀', desc: 'AI-powered SEO tools' },
+                      { label: 'File Converters', path: '/convert', icon: '📁', desc: 'Free PDF & image tools' },
                     ].map((item) => (
                       <Link key={item.label} to={item.path} onClick={() => setOpenDropdown(null)}
-                        className="group relative flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-gradient-to-r hover:from-neon-cyan/[0.07] hover:to-electric-violet/[0.04] transition-all duration-200"
+                        className="group relative flex items-center gap-2.5 px-2.5 py-1.5 rounded-xl hover:bg-neon-cyan/[0.08] dark:hover:bg-neon-cyan/[0.12] transition-all duration-150"
                       >
-                        <span className="text-lg shrink-0">{item.icon}</span>
+                        <span className="text-base shrink-0 group-hover:scale-110 transition-transform">{item.icon}</span>
                         <div className="min-w-0">
-                          <div className="text-sm font-medium text-text-primary group-hover:text-neon-cyan transition-colors">{item.label}</div>
-                          <div className="text-[10px] text-text-muted/50">{item.desc}</div>
+                          <div className="text-xs font-semibold text-text-primary group-hover:text-neon-cyan transition-colors">{item.label}</div>
+                          <div className="text-[10px] text-text-muted truncate">{item.desc}</div>
                         </div>
                       </Link>
                     ))}
@@ -312,13 +326,13 @@ export default function Navbar() {
               onMouseLeave={() => closeWithDelay()}
             >
               <button onClick={() => toggleDropdown('company')}
-                className={`flex items-center gap-1.5 px-3 py-2 text-sm font-medium rounded-xl transition-all duration-200 ${
+                className={`flex items-center gap-1 px-2.5 py-1.5 text-xs lg:text-sm font-medium rounded-xl transition-all duration-200 ${
                   openDropdown === 'company'
                     ? 'text-neon-cyan bg-neon-cyan/15 shadow-sm shadow-neon-cyan/10'
                     : 'text-text-muted hover:text-text-primary hover:bg-border/50'
                 }`}
               >
-                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+                <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
                   <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
                   <circle cx="9" cy="7" r="4" />
                   <path d="M23 21v-2a4 4 0 00-3-3.87" />
@@ -334,33 +348,32 @@ export default function Navbar() {
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 6, scale: 0.96 }}
                     transition={{ duration: 0.15 }}
-                    className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-48 rounded-2xl border border-neon-cyan/25 glass shadow-2xl overflow-hidden p-2"
+                    className="absolute top-full right-0 mt-2 w-52 rounded-2xl border border-neon-cyan/30 bg-surface/98 dark:bg-[#070D1B] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.85)] backdrop-blur-2xl p-2 z-50 overflow-hidden before:absolute before:-top-3 before:left-0 before:right-0 before:h-3"
                   >
-                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-neon-cyan/[0.04] via-transparent to-electric-violet/[0.04] pointer-events-none" />
-                    <div className="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-neon-cyan/40 to-transparent" />
+                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-neon-cyan/[0.06] via-transparent to-electric-violet/[0.04] pointer-events-none" />
+                    <div className="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-neon-cyan/50 to-transparent" />
                     {[
-                      { label: 'About', path: '/about', icon: '👤', desc: 'Our story & team' },
-                      { label: 'GitHub', path: 'https://github.com/danishkagit', icon: '💻', desc: 'My code repository', external: true },
+                      { label: 'About', path: '/about', icon: '🏢', desc: 'Our story & agency' },
                       { label: 'Referral Program', path: '/referral', icon: '🤝', desc: 'Refer & earn ₹100' },
                       { label: 'Contact', path: '/contact', icon: '📬', desc: 'Get in touch' },
                     ].map((item) => item.external ? (
                       <a key={item.label} href={item.path} target="_blank" rel="noopener noreferrer" onClick={() => setOpenDropdown(null)}
-                        className="group relative flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-gradient-to-r hover:from-neon-cyan/[0.07] hover:to-electric-violet/[0.04] transition-all duration-200"
+                        className="group relative flex items-center gap-2.5 px-2.5 py-1.5 rounded-xl hover:bg-neon-cyan/[0.08] dark:hover:bg-neon-cyan/[0.12] transition-all duration-150"
                       >
-                        <span className="text-lg shrink-0">{item.icon}</span>
+                        <span className="text-base shrink-0 group-hover:scale-110 transition-transform">{item.icon}</span>
                         <div className="min-w-0">
-                          <div className="text-sm font-medium text-text-primary group-hover:text-neon-cyan transition-colors">{item.label}</div>
-                          <div className="text-[10px] text-text-muted/50">{item.desc}</div>
+                          <div className="text-xs font-semibold text-text-primary group-hover:text-neon-cyan transition-colors">{item.label}</div>
+                          <div className="text-[10px] text-text-muted truncate">{item.desc}</div>
                         </div>
                       </a>
                     ) : (
                       <Link key={item.label} to={item.path} onClick={() => setOpenDropdown(null)}
-                        className="group relative flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-gradient-to-r hover:from-neon-cyan/[0.07] hover:to-electric-violet/[0.04] transition-all duration-200"
+                        className="group relative flex items-center gap-2.5 px-2.5 py-1.5 rounded-xl hover:bg-neon-cyan/[0.08] dark:hover:bg-neon-cyan/[0.12] transition-all duration-150"
                       >
-                        <span className="text-lg shrink-0">{item.icon}</span>
+                        <span className="text-base shrink-0 group-hover:scale-110 transition-transform">{item.icon}</span>
                         <div className="min-w-0">
-                          <div className="text-sm font-medium text-text-primary group-hover:text-neon-cyan transition-colors">{item.label}</div>
-                          <div className="text-[10px] text-text-muted/50">{item.desc}</div>
+                          <div className="text-xs font-semibold text-text-primary group-hover:text-neon-cyan transition-colors">{item.label}</div>
+                          <div className="text-[10px] text-text-muted truncate">{item.desc}</div>
                         </div>
                       </Link>
                     ))}
@@ -369,23 +382,14 @@ export default function Navbar() {
               </AnimatePresence>
             </div>
 
-            <Link to="/convert"
-              className="ml-2 flex items-center gap-1.5 px-3 py-2 rounded-xl text-sm font-semibold border border-neon-cyan/30 text-neon-cyan hover:bg-neon-cyan/10 hover:border-neon-cyan/50 hover:shadow-lg transition-all duration-200"
-            >
-              <span>📁</span>
-              <span>Convert</span>
-              <span className="text-[10px] font-bold bg-neon-cyan/15 text-neon-cyan px-1.5 py-0.5 rounded">FREE</span>
-            </Link>
             <Link to="/ai"
-              className="ml-2 flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-semibold bg-gradient-to-r from-neon-cyan/15 to-electric-violet/15 border border-neon-cyan/30 text-neon-cyan hover:from-neon-cyan/25 hover:to-electric-violet/25 hover:border-neon-cyan/50 hover:shadow-lg hover:shadow-neon-cyan/10 transition-all duration-200 relative overflow-hidden group"
+              className="ml-1 flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-neon-cyan/10 border border-neon-cyan/30 text-neon-cyan hover:bg-neon-cyan/20 transition-all duration-200"
             >
-              <span className="absolute inset-0 bg-gradient-to-r from-neon-cyan/10 to-electric-violet/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <span className="relative">🧠</span>
-              <span className="relative">AI Chat</span>
-              <span className="relative text-[10px] font-bold text-electric-violet bg-electric-violet/15 px-1.5 py-0.5 rounded animate-pulse">AI</span>
+              <span>🧠</span>
+              <span>AI Chat</span>
             </Link>
             <Link to="/login"
-              className="ml-1 bg-brand-gradient text-white px-5 py-2 rounded-xl text-sm font-semibold transition-all duration-200 hover:shadow-lg hover:shadow-neon-cyan/25 hover:scale-105 active:scale-95"
+              className="ml-1 bg-brand-gradient text-white px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all duration-200 hover:shadow-md hover:scale-105 active:scale-95"
             >
               Login
             </Link>
